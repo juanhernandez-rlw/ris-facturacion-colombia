@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+	<Identification>
+		<ShortName>TipoUsuario</ShortName>
+		<LongName xml:lang="es">Tipo de usuario</LongName>
+		<Version>1</Version>
+		<CanonicalUri>urn:salud:names:especificacion:ubl:listacodigos:gc:TipoUsuario</CanonicalUri>
+		<CanonicalVersionUri>urn:salud:names:especificacion:ubl:listacodigos:gc:TipoUsuario</CanonicalVersionUri>
+		<LocationUri>http://minsalud.gov.co/ubl/os-ubl-2.0/cl/gc/default/TipoUsuario.gc</LocationUri>
+		<Agency>
+			<LongName xml:lang="es">DIAN (Dirección de Impuestos y Aduanas Nacionales)</LongName>
+			<Identifier>195</Identifier>
+		</Agency>
+	</Identification>
+	<ColumnSet>
+		<Column Id="code" Use="required">
+			<ShortName>Código</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="description" Use="required">
+			<ShortName>Descripción</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Key Id="codeKey">
+			<ShortName>CodeKey</ShortName>
+			<ColumnRef Ref="code"/>
+		</Key>
+	</ColumnSet>
+	<SimpleCodeList>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>01</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Contributivo cotizante</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>02</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Contributivo beneficiario</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>03</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Contributivo adicional</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>04</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Subsidiado </SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>05</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Sin régimen</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>06</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Especiales o de Excepción cotizante </SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>07</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Especiales o de Excepción beneficiario</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>08</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Particular</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>09</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Tomador/Amparado ARL</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>10</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Tomador/Amparado SOAT</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>11</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Tomador/Amparado Planes voluntarios de salud</SimpleValue>
+			</Value>
+		</Row>
+	</SimpleCodeList>
+</gc:CodeList>

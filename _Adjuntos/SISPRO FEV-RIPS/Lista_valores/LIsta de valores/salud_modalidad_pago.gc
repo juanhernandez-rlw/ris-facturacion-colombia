@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+	<Identification>
+		<ShortName>ModalidadPago</ShortName>
+		<LongName xml:lang="es">Modalidad y contratación de Pago</LongName>
+		<Version>1</Version>
+		<CanonicalUri>urn:salud:names:especificacion:ubl:listacodigos:gc:ModalidadPago</CanonicalUri>
+		<CanonicalVersionUri>urn:salud:names:especificacion:ubl:listacodigos:gc:ModalidadPago</CanonicalVersionUri>
+		<LocationUri>http://minsalud.gov.co/ubl/os-ubl-2.0/cl/gc/default/ModalidadPago.gc</LocationUri>
+		<Agency>
+			<LongName xml:lang="es">DIAN (Dirección de Impuestos y Aduanas Nacionales)</LongName>
+			<Identifier>195</Identifier>
+		</Agency>
+	</Identification>
+	<ColumnSet>
+		<Column Id="code" Use="required">
+			<ShortName>Código</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="description" Use="required">
+			<ShortName>Descripción</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Key Id="codeKey">
+			<ShortName>CodeKey</ShortName>
+			<ColumnRef Ref="code"/>
+		</Key>
+	</ColumnSet>
+	<SimpleCodeList>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>01</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Paquete / Canasta / Conjunto Integral en Salud</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>02</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Grupos Relacionados por Diagnóstico</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>03</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Integral por grupo de riesgo</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>04</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago por contacto por especialidad</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>05</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago por escenario de atención</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>06</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago por tipo de servicio</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>07</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago global prospectivo por episodio</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>08</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago global prospectivo por grupo de riesgo</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>09</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago global prospectivo por especialidad</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>10</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pago global prospectivo por nivel de complejidad</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>11</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Capitación</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>12</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Por servicio</SimpleValue>
+			</Value>
+		</Row>
+	</SimpleCodeList>
+</gc:CodeList>

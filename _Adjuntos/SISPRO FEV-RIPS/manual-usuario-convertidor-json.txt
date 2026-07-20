@@ -1,0 +1,821 @@
+
+===== Página 1/22 =====
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MANUAL DE USUARIO 
+CONVERTIDOR A JSON 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL 
+BOGOTÁ, JULIO 2026 
+ 
+ 
+
+===== Página 2/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 2 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+TABLA DE CONTENIDO 
+1. OBJETIVO ....................................................................................................................................................... 4 
+2. ALCANCE ........................................................................................................................................................ 4 
+3. ÁMBITO DE APLICACIÓN .............................................................................................................................. 4 
+4. DOCUMENTOS ASOCIADOS AL MANUAL................................................................................................... 4 
+5. NORMATIVA Y OTROS DOCUMENTOS EXTERNOS ................................................................................... 4 
+6. DEFINICIONES ................................................................................................................................................ 4 
+7. CUERPO DEL DOCUMENTO ......................................................................................................................... 5 
+7.1. Plantilla_FEV-RIPS ................................................................................................................... 5 
+7.2. Convertidor de archivo formato EXCEL a formato JSON ....................................................... 13 
+7.3. Presentación gráfica en el Mecanismo Único de Validación Cliente Servidor: ....................... 18 
+ 
+ 
+ 
+ILUSTRACIONES 
+ 
+ 
+Ilustración 1 Estructura de hojas del archivo Excel ................................................................................................... 5 
+Ilustración 2 Visual de la Plantilla de trabajo ............................................................................................................. 6 
+Ilustración 3  Ejemplo Registro Transacción ............................................................................................................. 7 
+Ilustración 4  Formato Error presentado por la herramienta ...................................................................................... 8 
+Ilustración 5  Ejemplo Formato pestaña usuarios...................................................................................................... 8 
+Ilustración 6  Ejemplo Formato pestaña Consultas ................................................................................................... 9 
+Ilustración 7  Ejemplo Formato pestaña Urgencias ................................................................................................. 10 
+Ilustración 8  Ejemplo Formato pestaña Procedimientos ........................................................................................ 11 
+Ilustración 9  Ejemplo Formato pestaña Hospitalización ......................................................................................... 12 
+Ilustración 10  EjemploFormato pestaña Recién Nacidos ....................................................................................... 12 
+Ilustración 11 Ejemplo Formato pestaña Medicamentos ......................................................................................... 13 
+Ilustración 12  Ejemplo Formato pestaña Otros Servicios ....................................................................................... 13 
+Ilustración 13  Pantalla de acceso al Convertidor JSON ......................................................................................... 14 
+Ilustración 14 Descarga archivo Plantilla_FEV-RIPS_V 1_0.xlsm ........................................................................... 14 
+Ilustración 15  Selección de archivo Plantilla_FEV-RIPS_V 1_0.xlsm .................................................................... 15 
+Ilustración 16 Proceso de conversión archivo EXCEL a formato JSON .................................................................. 16 
+Ilustración 17 Archivo convertido con éxito ............................................................................................................. 16 
+Ilustración 18 Descarga archivo convertido a formato JSON .................................................................................. 16 
+Ilustración 19 archivo convertido a formato JSON en carpeta de Descargas ......................................................... 17 
+Ilustración 20  Despliegue archivo formato JSON ................................................................................................... 17 
+Ilustración 21 Mensaje de error al convertir al JSON .............................................................................................. 18 
+ 
+ 
+ 
+ 
+ 
+===== Página 3/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 3 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+<Control de cambios> 
+ 
+Ítem Actividad Elaborado por Fecha Versión 
+1 Elaboración Documento inicial Zulay Merlin García Farieta 2024-04-15 1.0 
+2 Ampliación en descripción del ítem 3. Ámbito de 
+Aplicación. 
+Especificación en el ítem 5. Normativa y Otros 
+Documentos Externos: Res. 2275/2023 se 
+incluyó Anexo No. 1 y Anexo No. 2. Se incluyó 
+Res. 1884/2024 y Documento de Lineamientos 
+Técnicos. 
+Especificación de la plantilla en el ítem 7.1. 
+Plantilla_FEV-RIPS, permisibilidad. Se incluyó 
+la forma de copiado y pegado de información. 
+Transacción: Se incluyó ejemplo de 
+diligenciamiento de RIPS con Factura y RIPS 
+sin Factura. 
+Usuarios: Se especificó la columna L – campo 
+consecutivo. 
+Consulta, urgencias, procedimientos, 
+hospitalización, recienNacidos, medicamentos, 
+otrosServicios: Se especificó el campo 
+consecutivo. 
+ 
+Zulay Merlin García Farieta 2025-11-06 2.0 
+3 Actualización del manual de usuario de acuerdo 
+con la nueva normatividad Resolución 948 de 
+2026. 
+Zulay Merlin García Farieta 2026-07-03 3.0 
+ 
+ 
+===== Página 4/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 4 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+1. OBJETIVO 
+Brindar al usuario la información necesaria para el buen uso del “ Convertidor de archivos de formatos EXCEL 
+(xlsm) predefinidos a formato JSON”, herramienta dispuesta por el Ministerio de Salud y Protección Social como 
+apoyo a l os profesionales independientes y/o prestadores de servicios de salud y demás obligados a reportar 
+Registros Individuales de Prestaciones en Salud- RIPS, acorde a lo establecido en la resolución 948 de 2026. 
+2. ALCANCE 
+Describir los componentes y acciones a realizar para llevar a cabo la conversión de archivos RIPS mono factura, 
+multi usuario – multi atención, que se encuentran en formato EXCEL (xlsm) “Plantilla FEV-RIPS” a formato JSON. 
+3. ÁMBITO DE APLICACIÓN 
+Las disposiciones contenidas en este manual están dirigidas principalmente a los profesionales independientes 
+prestadores de servicios de salud que reportan RIPS sin factura, así como a pequeños facturadores. 
+ 
+Esta herramienta no está diseñada para procesar grandes volúmenes de información de RIPS ni para realizar la 
+conversión masiva de dichos registros al formato JSON. 
+4. DOCUMENTOS ASOCIADOS AL MANUAL 
+• Plantilla FEV-RIPS_V 1_0.xlsm 
+• Manual de usuario convertidor JSON 
+• Resolución 948/2026 
+• Documento Técnico 1 – Res. 948/2026 
+• ASIF03 Manual usuario FEV-RIPS 
+• FEVRG01 Guía de Instalación del Sistema Cliente – Servidor FEV_RIPS  
+•  
+5. NORMATIVA Y OTROS DOCUMENTOS EXTERNOS  
+ 
+• Resolución 948 del 14 de mayo de 2026 “Por la cual se reglamenta el Registro Individual de Prestación de 
+Servicios de Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan  
+las Resoluciones 948 de 2026, 558 Y 1884 de 2024 y, se dictan otras disposiciones” 
+ 
+• Documento Técnico 1 – Res. 948/2026 “Especificaciones Técnicas de los 
+Campos de Datos y las Reglas de Validación del Rips como Soporte de la FEV 
+en Salud” 
+ 
+6. DEFINICIONES 
+• RIPS: Registros Individuales de Prestación de Servicios de Salud – RIPS, son el conjunto de datos mínimos y 
+básicos que el Sistema General de Seguridad Social en salud requiere para los procesos de dirección, 
+regulación y control y como soporte de la venta de servicios, cuya denominación, estructura y características 
+se ha unificado y estandarizado para todas las entidades. 
+===== Página 5/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 5 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+• Plantilla_FEV-RIPS: Archivo EXCEL estructurado de acuerdo con el detalle de los datos de RIPS estandarizado 
+en el Documento Técnico 1 – Resolución 948 de 2026.  
+7. CUERPO DEL DOCUMENTO 
+ 
+El Convertidor de archivos de formatos EXCEL a formato JSON, es una herramienta  para convertir RIPS sin 
+factura multiusuario y multiservicio. Consta de dos componentes:  
+ 
+• Plantilla_FEV-RIPS_V 1_0.xlsm 
+• Convertidor de archivo formato EXCEL a formato JSON 
+ 
+A continuación, se describe los detalles para cada componente 
+7.1. Plantilla_FEV-RIPS 
+La plantilla EXCEL está estructurada de acuerdo con la Resolución 948 de 2026 y su Documento Técnico 1. Los 
+campos que contiene cada una de las pestañas del EXCEL , deben ser diligenciados de acuerdo con  lo que se 
+establece en dicha resolución. 
+  
+Tener en cuenta, que para cad a RIPS sin factura se debe diligenciar un archivo EXCEL, que contendrá la 
+información de los RIPS asociados. 
+ 
+La plantilla permite el registro de RIPS sin factura con multiusuarios y multi atenciones. 
+ 
+Así lo anterior, el archivo en Excel será convertido para generar la estructura en el formato JSON de los RIPS, y 
+luego dicha estructura se debe transmitir al Mecanismo Único de Validación – MUV (en cualquiera de sus dos 
+versiones:  Cliente – Servidor o Appi Docker) por el módulo de RIPS sin Factura. Si la validación es correcta se 
+generará procesamiento exitoso, y al enviar el archivo al MSPS se obtendrá el Código Único de Validación – CUV.  
+ 
+La plantilla EXCEL contiene nueve (9) pestañas así: 
+ 
+ 
+Ilustración 1 Estructura de hojas del archivo Excel 
+ 
+En cada pestaña se ubica la información relacionada:  
+ 
+• transacción:  
+• usuarios: 
+• consulta: 
+• urgencias: 
+• procedimientos 
+• hospitalización: 
+• recienNacidos 
+
+===== Página 6/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 6 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+• medicamentos 
+• otrosServicios 
+ 
+La plantilla completa se muestra de la siguiente manera: 
+ 
+ 
+Ilustración 2 Visual de la Plantilla de trabajo 
+ 
+Se inicia diligenciando la pestaña de transacción, donde es o bligatorio diligenciar los campos  
+numDocumentoIdObligado, tipoNota (RS), y numNot a asociada al archivo RIPS  sin factura , seguidamente se 
+selecciona la pestaña del  usuario, en el que se diligencian los datos correspondientes al usuario al cual se le 
+prestaron los servicios , y a continuación las pestañas de los servicios que van a ser reportados.  Los campos 
+anteriores, se diligencian de acuerdo con el Documento Técnico 1 de la Resolución 948 de 2026. 
+ 
+Recomendaciones para mantener la plantilla estable: 
+ 
+• Para eliminar una o varias filas de una columna, en cualquiera de las pestañas, se debe seleccionar en 
+una columna la celda o celdas a eliminar, dar clic derecho, eliminar fila de la tabla. 
+ 
+• Para copiar información  de otros archivos , se requiere hacer el pegado de información en la plantilla 
+EXCEL como pegado especial tipo valores. 
+ 
+Indicaciones generales: 
+ 
+• Se sugiere, que d esde la pestaña consultas hasta la pestaña otrosServicios, digitar en la siguiente 
+secuencia: 
+✓ Primero seleccionar el consecutivoUsuario 
+✓ Continuar con el diligenciamiento de los demás campos 
+• consecutivoUsuario se selecciona de la  lista desplegable el numDocumentoIdentificacion del lusuario a 
+quien se le va a prestar el servicio. 
+• num_DocumentoObligado: columna protegida desde la pestaña usuarios hasta la pestaña otrosServicios, 
+ya que ésta muestra la información registrada en el campo numDocumentoIdObligado de la pestaña 
+transacción. 
+
+===== Página 7/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 7 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+• Cada celda de la plantilla EXCEL tiene una parametrización relacionada en cada lista desplegable, al digitar 
+un dato no correspondiente, ésta mostrará una nota orientadora. 
+• Las celdas en color amarillo indican que no se ha diligenciado la celda. 
+• Las celdas que en los encabezados tienen  color verde oscuro pueden quedar sin dato , es decir, celda 
+vacía, en los casos en que realmente no requiera tener dato. 
+• Las celdas que en los encabezados tienen color gris oscuro, hace referencia al diagnóstico principal y son 
+obligatorios para diagnóstico. 
+• Las celdas que en los encabezados tienen color verde claro, son celdas en formato tipo numérico. Si no 
+hay dato, se digita cero (0). 
+• Las celdas que en los encabezados tienen color azul claro, son celdas tipo fecha 
+• Formato fecha: aaaa-mm-dd en pestaña usuario.  
+Formato fecha: aaaa-mm-dd hh:mm de 24 horas en las otras pestañas del Excel. 
+• Desde la pestaña consultas hasta la pestaña otrosServicios, la celda consecutivoUsuario identifica a la 
+persona atendida o paciente (esta celda es de selección  y corresponde al número de identificación del 
+usuario). 
+• La última columna, consecutivo indica el número de veces que la persona ha sido atendida. Cada persona 
+tiene su consecutivo correspondiente. 
+• Diligenciar los campos de acuerdo con la descripción contenida en el Documento Técnico 1 - Resolución 
+948 de 2026, documentos dispuestos en el micrositio: 
+ 
+https://www.sispro.gov.co/central-financiamiento/Pages/facturacion-electronica.aspx 
+ 
+Tener en cuenta las tablas de referencia mencionadas en el Documento Técnico 1 - Resolución 948 de 
+2026, referenciadas en cada uno de los campos de la estructura RIPS JSON. Consultar Tablas de 
+Referencia (web.sispro.gov.co) 
+ 
+ 
+Campos que contiene cada una de las pestañas: 
+ 
+TRANSACCIÓN 
+es o bligatorio diligenciar los campos  numDocumentoIdObligado, tipoNota (RS), y numNot a asociada al archivo 
+RIPS sin factura 
+ 
+ 
+Ilustración 3  Ejemplo Registro Transacción 
+ 
+numDocumentoIdObligado: Número que identifica al prestador de servicio de salud. 
+ 
+Se diligencia cada campo en su orden, los campos tipoNota (RS), y numNota, son obligatorios.  
+ 
+tipoNota: Campo obligatorio. Este campo corresponde a seleccionar RS (Rips Sin factura) de la lista de despliegue. 
+ 
+
+===== Página 8/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 8 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+numNota: Campo obligatorio. Este campo es alfanumérico, puede iniciar con letras o números  o alfanumérico. 
+Debe ser consecutivo, no se debe repetir, de lo contrario generará rechazo. 
+ 
+En todos los campos de cualquiera de las pestañas del archivo EXCEL, al digitar un dato que no corresponde a la 
+estructura dispuesta en el Documento Técnico 1 de la resolución 948 de 2026, ésta mostrará un mensaje orientador, 
+tal y como se presenta en el siguiente ejemplo: 
+ 
+ 
+Ilustración 4  Formato Error presentado por la herramienta 
+ 
+El mensaje indica que no se admite el cero (0) o dejar espacios en blanco. Campo tipo carácter acepta un tamaño 
+que admite desde 4 hasta 12 caracteres. 
+ 
+ 
+ 
+USUARIOS 
+ 
+Ilustración 5  Ejemplo Formato pestaña usuarios 
+ 
+Se inicia desde la primera celda “tipoDocumentoIdentificacion” seleccionando de la lista desplegable o digitando 
+el tipo de documento de identidad, según tabla de referencia: "TipoldPISIS". 
+ 
+Seguidamente se digita en el campo correspondiente al numDocumentoIdentificacion, el número de identificación 
+asociado al tipo de identificación, seleccionado.  En este campo se digita el número de la persona que fue atendida. 
+ 
+La columna num_DocumentoIdObligado está bloqueada ya que esta trae la información registrada en el campo 
+numDocumentoIdObligado de la pestaña transacción. 
+ 
+Se continua con el campo tipoUsuario digitando o seleccionando de la lista desplegable el tipo de usuario 
+correspondiente, los cuales están relacionado en la tabla RIPSTipoUsuarioVersion2. 
+ 
+Los demás campos se digitan o se selecciona de la lista desplegable. 
+ 
+
+===== Página 9/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 9 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+La columna M : Se debe registrar un número consecutivo para identificar a cada usuario dentro del 
+reporte, iniciando en 1 y continuando de forma secuencial hasta el último usuario registrado.  Este consecutivo 
+representa la cantidad total de usuarios reportados, sin repetir valores, ejemplo, si van a registran 4 usuarios, el 
+consecutivo va de 1 a 4 secuencialmente, como se muestra a continuación: 
+ 
+ 
+ 
+ 
+El  Para consultas, urgencias, procedimientos, hospitalización, recienNacidos, medicamentos, 
+otrosServicios, corresponde a las veces en que se atendió una persona en el servicio prestado : Ejemplo Si un 
+usuario fue atendido 3 veces, el consecutivo de ese usuario inicia en 1 y secuencialmente va 1, 2, 3. En el siguiente 
+ejemplo, por color se identifica el usuario y su consecutivo: 
+ 
+ 
+ 
+ 
+CONSULTAS 
+ 
+ 
+ 
+Ilustración 6  Ejemplo Formato pestaña Consultas 
+ 
+numDocumentoIdentificacion    …   Consecutivo
+123456 1
+654321 2
+789012 3
+210987 4
+Usuarios
+consecutivoUsuario    …   consecutivo
+654321 1
+654321 2
+654321 3
+789012 1
+123456 1
+123456 2
+210987 1
+210987 2
+210987 3
+210987 4
+210987 5
+210987 6
+consultas, urgencias, procedimientos, hospitalización, 
+recienNacidos, medicamentos, otrosServicios
+
+===== Página 10/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 10 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+De manera opcional, puede seguir la siguiente secuencia al digitar los datos: 
+ 
+✓ Primero, se diligencia la celda del codPrestador, 
+✓ Segundo, se devuelve a la celda consecutivoUsuario y selecciona el que corresponda 
+✓ Tercer, se digita o se selecciona el dato de la lista desplegable según la celda, inmediatamente la 
+celda num_DocumentoIdObligado trae el dato correspondiente. 
+✓ Cuarto, se digita la FechaInicioAtención según las indicaciones generales 
+✓ Quinto, se continúa con el diligenciamiento de los demás campos, teniendo en cuenta las 
+indicaciones generales listadas en este documento. 
+✓ En la columna R numDocumentoIdentificacion se digita el número de documento del profesional que 
+atiende la consulta. 
+ 
+Instrucción para la columna AF (Consecutivo): 
+ 
+En la columna AF (Consecutivo) se debe registrar el número consecutivo de atenciones por cada usuario, iniciando 
+en 1 para la primera atención y aumentando en una unidad hasta la última atención reportada para ese mismo 
+usuario. 
+ 
+Cada usuario tiene su propio consecutivo independiente, por lo que el conteo se reinicia en 1 cada vez que cambia 
+el usuario. 
+ 
+Ejemplo: 
+Si el usuario XXX tuvo 5 consultas, en la columna AF (Consecutivo) deberá aparecer: 
+1, 2, 3, 4, 5 — correspondientes a cada una de sus cinco atenciones. 
+ 
+De igual forma, si el usuario YYY tuvo 3 consultas, su consecutivo será: 
+1, 2, 3. 
+ 
+ 
+URGENCIAS 
+ 
+ 
+ 
+ 
+Ilustración 7  Ejemplo Formato pestaña Urgencias 
+ 
+De manera opcional, puede seguir la siguiente secuencia al digitar los datos: 
+ 
+✓ Primero, se diligencia la celda del codPrestador, 
+✓ Segundo, se devuelve a la celda consecutivoUsuario y selecciona el que corresponda 
+
+===== Página 11/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 11 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+✓ Tercer, se digita o se selecciona el dato de la lista desplegable según la celda, inmediatamente la 
+celda num_DocumentoIdObligado trae el dato correspondiente. 
+✓ Cuarto, se digita la FechaInicioAtención según las indicaciones generales 
+✓ Quinto, se continúa con el diligenciamiento de los demás campos teniendo en cuenta las indicaciones 
+generales listadas en este documento. 
+ 
+ 
+PROCEDIMIENTOS 
+ 
+ 
+ 
+ 
+Ilustración 8  Ejemplo Formato pestaña Procedimientos 
+ 
+Los campos se diligencian de acuerdo con los pasos listados en URGENCIAS. 
+ 
+Tener en cuenta las recomendaciones para mantener la plantilla estable y las sugerencias indicadas al inicio de 
+este documento. 
+✓ La columna N, numDocumentoIdentificacion se digita el número de documento del profesional que 
+ordena el procedimiento. 
+ 
+ 
+HOSPITALIZACIÓN 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 12/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 12 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Ilustración 9  Ejemplo Formato pestaña Hospitalización 
+ 
+Los campos se diligencian de acuerdo con los pasos listados en URGENCIAS.  Tener en cuenta las 
+recomendaciones para mantener la plantilla estable y las sugerencias indicadas al inicio de este documento. 
+ 
+ 
+RECIEN NACIDOS 
+ 
+ 
+ 
+ 
+ 
+Ilustración 10  EjemploFormato pestaña Recién Nacidos 
+ 
+Los campos se diligencian de acuerdo con los pasos listados en URGENCIAS. 
+Tener en cuenta las recomendaciones para mantener la plantilla estable y las sugerencias indicadas al inicio de 
+este documento. 
+✓ La columna E se digita el número de documento de la mamá. 
+✓ En la columna I, se selecciona según corresponda: 
+01 = Masculino 
+02 = Mujer 
+03 = Indeterminado o intersexual. 
+ 
+ 
+MEDICAMENTOS 
+ 
+ 
+
+===== Página 13/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 13 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Ilustración 11 Ejemplo Formato pestaña Medicamentos 
+ 
+Los campos se diligencian de acuerdo con los pasos listados en URGENCIAS. 
+Tener en cuenta las recomendaciones para mantener la plantilla estable y las sugerencias indicadas al inicio de 
+este documento. 
+✓ La columna V numDocumentoIdentificacion se digita el número de documento del profesional que 
+ordena el medicamento. 
+ 
+ 
+OTROS SERVICIOS 
+ 
+ 
+ 
+ 
+Ilustración 12  Ejemplo Formato pestaña Otros Servicios 
+  
+ 
+Los campos se diligencian de acuerdo con los pasos listados en URGENCIAS. 
+Tener en cuenta las recomendaciones para mantener la plantilla estable y las sugerencias indicadas al inicio de 
+este documento. 
+✓ La columna L numDocumentoIdentificacion se digita el número de documento del profesional o 
+persona que ordena los otros servicios. 
+ 
+7.2. Convertidor de archivo formato EXCEL a formato JSON 
+Teniendo la plantilla EXCEL diligenciada, se procede a realizar la conversión del archivo formato EXCEL al formato 
+JSON con los siguientes pasos: 
+  
+Entrar por el micrositio 
+ 
+https://www.sispro.gov.co/central-financiamiento/Pages/facturacion-electronica.aspx 
+
+===== Página 14/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 14 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+  
+y desde allí dar clic en la opción   Convertidor JSON, y muestra la siguiente pantalla: 
+ 
+ 
+ 
+Ilustración 13  Pantalla de acceso al Convertidor JSON 
+ 
+ 
+ 
+1 Descarga de Plantilla 
+ 
+ Dar clic en el botón Descargar Archivo EXCEL, y por la opción de descargas del navegador 
+traerá el archivo EXCEL (Plantilla_FEV-RIPS_V 1_0.xlsm) para ser diligenciada. 
+ 
+ 
+Ilustración 14 Descarga archivo Plantilla_FEV-RIPS_V 1_0.xlsm 
+ 
+ 
+Se descarga la Plantilla_FEV -RIPS_V 1_0.xlsm, y se diligencia de acuerdo con el  Documento Técnico 1 – Res. 
+948/2026. 
+ 
+El archivo diligenciado lo puede guardar en sus archivos - carpeta de su preferencia. 
+ 
+ 
+2 Seleccionar archivo 
+ 
+Dar clic en el botón Seleccionar archivo, aquí va y selecciona el archivo EXCEL diligenciado, 
+del lugar en donde lo halla guardado, para el ejemplo se mostrará así: 
+1 
+2
+4 
+3
+1
+4 
+===== Página 15/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 15 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Ilustración 15  Selección de archivo Plantilla_FEV-RIPS_V 1_0.xlsm 
+ 
+ 
+3 Convertidor JSON 
+ 
+Dar clic en la opción convertidor JSON 
+ 
+ 
+Este mostrará la siguiente pantalla del proceso de conversión: 
+
+===== Página 16/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 16 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Ilustración 16 Proceso de conversión archivo EXCEL a formato JSON 
+ 
+Luego muestra el resultado, si el archivo está correcto mostrará el siguiente mensaje: 
+ 
+Ilustración 17 Archivo convertido con éxito 
+ 
+Dar clic en ok, inmediatamente en descargas del navegador, se descargará el archivo generado en formato JSON 
+ 
+ 
+Ilustración 18 Descarga archivo convertido a formato JSON 
+
+===== Página 17/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 17 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+Ilustración 19 archivo convertido a formato JSON en carpeta de Descargas 
+ 
+ 
+El archivo generado se puede guardar en sus archivos - carpeta que tenga destinada para dicho fin. 
+ 
+ 
+Al dar clic en archivo generado, éste se abre y muestra el JSON en la pantalla que se despliega, así: 
+ 
+ 
+Ilustración 20  Despliegue archivo formato JSON 
+ 
+ 
+En caso de que el archivo cargado genere error, mostrará el siguiente mensaje: 
+ 
+
+===== Página 18/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 18 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Ilustración 21 Mensaje de error al convertir al JSON 
+ 
+Dar clic en ok, ir al archivo y revisar los campos diligenciados: 
+ 
+ 
+Figura No. 22 revisión de Plantilla_FEV-RIPS_V 1_0.xlsm 
+ 
+Revisa el EXCEL, corregir si necesario, y volver al paso 2 cargar archivo. 
+ 
+7.3. Presentación gráfica en el Mecanismo Único de Validación Cliente Servidor: 
+ 
+ 
+ 
+ 
+
+===== Página 19/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 19 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 20/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 20 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 21/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 21 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 22/22 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM002 
+MANUAL MANUAL DE USUARIO 
+ CONVERTIDOR A JSON Versión:  3.0. 
+ 
+Página 22 de 22                     Una vez impreso o descargado este documento se considera copia no controlada              ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ELABORADO POR:  REVISADO POR: APROBADO POR: 
+Nombre y Cargo: 
+Zulay García – Contratista 
+ 
+Fecha de actualización: 08/07-2026 
+ 
+Fecha de elaboración: 16 de diciembre 
+de 2024 
+Nombre y Cargo: 
+Brayher Gómez – Contratista 
+Germán Gil 
+Fecha: 08 de julio de 2025 
+Nombre y Cargo: 
+Juan Carlos Arce – Contratista 
+ 
+Fecha: 08 de julio de 2026 
+ 
+ 
+ 
+ 

@@ -1,0 +1,607 @@
+
+===== Página 1/18 =====
+   
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+ 
+  
+ 
+ 
+ 
+GUIA DE INSTALACIÓN DEL VALIDADOR FEV_RIPS  
+PLATAFORMA CLIENTE/SERVIDOR  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL 
+BOGOTÁ, JUNIO DE 2025  
+  
+
+===== Página 2/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 2 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+TABLA DE CONTENIDO 
+1. OBJETIVO ....................................................................................................................................................... 4 
+2. ALCANCE ........................................................................................................................................................ 4 
+3. ÁMBITO DE APLICACIÓN .............................................................................................................................. 4 
+4. DOCUMENTOS ASOCIADOS A LA GUÍA...................................................................................................... 4 
+5. DEFINICIONES ................................................................................................................................................ 4 
+6. CARACTERISTICAS GENERALES ................................................................................................................ 5 
+7. PROCESO DE INSTALACIÓN ........................................................................................................................ 7 
+Paso 1: Descarga del paquete de instalación .................................................................................. 7 
+Paso 2: Ejecución del instalador del Mecanismo Único de Validación - MUV ................................. 8 
+Paso 3: Pruebas y verificación de la Instalación ............................................................................ 14 
+8. PROCESO DE DESINSTALACIÓN ............................................................................................................... 15 
+9. RECOMENDACIONES PARA LA INSTALACIÓN ........................................................................................ 17 
+ 
+ 
+ 
+ 
+  
+===== Página 3/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 3 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+<Control de Cambios> 
+ 
+ 
+Ítem Actividad Elaborado por Fecha Versión 
+1 Elaboración Documento inicial  Carlos A.  Moreno Álvarez 
+José Morales Amaya 
+2023-09-10 1.0 
+2 Ajuste en la normatividad. Jacqueline Becerra Silva 2024-03-15 1.1 
+3 Descripción del proceso de Instalación , 
+basado en la ejecución de un paquete. 
+Jacqueline Becerra Silva 2025-06-26 2.0 
+  
+===== Página 4/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 4 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+1. OBJETIVO 
+ 
+Documentar el procedimiento a ser realizado por los facturadores electrónicos del sector salud (Prestadores de 
+Servicios de Salud - PSS y Proveedores de Tecnologías en Salud – PTS) y demás obligados a reportar los 
+Registros Individuales de Prestaciones en Salud - RIPS, acorde a lo establecido en las Resoluciones 2275 de 
+diciembre de 2023 y 558 de marzo de 2024, para la instalación de la aplicación cliente-servidor FEV_RIPS.  
+ 
+2. ALCANCE 
+Inicia con el proceso de descargue del software desde el sitio autorizado por el Ministerio de Salud y Protección 
+Social, continúa con el proceso de instalación y finaliza con un tema de Recomendaciones para la instalación. 
+ 
+3. ÁMBITO DE APLICACIÓN 
+Esta guía aplica para el proceso de instalación del Mecanismo Único de Validación del RIPS como soporte de la 
+Factura Electrónica de Venta -FEV en salud  (Resolución 2275 de 2023), en adelante aplicación cliente -servidor 
+FEV_RIPS. 
+ 
+4. DOCUMENTOS ASOCIADOS A LA GUÍA 
+ Proceso SIMC01 Administración de sistemas de información. 
+ Política de privacidad y confidencialidad del Ministerio de Salud y Protección Social. 
+ Política general de seguridad de la información del Ministerio de Salud y Protección Social. 
+ Procedimiento SIMP01 Ingreso de aplicaciones misionales al centro de datos externo. 
+ 
+5. DEFINICIONES 
+ Base de Datos : sistema estructurado de almacenamiento de datos que permite su acceso, gestión y 
+manipulación de forma e ficiente. Se utiliza p ara organizar y recuperar datos estructurados de manera 
+óptima. 
+ 
+ Instalador: paquete que contiene y gestiona la instalación de todas las dependencias  necesarias para el 
+funcionamiento de la aplicación Windows denominada "Validador Local".  Este instalador, desarrollado con 
+tecnología WiX (Windows Installer XML)  versión 3.0,  permite una ins talación automatizada, robusta y 
+compatible con sistemas operativos Windows. 
+ 
+ Requisitos del Sistema : conjunto de especificaciones técnicas mínimas, tanto de hardware como de 
+software, que deben cumplirse para garantizar el funcionamiento correcto y eficiente de una aplicación. 
+Estos requisitos incluyen, entre otros: sistema operativo  compatible, capacidad de almacenamiento  
+suficiente, memoria RAM  adecuada, controladores y componentes adicionales necesarios. Cumplir con 
+===== Página 5/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 5 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+estos requisitos aseguran la estabilidad, el rendimiento y la compatibilidad del sistema durante la instalación 
+y operación de la aplicación. 
+ 
+ Registro de Información de Prestación de Servicios de Salud – RIPS:  el conjunto de datos que contiene 
+la información relacionada con la pre stación o provisión de servicios y tecnologías de salud al (los) 
+usuario(s). El RIPS se utilizará para los procesos de prestación o provisión de servicios y tecnologías de 
+salud y su facturación, así como para los procesos de dirección, regulación y control. 
+ 
+ Sistema Operativo: conjunto de programas y servicios que gestionan los recursos de hardware y software 
+de un equipo de cómputo. Actúa como intermediario entre el usuario y el hardware, facilitando la ejecución 
+de programas, la administración de archivos y la interacción con el sistema. 
+ 
+ ZIP: Formato de compresión sin pérdida, ampliamente utilizado para la compresión de datos como 
+documentos, imágenes o programas. Los archivos comprimidos en este formato suelen tener la extensión 
+".zip" y permiten una transferencia y almacenamiento eficiente.  
+ 
+6. CARACTERISTICAS GENERALES  
+ 
+1. Para realizar el proceso de instalación de la aplicación cliente-servidor FEV_RIPS, se requiere 
+contar con las siguientes especificaciones técnicas: 
+ 
+Sistema Operativo: Microsoft Windows 10 SP1 o superior (a 32 bits, recomendado Windows 11 
+ a 64 bits)  
+Framework: Microsoft .NET Framework 4.8 
+ 
+Requisitos Mínimos de Hardware 
+Acorde con Microsoft Lifecycle fact Sheet y con las necesidades de procesamiento para validar 
+los archivos de datos procesados por la aplicación son requeridos como mínimo: 
+ 
+Procesador (CPU): Tres Núcleos a 2Ghz a 64 bits (sugerido 4 núcleos a 3GHz, x86, recomendado 
+x64) 
+Memoria (RAM):   mínimo 4GB (preferiblemente 8GB o superior con al menos 4GB libres para uso) 
+Almacenamiento (Disco duro): 100GB de espacio libre por cada unidad lógica más el doble del  
+espacio (libre) de almacenamiento de los archivos a enviar o superior 
+Conexión a Internet: Upload 2Mbps o superior, Download 4Mbps o superior (sugerido 10Mbps o 
+ superior en ambas). 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 6/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 6 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+2. La aplicación cliente -servidor FEV_RIPS, debe ser instalada  por un usuario con privilegios de 
+administrador en el equipo donde se ejecutará la solución.  
+ 
+3. En el equipo donde se instale e l Mecanismo Único de Validación  - MUV, no deben coexistir los 
+ambientes de pruebas (test) y producción. Es obligatorio mantener estos entornos separados, para 
+evitar conflictos en la validación y transmisión de datos. 
+ 
+4. Se recomienda utilizar el software de compresión disponible en el sistema operativo o herramientas 
+licenciadas como WinZip o WinRAR para comprimir y descomprimir archivos.  
+ 
+5. La aplicación cliente-servidor FEV_RIPS utiliza una base de datos local respaldada por SQL 
+Server 2019 en su edición Express LocalDB totalmente autogestionada por la aplicación, con 
+las siguientes características de implementación:  
+ 
+ Instalación Local Transparente :  la base de datos se carga automáticamente durante el proceso de 
+instalación de la aplicación cliente-servidor FEV_RIPS, sin requerir configuración manual de instancia de 
+servidor, lo que simplifica la implementación , especialmente en entornos sin personal técnico 
+especializado.  
+ 
+ Eficiencia: Express LocalDB está diseñado para operar con un consumo mínimo de recursos del sistema. 
+Esto resulta ideal para equipos con capacidades limitadas o sin administración avanzada de bases de 
+datos.  
+ 
+ Autogestión: Express LocalDB es gestionada directamente por la aplicación, sin necesidad de 
+intervención del usuario, lo que facilita su uso y reduce la complejidad operativa.  
+ 
+ Seguridad:  Express LocalDB incorpora l os mismos mecanismos de seguridad que las versiones 
+completas de SQL Server 2019, garantizando la protección de los datos almacenados.  
+ 
+ Escalabilidad: Express LocalDB permite una fácil escalabilidad hacia ediciones completas de SQL Server 
+en caso de requerir mayor capacidad o funcionalidades avanzadas sin afectar la integridad de los datos.  
+ 
+Requerimientos mínimos de instalación.  
+ 
+ Red: Aunque el SQL Server 2019 Express LocalDB,  no requiere una conexión de red activa para su 
+funcionamiento, al tratarse de una base de datos local, la aplicación cliente-servidor FEV_RIPS, si necesita 
+conectividad de red para ejecutar correctamente ciertas funcionalidades como: Autenticación, 
+Actualización de tablas de referencia, Transmisión de información al MSPS.  
+ 
+ 
+6. Cada vez que se requiere instalar una nueva versión de la aplicación cliente-servidor FEV_RIPS, 
+es indispensable, desinstalar previamente la versión anterior.  
+
+===== Página 7/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 7 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+7. PROCESO DE INSTALACIÓN 
+A continuación, se describen los pasos para la instalación de  la aplicación cliente-servidor del Mecanismo único 
+de Validación en sistemas operativos Windows. El proceso consta de tres etapas fundamentales:  
+ 
+ Descarga del paquete de instalación 
+ Ejecución del instalador del Mecanismo Único de Validación - MUV  
+ Pruebas y verificación de la instalación. 
+ 
+Es importante seguir cada paso detalladamente para asegurar una instalación correcta y un funcionamiento óptimo 
+del Validador RIPS. 
+ 
+Paso 1: Descarga del paquete de instalación 
+ A partir de la versión 1.4.2 de producción, se descarga desde el micrositio del proyecto FEV_RIPS, el Instalador 
+del Mecanismo único de Validación – MUV, a través del enlace:  
+ 
+https://www.sispro.gov.co/central-financiamiento/Pages/facturacion-electronica.aspx 
+ 
+En este sitio se encuentran dos pestañas, que corresponden a  los ambientes disponibles:  
+ 
+Pruebas:    En el cual se hallan ubicados los instaladores del Mecanismo Único de Validación – MUV, configurados 
+para el entorno de pruebas del Ministerio de Salud y Protecci ón Social en sus versiones: cliente /servidor y Api 
+Docker.   
+ 
+Producción:   Incluye los instaladores del Mecanismo Único de Validación – MUV, a ser usados  en el entorno 
+productivo, utilizados para la validación y envío del XML y/o sus RIPS asociados, disponibles en versiones: cliente 
+/servidor y Api Docker. 
+ 
+ 
+Figura No. 1 Imagen del micrositio del Sistema FEV_RIPS 
+ 
+
+===== Página 8/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 8 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+Se descarga la versión Cliente - Servidor, del instalador a ser usado:  
+ 
+ 
+Figura No. 2 Versión Cliente / Servidor del instalador  
+ 
+Este se ubicará en la carpeta de descargas (download) de la maquina en la que se vaya a realizar el proceso.  
+ 
+ 
+ 
+ 
+Recuerde desinstalar la versión del Mecanismo Único de Validación, que tenga a la fecha instalada 
+ 
+ 
+Paso 2: Ejecución del instalador del Mecanismo Único de Validación - MUV 
+Una vez descargado el Instalador, debe ser colocado en una carpeta de fácil acceso, como el escritorio o una 
+ubicación específica en el disco duro de l equipo. A continuación, haga doble clic sobre el archivo ejecutable 
+denominado:  FVE.ValidadorLocalBundleInstaller.exe , para iniciar el proceso de instalación.  
+ 
+ 
+ 
+ 
+  Es recomendable ejecutar el instalador con privilegios de Administrador para evitar restricciones del sistema  
+  operativo.  
+ 
+ 
+Durante la ejecución inicial, es posible que el sistema operativo muestre una advertencia de seguridad. En este 
+caso:  
+ 
+ Haga clic en “Mas Información “   Ver figura No.3  
+ Luego seleccione la opción “Ejecutar de todas formas”, ver Figura No.4.  
+
+===== Página 9/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 9 de 18 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 3   “Mas Información “ 
+ 
+ 
+Figura No. 4  “Ejecutar de todas formas” 
+ 
+Una vez se oprime el botón Ejecutar de todas formas, se despliega la ventana:  
+ 
+
+===== Página 10/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 10 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+  
+ 
+A continuación, debe dar clic en el recuadro, para indicar al sistema que se está de acuerdo con los términos de la 
+licencia.  
+ 
+ 
+ 
+Se habilita el botón Install,  el cual inicia el proceso de instalación:  
+ 
+ 
+
+===== Página 11/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 11 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Una vez se obtengan todos los componentes que vienen en el paquete Instalador, se despliega la pantalla: 
+  
+ 
+ 
+Al dar clic en el botón Next,      el instalador indica una ruta  propuesta (default) en la cual se va a ubicar todos los 
+componentes del paquete o permite que sea cambiada, la misma:  
+ 
+
+===== Página 12/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 12 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+En seguida se oprime el botón Next      y el sistema envía la próxima pantalla   
+ 
+ 
+ 
+Al oprimir el botón Install,    se inicia el proceso de instalación y configuración de la Base de Datos, en la cual se 
+almacenan las tablas a ser usadas en las validaciones locales.  
+ 
+
+===== Página 13/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 13 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Una vez termina este proceso, aparece la siguiente pantalla:  
+ 
+ 
+Al oprimir el botón Finish,  se despliega el mensaje de Terminación exitosa de la instalación y se despliega una 
+pantalla solicitando Reiniciar el computador:  
+ 
+ 
+ 
+Finalmente, al dar clic sobre el  botón Restart  el equipo se reinicia. 
+ 
+
+===== Página 14/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 14 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+Paso 3: Pruebas y verificación de la Instalación  
+Para comprobar la instalación exitosa, verifique en el escritorio de su equipo, que aparezca el ícono del sistema 
+FEV_RIPS, tal como se muestra en el recuadro de la imagen:  
+ 
+ 
+ 
+Para Ingresar al Mecanismo Único de Validación, haga doble clic en el ícono del sistema FEVRIPS Validador y a 
+continuación se despliega la pantalla de ingreso:  
+ 
+ 
+
+===== Página 15/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 15 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+8. PROCESO DE DESINSTALACIÓN 
+Al usar la herramienta PANEL DE CONTROL se encontrarán las aplicaciones instaladas en el equipo:  
+ 
+ 
+ 
+Se debe ubicar sobre la aplicación FEVRIPS Validador Local Bundle y al dar clic derecho sobre el programa a 
+desinstalar, se despliega:  
+ 
+ 
+ 
+Dé clic en la opción Desinstalar y se visualiza la siguiente imagen:  
+ 
+
+===== Página 16/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 16 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Al oprimir el botón Uninstall,      el sistema inicia el proceso de desinstalación  
+ 
+ 
+ 
+eliminando tanto el ícono que se crea en el escritorio como el conjunto de componentes instalados.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 17/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 17 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+9. RECOMENDACIONES PARA LA INSTALACIÓN 
+ 
+Esta sección presenta las consideraciones generales que deben tener se en cuenta antes de iniciar la instalación 
+de la aplicación cliente-servidor FEV_RIPS. Estas recomendaciones abarcan aspectos como: compatibilidad del 
+sistema operativo, capacidad de almacenamiento, memoria disponible y preparación de la base de datos local, 
+todos ellos fundamentales para garantizar una instalación exitosa y un funcionamiento óptimo del sistema.  
+ 
+9.1 Sistemas Operativos Compatibles 
+La aplicación cliente-servidor FEV_RIPS, es compatible con los siguientes sistemas operativos:  
+ 
+Microsoft Windows 10 SP1 o superior (a 32 bits)  
+Windows 11 (recomendado) a 64 bits 
+ 
+Es indispensable verificar que el sistema operativo instalado en el equipo cumpla con estos requisitos para 
+asegurar la correcta ejecución de la aplicación.  
+ 
+9.2 Capacidad en Disco 
+Se recomienda disponer de al menos 20 GB de espacio libre por cada unidad lógica, además del doble del espacio 
+requerido para almacenar los archivos que se enviarán a través del sistema. Esta capacidad adicional es necesaria 
+para garantizar almacenamiento eficiente y un procesamiento adecuado de los datos. 
+ 
+9.3 Memoria RAM  
+Para un rendimiento óptimo, se recomienda contar con un mínimo de 4GB en memoria RAM, con al menos 2GB 
+disponibles durante la ejecución de la aplicación cliente-servidor FEV_RIPS. Una memoria RAM adecuada permite 
+una respuesta ágil del sistema y un procesamiento eficiente de los archivos RIPS. 
+ 
+Nota:  Se recomienda que en el escritorio del equipo no haya carpetas de aplicaciones o documentos, que 
+disminuyan la capacidad de la memoria RAM.  
+ 
+9.4 Preparación de la Base de Datos Local 
+ 
+Durante la primera ejecución del instalador, se realiza automáticamente la configuración de la base de datos local 
+necesaria para el funcionamiento de la aplicación cliente -servidor FEV_RIPS . Es te proceso no requiere 
+intervención del usuario y se ejecuta directamente desde el Instalador.   
+ 
+Es importante tener en cuenta que, en esta primera ejecución, la aplicación actualizará las tablas de la base de 
+datos, la cual puede tomar algunos minutos. Se recomienda no interrumpir este proceso y seguir cuidadosamente 
+las instrucciones proporcionadas por el instalador para asegurar la correcta preparación del entorno local.   
+ 
+Nota:  La correcta configuración de la base de datos local, es esencial para la validación de los archivos RIPS y el 
+funcionamiento general del sistema.  
+ 
+===== Página 18/18 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG01 
+GUÍA  GUÍA DE INSTALACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  2.0 
+ 
+Página 18 de 
+18 
+Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+Es fundamental que los usuarios del sistema cliente-servidor FEV_RIPS  comprendan que,  cuando múltiples 
+personas  utilizan el sistema desde un mismo equipo , la base de datos local consolidará la información de todos 
+los registros procesados en ese entorno. 
+Por esta razón es imprescindible establecer y aplicar de manera rigurosa políticas de seguridad de la información 
+que garanticen la integridad, confidencialidad y disponibilidad de los datos allí almacenados.  Esto incluye, entre 
+otras medidas, el control de accesos, la gestión de usuarios y la implementación de buenas practicas en el manejo 
+de la información sensible.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ELABORADO POR:  REVISADO POR: APROBADO POR: 
+Nombre y Cargo:  
+Jacqueline Becerra Silva 
+Contratista 
+ 
+ 
+Fecha: Junio de 2025 
+Nombre y Cargo: 
+Germán Alfredo Gil Forero 
+Contratista  
+Wilman Yesid Farfán Díaz 
+Contratista 
+Fecha: Junio de 2025 
+Nombre y Cargo:  
+Juan Carlos Arce  
+Contratista 
+ 
+ 
+Fecha: Junio de 2025 
+ 

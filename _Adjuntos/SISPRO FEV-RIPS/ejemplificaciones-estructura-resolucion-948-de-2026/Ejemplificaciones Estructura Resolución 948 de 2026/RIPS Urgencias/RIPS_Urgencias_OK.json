@@ -1,0 +1,53 @@
+{
+	"numDocumentoIdObligado": "530520110",
+	"numFactura": "URG001",
+	"tipoNota": null,
+	"numNota": null,
+	"usuarios": [
+		{
+			"consecutivo": 1,
+			"tipoDocumentoIdentificacion": "CC",
+			"numDocumentoIdentificacion": "123456789",
+			"tipoUsuario": "01",
+			"fechaNacimiento": "1991-01-01",
+			"codSexo": "F",
+			"codPaisResidencia": "170",
+			"codMunicipioResidencia": "05001",
+			"codZonaTerritorialResidencia": "02",
+			"incapacidad": "NO",
+			"codPaisOrigen": "170",
+			"registroSIRAS": null,
+			"servicios": {
+				"urgencias": [
+					{
+						"codPrestador": "192030405001",
+						"fechaInicioAtencion": "2026-0-22 23:21",
+						"causaMotivoAtencion": "38",
+						"codDiagnosticoPrincipal": "A001",
+						"codDiagnosticoPrincipalCIE11": null,
+						"nomCodDiagnosticoPrincipalCIE11": null,
+						"codDiagnosticoPrincipalE": "A001",
+						"codDiagnosticoPrincipalECIE11": null,
+						"nomCodDiagnosticoPrincipalECIE11": null,
+						"codDiagnosticoRelacionadoE1": null,
+						"codDiagnosticoRelacionadoE1CIE11": null,
+						"nomCodDiagnosticoRelacionadoE1CIE11": null,
+						"codDiagnosticoRelacionadoE2": null,
+						"codDiagnosticoRelacionadoE2CIE11": null,
+						"nomCodDiagnosticoRelacionadoE2CIE11": null,
+						"codDiagnosticoRelacionadoE3": null,
+						"codDiagnosticoRelacionadoE3CIE11": null,
+						"nomCodDiagnosticoRelacionadoE3CIE11": null,
+						"condicionDestinoUsuarioEgreso": "01",
+						"codDiagnosticoCausaMuerte": null,
+						"codDiagnosticoCausaMuerteCIE11": null,
+						"nomCodDiagnosticoCausaMuerteCIE11": null,
+						"fechaEgreso": "2026-04-24 23:50",
+						"codigoVIDA": null,
+						"consecutivo": 1
+					}
+				]
+			}
+		}
+	]
+}

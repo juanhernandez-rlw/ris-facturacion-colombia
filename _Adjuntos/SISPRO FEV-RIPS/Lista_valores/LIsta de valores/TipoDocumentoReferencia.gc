@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+	<Identification>
+		<ShortName>TipoDocumentoReferencia</ShortName>
+		<LongName xml:lang="es">Tipo de documento de referencia</LongName>
+		<Version>1</Version>
+		<CanonicalUri>urn:salud:names:especificacion:ubl:listacodigos:gc:TipoDocumentoReferencia</CanonicalUri>
+		<CanonicalVersionUri>urn:salud:names:especificacion:ubl:listacodigos:gc:TipoDocumentoReferencia</CanonicalVersionUri>
+		<LocationUri>http://minsalud.gov.co/ubl/os-ubl-2.0/cl/gc/default/TipoDocumentoReferencia.gc</LocationUri>
+		<Agency>
+			<LongName xml:lang="es">DIAN (Dirección de Impuestos y Aduanas Nacionales)</LongName>
+			<Identifier>195</Identifier>
+		</Agency>
+	</Identification>
+	<ColumnSet>
+		<Column Id="code" Use="required">
+			<ShortName>Code</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="name" Use="required">
+			<ShortName>Nombre</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="description" Use="required">
+			<ShortName>Descripcion</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Key Id="codeKey">
+			<ShortName>CodeKey</ShortName>
+			<ColumnRef Ref="code"/>
+		</Key>
+	</ColumnSet>
+	<SimpleCodeList>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>01</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Factura de Venta Nacional Pre-Numerado - Electrónica</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo InvoiceDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>91</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Nota Crédito A Factura Electrónica – Electrónica</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo CreditNoteDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>210</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Factura de Venta - Talonario Pre-Numerado / Papel</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo AdditionalDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>215</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Factura de Venta Contingencia FE - Talonario Pre-Numerado / Papel</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo InvoiceDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>220</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Factura de Venta Por Computador - Talonario Post-Numerado / Papel</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo InvoiceDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>230</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Factura de Venta Sistema POS - Talonario Post-Numerado / Papel</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo InvoiceDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>240</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Documento Equivalente Talonario Numerado – Papel</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo AdditionalDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>250</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Documento Equivalente Electrónico Talonario Numerado</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo AdditionalDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>POS-DiarioCaja</SimpleValue>
+			</Value>
+			<Value ColumnRef="name">
+				<SimpleValue>Documento electrónico UBL + Extensión DIAN de control</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Código correspondiente al grupo AdditionalDocumentReference</SimpleValue>
+			</Value>
+		</Row>
+	</SimpleCodeList>
+</gc:CodeList>

@@ -1,0 +1,25 @@
+
+===== Página 1/1 =====
+Año 2023
+Contrato 12 Meses
+Valor Capita usuario 50.000,00$                            
+Numero de usuarios 20
+Anticipo al contrato 3.000.000,00$                     
+Anticipo por mes 250.000,00$                         
+MUV
+Módulo/Método TIPO OPERACIÓN Num Factura Fecha de Facturación Periodo FEV Valor FEV Anticipo Recaudos Total RIPS FEV Referenciada Periodo Recaudos Periodo que afecta Num NC Num Fev Referenciada Valor NC Periodo que afecta
+Capita Inicial (FEV) SS-CUFE 1WFE1 1/01/2023 Enero Si 1.000.000,00$            250.000,00$            NO SE RECIBE 750.000,00$            No - - -$                               -
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE2 1/02/2023 Febrero Si 1.000.000,00$            250.000,00$            500.000,00$                     250.000,00$            Si 1WFE1 Enero 500.000,00$            Febrero
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE3 1/03/2023 Marzo Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE2 Febrero 300.000,00$            Marzo
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE4 1/04/2023 Abril Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE3 Marzo 300.000,00$            Abril
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE5 1/05/2023 Mayo Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE4 Abril 300.000,00$            Mayo
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE6 1/06/2023 Junio Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE5 Mayo 300.000,00$            Junio
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE7 1/07/2023 Julio Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE6 Junio 300.000,00$            Julio
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE8 1/08/2023 Agosto Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE7 Julio 300.000,00$            Agosto
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE9 1/09/2023 Septiembre Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE8 Agosto 300.000,00$            Septiembre
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE10 1/10/2023 Octubre Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE9 Septiembre 300.000,00$            Octubre
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE11 1/11/2023 Noviembre Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE10 Octubre 300.000,00$            Noviembre
+Capita por Periodo (FEV+RIPS) SS-CUFE 1WFE12 1/12/2023 Diciembre Si 1.000.000,00$            250.000,00$            300.000,00$                     450.000,00$            Si 1WFE11 Noviembre 300.000,00$            Diciembre
+Capita Final (RIPS) - - - - - - - -$                                        -$                               Si 1WFE12 Diciembre 300.000,00$            N/A 1WNC1 1WFE12 300.000,00$            Diciembre
+20 Servicio
+RIPSFACTURA NOTA CREDITO
