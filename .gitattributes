@@ -1,0 +1,6 @@
+# Normaliza finales de línea a LF en el repo
+* text=auto eol=lf
+
+# Los catálogos son datos generados/capturados (tablas vivas SISPRO/DANE):
+# no cuentan como "código" en las estadísticas de GitHub ni ensucian los diffs.
+_Adjuntos/wireframes/catalogos/*.js linguist-generated=true

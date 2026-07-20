@@ -1,0 +1,24 @@
+# ─── Binarios fuente (decisión de versionado: solo texto) ───
+# Son documentos oficiales redescargables (SISPRO / DIAN / MinSalud).
+# Permanecen en la carpeta local; solo NO se trackean en Git para mantenerlo ágil.
+*.pdf
+*.zip
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# ─── macOS ───
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ─── Obsidian: estado de UI por-usuario (no compartible) ───
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/.trash/
+.trash/
+
+# ─── Node (build opcional del modelo formal) ───
+node_modules/
+npm-debug.log*
