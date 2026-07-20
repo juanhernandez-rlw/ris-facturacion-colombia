@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+	<Identification>
+		<ShortName>Referencia</ShortName>
+		<LongName xml:lang="es">Tipo de usuario</LongName>
+		<Version>1</Version>
+		<CanonicalUri>urn:salud:names:especificacion:ubl:listacodigos:gc:Referencia</CanonicalUri>
+		<CanonicalVersionUri>urn:salud:names:especificacion:ubl:listacodigos:gc:Referencia</CanonicalVersionUri>
+		<LocationUri>http://minsalud.gov.co/ubl/os-ubl-2.1/cl/gc/default/Referencia.gc</LocationUri>
+		<Agency>
+			<LongName xml:lang="es">DIAN (Dirección de Impuestos y Aduanas Nacionales)</LongName>
+			<Identifier>195</Identifier>
+		</Agency>
+	</Identification>
+	<ColumnSet>
+		<Column Id="name" Use="required">
+			<ShortName>Nombre</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="description" Use="required">
+			<ShortName>Descripción</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Key Id="codeKey">
+			<ShortName>CodeKey</ShortName>
+			<ColumnRef Ref="code"/>
+		</Key>
+	</ColumnSet>
+	<SimpleCodeList>
+		<Row>
+			<Value ColumnRef="name">
+				<SimpleValue>cac:InvoiceDocumentReference</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Invoice - Statement</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="name">
+				<SimpleValue>cac:CreditNoteDocumentReference</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>CreditNote</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="name">
+				<SimpleValue>cac:AdditionalDocumentReference</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Factura en Papel - Pos Actual</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="name">
+				<SimpleValue>cac:BillingReferenceLine</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Valores de cada grupo</SimpleValue>
+			</Value>
+		</Row>
+	</SimpleCodeList>
+</gc:CodeList>

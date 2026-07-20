@@ -1,0 +1,2216 @@
+
+===== Página 1/72 =====
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MANUAL DE USUARIO 
+ SISTEMA CLIENTE SERVIDOR FEV_RIPS  
+AMBIENTE:  PRE-PRODUCCION – CAPACITACION Y PRUEBAS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL 
+BOGOTÁ, NOVIEMBRE DE 2025 
+ 
+  
+
+===== Página 2/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 2 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+TABLA DE CONTENIDO 
+1. OBJETIVO ....................................................................................................................................................... 7 
+2. ALCANCE ........................................................................................................................................................ 7 
+3. ÁMBITO DE APLICACIÓN .............................................................................................................................. 7 
+4. DOCUMENTOS ASOCIADOS AL MANUAL................................................................................................... 7 
+5. NORMATIVA Y OTROS DOCUMENTOS EXTERNOS ................................................................................... 8 
+6. INSTALACIÓN DEL SISTEMA FEV_RIPS ..................................................................................................... 9 
+7. AUTENTICACION DEL SISTEMA  FEV_RIPS ............................................................................................... 9 
+8. GESTION DE ARCHIVOS A TRAVÉS DE LA SOLUCIÓN ........................................................................... 10 
+9. DESCRIPCION DE LOS MODULOS ............................................................................................................. 12 
+9.1. Cargue de Información Factura Electrónica de Ventas en Salud – FEV y RIPS asociados .... 14 
+9.2. Cargue de Información  Notas Crédito  Total  - Anulaciones .................................................. 25 
+9.3. Cargue de Información Notas Crédito Parcial ......................................................................... 31 
+9.4. Cargue de Información Notas Débito ...................................................................................... 35 
+9.5 Cargue de Información Notas de Ajuste .................................................................................. 40 
+9.6 Cargue de Información  RIPS sin factura ................................................................................. 45 
+9.7 Factura Cápita ......................................................................................................................... 50 
+9.7.1 Factura Cápita -  Cápita Inicial .............................................................................................. 50 
+9.7.2 Factura Cápita -  Cápita por períodos ................................................................................... 54 
+9.7.3 Factura Cápita -  Cápita Final ............................................................................................... 58 
+9.7.4 Nota crédito Cápita ............................................................................................................... 62 
+9.8 NC resultado del seguimiento al acuerdo de voluntades ......................................................... 67 
+10. RECUPERACION DE UN CUV...................................................................................................................... 70 
+ 
+ 
+ 
+ 
+  
+===== Página 3/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 3 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+TABLA DE FIGURAS 
+ 
+Figura No. 1 Pantalla Inicial del Proceso  
+Figura No. 2 Pantalla de Menú Principal   
+Figura No. 3  Opción carpeta con varias facturas 
+Figura No. 4 Opción Factura Electrónica de Venta – FEV  
+Figura No. 5: Ventana de selección de carpeta a validar y su procesamiento 
+Figura No.6 Opción de Cargar Archivos  
+Figura No. 7 Seleccionar carpeta  
+Figura No. 8 Búsqueda y selección de carpeta con archivos a procesar  
+Figura No. 9 Proceso de carga de los archivos  
+Figura No. 10 Procesamiento  de archivos Exitoso 
+Figura No. 11 Procesamiento  de archivos con errores 
+Figura No. 12 Presentación de las validaciones que causan Rechazo 
+Figura No. 13 Presentación de las validaciones que son Notificadas  
+Figura No. 14 Envío de  archivos XML y JSON al MSPS  
+Figura No. 15 Código Único de Validación    
+Figura No. 16 Consulta de archivos enviados exitosamente al Ministerio 
+Figura No. 17 Archivos resultantes generados al final del procesamiento  
+Figura No. 18 Opción Notas Crédito Total 
+Figura  No.19 Interfaz del Módulo Notas Crédito Total  
+Figura No. 20 Selección de la carpeta  en la que se ubica el  archivo a procesar Módulo Notas Crédito Total  
+Figura No. 21 Procesamiento archivo Módulo Notas Crédito Total  
+Figura No. 22 Despliegue de mensaje si es rechazado o válido  
+Figura  No. 23 Tipos de validaciones: Rechazo o Notificación   
+Figura  No. 24 Botón de envío de paquetes al Ministerio  
+ Figura  No. 25 Consulta del envío exitoso de archivos al Ministerio 
+Figura No. 26 Reporte de Error al tratar de enviar  más de una vez un archivo procesado en el Ministerio 
+Figura No. 27  Menú Principal: Módulo Nota Crédito Parcial  
+Figura No. 28  Módulo Nota Crédito Parcial  
+Figura No. 29  Búsqueda de archivos a procesar  
+Figura  No. 30 Procesamiento archivos Módulo Notas Crédito Parcial  
+Figura  No.31 Despliegue de mensaje si es Procesamiento Rechazado ó Procesamiento Exitoso  
+Figura  No. 32 Botón para enviar archivos procesados exitosamente al Ministerio 
+Figura No. 33 Lista de archivos que se han enviado al Ministerio  
+Figura No. 34  Menú Principal: Módulo Nota Débito  
+Figura No. 35  Módulo Nota Débito 
+Figura No. 36  Búsqueda de archivos a procesar  
+Figura No. 37 Despliegue de mensaje si es Procesamiento Rechazado ó Procesamiento Exitoso Nota Débito  
+Figura No. 38 Estado de los archivos procesados  
+Figura No. 39 Archivos generados producto del procesamiento de la Nota Débito 
+Figura No. 40 Archivo que contiene las NOTIFICACIONES para una Nota Débito  
+Figura No. 41 Menú Principal: Módulo Notas de Ajuste 
+Figura No. 42 Interfaz  Módulo Notas de Ajuste 
+Figura No. 43 Búsqueda de Carpetas con archivos a procesar 
+Figura No. 44 Objeto Transacción -  Archivo RIPS –JSON  -  Nota de Ajuste 
+Figura No. 45 Archivos procesados  
+Figura No. 46 Archivos procesados con errores  
+Figura No. 47 Botón de Enviar paquetes aprobados al Ministerio   
+Figura No. 48 Consulta de paquetes enviados  al Ministerio   
+Figura No. 49 Archivos generados producto del procesamiento   
+Figura No. 50 Menú Principal: Módulo RIPS sin Factura 
+Figura No. 51  Módulo RIPS sin Factura 
+Figura No. 52 Objeto Transacción -  Archivo RIPS –JSON  -  RIPS sin FEV 
+Figura No. 53  Procesamiento de archivos por el módulo RIPS sin Factura  
+Figura No. 54  Resultado Procesamiento de archivos por el módulo RIPS sin Factura  
+===== Página 4/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 4 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 55  Procesamiento Exitoso – Enviar Paquetes aprobados al Ministerio   
+Figura No. 56  Archivo CUV -  RIPS sin FV  
+Figura No. 57  Consulta de archivos enviados al Ministerio   
+Figura No. 58  Esquema de envío de Factura Cápita    
+Figura  No. 59  Módulo  Factura Cápita – Cápita Inicial  
+Figura  No. 60  Módulo  Factura Cápita Inicial  – Selección de carpeta 
+Figura  No. 61  Módulo  Factura Cápita  Inicial– Carpeta con archivo XML   
+Figura  No. 62  Módulo  Factura Cápita Inicial  – Procesamiento de archivo 
+Figura  No. 63  Módulo  Factura Cápita  Inicial – Procesamiento exitoso de archivo   
+Figura  No. 64  Módulo  Factura Cápita  Inicial – Registro generación CUV  
+Figura  No. 65 CUV Cápita  Inicial – Nueva Estructura 
+Figura  No. 66  Módulo  Factura Cápita – Cápita por períodos 
+Figura  No. 67  Módulo  Factura Cápita – Interfaz Cápita por períodos 
+Figura  No. 68  Módulo  Factura Cápita – Cápita por Períodos  - Selección de archivos 
+Figura  No. 69  Módulo  Factura Cápita – Cápita por Períodos - Procesamiento de archivos  
+Figura  No. 70  Módulo  Factura Cápita  -  Cápita por Períodos - Mensajes de errores 
+Figura  No. 71  Módulo  Factura Cápita  -  Cápita por Períodos – Procesamiento exitoso  
+Figura  No. 72  Módulo  Factura Cápita  -  Cápita por Períodos – Generación CUV   
+Figura  No. 73  Módulo  Factura Cápita  -  Cápita por Períodos – Archivos Generados  
+Figura  No. 74  Módulo  Factura Cápita  -  Cápita Final  
+Figura  No. 75  Módulo  Factura Cápita  -  Interfaz Cápita Final  
+Figura  No. 76  Módulo  Factura Cápita  -  Archivo Cápita Final  
+Figura  No. 77  Módulo  Factura Cápita  - Cápita Final :  Archivos con  errores  
+Figura  No. 78 Módulo  Factura Cápita  - Habilitación del botón Enviar Paquetes Aprobados al Ministerio   
+Figura No. 79 Módulo  Factura Cápita  - CUV generado   
+Figura  No.80  Módulo  Factura Cápita  - Listado General de Paquetes    
+Figura  No. 81  Módulo  Notas Crédito Cápita    
+Figura  No. 82  Interfaz - Módulo  Notas Crédito Cápita 
+Figura  No. 83  Selección de archivos a ser procesados 
+Figura  No. 84  Procesamiento de archivos seleccionados  
+Figura  No. 85  Procesamiento Exitoso  - Habilitación Botón de Enviar Paquetes al Ministerio 
+Figura  No. 86  Reporte de Error para validaciones de Segundo Nivel 
+Figura  No. 87  Módulo  Notas Crédito Acuerdo de Voluntades 
+Figura  No. 88  Interfaz - Módulo  Notas Crédito Acuerdo de Voluntades 
+Figura  No. 89  Selección de archivos a ser procesados 
+Figura  No. 90  Mensaje de Procesamiento Exitoso  - Habilitación Botón de Enviar Paquetes al Ministerio 
+Figura  No. 91 Mensaje de Error TOT003 
+Figura  No. 92 Archivo de CUV  
+Figura No. 93 Reporte Listado General Paquetes  
+Figura No. 94 Archivo de CUV disponible en la carpeta de trabajo 
+ 
+ 
+ 
+  
+===== Página 5/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 5 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+<Control de Cambios> 
+ 
+Ítem Actividad Elaborado por Fecha Versión 
+1 Elaboración Documento inicial  Jacqueline Becerra Silva 2023-10-01 1.0 
+2 Actualización marco normativo  Resolución 2275 de 
+2023  
+Incorporación de los módulos Notas Débito, Notas de 
+Ajuste y RIPS sin  Factura.  
+Jacqueline Becerra Silva 2024-07-10 2.0 
+3 Incorporación de los Módulos Factura Cápita y Notas 
+Crédito Acuerdo de Voluntades.  
+Incorporación Resolución 558 de 2024 
+Incorporación Nota técnica, respecto al acceso  a URL 
+para ambiente de pruebas del Ministerio de Salud y 
+Protección Social.  
+Jacqueline Becerra Silva 2024-08-01 3.0 
+4 Se incorpora al Mecanismo único de Validación: i. 
+Nueva Interfaz de usuario, ii. Nota Crédito Cápita y 
+ajuste a Incidencias reportadas:  validación RVG15, 
+validación RVG16,  validación RVC056, Se ajustó 
+modelo de autenticación para soportar prestadores 
+con varios códigos generales por departamento de 
+habilitación 
+Jacqueline Becerra Silva 2024-08-29 4.0 
+5 Ajuste cálculo totalización valores de concepto de 
+recaudos. Ajuste de interfaz gráfica. Se optimizaron 
+tiempos de respuesta para los procesos de validación  
+local.  
+Jacqueline Becerra Silva 2024-09-27 5.0 
+6 Ajuste a validaciones de Fechas de períodos de 
+facturación. Validación de las Fechas de emisión de 
+la factura (según modalidad de pago). Ajuste 
+validación RVG06 relacionada con la propiedad 
+“causaMotivoAtención” con valor de código “40”. 
+Ajuste tamaño máximo de los archivos de 
+documentos electrónicos a 5 megas.  
+Jacqueline Becerra Silva 2024-10-21 5.1 
+7 Actualización Interfaz de usuario (Front-end) 
+Agrupación de mensajes de Rechazo por tipo 
+Recuperación de CUV  
+A nivel de validaciones:  Ajuste en el proceso de 
+Fórmulas magistrales, para permitir   un solo 
+componente activo, Ajuste en el campo de  nombre de 
+la tecnología  ("nomTecnologiaSalud ) del registro de 
+Medicamentos para permitir aceptar hasta 120 
+caracteres 
+Jacqueline Becerra Silva 2025-04-15 5.2 
+8 Actualización de a lgunas imágenes de acuerdo a la 
+interfaz de usuario (Front-end) de la nueva versión del 
+Mecanismo Único de Validación, versión 5.4.2.  En el 
+Item 8 “Gestión de Archivos a través de la Solución” 
+se incluyeron dos párrafos introductores  
+Zulay García 2025-06-29 5.3 
+9 Actualización de imágenes de  la interfaz de usuario 
+(Front-end) de la nueva versión del Mecanismo Único 
+de Validación, versión 5.4.5. 
+Inclusión de la nueva estructura del archivo CUV, con 
+la descripción de las nuevas variables incorporadas.  
+Jacqueline Becerra Silva  2025-11-08 5.4 
+===== Página 6/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 6 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Fueron incluidos nuevo s controles entre otro s:  
+Cobertura_Plan_Beneficios, y Modalidad_Pago 
+(variables del XML) vs tipo_usuario y   
+ConceptoRecaudo (variables del RIPS –JSON) 
+ 
+  
+===== Página 7/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 7 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+1. OBJETIVO 
+Describir las funcionalidades  incorporadas en la aplicación Cliente – Servidor FEV_RIPS, para el tratamiento de 
+los documentos electrónicos: Factura Electrónica de Ventas en Salud - FEV, Notas Crédito Parcial,  Notas Crédito 
+Total, Notas Débito y sus RIPS asociados, Notas de Ajuste del  RIPS,  RIPS sin factura y Factura Cápita,  a ser 
+usado por los facturadores electrónicos del sector salud (Prestadores de Servicios de Salud - PSS y Proveedores 
+de Tecnologías en Salud – PTS) y demás obligados a reportar los Registros Individuales de Prestaciones en Salud 
+- RIPS, acorde a lo establecido en la Resolución 2275 de 2023 modificada por la Resolución 1884 de 2024. 
+ 
+2. ALCANCE 
+Las funcionalidades incorporadas en la aplicación Cliente – Servidor FEV_RIPS corresponden a:  
+ 
+ Factura Electrónica de Ventas y sus RIPS asociados.  
+ Notas Crédito total  
+ Notas Crédito Parcial  
+ Notas Débito  
+ Notas de Ajuste   
+ Factura Cápita 
+o Cápita Inicial 
+o Cápita por período 
+o Cápita Final  
+o NC Cápita 
+ NC resultado del seguimiento al acuerdo de voluntades 
+ Rips sin Factura  
+ 
+3. ÁMBITO DE APLICACIÓN 
+La aplicación Cliente - Servidor FEV_RIPS identifica los procesos de: i. validación de estructura de los archivos a 
+transmitir, ii. validación del contenido de los archivos de Factura Electrónica de Ventas en Salud - FEV, Notas 
+Crédito Parcial, Notas Crédito Total, Notas Débito y sus RIPS asociados, Notas de ajuste, RIPS sin Factura y 
+Factura Cápita respecto al cumplimiento de la Resolución 2275 de 2023 modificada por la Resolución 1884 de 
+2024, iii. Generación del Código Único de Validación – CUV para los archivos que satisfacen las validaciones.   
+ 
+Este Manual documenta la aplicación dispuesta en el ambiente de pruebas, capacitación y Pre -producción, 
+implementado por el Ministerio de Salud y Protección Social. 
+ 
+4. DOCUMENTOS ASOCIADOS AL MANUAL 
+Se incorporan a este manual los siguientes documentos: 
+ 
+ FEVRG01 Guía de Instalación del Sistema Cliente – Servidor FEV_RIPS.  
+ FEVRG02 Guía de Autenticación del Sistema Cliente – Servidor FEV_RIPS 
+===== Página 8/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 8 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ Documento LINEAMIENTOS PARA LA GENERACIÓN, VALIDACIÓN Y ENVÍO DEL 
+REGISTRO INDIVIDUAL DE PRESTACION DE SERVICIOS DE SALUD – RIPS, COMO 
+SOPORTE DE LA FACTURA ELECTRÓNICA DE VENTA – FEV EN SALUD. 
+ 
+5. NORMATIVA Y OTROS DOCUMENTOS EXTERNOS  
+● Ley 1966 de 2019, artículo 3°. Del Sistema Integral de Información Financiera y Asis tencial. El sistema 
+integral de información financiera y asistencial tendrá por objeto agilizar la transmisión · y evaluación de la 
+información financiera, de manera que se acelere el flujo de recursos y la transparencia que soportan las 
+transacciones entre los agentes del sector salud. 
+Artículo 4°. Registro de Contratación de Servicios y Tecnologías de Salud.  El Ministerio de Salud y 
+Protección Social creará un portal de registro electrónico, en el cual se deberá reportar los intercambios 
+comerciales de pr estación de servicios en salud y tecnologías en salud. En los casos donde no medie 
+contrató, como: las atenciones de urgencias y similares, en este caso, el reporte será posterior. Se excluye 
+de esta información, las transacciones que sean con recursos propios de las personas naturales y jurídicas. 
+La información contenida en dicha plataforma será de público acceso cuando involucre recursos del 
+Sistema de: Seguridad Social en Salud. 
+ Artículo 15. Factura electrónica en salud. Todos los prestadores de servic ios de salud están obligados a 
+generar factura electrónica para el cobro de los servicios y tecnologías en salud. Deberán presentarla, al 
+mismo tiempo ante la DIAN y la entidad responsable de pago con sus soportes en el plazo establecido en 
+la ley, contado a partir de la fecha de la prestación del servicio. de la entrega de la tecnología en salud o 
+del egreso del paciente, prescribirá el derecho en los términos de ley. 
+● Ley  1751 de 2015: Ley General de Salud: establece las disposiciones generales para la pr otección de la 
+salud en el país y regula aspectos relacionados con la prestación de servicios de salud, la calidad de la 
+atención, la gestión de información, entre otros. 
+ 
+● Ley 1581 de 2012: Ley de Protección de Datos: incluye las regulaciones y estándares relacionados con la 
+seguridad de la información y la protección de datos personales en el contexto de la salud, garantizando la 
+confidencialidad, integridad y disponibilidad de los datos. 
+ 
+ Ley 1438 de 2011, articulo 57.  Trámite de glosas.  Las entidades res ponsables del pago de servicios de 
+salud dentro de los veinte (20) días hábiles siguientes a la presentación de la factura con todos sus 
+soportes, formularán y comunicarán a los prestadores de servicios de salud las glosas a cada factura, con 
+base en la co dificación y alcance definidos en la normatividad vigente. Una vez formuladas las glosas a 
+una factura no se podrán formular nuevas glosas a la misma factura, salvo las que surjan de hechos nuevos 
+detectados en la respuesta dada a la glosa inicial. 
+ 
+● Ley 1438 de 2011, artículo  56. Pagos a los prestadores de servicios de salud. Las Entidades Promotoras 
+de Salud pagarán los servicios a los prestadores de servicios de salud dentro de los plazos, condiciones, 
+términos y porcentajes que establezca el Gobierno Nacional según el mecanismo de pago, de acuerdo con 
+===== Página 9/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 9 de 72                                         Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+lo establecido en la Ley 1122 de 2007. Las entidades a que se refiere este artículo, deberán establecer 
+mecanismos que permitan la facturación en línea de los servicios de salud, de acuerdo con los estándares 
+que defina el Ministerio de la Protección Social. 
+ 
+● Ley 1231 de 2008: Por la cual se unifica la factura como título valor como mecanismo de financiación para 
+el micro, pequeño y mediano empresario, y se dictan otras disposiciones. 
+ 
+● Decreto 441 de 2022; Por medio del cual se sustituye el Capítulo 4 del Título 3 de la Parte 5 del Libro 2 del 
+Decreto 780 de 2016 relativo a los acuerdos de voluntades entre las entidades responsables de pago, los 
+prestadores de servicios de salud y los proveedores de tecnologías en salud. 
+ 
+● Resolución 2309 de 1986: establece los lineamientos generales para la organización y operación de los 
+sistemas de información en salud en Colombia, incluyendo la generación y validación de los RIPS. 
+ 
+● Resolución 2275 de 2023:  Por la cual se expide la resolución única reglamentaria del Registro Individual 
+de Prestación de Servicios de Salud -RIPS, soporte de la Factura Electrónica de Venta –FEV en salud y se 
+dictan otras disposiciones. 
+ 
+ Resolución 558 de 2024: Por la cual se modifica la Resolución 2275 de 2023, en relación con la transición 
+prevista para la implementación del RIPS como soporte de la FEV en salud y el inicio de la operación de la 
+plataforma del mecanismo único de validación. 
+ 
+ Resolución 1884 de 2024: Por la cual se modifica la Re solución 2275 de 2023 y se dictan otras 
+disposiciones. 
+ 
+6. INSTALACIÓN DEL SISTEMA FEV_RIPS  
+ 
+La descripción del procedimiento, se encuentra detallada en la Guía de Instalación del Sistema FEV_RIPS, 
+ubicada en el micrositio  del proyecto , bajo la pestaña  Pruebas https://www.sispro.gov.co/central-
+financiamiento/Pages/facturacion-electronica.aspx.  
+ 
+7. AUTENTICACION DEL SISTEMA  FEV_RIPS  
+La descripción del procedimiento de autenticación, se encuentra detallado en la Guía de Autenticación del 
+Sistema cliente – servidor FEV_RIPS , en el micrositio del proyecto , pestaña Pruebas 
+https://www.sispro.gov.co/central-financiamiento/Pages/facturacion-electronica.aspx.  
+ 
+ 
+ 
+ 
+===== Página 10/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 10 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+8. GESTION DE ARCHIVOS A TRAVÉS DE LA SOLUCIÓN  
+ 
+Es importante destacar que, para el uso del Mecanismo Único  de Validación, las validaciones se realizan una vez 
+la DIAN ha emitido su aprobación, al documento electrónico. Solo entonces la factura será expedida al adquirente, 
+con el fin de verificar que el facturador electrónico del sector salud haya conformado co rrectamente el contenedor 
+electrónico de la factura, el cual será soportado con el RIPS para el reconocimiento y pago de los servicios y 
+tecnologías en salud. 
+En este proceso, una vez conformado el contenedor electrónico de la Factura Electrónica de Venta (FEV) en salud 
+que será respaldado con el RIPS, el emisor de la factura no podrá realizar ninguna modificación sobre la información 
+previamente validada y aprobada por la DIAN 
+ 
+La aplicación Cliente – Servidor FEV_RIPS cuenta con ocho (8) módulos principales, a saber:  
+ 
+ Factura Electrónica de Ventas: permite procesar las Facturas electrónicas de ventas en salud 
+y sus RIPS asociados, para las modalidades de Pago:  
+ 
+MODALIDADES DE PAGO 
+CODIGO NOMBRE 
+01 Pago Individual por caso / Conjunto integral de atenciones / Paquete / Canasta  
+02 Pago global prospectivo 
+04 Pago por eventos  
+  
+ Notas Crédito Total : sirve para validar y verificar el archivo XML correspondiente a las NC 
+totales o de anulación a ser aplicada a una factura electrónica de ventas.   
+ Notas Crédito Parcial: se procesa tanto el archivo XML y JSON generados para una Nota 
+crédito parcial, de una factura previamente enviada.  
+ Notas Débito: permite procesar los archivos de notas débito a ser aplicadas a una factura 
+electrónica de venta previamente enviada.  
+ Notas de Ajuste a los RIPS: aplica cuando se requiere hacer modificaciones a los datos de 
+RIPS previamente enviados.   
+ Factura Cápita: corresponde a la función para iniciar la transmisión de las facturas que fueron 
+generadas bajo la modalidad de pago por capitación (03). Está compuesto por cuatro (4) 
+submódulos:  i. Cápita Inicial,  ii. Cápita por períodos, iii. Cápita Final, iv. NC Cápita.   
+ NC resultado del seguimiento al acuerdo de voluntades : se usa para reportar NC que 
+afectan el valor de la fa ctura en un porce ntaje definido por las partes, durante el seguimiento 
+del contrato. 
+ RIPS sin Factura: corresponde al módulo a ser usado por las entidades de objeto social 
+diferente, para reportar los RIPS y/o los profesionales independientes que facturen menos de 
+3.500 UVT. 
+ 
+ 
+ 
+ 
+ 
+ 
+===== Página 11/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 11 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Nota técnica 
+ 
+Para asegurar la correcta comunicación del mecanismo de validación con la API centralizada 
+del Ministerio de Salud y Protección Social, es indispensable habilitar el acceso a la URL:  
+ 
+https://stage-fevrips.sispro.gov.co  
+ 
+en el firewall o cualquier sistema de seguridad configurado en el equipo o servidor donde se 
+ejecuta el mecanismo de validación. En caso de dudas sobre si la máquina tiene acceso a 
+esta dirección URL, se recomienda comunicarse con su administrador de red para realizar 
+la configuración necesaria en el firewall.  
+ 
+===== Página 12/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 12 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.   DESCRIPCION DE LOS MODULOS 
+ 
+Una vez se ha ingresado a la aplicación Cliente – Servidor FEV_RIPS, se despliega la siguiente pantalla:  
+ 
+ 
+Figura No. 1 Pantalla Inicial del Proceso  
+ 
+Al ingresar por la Opción Cargar Archivos, se despliega:  
+ 
+ 
+
+===== Página 13/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 13 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 2 Pantalla de Menú Principal 
+ 
+ 
+Para iniciar el proceso de uso de aplicación Cliente – Servidor FEV_RIPS, se recomienda: 
+ 
+ 
+1. Contar con un contenedor en el cual se vayan ubicando las Facturas Electrónicas de Ventas en 
+Salud – FEV y  los RIPS asociados a cada una de ellas.  
+ 
+2. Tener en cuenta que, si se desea procesar varias facturas, el sistema permite seleccionar un 
+contenedor y dentro de este, tener distintas carpetas en las cuales se va a ubicar los archivos XML 
+y los archivos JSON asociados.  
+ 
+Ejemplo:  
+ 
+ 
+Figura No. 3 Opción carpeta con varias facturas 
+ 
+ 
+ 
+ 
+
+===== Página 14/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 14 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.1. Cargue de Información Factura Electrónica de Ventas en Salud – FEV y RIPS asociados  
+1. Tome la opción que se encuentra en el recuadro, identificada como Factura Electrónica de Venta: 
+ 
+  
+ 
+Figura No. 4 Opción Factura Electrónica de Venta – FEV  
+ 
+2. El sistema despliega la siguiente interfaz: 
+ 
+
+===== Página 15/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 15 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 5: Ventana de selección de carpeta a validar y su procesamiento 
+ 
+3.  Para empezar a subir archivos dentro de la aplicación, ingresar a la opción “Cargar archivos”: 
+ 
+ 
+ 
+Figura No.6 Opción de Cargar Archivos  
+ 
+La aplicación Cliente – Servidor FEV_RIPS está provista de un visor de actividades, para indicar las etapas del 
+proceso que se han completado, el cual se inicia con Seleccionar Proceso, continúa con Seleccionar Archivos y 
+finaliza con Enviar Paquetes.  
+ 
+ 
+===== Página 16/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 16 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+4. A continuación se debe tomar el botón “Seleccionar carpeta”, mediante la cual se busca la carpeta en la cual 
+debe encontrarse el archivo XML (Factura Electrónica de ventas en salud)  y JSON  (RIPS), que validará la 
+aplicación: 
+ 
+ 
+Figura No. 7 Seleccionar carpeta  
+ 
+5. El sistema permite realizar la búsqueda y selección de las carpetas donde se encuentren ubicados los archivos 
+en los formatos requeridos (XML y JSON).  Se debe dar clic en la opción “Seleccionar carpeta”: 
+  
+Figura No. 8 Búsqueda y selección de carpeta con archivos a procesar  
+ 
+
+===== Página 17/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 17 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+6.  A continuación, la aplicación Cliente – Servidor FEV_RIPS presenta el proceso de carga:  
+  
+ 
+Figura No. 9 Proceso de carga de los archivos  
+ 
+Si los archivos han  cumplido las validaciones de estructura, contenido y de relación 1,  se despliega una pantalla, 
+informando en la columna EstadoProcesamiento:  Procesamiento Exitoso ,2 lo que indica que estos  archivos 
+pueden ser transmitidos al  Ministerio. La casilla se ilumina con un color verde:  
+ 
+                                                      
+1 Resolución 2275 de 2023. 1.2 Calidad de la información:  Validaciones de estructura: Son aquellas reglas de validación relacionadas con las 
+características de las estructuras de presentación de los datos: i. Sintaxis JSON ii. Nombres de propiedades (son sensibles a minúsculas y mayúsculas) 
+iii. Requerimiento mínimo de propiedades por objeto.  
+Validaciones de contenido:  Son aquellas reglas de validaciones relacionadas con las características de cada uno de los campos de datos, a saber, 
+los valores permitidos, tamaño y tipo. Corresponden a la utilización y consistencia con los valores permitidos según tablas propias de SISPRO o tablas 
+de referencia externas al mismo, así como a la obligatoriedad del dato. Se validará que el valor informado para cada campo corresponda a las 
+características establecidas en el anexo técnico. 
+Validaciones de relación: Son aquellas reglas de validaciones relacionadas con cruces entre los datos informados de los RIPS: entre el contenido de 
+datos propios o de datos de referencia de catálogos externos, así como de datos informados en la factura electrónica de venta. 
+2 Procesamiento Exitoso:  "RIPS aprobado" significa que en completitud el RIPS cumplió con las reglas de validaciones que generan rechazo. 
+
+===== Página 18/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 18 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 10 Procesamiento de archivos Exitoso 
+ 
+En caso contrario, aparece en la columna EstadoProcesamiento:  ConErrores, lo que indica que estos archivos 
+no superaron las validaciones. La casilla se ilumina con color rojo.  A continuación se debe proceder a verificar las 
+inconsistencias indicadas, corregir las mismas y volver a repetir el proceso de validación.  
+ 
+Tenga presente, que la aplicación Cliente – Servidor FEV_RIPS, realiza este conjunto de validaciones usando la 
+información que se encuentra contenida en la base de datos local que se crea desde el proceso de Instalación. 
+Cada vez que se ingresa a la aplicación Cliente – Servidor FEV_RIPS, está lleva a cabo un proceso de 
+sincronización con las tablas del SISPRO, para actualizar los cambios que se hayan efectuado a nivel central. 
+ 
+ 
+ 
+ 
+ 
+Recuerde: la aplicación Cliente–Servidor FEV_RIPS controla el acceso al sistema mediante un token interno con 
+una duración de dos (2) horas. Una vez transcurrido este tiempo, será necesario volver a ingresar utilizando su tipo 
+de usuario, tipo de documento, número de identificación y NIT 
+ 
+ 
+ 
+ 
+===== Página 19/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 19 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 11 Procesamiento de archivos con errores 
+ 
+7.  El sistema genera una consulta en línea de las validaciones, que contiene las siguientes columnas: 
+  
+  
+Columna Descripción  
+Id número consecutivo 
+Clase se identifican los Rechazos 3, los cuales se señalan en color rojo  y las Notificaciones 4, las 
+cuales se señalan en color amarillo 
+Fuente  señala en  qué tipo de archivo se presenta la inconsistencia: en la Factura o en el Rips 
+Código  identifica el código de validación descrito en la Resolución 2275 de 2023 
+Descripción corresponde al mensaje al que hace referencia el código del rechazo o la notificación 
+Observación indica los valores enviados en el campo que se está validando 
+PathFuente identifica la ruta del registro en el cual se encuentra la novedad 
+.  
+                                                      
+3 Resolución 2275 de 2023 RIPS rechazado: cuando el RIPS no cumple una o varias de las reglas de validaciones obligatorias de estructura, contenido o relación.  
+4 Resolución 2275 de 2023 RIPS notificado:  reglas de validaciones no obligatorias que buscan mejorar la calidad del dato. El no cumplimiento de estas validaciones 
+será notificado como advertencias sin generar rechazo del RIPS. 
+
+===== Página 20/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 20 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 12 Presentación de las validaciones que causan Rechazo 
+ 
+o aquellos que son Notificaciones (en amarillo):  
+ 
+ 
+Figura No. 13 Presentación de las validaciones que son Notificadas  
+ 
+Las validaciones que causan Rechazo, deben ser corregidas sobre los archivos originales de Factura Electrónica 
+de Ventas en Salud y los RIPS asoci ados, para que puedan continuar el proceso. En caso de presentarse un alto 
+volumen de estas, el sistema las presenta en grupos entre 6 hasta 10 registros, para que sean ajustadas.  
+ 
+Las validaciones que generan Notificación, son de tipo informativo y en algún momento serán controladas por la 
+aplicación Cliente – Servidor FEV_RIPS.  
+ 
+8.  Una vez ajustada la información y que todas las validaciones que causan rechazo hayan sido superadas, se 
+habilita por parte del sistema el botón Enviar Paquete Aprobado al MSPS, para que el usuario lo seleccione.  
+ 
+ 
+ 
+
+===== Página 21/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 21 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 14 Envío de archivos XML y JSON al MSPS  
+ 
+Al hacer el envío de los archivos: XML y JSON, al Ministerio, se llevan a cabo nuevas verificaciones sobre la Base 
+de datos Central, que corresponden entre otras a:   i. Verificar la Existencia de la Factura Electrónica de Ventas en 
+Salud sobre la base de datos central de la aplicac ión Cliente – Servidor FEV_RIPS, ii. Verificar el CUFE ó CUDE, 
+iii. Verificar la existencia del ciudadano  o fallecimiento , iv.  Validar la relación entre los campos 
+COBERTURA_PLAN_BENEFICIOS y MODALIDAD_PAGO (del XML) vs tipoUsuario y ConceptoRecaudo ( del 
+RIPS-JSON). 
+ 
+Si el número de la factura ya ha sido enviado previamente, el sistema  central rechazará el nuevo envío y generará 
+un mensaje de rechazo. En este caso, no se asignará el  Código Único de Validación – CUV5.  
+ 
+Si estas validaciones son correctas, el sistema central genera el  Código Único de Validación  - CUV y los archivos 
+de Factura Electrónica de Ventas en Salud  (XLM) y los RIPS  (JSON) asociados son cargados en la base de datos 
+central de la aplicación Cliente – Servidor FEV_RIPS. 
+ 
+El archivo que contiene el CUV, se ubicará en cada una de las carpetas de archivos que hayan sido procesados 
+correctamente.  
+ 
+ 
+ 
+ 
+ 
+ 
+                                                      
+5 Resolución 2275 de 2023: Código Único de Validación —CUV: Corresponde a una cadena alfanumérica cifrada, que certifica la aprobación resultante de la 
+validación única del Registro Individual de Prestación de Servicios de Salud —RIPS, que se obtiene cuando este registro cumple todas las reglas de validación obligatorias 
+y de relación con la Factura Electrónica de Venta en salud y demás documentos electrónicos, cuando aplique.  
+
+===== Página 22/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 22 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+       
+Recuerde: tanto el archivo de la Factura Electrónica de Venta en Salud (XML), como los RIPS asociados (en 
+formato JSON) y el Código Único de Validación (CUV), ya sea en archivo o como código, deben ser entregados sin 
+ninguna modificación al pagador durante el proceso de radicación de la factura.  
+ 
+ 
+ 
+ 
+Figura No. 15 Código Único de Validación    
+ 
+Se incorpor aron en el archivo CUV los campos: Modulo (CapitaInicial, FacturaElectronica, RIPSSINFEV, entre 
+otros), Modalidad de pago y  PeríodoAtención.   
+ 
+9. Finalmente, la aplicación Cliente – Servidor FEV_RIPS, dispone de una consulta denominada Listado General 
+Paquetes, cuyo objetivo es permitir ver los paquetes enviados al Ministerio, presentando los datos: 
+ 
+ id,  
+Cuv  
+Tipo   (Factura Electronica, NotaCrédito, NotaDébito, RipsSinFactura, NotaAjsute, CapitaInicial, entre otros) 
+Número Documento 
+Fecha Emisión 
+Total Recaudos  
+Total  
+CantidadusuariosRips 
+Estado  (ProcesamientoExitoso,  ConErrores)  
+Fecha Aceptación 
+Fecha Validación  
+ 
+ 
+===== Página 23/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 23 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 16 Consulta de archivos enviados exitosamente al Ministerio 
+ 
+10. La aplicación Cliente – Servidor FEV_RIPS genera los siguientes archivos resultantes:  
+ 
+Nombre archivo Tipo de 
+archivo 
+Observación  
+ResultadosLocales_nro_factura .txt Se genera durante la primera validación en 
+equipo local. Contiene información en formato 
+JSON 
+ResultadosMSPS_nro_factura_ID999_A_CUV    
+.txt 
+Se genera durante la validación en el 
+Ministerio c on CUV aprobado. Contiene 
+información en formato JSON 
+ResultadosMSPS_nro_factura_ID999_R    
+.txt 
+Se genera en el equipo local, si no han sido 
+superadas las validaciones en el sistema. 
+Contiene información en formato JSON, tanto 
+de los RECHAZOS como de las  
+NOTIFICACIONES.  
+ 
+   donde:  
+ 
+nro_factura:  equivale al número de factura reportado por el facturador 
+ID999:   Nro de id de la transacción (interno)  
+A:    Aprobado 
+R:    Rechazado 
+. 
+
+===== Página 24/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 24 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 17 Archivos resultantes generados al final del procesamiento  
+  
+
+===== Página 25/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 25 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.2. Cargue de Información  Notas Crédito  Total  - Anulaciones6 
+A través de esta opción, de la aplicación Cliente – Servidor FEV_RIPS, se informa las Notas Crédito (archivos XML), 
+validadas ante la DIAN, que anulan una Factura Electrónica de Ventas previamente generada.   
+ 
+La aplicación Cliente – Servidor FEV_RIPS, permite la recepción y validación de la Nota Crédito, sin que sea 
+necesario el envío de los RIPS asociados.   
+ 
+Para ello, se opera de la siguiente manera:  
+ 
+1. Tome la opción que se encuentra en el recuadro, identificada como Notas Crédito Total: 
+ 
+ 
+ 
+Figura No. 18 Opción Notas Crédito Total 
+ 
+ 
+ 
+2. La aplicación Cliente – Servidor FEV_RIPS despliega la siguiente interfaz: 
+ 
+                                                      
+6 Cuando la FEV en salud con validación previa de la DIAN ha sido expedida y radicada ante el pagador junto con sus RIPS y demá s 
+soportes, dentro de los 22 días hábiles siguientes a su expedición, pero es devuelta por parte del pagador y no se requie re continuar con 
+su trámite por cuanto la devolución es aceptada por el facturador electrónico, debe anularse y generarse una nota crédito (NC ) al 100% 
+del valor facturado. Esta NC debe ser igualmente validada ante la DIAN, expedida y enviada al pagador y al Ministerio, sin que sea 
+necesario reenviar el RIPS de la FEV anulada, ni demás soportes. 
+
+===== Página 26/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 26 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura 19 Interfaz del Módulo Notas Crédito Total  
+ 
+3.  Tome la opción Seleccionar Carpeta, para buscar en su máquina local, los archivos a ser validados.  
+ 
+ 
+Figura 20 Selección de la carpeta en la que se ubica el archivo a procesar Módulo Notas Crédito Total  
+ 
+ 
+4.  Una vez seleccionado la carpeta que contiene el archivo XML, correspondiente a la Nota Crédito Total, se inicia 
+su procesamiento:  
+
+===== Página 27/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 27 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura 21 Procesamiento archivo Módulo Notas Crédito Total  
+ 
+5.  Al finalizar el procesamiento del archivo (validación de su estructura y contenido), la aplicación Cliente–Servidor 
+FEV_RIPS muestra una pantalla con los resultados. En la columna EstadoProcesamiento se indica: 
+ Exitoso: el archivo superó todas las validaciones y puede ser transmitido al Ministerio. 
+ Con errores: el archivo no cumplió con las validaciones y no puede ser transmitido hasta que se corrijan 
+los errores detectados. 
+ 
+ 
+. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 28/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 28 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 22 Despliegue de mensaje si es rechazado o válido  
+ 
+6.  En el caso de generarse errores, se debe llevar a cabo la verificación y ajust e correspondiente en el archivo 
+(XML) para continuar con el procesamiento.  Volver al paso No.3, de esta sección.  
+ 
+ 
+Figura 23 Tipos de validaciones: Rechazo o Notificación   
+ 
+Se despliega un 
+mensaje del Tiempo 
+de procesamiento  de 
+Validación   
+===== Página 29/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 29 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Si ha sido exitoso, oprima el botón Enviar paquete aprobado al Ministerio  
+ 
+ 
+Figura 24 Botón de envío de paquetes al Ministerio   
+ 
+ 
+Tenga en cuenta:  
+ 
+ Una Nota Crédito requiere que previamente se haya enviado la Factura Electrónica de Venta en salud, 
+para que sea aceptada por el sistema.  
+ A través de la consulta en línea, se puede corroborar el envío exitoso de los archivos al Ministerio:  
+ 
+ 
+Figura 25 Consulta del envío exitoso de archivos al Ministerio 
+ 
+ 
+
+===== Página 30/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 30 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ En caso de que el archivo sea enviado más de una vez al Ministerio, el sistema generará un mensaje de 
+error indicando que dicho archivo ya fue procesado previamente. Asimismo, dejará en la carpeta de origen 
+el archivo CUV correspondiente al primer proceso de envío. 
+ 
+ 
+ 
+Figura 26 Reporte de Error al tratar de enviar más de una vez un archivo procesado previamente en el  Ministerio 
+ 
+  
+
+===== Página 31/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 31 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.3. Cargue de Información Notas Crédito Parcial 
+El módulo Nota Crédito Parcial  de la aplicación Cliente –Servidor FEV_RIPS (mecanismo único de validación) , 
+permite iniciar la transmisión de una nota crédito que afecta parcialmente una Factura Electrónica de Venta ( FEV) 
+en salud previamente radicada, cuando esta requiere un ajuste por concepto de glosa. 
+Para realizar este proceso, el módulo solicita la transmisión de un archivo RIPS en formato XML, que actúa como 
+soporte de la nota crédito parcial. 
+1. Tome la opción que se encuentra en el recuadro, identificada como Notas Crédito Parcial: 
+ 
+ 
+Figura No. 27 Menú Principal: Módulo Nota Crédito Parcial  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 32/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 32 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+Figura No. 28 Módulo Nota Crédito Parcial  
+ 
+3. Oprima el Botó n Seleccionar Carpeta, y la  aplicación Cliente – Servidor FEV_RIPS, le permite buscar en su 
+máquina local, los archivos a ser validados 
+ 
+ 
+ 
+Figura No. 29 Búsqueda de archivos a procesar  
+ 
+
+===== Página 33/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 33 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+4.  Una vez seleccionado la carpeta que contiene el archivo XML, co rrespondiente a la Nota Crédito Parcial, se 
+inicia su procesamiento. Tengo en cuenta que deben estar los dos archivos requeridos: el archivo XML (NC 
+Parcial)  y  el archivo JSON (o RIPS asociados):  
+ 
+ 
+Figura No. 30 Procesamiento archivos Módulo Notas Crédito Parcial  
+ 
+5.  Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación),  la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso es 
+exitoso, lo cual indica que los archivos pueden ser transmitidos al  Ministerio; si tiene errores significa  que los 
+archivos no superaron las validaciones. 
+ 
+ 
+Figura No.31 Despliegue de mensaje si es Procesamiento Rechazado ó Procesamiento Exitoso  
+ 
+
+===== Página 34/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 34 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+6. En caso de generarse errores, se debe llevar a cabo la verificación y ajuste correspondiente en el(os) archivo(s)  
+para continuar con el procesamiento.   Volver al paso 3, de esta sección.  
+ 
+7. Si ha sido exitoso, oprima el botón Enviar paquete aprobado al Ministerio  
+ 
+ 
+ 
+Figura No. 32 Botón para enviar archivos procesados exitosamente al Ministerio  
+ 
+8. Finalmente, como herramienta de control y verificación de los archivos enviados, se puede generar la consulta 
+en Línea, la cual permite reconocer los archivos que han sido procesados y enviados al Ministerio:  
+ 
+ 
+ 
+Figura No. 33 Lista de archivos que se han enviado al Ministerio  
+ 
+ 
+
+===== Página 35/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 35 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.4. Cargue de Información Notas Débito 
+A través del módulo de Notas Débito de la aplicación Cliente – Servidor FEV_RIPS (mecanismo único de validación) 
+se lleva a cabo la validación de los archivos correspondientes a Notas Débito en formato XML y RIPS asociados  
+(archivos JSON) que afecta parcialmente una FEV en salud que fue radicada..  
+ 
+1. Tome la opción que se encuentra en el recuadro, identificada como Notas Débito: 
+ 
+ 
+ 
+Figura No. 34 Menú Principal: Módulo Nota Débito  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 36/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 36 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+ 
+Figura No. 35 Módulo Nota Débito  
+ 
+3. Oprima el Botón Seleccionar Carpeta, y la  aplicación Cliente – Servidor FEV_RIPS, le permite buscar en su 
+máquina local, los archivos a ser validados 
+ 
+ 
+Figura No.36 Búsqueda de archivos a procesar  
+
+===== Página 37/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 37 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+4.  Una vez seleccionad a la carpeta que contiene el archivo XML, correspondiente a la Nota Debito, se inicia su 
+procesamiento. Tengo en cuenta que deben estar los dos archivos requeridos: el archivo XML (N ota Débito) y  
+el archivo JSON (o RIPS asociados).  
+ 
+5.  Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación), la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso es 
+exitoso, lo cual indica que los archivos pueden ser transmitidos al Ministerio ; si tiene errores significa que los 
+archivos no superaron las validaciones. 
+ 
+ 
+ 
+Figura No. 37 Despliegue de mensaje si es Procesamiento Rechazado ó Procesamiento Exitoso Nota Débito  
+ 
+6. En caso de generarse errores, se debe llevar a cabo la verificación y ajuste correspondiente en el(os) archivo(s) 
+para continuar con el procesamiento.   Volver al paso 3, de esta sección.  
+ 
+7. Si ha sido exitoso, oprima el botón Enviar paquete aprobado al Ministerio  
+ 
+8. Finalmente, como herramienta de control y verificación de los archivos enviados, se puede generar la consulta 
+en Línea, la cual permite reconocer los archivos que han sido procesados y enviados al Ministerio:  
+ 
+ 
+
+===== Página 38/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 38 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 38 Estado de los archivos procesados  
+ 
+ 
+A continuación, se presentan los archivos generado una vez se finaliza el procesamiento:  
+ 
+ 
+ 
+ 
+Figura No. 39 Archivos generados producto del procesamiento de la Nota Débito  
+ 
+ 
+ 
+Las validaciones que aún no están siendo RECHAZADAS, se NOTIFICAN para que sean revisadas y efectuar los 
+ajustes en el archivo JSON acorde a lo definido en la norma actual y a lo indicado en el documento LINEAMIENTOS 
+PARA LA GENERACIÓN, VALIDACIÓN Y ENVÍO DEL REGISTRO INDIVIDUAL DE PRESTACION DE 
+SERVICIOS DE SALUD – RIPS, COMO SOPORTE DE LA FACTURA ELECTRÓNICA DE VENTA – FEV EN 
+SALUD. 
+
+===== Página 39/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 39 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 40 Archivo que contiene las NOTIFICACIONES para una Nota Débito 
+  
+
+===== Página 40/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 40 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.5 Cargue de Información Notas de Ajuste 
+El módulo de Notas de Ajuste de la aplicación Cliente – Servidor FEV_RIPS (mecanismo único de validación) 
+debe ser usado cuando se generan glosas por parte de la Entidad Responsable de pago respecto de 
+inconsistencias en los campos de datos reportados frente a la atención prestada o frente a lo contratado , que NO 
+afectan el valor monetario facturado.  
+ 
+Este módulo solo acepta archivos tipo JSON, es decir los RIPS.  No se hace necesario genera documentos 
+electrónicos asociados a la factura electrónica de venta (nota crédito y nota débito).  
+ 
+1. Tome la opción que se encuentra en el recuadro, identificada como Notas de Ajuste: 
+ 
+ 
+ 
+Figura No.  41 Menú Principal: Módulo Notas de Ajuste 
+ 
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+ 
+
+===== Página 41/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 41 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 42 Interfaz Módulo Notas de Ajuste 
+ 
+ 
+3. Oprima el Botón Seleccionar Carpeta, y la aplicación Cliente – Servidor FEV_RIPS, le permite buscar en 
+su máquina local, los archivos a ser validados 
+ 
+Figura No. 43 Búsqueda de Carpetas con archivos a procesar 
+  
+
+===== Página 42/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 42 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+4. Una vez seleccionada la carpeta que contiene el archivo JSON, correspondiente a la Nota de Ajuste, se 
+inicia su procesamiento. 
+ 
+La conformación de este archivo debe considerar:  
+ 
+ 
+Figura No. 44 Objeto Transacción -  Archivo RIPS –JSON  -  Nota de Ajuste 
+ 
+ 
+Para el campo numFatura:   se debe registrar el número de la  factura previamente procesada y que 
+contiene el archivo RIPS que será ajustado.   En el campo tipoNota,  se debe ingresar el valor “NA”. 
+ 
+Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación), la aplicación 
+Cliente – Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento: 
+si el proceso es exitoso indica que los archivos pueden ser transmitidos al Ministerio; si tiene errores 
+significa  que los archivos no superaron las validaciones  
+ 
+ 
+Figura No. 45 Archivos procesados  
+ 
+ 
+
+===== Página 43/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 43 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+5. En caso de generarse errores, se debe llevar a cabo la verificación y ajuste correspondiente en el(os) 
+archivo(s) para continuar con el procesamiento.   Volver al paso 3, de esta sección.  
+ 
+ 
+Figura No.  46 Archivos procesados con errores  
+ 
+6. Si ha sido exitoso, oprima el botón Enviar paquete aprobado al Ministerio  
+ 
+ 
+Figura  No. 47 Botón de Enviar paquetes aprobados al Ministerio   
+ 
+ 
+ 
+
+===== Página 44/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 44 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+7. Finalmente, como herramienta de control y verificación de los archivos enviados, se puede generar la 
+consulta en Línea, la cual permite reconocer los archivos que han sido procesados y enviados al 
+Ministerio:  
+ 
+ 
+ 
+Figura No.  48 Consulta de paquetes enviados al Ministerio   
+ 
+Una vez el procesamiento termina, en la carpeta seleccionada, se encontrarán los archivos resultantes:  
+ 
+ 
+Figura No. 49 Archivos generados producto del procesamiento   
+  
+
+===== Página 45/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 45 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.6 Cargue de Información  RIPS sin factura7 
+El módulo de RIPS sin Factura de la aplicación Cliente – Servidor FEV_RIPS (mecanismo único de validación) 
+acepta los archivos RIPS (tipo JSON), que deben reportar  los Profesionales Independientes , las entidades 
+con objeto social diferente a la prestación de servicios en salud y las demás entidades como universidades 
+y centro de investigación que realizan actividades de salud obligadas a reportar RIPS que no facturan estas 
+actividades.  
+ 
+1. Tome la opción que se encuentra en el recuadro, identificada como RIPS sin Factura: 
+ 
+ 
+ 
+Figura No. 50 Menú Principal: Módulo RIPS sin Factura 
+ 
+ 
+. 
+2. El sistema despliega la siguiente interfaz:  
+                                                      
+7 Las entidades que en el marco de sus funciones legales deban entregar los datos del Registro Individual de Prestación de 
+Servicios de Salud - RIPS al Sistema de G eneral de Seguridad Social en Salud, como son: entidades con objeto social 
+diferente a la prestación de servicios de salud y organismos que realicen pilotos, estudios de investigación asociados a la 
+prestación o provisión de servicios y tecnologías de salud o profesionales que facturen 3.500 UVT o menos en el año anterior 
+o en el año en curso y simultáneamente no tengan ningún relacionamiento contractual con las ERP y demás pagadores del 
+sector salud, deberán transmitir la información que les corresponde en la estructura definida para el RIPS (archivo en formato 
+JSON). Estos RIPS no se acompañan de la FEV en salud, toda vez que estas entidades no adelantan el cobro de estos 
+servicios en salud realizados o no están obligados a generarlas en el caso de los pro fesionales independientes antes 
+mencionados 
+
+===== Página 46/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 46 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+Figura No. 51 Módulo RIPS sin Factura 
+ 
+ 
+3. Oprima el Botón Seleccionar Carpeta, y la aplicación Cliente – Servidor FEV_RIPS, le perm ite buscar en la 
+máquina local, el(os) archivo(s) a ser validados. 
+ 
+Recuerde, que la estructura del archivo RIPS (JSON) allí contenida debe ser:  
+ 
+ 
+ 
+Figura No. 52 Objeto Transacción -  Archivo RIPS –JSON  -  RIPS sin FEV 
+ 
+Para el campo tipoNota, se debe i ngresar el valor “ RS” y en el  campo numNota:  se debe registrar el 
+número consecutivo de la nota de ajuste que la entidad va a procesar.  
+ 
+ 
+
+===== Página 47/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 47 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+4. Una vez seleccionada la carpeta que contiene el archivo JSON, correspondiente a RIPS sin Factura, se inicia 
+su procesamiento. Tenga en cuenta que debe estar un único archivo requerido, ya que el sistema, efectúa las 
+validaciones correspondientes 
+ 
+5. Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación), la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso 
+es exitoso, lo cual indica que los archivos pueden ser transmitidos al Ministerio; si tiene errores significa que 
+los archivos no superaron las validaciones.  
+ 
+ 
+ 
+Figura No. 53 Procesamiento de archivos por el módulo RIPS sin Factura  
+ 
+6. En caso de generarse errores, se debe llevar a cabo la verificación y ajuste correspondiente en el(os) archivo(s)  
+para continuar con el procesamiento,  acorde a lo establecido en la normatividad actual vigente.  Volver al paso 
+3, de esta sección.  
+ 
+
+===== Página 48/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 48 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 54  Resultado Procesamiento de archivos por el módulo RIPS sin Factura  
+ 
+7. Si ha sido exitoso, oprima el botón Enviar paquete aprobado al Ministerio  
+ 
+ 
+Figura No. 55  Procesamiento Exitoso – Enviar Paquetes aprobados al Ministerio   
+ 
+8. Si se han superado las validaciones de segundo nivel definidas, el Mecanismo Único de Validación, deja en la 
+carpeta  el archivo de CUV generado:  
+
+===== Página 49/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 49 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 56  Archivo CUV -  RIPS sin FV  
+ 
+ 
+9. Finalmente, como herramienta de control y verificación de los archivos enviados, se puede generar la 
+consulta en Línea, la cual permite reconocer los archivos que han sido procesados y enviados al Ministerio:  
+ 
+ 
+Figura No. 57 Consulta de archivos enviados al Ministerio   
+ 
+  
+
+===== Página 50/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 50 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.7 Factura Cápita  
+9.7.1 Factura Cápita -  Cápita Inicial 
+El módulo de Cápita Inicial, requiere el envío únicamente del archivo XML y se genera CUV cuando cumple las 
+reglas de validación de los campos del sector salud adicionales a la generación de la Factura electrónica de venta 
+en salud - FEV (los 11 campos de la extensión salud), con el cual se permite al PSS/PTS su radicación ante la 
+ERP.  
+ 
+Esta Factura Electrónica de Ventas en salud puede incluir concepto de anticipos, el cual resta directamente al valor 
+de esa FEV y no está asociado al RIPS, pero no puede incluir acreditación de los otros conceptos de pagos 
+moderadores porque estos sí se validan contra el RIPS y se recaudan durante la ejecución del periodo de capitación 
+que se paga por anticipado en un 100% contra la radicación de la factura del primer mes de cápita. 
+ 
+Los acuerdos de voluntades permiten que el contrato de capitación pueda suscribirse por periodos (3 meses, 6 
+meses y hasta un máximo de 12 meses, incluso de diferent es anualidades, por ejemplo: junio de 2023 a mayo de 
+2024).  
+ 
+Así lo anterior, el primer envío de información de la factura cápita por parte de un PSS o PTS NO se acompañará 
+del archivo RIPS que la soporta.  Para el segundo periodo de facturación, se recibe la factura cápita de ese período 
+y el archivo RIPS que soporta la factura del primer periodo de capitación y así sucesivamente para los periodos de 
+facturación posteriores donde el RIPS que acompaña a la factura es soporte de la factura del período anter ior, 
+según se ilustra a continuación: 
+ 
+ 
+Figura  No. 58  Esquema de envío de Factura Cápita    
+ 
+ 
+ 
+ 
+ 
+===== Página 51/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 51 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+1. Tome la opción que se encuentra en el recuadro, identificada como Cápita Inicial: 
+ 
+Figura  No. 59  Módulo  Factura Cápita – Cápita Inicial  
+ 
+2.  El sistema despliega la  pantalla para búsqueda de archivos. Para ello se debe oprimir  el Botón Seleccionar 
+Carpeta, y la aplicación Cliente – Servidor FEV_RIPS, le permite buscar en la máquina local, los archivos a ser 
+validados. 
+ 
+Figura No. 60 Módulo Factura Cápita Inicial – Selección de carpeta 
+
+===== Página 52/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 52 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+3. Una vez seleccionada la carpeta que contiene el archivo XML, correspondiente a la Factura Cápita, se inicia 
+su procesamiento.  
+ 
+ 
+Figura  No. 61  Módulo  Factura Cápita  Inicial – Carpeta con archivo XML   
+ 
+Tenga en cuenta que debe estar un único archivo requerido, ya que el sistema, efectúa las validaciones 
+correspondientes. 
+ 
+4. Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación),  la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento: si fue exitoso 
+o no el procesamiento. Si el proceso tiene errores, significa   que el archivo  no superó  las validaciones 
+ 
+ 
+ 
+Figura  No. 62  Módulo  Factura Cápita  Inicial – Procesamiento de archivo    
+ 
+Si el procesamiento es exitoso  indica que el  archivo puede ser transmitido al  Ministerio  
+ 
+ 
+
+===== Página 53/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 53 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura  No. 63  Módulo  Factura Cápita Inicial  – Procesamiento exitoso de archivo   
+ 
+5. A continuación se debe,  oprimir  el botón Enviar paquete aprobado al Ministerio. El sistema lleva a cabo las 
+validaciones de segundo Nivel (entre ellas, se verifica que el número del documento electrónico no se encuentre 
+registrado en la Base de datos del sistema FEV_RIPS)  y si estás son superad as se genera el CUV – Código 
+Único de Validación  
+ 
+ 
+Figura  No. 64  Módulo  Factura Cápita Inicial  – Registro generación CUV  
+ 
+ 
+
+===== Página 54/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 54 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura  No. 65 CUV Cápita  Inicial – Nueva Estructura 
+ 
+9.7.2 Factura Cápita -  Cápita por períodos  
+En el segundo mes/periodo de capitación el módulo recibe simultáneamente los RIPS soporte de la  FEV del primer 
+mes/periodo de cápita y la FEV del segundo mes/periodo de cápita. Se valida que el RIPS este asociado a la FEV 
+del primer mes/periodo mediante los campos T01 y T02. En seguida, se valida el diligenciamiento del archivo RIPS 
+según las reglas del anexo técnico 1 de la Resolución 2275 de 2023 y su relacionamiento con el XML de la FEV 
+inicial. A su vez, valida que la FEV del segundo mes/periodo sea  transmita en una fecha q ue se encuentre entre 
+las fechas de inicio y fin de dicho mes/periodo de y se validan los campos XML de salud en su diligenciamiento 
+según anexo técnico 2 de la Resolución 2275 de 2023 
+ 
+1. Se debe tomar la opción que se encuentra en el recuadro, identificada como Cápita por Períodos: 
+ 
+ 
+
+===== Página 55/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 55 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 66 Módulo  Factura Cápita – Cápita por períodos 
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+Figura No. 67  Módulo  Factura Cápita – Interfaz Cápita por períodos 
+ 
+
+===== Página 56/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 56 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+3. Al oprimir  el Botón Seleccionar Carpeta, la apl icación Cliente – Servidor FEV_RIPS,  permite buscar en la 
+máquina local, los archivos a ser validados. 
+ 
+4. Una vez seleccionada la carpeta que contiene el archivo RIPS (JSON)  y el archivo  de Factura Electrónica de 
+Ventas Cápita (XML), se inicia su procesamiento. Se debe tener en cuenta que deben  estar ubicados los dos 
+archivos requeridos y el sistema, efectúa las validaciones correspondientes.   
+ 
+ 
+ 
+Figura  No. 68  Módulo  Factura Cápita – Cápita por Período - Selección de archivos 
+ 
+ 
+5. Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación), la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso 
+es exitoso, lo cual indica que los archivos pueden ser transmitidos al Ministerio; si tiene errores significa  que 
+los archivos no superaron las validaciones 
+ 
+ 
+ 
+Figura  No. 69  Módulo  Factura Cápita – Cápita por Períodos - Procesamiento de archivos  
+ 
+Al no superar las validaciones, se debe, realizar la verif icación  y corrección respectiva, de los datos presentes en 
+los archivos,  acorde con el mensaje que la aplicación cliente_servidor informa:  
+ 
+
+===== Página 57/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 57 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 70  Módulo  Factura Cápita  -  Cápita por Períodos - Mensajes de errores 
+ 
+ 
+Al obtener el mensaje de ProcesamientoExitoso, se debe oprimir el botón Enviar Paquetes Aprobados al 
+Ministerio , para  que sean realizadas las validaciones de segundo nivel. Si todo es correcto se obtiene el CUV, 
+el cual queda disponible en la carpeta de la cual se procesaron los archivos:  
+ 
+ 
+Figura No. 71 Módulo Factura Cápita  -  Cápita por Períodos – Procesamiento exitoso  
+ 
+ 
+
+===== Página 58/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 58 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 72 Módulo Factura Cápita  -  Cápita por Períodos – Generación CUV   
+ 
+ 
+ 
+ 
+Figura  No. 73  Módulo  Factura Cápita  -  Cápita por Períodos – Archivos Generados  
+ 
+ 
+9.7.3 Factura Cápita -  Cápita Final 
+A través de este módulo, se deben presentar los RIPS de los ser vicios realizados en el último periodo, los cuales 
+se presentan solos (archivo JSON soporte de la factura del último mes/periodo de cápita) y se validan según reglas 
+del anexo técnico 1 de la Resolución 2275 de 2023. De encontrarse inconsistencias en estos RIPS, se genera 
+
+===== Página 59/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 59 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+archivo TXT informando las alertas de rechazo o notificación. El PSS/PTS deberá ajustar el RIPS y validarlo 
+nuevamente hasta obtener su CUV para permitir la liquidación del contrato (para el SGSSS en los términos definidos 
+en el Decreto 441 de 2022 y para lo demás procesos de facturación según estatuto tributario y código de comercio). 
+ 
+1. Tomar  la opción que se encuentra en el recuadro, identificada como Cápita Final : 
+ 
+ 
+ 
+Figura No. 74 Módulo  Factura Cápita  -  Cápita Final  
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+
+===== Página 60/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 60 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 75 Módulo  Factura Cápita  -  Interfaz Cápita Final  
+ 
+3. Al oprimir  el Botón Seleccionar Carpeta, la aplicación Cliente – Servidor FEV_RIPS, le permite buscar en la 
+máquina local, el  archivo a ser validado. 
+ 
+4. Una vez seleccionada la carpeta que contiene el archivo JSON, se inicia su procesamiento. Se debe tener en 
+cuenta que debe estar un único archivo requerido, ya que el sistema, efectúa las validaciones correspondientes.   
+ 
+ 
+ 
+ 
+Figura  No. 76  Módulo  Factura Cápita  -  Archivo Cápita Final  
+ 
+5. Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación), la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso 
+es exitoso, lo cual indica que los archivos pueden ser transmitidos al Ministerio; si tiene errores significa que 
+los archivos no superaron las validaciones, deben ser corregidos los rechazos y nuevamente volver a procesar 
+los archivos:  
+ 
+
+===== Página 61/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 61 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 77  Módulo  Factura Cápita  - Cápita Final :  Archivos con  errores  
+ 
+Si el procesamiento es exitoso, se habilita el botón de: Enviar Paquetes Aprobados al Ministerio:  
+ 
+ 
+Figura No. 78 Módulo  Factura Cápita  - Habilitación del botón Enviar Paquetes Aprobados al Ministerio   
+
+===== Página 62/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 62 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Al oprimir este botón, se llevarán a cabo en el sistema central las val idaciones de segundo nivel. Si estas son 
+aprobadas, se obtiene el  respectivo Código Único de Validación - CUV, el cual queda disponible en la carpeta  de 
+la cual se procesaron los archivos:  
+ 
+ 
+Figura No. 79 Módulo  Factura Cápita  - CUV generado   
+ 
+ 
+Finalmente, se puede obtener un reporte de todos los procesos trabajados en cada sesión a:  
+ 
+ 
+Figura No. 80 Módulo Factura Cápita  - Listado General de Paquetes    
+ 
+ 
+9.7.4 Nota crédito Cápita 
+Este módulo se debe usar, para cuando se presenten diferencias  que surjan entre el valor del recaudo reportado 
+en RIPS y el totalizado en la segunda FEV de cápita y/o las subsiguientes facturas cápita.   
+ 
+Como no es posible afectar los valores reportados en el detalle del RIPS, ni las FEV donde se hicieron esos 
+recaudos, la NC  se recibirá sin RIPS, el detalle de las diferencias observadas sobre estos recaudos por usuario, 
+serán objeto de aceptación o subsanación al interior del proceso de Glosas y respuestas de Glosas, a partir de las 
+cuales se obtendrá el valor a diligenciar en la NC, cuando aplique.  
+ 
+
+===== Página 63/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 63 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+1. Tomar  la opción que se encuentra en el recuadro, identificada como Nota Crédito Cápita : 
+ 
+   
+ 
+Figura No. 81 Módulo Notas Crédito Cápita 
+ 
+ 
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+
+===== Página 64/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 64 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+  
+Figura No. 82 Interfaz - Módulo Notas Crédito Cápita 
+ 
+3. AL oprimir  el Botón Seleccionar Carpeta, la aplicación Cliente – Servidor FEV_RIPS, le permite buscar en la 
+máquina local, los archivos a ser validados. 
+ 
+ 
+ 
+Figura  No. 83  Selección de archivos a ser procesados 
+ 
+ 
+
+===== Página 65/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 65 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+4. Una vez seleccionada la carpeta que contiene el archivo XML, correspondiente a la Nota Crédito Cápita, se 
+inicia su procesamiento. Tenga en cuenta que debe estar un único archivo requerido, ya que el sistema, efectúa 
+las validaciones correspondientes.   
+ 
+ 
+Figura  No. 84  Procesamiento de archivos seleccionados  
+ 
+5. Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación),  la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso 
+fue exitoso, lo cual indica que los archivos pueden ser transmitidos al  Ministerio; si tiene errores significa  que 
+los archivos no superaron las validaciones y se hace necesario realizar los ajustes, para nuevamente volver a 
+procesar.  
+ 
+Figura  No. 85  Procesamiento Exitoso  - Habilitación Botón de Enviar Paquetes al Ministerio 
+ 
+
+===== Página 66/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 66 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+6. Si el procesa miento es exitoso, se habilita el botón de: Enviar Paquetes Aprobados al Ministerio . A 
+continuación, el sistema central lleva a cabo las val idaciones de segundo nivel. Si estas son aprobadas, se 
+obtiene el  respectivo Código Único de Validación - CUV, el cual queda disponible en la carpeta  de la cual 
+se procesó el  archivo de NC Cápita (XML). En caso contrario, se informa el error presentado.  
+ 
+ 
+Figura  No. 86  Reporte de Error para validaciones de Segundo Nivel 
+ 
+  
+
+===== Página 67/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 67 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+9.8 NC resultado del seguimiento al acuerdo de voluntades 
+Este módulo debe ser usado para reportar las condiciones pactadas en los acuerdos de voluntades 
+relacionadas con el seguimiento a la ejecución del contrato, que no afectan el RIPS que soporta la FEV en 
+salud, tales como: 
+i) Incumplimiento de indicadores de seguimiento;  
+ii) Ajuste frente a la desviación de la nota técnica o  
+iii) Indicadores de calidad, gestión y resultados. 
+ 
+Producto de la aplicación de estas condiciones a la ejecución del contrato, eventualmente se generan glosas 
+que afectan el val or de la factura en un porcentaje definido por las partes en el seguimiento al contrato, 
+evaluación que puede dirigirse a varios periodos de facturación. El seguimiento a la ejecución de los contratos 
+se concreta suscribiéndose un acta con definición del porcentaje y el valor glosado a la ejecución del contrato, 
+sin que se afecte a un usuario o servicio en particular, todo lo anterior según lo definido en la Resolución 3253 
+de 2009 para las atenciones realizadas antes del 30 de septiembre de 2024, y en adelante según la Resolución 
+2284 de 2023. 
+ 
+1. Tome la opción que se encuentra en el recuadro, identificada como NC resultado del seguimiento al 
+acuerdo de voluntades  
+ 
+ 
+ 
+Figura No.87 Módulo NC resultado del seguimiento al acuerdo de voluntades 
+
+===== Página 68/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 68 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+2. El sistema despliega la siguiente interfaz:  
+ 
+ 
+Figura No. 88 Interfaz - Módulo NC resultado del seguimiento al acuerdo de voluntades 
+ 
+3. Oprima el Botón Seleccionar Carpeta, y la aplicación Cliente – Servidor FEV_RIPS, le permite buscar en la 
+máquina local, los archivos a ser validados. 
+ 
+Figura  No. 89  Selección de archivos a ser procesados 
+
+===== Página 69/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 69 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+4. Una vez seleccionada la carpeta que contiene el archivo XML, correspondiente a la Nota Crédito resultado 
+del seguimiento al acuerdo de voluntades, se inicia su procesamiento. Tenga en cuenta que debe estar un 
+único archivo requerido, ya que el sistema, efectúa las validaciones correspondientes.   
+ 
+5. Al concluir el procesamiento (validación de estructura, contenido del archivo y de relación),  la aplicación Cliente 
+– Servidor FEV_RIPS, despliega una pantalla, informando en la columna EstadoProcesamiento:  si el proceso 
+es exitoso,  lo cual indica que los archivos pueden ser transmitidos al  Ministerio; si tiene errores significa  que 
+los archivos no superaron las validaciones y debe proceder  a realizar los ajustes necesarios, para nuevamente 
+volver a procesar.  
+ 
+Figura  No. 90  Mensaje de Procesamiento Exitoso  - Habilitación Botón de Enviar Paquetes al Ministerio 
+ 
+ 
+6. Si el procesamiento es exitoso, se habilita el botón de: Enviar Paquet es Aprobados al Ministerio . A 
+continuación, el sistema central lleva a cabo las validaciones de segundo nivel. Si  estas son aprobadas, se 
+obtiene el  respectivo Código Único de Validación - CUV, el cual queda disponible en la carpeta  de la cual 
+se procesaron los archivos. En caso contrario, se informa el error presentado.  
+ 
+  
+
+===== Página 70/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 70 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+   
+10. RECUPERACION DE UN CUV  
+Teniendo en cuenta que en algunos casos no se obtiene el Código Único de Validación  (CUV) previamente 
+generado por el sistema central del Mecanismo Único de Validación, debido a situaciones como: 
+ Expiración del token de inicio de sesión  (tras dos horas) en la aplicación Cliente–Servidor FEV_RIPS, 
+lo que genera un mensaje de error:  
+ 
+Figura No. 91 Mensaje de Error TOT003 
+ Pérdida de comunicación con el sistema central del Ministerio. 
+Además, en ciertos casos los archivos generados por el Mecanismo Único de Validación pueden ser eliminados 
+de manera involuntaria, por lo que se hace necesario volver a validar los archivos XML (Factura Electrónica de 
+Venta, Nota Crédito o Nota Débito) junto con sus respectivos RIPS asociados. 
+Esta validación debe realizarse desde el  módulo correspondiente , permitiendo que la aplicación  Cliente–
+Servidor FEV_RIPS ejecute nuevamente las validaciones locales. 
+Si el procesamiento es exitoso, se habilita el botón : “Enviar Paquetes Aprobados al Ministerio ”. Al activarlo, el 
+sistema central realiza las validaciones de segundo nivel. Si estas validaciones son aprobadas, se recupera el 
+correspondiente Código Único de Validación (CUV), el cual queda disponible en la carpeta desde la cual se 
+procesaron los archivos. En caso contrario, el sistema informará el error presentado.  
+ 
+
+===== Página 71/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 71 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 92 Archivo CUV  Recuperado 
+ 
+Al consultar por la opción de Listado General paquetes se observa, que el documento electrónico XML  (FEV, NC, 
+ND), se registra en la traza de archivos procesados:  
+ 
+ 
+ 
+Figura No. 93 Reporte Listado General Paquetes  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 72/72 =====
+ 
+PROCESO MISIONAL  Código:  FEVRM001 
+MANUAL MANUAL DE USUARIO APLICACIÓN 
+CLIENTE- SERVIDOR FEV_RIPS Versión:  5.4 
+ 
+Página 72 de 
+72 
+                                        Una vez impreso o descargado este documento se considera copia no controlada                ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Finalmente, al validar en la carpeta trabajada, se observa que se ha RECUPERADO el archivo de CUV  
+ 
+ 
+ 
+Figura No. 94 Archivo de CUV disponible en la carpeta de trabajo 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ELABORADO POR:  REVISADO POR: APROBADO POR: 
+Nombre y Cargo:  
+Jacqueline Becerra Silva - 
+Contratista 
+ 
+Fecha: 06 de noviembre de 2025 
+Nombre y Cargo: 
+Zulay Merlín García Farieta 
+Contratista 
+ 
+Fecha: 07 de noviembre de 2025 
+Nombre y Cargo:  
+Juan Carlos Arce   
+ Contratista 
+ 
+Fecha: 07 de noviembre de 2025 
+ 

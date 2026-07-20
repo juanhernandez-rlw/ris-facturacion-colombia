@@ -1,0 +1,32 @@
+filters:
+  and:
+    - tipo == "requisito"
+views:
+  - type: table
+    name: Todos
+    order:
+      - file.name
+      - clase
+      - id
+      - prioridad
+      - estado
+  - type: table
+    name: Funcionales
+    filters:
+      and:
+        - clase == "funcional"
+    order:
+      - id
+      - file.name
+      - prioridad
+      - estado
+  - type: table
+    name: No funcionales
+    filters:
+      and:
+        - clase == "no-funcional"
+    order:
+      - id
+      - file.name
+      - prioridad
+      - estado

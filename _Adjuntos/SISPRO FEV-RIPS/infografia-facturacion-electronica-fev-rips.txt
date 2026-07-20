@@ -1,0 +1,219 @@
+
+===== Página 1/1 =====
+Generalidades 
+Proceso
+Flujograma APP
+PPS proceso 
+FEV y RIPS
+Bodega de datos y  SIIFA, para la toma de decisiones. 
+Reunir en una sola plataforma a todos los 
+participantes del sector salud, tanto PSS o PTS 
+y sus ERP y demás pagadores, que gestionan la 
+información del RIPS y la FEV en salud.
+Realizar una sola validación del RIPS como 
+soporte de la FEV en salud
+Contar en forma simultánea y oportuna con la 
+información del RIPS de cada FEV en salud, NC, 
+ND o NA, garantizando la calidad del dato 
+como fuente de información del SIIFA 
+(trazabilidad - transparencia).
+Facilitar la gestión de los 
+participantes del sistema.
+Implementar acciones de 
+dirección, concertación y 
+articulación de políticas en 
+salud.
+Disponiendo de una solución tecnológica que veriﬁca el 
+cumplimiento de las reglas del estándar de información y el 
+envío al Ministerio del RIPS y FEV en salud o sus 
+documentos electrónicos (NC/ND), las notas de ajuste o los 
+RIPS sin factura, según corresponda.
+Cumpliendo con lo establecido en el artículo 15 
+de la Ley 1966 de 2019 y las resoluciones 558 
+de 2024.
+Facturación Electrónica 
+FEV y RIPS
+El mecanismo único de validación del Ministerio nace frente a 
+la necesidad de regular y estandarizar el proceso de 
+generación del RIPS como soporte de la Factura Electrónica 
+de Venta - FEV en salud, o de sus NC, ND o NA.
+Ya que hoy en día las FEV no se reciben.
+¿Por qué del proyecto 
+y la Resolución 2275 de 2023?
+¿Para qué del proyecto 
+y la Resolución 2275 de 2023?
+Beneﬁcios
+SIIFA
+Registro de 
+Contratos
+RIPS
+FEV y RIPS
+FEV - RIPS
++ CUV Y DEMÁS SOPORTESHCE
+FEV
+En Salud NC/ND
+PLATAFORMA 
+DIAN
+Validación previa
+RESPUESTAS DE
+GLOSAS - OBJECIONES
+RADICACIÓN - 
+AUDITORÍA GLOSAS
+OBJECIONES
+MECANISMO
+FEV - RIPS
+CUV
+Facturas 
+Electrónicas y RIPS
+Seguimiento
+Auditoría a facturas
+Seguimiento de
+Pagos - Giro directo
+Reportes, consultas - 
+IVC
+Minsalud
+Proveedores 
+de Tecnologías en Salud
+Entidad Responsable 
+de Pagos ADRES - Ent. 
+Territoriales
+Otros pagadores
+Convenciones
+Términos utilizados
+PSS: Prestadores de Servicios 
+de Salud.
+IPS:  Institución Prestadora de 
+Servicios de salud
+ERP: Entidad Responsable de 
+Pago.
+SISPRO: Sistema Integrado de 
+Información de la Protección 
+Social.
+REPS: Registro Especial de 
+Prestadores de Servicios de 
+Salud.
+FEV: Factura Electrónica de 
+Venta.
+RIPS: Registro Individual de 
+Prestación de Servicios de 
+Salud
+Minsalud: Ministerio de Salud 
+y Protección Social.
+DIAN: Dirección de Impuestos 
+y Aduanas Nacionales.
+ReTHUS: Registro Único 
+Nacional de Talento Humano 
+en Salud.
+UVT: Unidad de Valor 
+Tributario.
+PTS: Proveedores de 
+Tecnologías en Salud.
+Prestadores de Servicios 
+de Salud - PSS
+Institución Prestadora de Servicios de Salud - IPS
+Transporte asistencial de pacientes
+Entidades con Objeto Social Diferente
+Prerrequisitos:
+1. Inscripción en MiSeguridadSocial
+2. Inscripción en SISPRO
+SI
+NO
+Debe generar y enviar 
+RIPS al MinSalud
+(Entidades con Objeto 
+Social Diferente)
+¿Tiene relación con ERP o 
+demás pagadores ?
+Debe generar FEV en 
+Salud y RIPS. Validar FEV 
+ante DIAN y enviar a 
+MinSalud junto con RIPS
+SI
+NO
+¿Se encuentra habilitado en el REPS 
+como IPS o Transporte asistencial de 
+pacientes o Entidad con Objeto Social 
+Diferente?
+Debe habilitar ante la
+secretaria de salud
+respectiva el servicio
+antes de prestarlo
+Profesional independiente
+Prerrequisitos:
+1. Inscripción en Rethus (para envió de 
+     información de RIPS)
+2. Inscripción en MiSeguridadSocial
+¿Se encuentra habilitado
+en el REPS como profesional
+independiente?
+NO
+No debe generar Factura 
+Electrónica de enta en 
+Salud (FEV en Salud) o 
+RIPS. Estos son generados
+por la IPS
+¿Tiene vinculación laboral
+con una IPS?
+SI
+SI
+SI
+¿Tiene relación con ERP o demás
+pagadores (incluyendo pacientes 
+o entidades particulares) o 
+factura más de 3.500 UVT 
+anuales?
+Debe generar documento
+de cobro y RIPS y estos
+últimos ser enviados al
+MinSalud utilizando el
+Módulo de RIPS sin factura
+NO
+Debe generar FEV en
+Salud y RIPS. Validar
+FEV ante DIAN y enviar
+a MinSalud junto 
+con RIPS
+FIN
+FIN
+FIN
+FIN
+Debe generar el cobro a
+la IPS (Cuenta de cobro,
+FEV convencional, 
+nomina, etc)
+Flujograma Proveedores 
+de Tecnologías en Salud
+Los establecimientos
+farmacéuticos mayoristas o
+minoristas que realizan ventas 
+en volumen donde no se 
+identiﬁca el
+usuario/paciente ﬁnal, no 
+deben generar FEV en salud, ni 
+RIPS.
+Proveedores de Tecnologias en Salud - PTS
+(Gestor farmacéutico - Operador logístico - Otros)
+Prerrequisitos:
+1. Inscripción en MiSeguridadSocial
+2. Inscripción en SISPRO
+3. Registro en IPS no REPS
+¿Realiza administración o 
+dispensación de tecnologias de
+salud directamente al usuario?
+SI
+SI
+NO
+¿Tiene relación con ERP o demás 
+pagadores diferentes a personas
+naturales y juridicas que asumen 
+directamente el pago?
+Debe generar factura electrónica 
+de venta convencional
+Debe generar FEV en
+Salud y RIPS. Validar
+FEV ante DIAN y enviar
+a MinSalud junto con RIPS
+FIN
+Deben usar FEV 
+convencional.
+Resolución 2275 de 2023

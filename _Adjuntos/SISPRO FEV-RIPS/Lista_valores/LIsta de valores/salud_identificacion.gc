@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+	<Identification>
+		<ShortName>DocumentoID</ShortName>
+		<LongName xml:lang="es">Documento de identificación</LongName>
+		<Version>1</Version>
+		<CanonicalUri>urn:salud:names:especificacion:ubl:listacodigos:gc:DocumentoID</CanonicalUri>
+		<CanonicalVersionUri>urn:salud:names:especificacion:ubl:listacodigos:gc:DocumentoID</CanonicalVersionUri>
+		<LocationUri>http://minsalud.gov.co/ubl/os-ubl-2.0/cl/gc/default/DocumentoID.gc</LocationUri>
+		<Agency>
+			<LongName xml:lang="es">DIAN (Dirección de Impuestos y Aduanas Nacionales)</LongName>
+			<Identifier>195</Identifier>
+		</Agency>
+	</Identification>
+	<ColumnSet>
+		<Column Id="code" Use="required">
+			<ShortName>Código</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="description" Use="required">
+			<ShortName>Descripción</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Key Id="codeKey">
+			<ShortName>CodeKey</ShortName>
+			<ColumnRef Ref="code"/>
+		</Key>
+	</ColumnSet>
+	<SimpleCodeList>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>CC</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Cédula de ciudadanía</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>CE</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Cédula de extranjería</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>CD</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Carné diplomático</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>PA</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Pasaporte</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SC</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Salvoconducto</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>PE</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Permiso especial de permanencia</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>RC</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Registro civil de nacimiento</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>TI</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Tarjeta de identidad</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>CN</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Certificado de nacido vivo</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>AS</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Adulto sin identificar</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>MS</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Menor sin identificar</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>DE</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Documento extranjero</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SI</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Sin identificación</SimpleValue>
+			</Value>
+		</Row>
+	</SimpleCodeList>
+</gc:CodeList>

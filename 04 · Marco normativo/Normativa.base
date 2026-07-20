@@ -1,0 +1,22 @@
+filters:
+  and:
+    - 'tipo == "norma"'
+views:
+  - type: table
+    name: Normativa
+    order:
+      - file.name
+      - emisor
+      - numero
+      - tema
+      - estado
+      - url_oficial
+  - type: table
+    name: Por verificar
+    filters:
+      and:
+        - 'estado == "por-verificar"'
+    order:
+      - file.name
+      - emisor
+      - tema

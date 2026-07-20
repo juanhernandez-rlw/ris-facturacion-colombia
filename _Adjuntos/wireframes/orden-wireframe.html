@@ -1,0 +1,424 @@
+<meta charset="utf-8">
+<title>Nueva orden · RIS — prototipo interactivo (RIPS + FEV)</title>
+<style>
+  :root{
+    --bg:#f7f9fb;--surface:#fff;--surface-2:#f1f4f8;--border:#e4e9ef;--border-strong:#d3dae3;
+    --ink:#1b2531;--ink-2:#51606f;--ink-3:#8a97a6;
+    --cap:#2563eb;--conv:#7c3aed;--def:#c2760a;--calc:#0d9488;--intg:#64748b;
+    --cap-bg:#eaf0fe;--conv-bg:#f2ecfe;--def-bg:#fbf1e2;--calc-bg:#e3f4f2;--intg-bg:#eef1f5;
+    --req:#dc2626;--cond:#c2760a;--ok:#0d9488;
+    --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 24px -12px rgba(20,30,45,.18);
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0e141b;--surface:#161e28;--surface-2:#1c2531;--border:#28323f;--border-strong:#3a4653;
+    --ink:#e7edf3;--ink-2:#a4b1c0;--ink-3:#6d7d8e;
+    --cap:#6ea0ff;--conv:#b998fb;--def:#e6a94b;--calc:#4bd0c4;--intg:#9aa8b8;
+    --cap-bg:#16233b;--conv-bg:#241a3a;--def-bg:#332711;--calc-bg:#0e2b2a;--intg-bg:#1e2732;
+    --req:#f8746a;--cond:#e6a94b;--ok:#4bd0c4;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+  }}
+  :root[data-theme="light"]{--bg:#f7f9fb;--surface:#fff;--surface-2:#f1f4f8;--border:#e4e9ef;--border-strong:#d3dae3;--ink:#1b2531;--ink-2:#51606f;--ink-3:#8a97a6;--cap:#2563eb;--conv:#7c3aed;--def:#c2760a;--calc:#0d9488;--intg:#64748b;--cap-bg:#eaf0fe;--conv-bg:#f2ecfe;--def-bg:#fbf1e2;--calc-bg:#e3f4f2;--intg-bg:#eef1f5;--req:#dc2626;--cond:#c2760a;--ok:#0d9488;--shadow:0 1px 2px rgba(20,30,45,.05),0 8px 24px -12px rgba(20,30,45,.18);}
+  :root[data-theme="dark"]{--bg:#0e141b;--surface:#161e28;--surface-2:#1c2531;--border:#28323f;--border-strong:#3a4653;--ink:#e7edf3;--ink-2:#a4b1c0;--ink-3:#6d7d8e;--cap:#6ea0ff;--conv:#b998fb;--def:#e6a94b;--calc:#4bd0c4;--intg:#9aa8b8;--cap-bg:#16233b;--conv-bg:#241a3a;--def-bg:#332711;--calc-bg:#0e2b2a;--intg-bg:#1e2732;--req:#f8746a;--cond:#e6a94b;--ok:#4bd0c4;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);}
+
+  *{box-sizing:border-box}body{margin:0}
+  .wrap{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.45;padding:0 0 76px}
+  .max{max-width:1180px;margin:0 auto;padding:0 20px}
+  .top{border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:20}
+  .top .max{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 20px}
+  .brand h1{font-size:19px;font-weight:650;margin:0;letter-spacing:-.01em}
+  .brand .sub{font-size:12px;color:var(--ink-3)}
+  .tag{font-family:var(--mono);font-size:11px;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:4px 10px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 4px}
+  .lg{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-2);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:5px 11px 5px 9px;cursor:pointer}
+  .lg[aria-pressed="true"]{background:var(--surface-2);border-color:var(--border-strong);color:var(--ink)}
+  .dot{width:9px;height:9px;border-radius:3px;flex:none}
+  .dot.cap{background:var(--cap)}.dot.conv{background:var(--conv)}.dot.def{background:var(--def)}.dot.calc{background:var(--calc)}.dot.intg{background:var(--intg)}
+  .legend .hint{margin-left:auto;font-size:11.5px;color:var(--ink-3);align-self:center}
+  .stepper{display:flex;gap:6px;overflow-x:auto;padding:16px 0 18px}
+  .step{flex:1 1 0;min-width:120px;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:11px 13px;cursor:pointer;display:flex;gap:10px;align-items:center;color:inherit;font-family:inherit}
+  .step[aria-current="true"]{border-color:transparent;box-shadow:0 0 0 2px var(--cap)}
+  .step .num{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:12.5px;font-weight:650;background:var(--surface-2);color:var(--ink-2)}
+  .step[aria-current="true"] .num{background:var(--cap);color:#fff}
+  .step.done .num{background:var(--calc-bg);color:var(--calc)}
+  .step .st-k{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+  .step .st-t{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cols{display:grid;grid-template-columns:1fr 312px;gap:20px;align-items:start}
+  @media (max-width:900px){.cols{grid-template-columns:1fr}}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .panel-hd{padding:18px 20px 14px;border-bottom:1px solid var(--border)}
+  .panel-hd h2{margin:0;font-size:18px;font-weight:650;letter-spacing:-.01em}
+  .panel-hd p{margin:5px 0 0;font-size:13px;color:var(--ink-2);max-width:64ch}
+  .sec{padding:18px 20px}.sec+.sec{border-top:1px solid var(--border)}
+  .sec>h3{margin:0 0 13px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:650}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:680px){.grid{grid-template-columns:1fr}}
+  .f.col2{grid-column:span 2}.f.col3{grid-column:span 3}
+  @media (max-width:680px){.f.col2,.f.col3{grid-column:span 1}}
+  .f{border:1px solid var(--border);border-left:3px solid var(--o);border-radius:9px;background:var(--surface);padding:9px 11px 10px;position:relative}
+  .f.hidden{display:none}
+  .f .lab{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-2);margin-bottom:6px;font-weight:550;padding-right:74px;min-height:15px}
+  .req{font-size:9px;line-height:1}.req.req-req{color:var(--req)}.req.req-cond{color:var(--cond)}
+  .f .badge{position:absolute;top:8px;right:9px;font-family:var(--mono);font-size:8.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--o);background:var(--o-bg);border-radius:5px;padding:2px 5px;font-weight:600}
+  .f input,.f select,.f textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--surface-2);border:1px solid var(--border-strong);border-radius:7px;padding:8px 9px;min-height:34px}
+  .f textarea{min-height:58px;resize:vertical}
+  .f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--cap);outline-offset:1px;border-color:var(--cap)}
+  .f input::placeholder{color:var(--ink-3)}
+  .f .ro{border:1px dashed var(--border-strong);background:transparent;color:var(--ink-2);display:flex;align-items:center;min-height:34px;border-radius:7px;padding:6px 9px;font-size:13px}
+  .f.o-cap{--o:var(--cap);--o-bg:var(--cap-bg)}.f.o-conv{--o:var(--conv);--o-bg:var(--conv-bg)}
+  .f.o-def{--o:var(--def);--o-bg:var(--def-bg)}.f.o-calc{--o:var(--calc);--o-bg:var(--calc-bg)}.f.o-intg{--o:var(--intg);--o-bg:var(--intg-bg)}
+  .tgt{margin-top:6px;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tgt b{color:var(--ink-2)}
+  .dim .f:not(.hl):not(.hidden){opacity:.3}
+  .toggle{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;color:var(--ink);user-select:none}
+  .toggle input{position:absolute;opacity:0;pointer-events:none}
+  .pill{width:36px;height:21px;border-radius:999px;background:var(--border-strong);position:relative;flex:none;transition:background .15s}
+  .pill::after{content:"";position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:#fff;transition:transform .15s}
+  .toggle input:checked+.pill{background:var(--cap)}.toggle input:checked+.pill::after{transform:translateX(15px)}
+  .ta{position:relative}
+  .ta-list{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--border-strong);border-radius:9px;box-shadow:var(--shadow);max-height:230px;overflow:auto;display:none}
+  .ta-list.open{display:block}
+  .ta-item{padding:8px 11px;font-size:13px;cursor:pointer;display:flex;gap:9px;align-items:baseline}
+  .ta-item:hover{background:var(--surface-2)}
+  .ta-item .c{font-family:var(--mono);font-size:11px;color:var(--cap);flex:none}
+  .ta-item .n{color:var(--ink-2)}
+  .ta-empty{padding:10px 11px;font-size:12px;color:var(--ink-3)}
+  .study{border:1px solid var(--border);border-radius:12px;margin:0 20px 14px;overflow:hidden}
+  .study-hd{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--surface-2);border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
+  .study-hd .cups{font-family:var(--mono);font-size:11px;color:var(--cap)}
+  .study-hd .rm{margin-left:auto;border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:13px;padding:4px 8px;border-radius:6px}
+  .study-hd .rm:hover{color:var(--req);background:var(--surface)}
+  .study .grid{padding:14px}
+  .adv{margin:2px 14px 12px;border:1px dashed var(--border-strong);border-radius:10px;overflow:hidden}
+  .adv>summary{cursor:pointer;list-style:none;padding:10px 13px;font-size:12px;color:var(--ink-2);display:flex;align-items:center;gap:8px;background:var(--surface-2)}
+  .adv>summary::-webkit-details-marker{display:none}
+  .adv .chev{transition:transform .2s}.adv[open] .chev{transform:rotate(90deg)}
+  .adv .grid{padding:13px}
+  .empty{margin:8px 20px 18px;padding:22px;border:1px dashed var(--border-strong);border-radius:12px;text-align:center;color:var(--ink-3);font-size:13px}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--cap-bg);color:var(--cap);border-radius:999px;padding:6px 6px 6px 12px;font-size:12.5px;font-weight:550}
+  .chip button{border:none;background:transparent;color:var(--cap);cursor:pointer;font-size:13px;line-height:1;padding:0 4px}
+  .rail{display:flex;flex-direction:column;gap:16px;position:sticky;top:78px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .card h4{margin:0;padding:12px 16px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--border);font-weight:650}
+  .kv{padding:11px 16px;display:flex;flex-direction:column;gap:10px}
+  .kv .row{display:flex;justify-content:space-between;gap:12px;font-size:12.5px}
+  .kv .k{color:var(--ink-3)}.kv .v{color:var(--ink);text-align:right;font-weight:550}
+  .kv .v.pend{color:var(--intg);font-style:italic;font-weight:500}
+  .kv .row.total{border-top:1px solid var(--border);padding-top:11px;font-size:15px}
+  .kv .row.total .v{font-weight:700;color:var(--calc);font-variant-numeric:tabular-nums}
+  .stripe{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-2);padding:9px 16px;border-top:1px solid var(--border);background:var(--intg-bg)}
+  .nav{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--border);z-index:20}
+  .nav .max{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px}
+  .prog{font-size:12px;color:var(--ink-3)}
+  .btns{display:flex;gap:10px}
+  .btn{font-family:inherit;font-size:13.5px;font-weight:600;border-radius:9px;padding:9px 16px;cursor:pointer;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink)}
+  .btn:hover{border-color:var(--ink-3)}.btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn.primary{background:var(--cap);border-color:var(--cap);color:#fff}
+  .btn.primary:hover{filter:brightness(1.07)}
+  .btn:focus-visible,.step:focus-visible,.lg:focus-visible{outline:2px solid var(--cap);outline-offset:2px}
+  .caption{font-size:11.5px;color:var(--ink-3);padding:14px 2px 0}
+  .gate{margin:16px 20px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .gate.ok{border-color:var(--ok)}.gate.err{border-color:var(--req)}
+  .gate-hd{padding:12px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:9px}
+  .gate.ok .gate-hd{background:var(--calc-bg);color:var(--calc)}
+  .gate.err .gate-hd{background:var(--def-bg);color:var(--req)}
+  .gate ul{margin:0;padding:6px 16px 14px 34px;font-size:12.5px;color:var(--ink-2)}
+  .gate li{margin:4px 0}.gate a{color:var(--cap);cursor:pointer;text-decoration:underline}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div class="top"><div class="max">
+    <div class="brand"><h1>Nueva orden</h1><span class="sub">RIS · Colombia — prototipo interactivo (RIPS + FEV)</span></div>
+    <span class="tag">demo · datos de ejemplo</span>
+  </div></div>
+  <div class="max">
+    <div class="legend" id="legend">
+      <button class="lg" data-o="cap" aria-pressed="false"><span class="dot cap"></span>Captura</button>
+      <button class="lg" data-o="conv" aria-pressed="false"><span class="dot conv"></span>Deriva del Convenio</button>
+      <button class="lg" data-o="def" aria-pressed="false"><span class="dot def"></span>Default</button>
+      <button class="lg" data-o="calc" aria-pressed="false"><span class="dot calc"></span>Cálculo</button>
+      <button class="lg" data-o="intg" aria-pressed="false"><span class="dot intg"></span>Integración</button>
+      <span class="hint">Clic para resaltar · <b>●</b> obligatorio · <b>◐</b> condicional</span>
+    </div>
+    <nav class="stepper" id="stepper"></nav>
+    <div class="cols">
+      <main class="panel" id="panel" aria-live="polite"></main>
+      <aside class="rail" id="rail"></aside>
+    </div>
+    <p class="caption" id="capnote"></p>
+  </div>
+  <div class="nav"><div class="max">
+    <span class="prog" id="prog"></span>
+    <div class="btns"><button class="btn" id="prev">Anterior</button><button class="btn primary" id="next">Siguiente</button></div>
+  </div></div>
+</div>
+
+<script>
+"use strict";
+const CUPS=[{c:"879101",n:"TAC de cráneo simple",p:300000},{c:"879102",n:"TAC de cráneo contrastado",p:420000},{c:"879201",n:"TAC de tórax",p:380000},{c:"883101",n:"Ecografía abdominal total",p:150000},{c:"870101",n:"Radiografía de tórax",p:65000},{c:"881434",n:"Resonancia de columna lumbar",p:680000},{c:"883820",n:"Ecografía obstétrica",p:140000}];
+const CIE10=[{c:"S06.0",n:"Conmoción cerebral"},{c:"R51",n:"Cefalea"},{c:"I10",n:"Hipertensión esencial"},{c:"E11.9",n:"Diabetes mellitus tipo 2"},{c:"M54.5",n:"Lumbago no especificado"},{c:"J18.9",n:"Neumonía no especificada"},{c:"R10.4",n:"Dolor abdominal"},{c:"S52.5",n:"Fractura del radio (epífisis inferior)"},{c:"N39.0",n:"Infección de vías urinarias"},{c:"Z00.0",n:"Examen médico general"}];
+const MUN=[{c:"05001",n:"Medellín"},{c:"05266",n:"Envigado"},{c:"05360",n:"Itagüí"},{c:"05088",n:"Bello"},{c:"05631",n:"Sabaneta"},{c:"11001",n:"Bogotá D.C."},{c:"76001",n:"Cali"},{c:"08001",n:"Barranquilla"}];
+const O={
+  tipoDoc:["CC · Cédula de ciudadanía","TI · Tarjeta de identidad","RC · Registro civil","CE · Cédula de extranjería","PA · Pasaporte","PPT · Permiso protección temporal","PE · Permiso especial permanencia","CN · Certificado nacido vivo"],
+  sexo:["Masculino","Femenino","Indeterminado / Intersexual"],
+  zona:["02 · Urbana","01 · Rural"],
+  pais:["170 · Colombia","862 · Venezuela","218 · Ecuador","604 · Perú","999 · Otro"],
+  depto:["Antioquia","Bogotá D.C.","Valle del Cauca","Atlántico","Cundinamarca"],
+  modalidadPago:["01 · Individual por caso / paquete","02 · Global prospectivo","03 · Capitación","04 · Pago por evento"],
+  concepto:["01 · Copago","02 · Cuota moderadora","03 · Pagos compartidos","04 · Anticipo","05 · No aplica"],
+  caso:["01 · Atención de urgencias","02 · ADRES / SOAT / plan voluntario","03 · Tutela / orden judicial","04 · Portabilidad / asignación masiva","05 · Casos excepcionales","06 · Recuperación de órganos","07 · Paciente particular"],
+  via:["02 · Derivado de consulta externa","01 · Demanda espontánea","03 · Remitido de otra IPS","04 · Remitido de urgencias"],
+  modAt:["01 · Intramural","02 · Extramural unidad móvil","06 · Telemedicina interactiva"],
+  finalidad:["15 · Diagnóstico","16 · Tratamiento","11 · Valoración / PyM","44 · Detección temprana"],
+  grupo:["02 · Apoyo diagnóstico","01 · Consulta externa","03 · Internación","04 · Quirúrgico"],
+  tipoDx:["Impresión diagnóstica","Confirmado nuevo","Confirmado repetido"],
+  prioridad:["Normal","Prioritaria","Urgente"],
+  esp:["Neurología","Ortopedia","Medicina general","Medicina interna","Ginecología","Pediatría"],
+  nivel:["Nivel 1","Nivel 2","Nivel 3"],
+  medico:["Ana Gutiérrez","Carlos Rendón","María Vélez","Sin asignar"],
+  tecnico:["José A. Herrera","Laura Ospina","Diego Marín"],
+  sede:["Medellín · Poblado","Medellín · Centro","Sabaneta","Unidad móvil"]
+};
+const CONVENIOS={
+  "":{},
+  "fomag":{nombre:"Ecografías FOMAG 2026",pagador:"Alianza Medellín Antioquia EPS S.A",tipoEntidad:"05 · EPS régimen contributivo",regimen:"Contributivo",cobertura:"01 · Plan de beneficios (UPC)",modalidad:"04 · Pago por evento",contrato:"CO-2026-0419",sinContrato:false,poliza:false,reqAut:true,reqMipres:false,reqSiras:false,ret:"Ret. renta 2% · No resp. IVA",pago:"Crédito · Transferencia · 22 días"},
+  "soat":{nombre:"SOAT · Seguros del Estado",pagador:"Seguros del Estado S.A",tipoEntidad:"11 · Aseguradora SOAT",regimen:"—",cobertura:"04 · Cobertura Póliza SOAT",modalidad:"04 · Pago por evento",sinContrato:true,caso:"02 · ADRES / SOAT / plan voluntario",poliza:true,reqAut:false,reqMipres:false,reqSiras:true,ret:"No responsable de IVA",pago:"Crédito · 30 días"},
+  "particular":{nombre:"Particular",pagador:"El paciente",tipoEntidad:"—",regimen:"—",cobertura:"15 · Particular",modalidad:"04 · Pago por evento",sinContrato:true,caso:"07 · Paciente particular",poliza:false,reqAut:false,reqMipres:false,reqSiras:false,ret:"No aplica",pago:"Contado"}
+};
+
+const V={pais:"170 · Colombia"};
+let studies=[], convKey="", cur=0, filter=null, showGate=false;
+
+const REQ={req:'<span class="req req-req" title="Obligatorio">●</span>',cond:'<span class="req req-cond" title="Condicional">◐</span>',opt:""};
+const ONAME={cap:"Captura",conv:"Convenio",def:"Default",calc:"Cálculo",intg:"Integración"};
+const TA={CUPS,CIE10,MUN};
+function opts(arr,val){return arr.map(o=>`<option${o===val?" selected":""}>${o}</option>`).join("")}
+function col(html,c){return c===3?html.replace('class="f ','class="f col3 '):c===2?html.replace('class="f ','class="f col2 '):html}
+function wrapF(id,label,origin,req,inner,target){
+  return `<div class="f o-${origin}" data-o="${origin}" data-fid="${id}"><span class="badge">${ONAME[origin]}</span><div class="lab">${REQ[req]||""}${label}</div>${inner}${target?`<div class="tgt"><b>→</b> ${target}</div>`:""}</div>`;
+}
+const fInput=(id,l,o,r,ph,t,c)=>col(wrapF(id,l,o,r,`<input id="${id}" placeholder="${ph||""}" value="${V[id]||""}">`,t),c);
+const fSelect=(id,l,o,r,arr,t,c)=>{if(V[id]===undefined)V[id]=arr[0];return col(wrapF(id,l,o,r,`<select id="${id}">${opts(arr,V[id])}</select>`,t),c);};
+const fDate=(id,l,o,r,t,c)=>col(wrapF(id,l,o,r,`<input id="${id}" type="date" value="${V[id]||""}">`,t),c);
+const fArea=(id,l,o,r,ph,t,c)=>col(wrapF(id,l,o,r,`<textarea id="${id}" placeholder="${ph||""}">${V[id]||""}</textarea>`,t),c);
+const fRO=(id,l,o,r,v,t,c)=>col(wrapF(id,l,o,r,`<div class="ro" id="${id}">${v||"—"}</div>`,t),c);
+const fToggle=(id,l,o,r,t,c)=>col(wrapF(id,l,o,r,`<label class="toggle"><input type="checkbox" id="${id}"${V[id]?" checked":""}><span class="pill"></span><span class="tgl-t">${V[id]?"Sí":"No"}</span></label>`,t),c);
+const fTA=(id,l,o,r,ph,data,t,c)=>col(wrapF(id,l,o,r,`<div class="ta"><input id="${id}" autocomplete="off" placeholder="${ph||"Buscar…"}" value="${V[id]||""}" data-ta="${data}"><div class="ta-list" id="${id}-list"></div></div>`,t),c);
+
+function taFilter(inp){
+  const list=document.getElementById(inp.id+"-list");if(!list)return;
+  const q=inp.value.toLowerCase().trim(),data=TA[inp.dataset.ta]||[];
+  const res=data.filter(d=>(d.c+" "+d.n).toLowerCase().includes(q)).slice(0,8);
+  list.innerHTML=res.length?res.map(d=>`<div class="ta-item" data-c="${d.c}" data-n="${d.n}"><span class="c">${d.c}</span><span class="n">${d.n}</span></div>`).join(""):`<div class="ta-empty">Sin resultados</div>`;
+  list.classList.add("open");
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest(".ta"))document.querySelectorAll(".ta-list.open").forEach(l=>l.classList.remove("open"));
+  const it=e.target.closest(".ta-item");
+  if(it){const inp=it.closest(".ta").querySelector("input");inp.value=it.dataset.c+" · "+it.dataset.n;V[inp.id]=inp.value;
+    it.closest(".ta-list").classList.remove("open");inp.dispatchEvent(new Event("commit",{bubbles:true}));}
+});
+
+const STEPS=[
+ {k:"Paso 1",t:"Paciente",sub:"Identidad, demografía, contacto y residencia. Alimenta el usuario del RIPS.",build:()=>`
+   <div class="sec"><h3>Identificación</h3><div class="grid">
+     ${fSelect("tipoDoc","Tipo de documento","cap","req",O.tipoDoc,"RIPS tipoDocumento")}
+     ${fInput("numDoc","Número de documento","cap","req","6578486","RIPS numDocumento")}
+     ${fInput("nombres","Nombres","cap","req","Jhonathan")}
+   </div></div>
+   <div class="sec"><h3>Datos personales</h3><div class="grid">
+     ${fInput("ap1","Primer apellido","cap","req","Pérez")}
+     ${fInput("ap2","Segundo apellido","cap","opt","Herrera")}
+     ${fDate("fnac","Fecha de nacimiento","cap","req","RIPS fechaNacimiento")}
+     ${fSelect("sexo","Sexo biológico","cap","req",O.sexo,"RIPS codSexo")}
+     ${fToggle("incap","Incapacidad","cap","req","RIPS incapacidad")}
+   </div></div>
+   <div class="sec"><h3>Contacto</h3><div class="grid">
+     ${fInput("tel","Teléfono","cap","opt","+57 300 000 0000")}
+     ${fInput("tel2","Teléfono adicional","cap","opt","+57")}
+     ${fInput("mail","Correo electrónico","cap","opt","paciente@correo.com")}
+   </div></div>
+   <div class="sec"><h3>Residencia</h3><div class="grid">
+     ${fSelect("pais","País","def","req",O.pais,"RIPS codPaisResidencia")}
+     ${fSelect("depto","Departamento","cap","req",O.depto)}
+     ${fTA("mun","Municipio","cap","req","Buscar municipio…","MUN","RIPS codMunicipioResidencia")}
+     ${fSelect("zona","Zona territorial","cap","cond",O.zona,"RIPS codZonaTerritorial")}
+     ${fInput("dir","Dirección","cap","opt","Calle 55A Sur",null,2)}
+     ${fSelect("paisOrig","País de origen","cap","cond",O.pais,"RIPS codPaisOrigen")}
+   </div></div>`},
+ {k:"Paso 2",t:"Convenio y cobertura",sub:"Elige el Convenio del paciente: baja todo el contexto de pago (solo lectura). Solo capturas lo que el convenio exige.",build:()=>{
+   const c=CONVENIOS[convKey]||{};
+   return `<div class="sec"><h3>Convenio (llave)</h3><div class="grid">
+     ${col(wrapF("conv","Convenio","cap","req",`<select id="conv"><option value="">Seleccione…</option><option value="fomag"${convKey==="fomag"?" selected":""}>Ecografías FOMAG 2026</option><option value="soat"${convKey==="soat"?" selected":""}>SOAT · Seguros del Estado</option><option value="particular"${convKey==="particular"?" selected":""}>Particular</option></select>`,""),3)}
+     ${fRO("ro-pagador","Pagador / adquiriente","conv","req",c.pagador,"FEV adquiriente",2)}
+     ${fRO("ro-tipoent","Tipo entidad resp. de pago","conv","req",c.tipoEntidad)}
+     ${fRO("ro-regimen","Régimen","conv","req",c.regimen)}
+     ${fRO("ro-cobertura","Cobertura / plan","conv","req",c.cobertura,"FEV COBERTURA")}
+     ${col(wrapF("modalidad","Modalidad de pago","conv","req",`<select id="modalidad">${opts(O.modalidadPago,V.modalidad||c.modalidad||O.modalidadPago[3])}</select>`,"FEV MODALIDAD_PAGO · override"),1)}
+     ${fRO("ro-ret","Retenciones / IVA","conv","req",c.ret,"FEV TaxTotal")}
+     ${fRO("ro-pago","Forma / medio de pago","conv","req",c.pago,"FEV PaymentMeans",2)}
+   </div></div>
+   <div class="sec"><h3>Contrato / soportes (según el convenio)</h3><div class="grid">
+     ${fRO("ro-contrato","Número de contrato","conv","cond",c.contrato,"FEV NUMERO_CONTRATO")}
+     ${fRO("ro-cucon","CUCON","intg","cond","Pendiente · lo expide el SIIFA","integración")}
+     ${fSelect("caso","Caso factura sin contrato","cap","cond",O.caso,"FEV FACTURA_SIN_CONTRATO")}
+     ${fSelect("nivel","Nivel de afiliación","cap","cond",O.nivel)}
+     ${fInput("numAut","Número de autorización","cap","cond","AUT-2026-006763","RIPS numAutorizacion")}
+     ${fInput("poliza","Número de póliza","cap","cond","SOAT-778-2026","FEV NUMERO_POLIZA")}
+     ${fInput("mipres","ID MIPRES","cap","cond","","RIPS")}
+     ${fInput("siras","ID SIRAS","cap","cond","","RIPS")}
+   </div></div>`}},
+ {k:"Paso 3",t:"Agendamiento",sub:"Agrega el/los estudio(s) (CUPS), la sede y la fecha. Cada estudio abre su bloque clínico y de recaudo.",build:()=>`
+   <div class="sec"><h3>Agenda</h3><div class="grid">
+     ${fSelect("sede","Sucursal / sede","cap","req",O.sede,"RIPS codPrestador")}
+     ${fDate("fecha","Fecha de atención","cap","req","RIPS fechaInicioAtencion")}
+     ${fInput("hora","Hora","cap","req","07:45 – 08:45","FEV InvoicePeriod")}
+   </div></div>
+   <div class="sec"><h3>Estudios de la orden (${studies.length})</h3>
+     <div class="grid">${fTA("addcups","Agregar estudio (CUPS)","cap","req","Buscar TAC, ecografía, RX…","CUPS","RIPS codProcedimiento · FEV Item",3)}</div>
+     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+       ${studies.map((s,i)=>`<span class="chip">${s.c} · ${s.n}<button data-rm="${i}" title="Quitar">✕</button></span>`).join("")||'<span style="color:var(--ink-3);font-size:12.5px">Aún no hay estudios. Búscalos arriba y selecciónalos.</span>'}
+     </div>
+   </div>`},
+ {k:"Paso 4",t:"Información del estudio",sub:"Bloque clínico por estudio. Diagnóstico y vía de ingreso incluidos; los defaults de imagenología van en «Avanzado».",perStudy:"clinico"},
+ {k:"Paso 5",t:"Recaudo (caja)",sub:"Lo que se cobra al usuario por estudio. Debe cuadrar RIPS ↔ FEV. Precio y total son de solo lectura (tarifa del Contrato).",perStudy:"recaudo"},
+ {k:"Paso 6",t:"Comentarios y archivos",sub:"Soportes internos de la orden. No viajan al RIPS ni a la FEV.",build:()=>`
+   <div class="sec"><h3>Adjuntos</h3><div class="grid">
+     ${fArea("coment","Comentarios","cap","opt","Escribe un comentario…",null,3)}
+     ${col(wrapF("files","Archivos adicionales","cap","opt",`<div class="ro" style="justify-content:center;color:var(--ink-3)">Arrastra JPG, PDF, DICOM… (máx. 100 MB)</div>`,""),3)}
+   </div></div>`}
+];
+
+function clinico(s,i){const g=k=>`s${i}-${k}`;
+  return `<div class="study"><div class="study-hd"><span class="cups">${s.c}</span>${s.n}<button class="rm" data-rm="${i}">Quitar</button></div>
+    <div class="grid">
+      ${fSelect(g("prioridad"),"Prioridad","cap","req",O.prioridad)}
+      ${fTA(g("dxP"),"Diagnóstico principal (CIE-10)","cap","req","Buscar CIE-10…","CIE10","RIPS codDiagnosticoPrincipal",2)}
+      ${fSelect(g("tipoDx"),"Tipo de diagnóstico","def","req",O.tipoDx,"RIPS tipoDiagnosticoPrincipal")}
+      ${fTA(g("dxRel"),"Diagnóstico relacionado","cap","cond","Opcional…","CIE10","RIPS codDiagnosticoRelacionado",2)}
+      ${fInput(g("medOrd"),"Médico que ordena (referente)","cap","req","Dra. L. Gómez · CC 43.xxx","RIPS prof. ordena",2)}
+      ${fSelect(g("esp"),"Especialidad referente","cap","req",O.esp)}
+      ${fSelect(g("medRea"),"Médico que realiza","cap","req",O.medico,"RIPS prof. realiza")}
+      ${fSelect(g("tec"),"Técnico radiólogo","cap","req",O.tecnico)}
+      ${fArea(g("motivo"),"Motivo del estudio","cap","opt","Motivo clínico…",null,1)}
+    </div>
+    <details class="adv"><summary><span class="chev">▸</span>Avanzado · defaults de imagenología</summary><div class="grid">
+      ${fSelect(g("via"),"Vía de ingreso","def","req",O.via,"RIPS viaIngreso")}
+      ${fSelect(g("modAt"),"Modalidad de atención","def","req",O.modAt,"RIPS modalidadAtencion")}
+      ${fSelect(g("fin"),"Finalidad","def","req",O.finalidad,"RIPS finalidad")}
+      ${fSelect(g("grupo"),"Grupo de servicios","def","req",O.grupo,"RIPS grupoServicios")}
+    </div></details></div>`;
+}
+function recaudo(s,i){const g=k=>`s${i}-${k}`;
+  return `<div class="study"><div class="study-hd"><span class="cups">${s.c}</span>${s.n}</div>
+    <div class="grid">
+      ${fSelect(g("concepto"),"Concepto de recaudo","cap","req",O.concepto,"RIPS conceptoRecaudo")}
+      ${fInput(g("valor"),"Valor recaudado","cap","cond","$ 0","RIPS valorPagoModerador · FEV PrepaidPayment")}
+      ${fRO(g("precio"),"Precio del estudio","calc","req","$ "+fmt(s.p),"RIPS vrServicio · FEV Price")}
+    </div></div>`;
+}
+const fmt=n=>(n||0).toLocaleString("es-CO");
+
+function stepper(){document.getElementById("stepper").innerHTML=STEPS.map((s,i)=>`
+  <button class="step ${i<cur?'done':''}" aria-current="${i===cur}" data-i="${i}"><span class="num">${i<cur?'✓':i+1}</span><span><span class="st-k" style="display:block">${s.k}</span><span class="st-t">${s.t}</span></span></button>`).join("");}
+
+function render(){
+  const s=STEPS[cur];
+  let body=`<div class="panel-hd"><h2>${s.t}</h2><p>${s.sub}</p></div>`;
+  if(showGate&&cur===STEPS.length-1)body+=gateHTML();
+  if(s.perStudy){
+    body+= studies.length? `<div style="padding-top:6px">`+studies.map((st,i)=>s.perStudy==="clinico"?clinico(st,i):recaudo(st,i)).join("")+`</div>`
+      : `<div class="empty">No hay estudios en la orden. Ve al <a style="color:var(--cap);cursor:pointer" data-goto="2">Paso 3 · Agendamiento</a> para agregarlos.</div>`;
+  } else body+=s.build();
+  document.getElementById("panel").innerHTML=body;
+  stepper();restoreStudyValues();updateDeps();renderRail();
+  document.getElementById("prog").textContent=`Paso ${cur+1} de ${STEPS.length} · ${s.t}`;
+  document.getElementById("prev").disabled=cur===0;
+  document.getElementById("next").textContent=cur===STEPS.length-1?"Generar orden":"Siguiente";
+  const counts={};document.querySelectorAll("#panel .f:not(.hidden)").forEach(f=>counts[f.dataset.o]=(counts[f.dataset.o]||0)+1);
+  document.getElementById("capnote").innerHTML="En este paso: "+Object.keys(ONAME).filter(o=>counts[o]).map(o=>`<b style="color:var(--${o})">${counts[o]} ${ONAME[o].toLowerCase()}</b>`).join(" · ");
+  applyFilter();
+}
+function restoreStudyValues(){
+  studies.forEach((st,i)=>Object.keys(st).forEach(k=>{const el=document.getElementById(`s${i}-${k}`);if(el&&st[k]!=null&&"value"in el)el.value=st[k];}));
+}
+function renderRail(){
+  const c=CONVENIOS[convKey]||{};
+  const total=studies.reduce((a,s)=>a+(s.p||0),0);
+  const recaudado=studies.reduce((a,s)=>a+(parseInt(String(s.valor||"").replace(/\D/g,""))||0),0);
+  document.getElementById("rail").innerHTML=`
+    <div class="card"><h4>Contexto de facturación</h4><div class="kv">
+      <div class="row"><span class="k">Convenio</span><span class="v">${c.nombre||"—"}</span></div>
+      <div class="row"><span class="k">Pagador</span><span class="v">${c.pagador||"—"}</span></div>
+      <div class="row"><span class="k">Cobertura</span><span class="v">${c.cobertura||"—"}</span></div>
+      <div class="row"><span class="k">Modalidad</span><span class="v">${V.modalidad||c.modalidad||"—"}</span></div>
+    </div><div class="stripe"><span class="dot conv"></span>Baja del Convenio (solo lectura)</div></div>
+    <div class="card"><h4>Se resuelve al facturar</h4><div class="kv">
+      <div class="row"><span class="k">CUCON</span><span class="v pend">SIIFA</span></div>
+      <div class="row"><span class="k">N.º factura</span><span class="v pend">Rango DIAN · al timbrar</span></div>
+      <div class="row"><span class="k">CUFE</span><span class="v pend">Loggro / DIAN</span></div>
+      <div class="row"><span class="k">CUV</span><span class="v pend">MUV · MinSalud</span></div>
+      <div class="row"><span class="k">Recaudado</span><span class="v">$ ${fmt(recaudado)}</span></div>
+      <div class="row total"><span class="k">Total a pagar</span><span class="v">$ ${fmt(total)}</span></div>
+    </div><div class="stripe"><span class="dot intg"></span>Fuera del formulario</div></div>`;
+}
+function setHidden(id,hide){const el=document.querySelector(`.f[data-fid="${id}"]`);if(el)el.classList.toggle("hidden",!!hide);}
+function updateDeps(){
+  const c=CONVENIOS[convKey]||{};
+  setHidden("paisOrig",String(V.pais||"").indexOf("170")===0);
+  if(document.querySelector('.f[data-fid="conv"]')){
+    setHidden("caso",!c.sinContrato);
+    setHidden("ro-contrato",!convKey||c.sinContrato);
+    setHidden("ro-cucon",!convKey||c.sinContrato);
+    setHidden("poliza",!c.poliza);
+    setHidden("numAut",!c.reqAut);
+    setHidden("mipres",!c.reqMipres);
+    setHidden("siras",!c.reqSiras);
+  }
+  studies.forEach((s,i)=>{const el=document.getElementById(`s${i}-concepto`);const val=(el?el.value:s.concepto)||"";setHidden(`s${i}-valor`,val.indexOf("05")===0);});
+  renderRail();
+}
+
+const panel=document.getElementById("panel");
+function syncStudy(t){const m=t.id&&t.id.match(/^s(\d+)-(.+)$/);if(m&&studies[+m[1]])studies[+m[1]][m[2]]=t.type==="checkbox"?t.checked:t.value;}
+panel.addEventListener("input",e=>{const t=e.target;if(!t.id)return;
+  if(t.dataset&&t.dataset.ta)taFilter(t);
+  if(t.type==="checkbox"){V[t.id]=t.checked;const sp=t.parentElement.querySelector(".tgl-t");if(sp)sp.textContent=t.checked?"Sí":"No";}
+  else V[t.id]=t.value;
+  syncStudy(t);});
+panel.addEventListener("change",e=>{const t=e.target;if(!t.id)return;
+  if(t.id==="conv"){convKey=t.value;delete V.modalidad;render();return;}
+  V[t.id]=t.type==="checkbox"?t.checked:t.value;syncStudy(t);updateDeps();});
+panel.addEventListener("commit",e=>{const t=e.target;
+  if(t.id==="addcups"){const m=t.value.match(/^(\S+)\s·\s(.+)$/);if(m){const cup=CUPS.find(x=>x.c===m[1]);if(cup&&!studies.some(s=>s.c===cup.c))studies.push({c:cup.c,n:cup.n,p:cup.p,prioridad:O.prioridad[0],tipoDx:O.tipoDx[0],esp:O.esp[0],medRea:O.medico[0],tec:O.tecnico[0],via:O.via[0],modAt:O.modAt[0],fin:O.finalidad[0],grupo:O.grupo[0],concepto:O.concepto[0]});}V.addcups="";render();return;}
+  syncStudy(t);updateDeps();});
+panel.addEventListener("click",e=>{
+  const rm=e.target.closest("[data-rm]");if(rm){studies.splice(+rm.dataset.rm,1);render();return;}
+  const go=e.target.closest("[data-goto]");if(go){goStep(+go.dataset.goto);}
+});
+document.getElementById("stepper").addEventListener("click",e=>{const b=e.target.closest(".step");if(b)goStep(+b.dataset.i);});
+function goStep(i){cur=i;showGate=false;render();window.scrollTo({top:0,behavior:"smooth"});}
+document.getElementById("prev").addEventListener("click",()=>{if(cur>0)goStep(cur-1);});
+document.getElementById("next").addEventListener("click",()=>{if(cur<STEPS.length-1)goStep(cur+1);else{showGate=true;render();}});
+document.getElementById("legend").addEventListener("click",e=>{const b=e.target.closest(".lg");if(!b)return;filter=filter===b.dataset.o?null:b.dataset.o;document.querySelectorAll(".lg").forEach(l=>l.setAttribute("aria-pressed",l.dataset.o===filter));applyFilter();});
+function applyFilter(){const p=document.getElementById("panel");p.classList.toggle("dim",!!filter);p.querySelectorAll(".f").forEach(f=>f.classList.toggle("hl",filter&&f.dataset.o===filter));}
+
+function validate(){const m=[],c=CONVENIOS[convKey]||{};
+  if(!V.tipoDoc||!V.numDoc||!V.nombres||!V.ap1||!V.fnac)m.push([0,"Paciente: identidad y datos básicos"]);
+  if(!V.mun)m.push([0,"Paciente: municipio de residencia"]);
+  if(!convKey)m.push([1,"Convenio del paciente sin seleccionar"]);
+  if(c.reqAut&&!V.numAut)m.push([1,"Falta número de autorización (lo exige el convenio)"]);
+  if(c.poliza&&!V.poliza)m.push([1,"Falta número de póliza (SOAT / voluntario)"]);
+  if(!V.fecha)m.push([2,"Agendamiento: fecha de atención"]);
+  if(!studies.length)m.push([2,"No hay estudios en la orden"]);
+  studies.forEach(s=>{if(!s.dxP)m.push([3,`Estudio ${s.c}: falta diagnóstico principal (CIE-10)`]);
+    if(s.concepto&&s.concepto.indexOf("05")!==0&&!s.valor)m.push([4,`Estudio ${s.c}: falta valor recaudado`]);});
+  return m;
+}
+function gateHTML(){const m=validate();
+  if(!m.length)return `<div class="gate ok"><div class="gate-hd">✓ Orden lista — pasa las validaciones del RIPS y la FEV</div><ul><li>Se generaría el RIPS + la prefactura → timbrar (Loggro → DIAN) → MUV (→ CUV). Sin CUV no hay cobro.</li></ul></div>`;
+  return `<div class="gate err"><div class="gate-hd">⚠ Faltan ${m.length} campo(s) para generar la orden</div><ul>${m.map(x=>`<li><a data-goto="${x[0]}">${x[1]}</a></li>`).join("")}</ul></div>`;
+}
+render();
+</script>

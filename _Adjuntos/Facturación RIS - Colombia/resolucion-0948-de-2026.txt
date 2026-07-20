@@ -1,0 +1,891 @@
+
+===== Página 1/17 =====
+República de Colombia
+MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL
+)
+14 MAY 2026
+RESOLUCIÓN NÚMEROQ00948 DE 2026 
+(
+EL MINISTRO DE SALUD Y PROTECCIÓN SOCIAL
+En ejercicio de las facultades legales y reglamentarias, en especial las conferidas 
+por los artículos 173, numeral 3 de la Ley 100 de 1993 y 15 de la Ley 1966 de 2019
+y.
+CONSIDERANDO
+Que, en desarrollo del artículo 15 de la Ley 1966 de 2019, el cual estableció que los 
+prestadores de salud deben generar factura electrónica por el cobro de los servicios y 
+tecnologías en salud, indicando que la misma deberá ser presentada ante la Unidad 
+Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN), el 
+Ministerio de Salud y Protección Social expidió las Resoluciones 2275 de 2023 558 
+de 2024 y 1884 de 2024.
+Que las precitadas normas constituyen el marco operativo a partir del cual el Ministerio 
+de Salud y Protección Social implementó el proceso de facturación electrónica en el 
+sector salud, integrando la extensión salud de la Factura Electrónica de Venta (FEV), 
+habilitada por la Unidad Administrativa Especial Dirección de Impuestos y Aduanas 
+Nacionales (DIAN), con el Registro Individual de Prestación de Servicios de Salud 
+(RIPS), información generada por los prestadores de servicios de salud y los 
+proveedores de tecnologías en salud en el proceso de cobro por la prestación o 
+provisión de servicios y tecnologías a las Entidades Responsables de Pago (ERP) y 
+demás pagadores, conforme al estándar definido por el Ministerio. En virtud de lo 
+anterior, los participantes del sistema de salud han implementado las 
+correspondientes adecuaciones en sus sistemas de información.
+Que, mediante la Resolución 1884 de 2024 que modificó la Resolución 2275 de 2023, 
+se determinó una implementación gradual conforme las capacidades institucionales de 
+los Prestadores de Servicios de Salud (PSS) y Proveedores de Tecnología en Salud 
+(PTS), y se ajustó el Anexo Técnico 2 de la Factura Electrónica de Venta (FEV) en salud 
+para permitir el diligenciamiento de anticipos y el recaudo de pagos moderadores como 
+recursos recibidos a favor de terceros.
+Que durante el período que lleva en operación el mecanismo único de validación se 
+han detectado necesidades de ajuste a fin de garantizar mayor operatividad y 
+centrahzar los esfuerzos en la prestación de servicios de salud financiados con recursos 
+del Sistema General de Seguridad Social en Salud, necesidades entre las cuales se
+Por la cual se reglamenta el Registro Individual de Prestación de Servicios de Salud 
+(RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud se derogan 
+las Resoluciones 2275 de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones
+wKateLZSKr
+
+===== Página 2/17 =====
+RESOLUCIÓN NÚMERO 000948 HOJA N° 2
+En mérito de lo expuesto,
+RESUELVE
+Capítulo 1. Generalidades
+Que, mediante Resolución 35379 del 10 de junio de 2025, la Superintendencia de 
+Industria y Comercio autorizó la negociación conjunta para la adquisición de 
+medicamentos, dispositivos médicos y Alimentos de Propósito Médico Especial 
+(ARME), por parte de las Entidades Promotoras de Salud (EPS) para la compra directa 
+de medicamentos, dispositivos médicos y otros insumos con fabricantes, importadores 
+o titulares de registro sanitario, resultando procedente incluir tales facturas en el 
+Mecanismo Único de Validación de FEV- RIPS, dado que estas tecnologías tienen una 
+importante participación en la canasta de servicios de salud entre los agentes del 
+sector.
+Que, mediante Resolución 1962 de 2025, este Ministerio reglamentó el Sistema de 
+Información Integral Financiero y Asistencia! (SIIFA) y dispuso la inclusión en los 
+módulos que lo integran de las transacciones entre las Entidades Responsables de 
+Pago (ERP) y los fabricantes, importadores, o titulares de registro sanitario de 
+medicamentos, dispositivos médicos y otros insumes, haciéndose necesario establecer 
+el módulo a través de los cuales estas entidades transmitirán sus facturas al Mecanismo 
+Único de Validación, dado que al tratarse de compras masivas y no de dispensación 
+individual, no se soportan en los Registros Individuales de Prestación de Servicios 
+(RIPS).
+Que dentro de los campos adicionales de la Factura Electrónica de Venta (FEV) en 
+salud se citan objetos que ya se encuentran en la extensión UBL definida en el Anexo 
+Técnico, versión 1.9 de la factura electrónica incorporada en la Resolución 165 de 2023 
+emitida por la Unidad Administrativa Especial Dirección de Impuestos y Aduanas 
+Nacionales (DIAN), por lo cual se requiere dar claridad para que las entidades 
+facturadoras y pagadoras adopten adecuadamente las disposiciones normativas.
+Artículo 1. Objeto. La presente resolución tiene por objeto reglamentar el Registro 
+Individual de Prestación de Servicios de Salud (RIPS) como soporte de la Factura 
+Electrónica de Venta (FEV) en salud y adoptar los documentos técnicos que se
+Que, de acuerdo con las circunstancias anotadas y con el fin de garantizar agilidad en 
+los ajustes técnicos que lleguen a requerirse, el detalle de la información a ser 
+reportada, hoy incluida en los Anexos Técnicos No. 1 y 2 de la Resolución 2275 de 
+2023 y sus modificatorias, se dispondrá como Documentos Técnicos 1 y 2 a través de 
+un enlace ubicado en la página web de la Cartera Ministerial, de manera que pueda 
+optimizarse el mecanismo único de validación.
+encuentra la exclusión de algunos tipos de entidades del campo de aplicación previsto 
+en la Resolución 2275 de 2023, tales como centros de cirugías estéticas, atenciones 
+excluidas de la financiación con recursos públicos y los centros de investigación, pues 
+no se encuentran financiados con recursos del sistema de salud y existe 
+confidencialidad en ellos, guardándose custodia de la identificación y atención de los 
+individuos investigados. Así como los centros de reconocimiento de conductores, pues 
+es el usuario quien asume el costo directamente y no se genera un diagnóstico y, las 
+atenciones de medicina alternativa excluidas de la financiación con recursos públicos.
+DE 14 MAY 2026-
+Continuación de la resolución: “Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones”
+
+===== Página 3/17 =====
+HOJA N° 3
+en la presente
+1.
+Estas entidades deberán incorporar y usar en sus procesos de información, los 
+contenidos y estructura definidos en el Registro Individual de Prestación de Servicios 
+de Salud (RIPS) y en la Factura Electrónica de Venta (FEV) en salud, con excepción 
+de los fabricantes, importadores y titulares de registro sanitario enunciados en el 
+numeral 4 del presente artículo.
+1. Documento técnico 1: “ESPECIFICACIONES TÉCNICAS DE LOS CAMPOS DE 
+DATOS Y LAS REGLAS DE VALIDACIÓN DEL RIPS COMO SOPORTE DE LA 
+FEV EN SALUD”
+2. Documento técnico 2: “CAMPOS DE DATOS DEL SECTOR SALUD 
+ADICIONALES A LA GENERACION DE LA FEV”
+Artículo 2. Ámbito de Aplicación. Las disposiciones contenidas 
+resolución son aplicables a:
+relacionan a continuación, los cuales serán publicados en la página web del Ministerio 
+de Salud y Protección Social:
+o°,nt!n/o^o n de la resolución: “Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+como s°Porte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones”
+RESOLUCIÓN NÚMERO 000948 DE 1 4 MAY 202^
+Parágrafo 1. Las disposiciones establecidas en la presente resolución respecto a la 
+factura de venta en salud y el Registro Individual de Prestación de Servicios de Salud 
+(RIPS), no serán aplicables para los centros de reconocimiento de conductores, centros 
+de investigación, servicios de cirugía estética y de medicina alternativa que no se 
+financien con recursos públicos, sin perjuicio de que para estos servicios se deban 
+expedir facturas electrónicas de venta, conforme la normatividad de la Unidad 
+Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN).
+Los prestadores de servicios de salud, esto es, Instituciones Prestadoras de 
+Servicios de Salud (IPS), profesionales independientes y empresas de transporte 
+asistencial de pacientes.
+2. Los proveedores de tecnologías en salud.
+3. Otras entidades que en el marco de sus funciones legales deban entregar los datos 
+del Registro Individual de Prestación de Servicios de Salud (RIPS) al Sistema de 
+General de Seguridad Social en Salud, tales como, las de objeto social diferente a 
+la prestación de servicios de salud, aunque no expidan facturas de venta por sus 
+servicios.
+4. Los fabricantes, importadores y titulares de registro sanitario que realicen ventas 
+masivas de medicamentos, dispositivos o insumes a las Entidades Promotoras de 
+Salud (EPS) y otros pagadores, para ser entregados a los gestores farmacéuticos 
+o a los Prestadores de Servicios de Salud (PSS), para su posterior dispensación o 
+administración a los afiliados.
+5. Entidades Responsables de Pago (ERP): Entidades Promotoras de Salud (EPS), 
+Entidades Adaptadas (EA), Entidades Territoriales (ET), Administradoras dé 
+Riesgos Laborales (ARL) en el componente salud, el Fondo Nacional de Salud de 
+las Personas Privadas de la Libertad y los Administradores de los Regímenes 
+Especial y de Excepción, cuando operen como pagadores de servicios y 
+tecnologías a prestadores o proveedores en los términos del artículo 2.5.3.4.1.2. 
+del Decreto 780 de 2016.
+6. Otros pagadores: Compañías de seguros autorizadas para ofrecer pólizas del 
+Seguro Obligatorio de Accidentes de Tránsito (SOAT) y las entidades que ofrecen 
+planes voluntarios de salud.
+7. La Administradora de los Recursos del Sistema General de Seguridad Social en 
+Salud (ADRES).
+
+===== Página 4/17 =====
+14 liftY 2026- H0JAN°4
+2.2.Archivo JSON del Registro Individual de Prestación de Servicios de Salud 
+(RIPS) que soporta la Factura de Venta Electrónica (FEV) en salud o sus 
+documentos nota débito o nota crédito, así como los archivos JSON 
+relacionados con notas de ajuste del Registro Individual de Prestación de 
+Servicios de Salud (RIPS), cuando corresponda.
+Artículo 3. Definiciones. Para efectos de la presente resolución, se definen los 
+siguientes términos:
+Las entidades que en el marco de sus funciones y competencias deban entregar 
+los datos del Registro Individual de Prestación de Servicios de Salud (RIPS) al 
+Sistema General de Seguridad Social en Salud, que no emitan factura de venta 
+en salud, solo deberán transmitir al mecanismo único de validación del Ministerio,
+Parágrafo 3. Para los efectos previstos en la presente resolución, se entienden como 
+facturadores electrónicos del sector salud, las entidades encargadas de la prestación o 
+provisión de servicios y tecnologías de salud relacionadas en los numerales 1 y 2 de 
+este artículo.
+2. Conjunto de archivos de información: archivos de información que deben ser 
+transmitidos por los facturadores electrónicos del sector salud al Ministerio para ser 
+validados por el mecanismo único de validación dispuesto por este, que 
+corresponden a:
+1. Código Unico de Validación (CUV): corresponde a una cadena alfanumérica 
+cifrada, que certifica la aprobación resultante de la validación única del Registro 
+Individual de Prestación de Servicios de Salud (RIPS), que se obtiene cuando este 
+registro cumple todas las reglas de validación obligatorias y de relación con la 
+Factura Electrónica de Venta (FEV) en salud y demás documentos electrónicos, 
+cuando aplique. El mecanismo único de validación incluirá el Código Único de 
+Validación (CUV) en el conjunto de información validada. Esta validación es 
+requisito obligatorio para la radicación de las facturas electrónicas de venta en salud 
+ante las entidades pagadoras. Los pagadores no podrán recibir ni tramitar facturas 
+que carezcan del Código Único de Validación (CUV), ni podrán informar como 
+costos de la atención con cargo a la Unidad de Pago por Capitación (UPC) aquellas 
+facturas que no cumplan este requisito.
+2.1 .Archivo XML de las facturas electrónicas de venta en salud, las notas débito 
+y/o notas crédito validadas previamente por la Unidad Administrativa 
+Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) dentro del 
+contenedor electrónico. Los fabricantes, importadores de medicamentos, 
+insumes o dispositivos médicos y los titulares de registros sanitarios que 
+vendan directamente a las Entidades Promotoras de Salud (EPS) estos 
+insumes para su posterior dispensación por los Gestores Farmacéuticos 
+deberán expedir facturas electrónicas comerciales (sin campos adicionales 
+del sector salud) y deberán transmitirlas por el mecanismo único de 
+validación sin que les sea exigible soportarlas en los Registros Individuales 
+de Prestación de Servicios de Salud (RIPS).
+e°(nt¿n/o^o1n de la reso,ución: “Por /a cual se reglamenta el Registro Individual de Prestación de Servicios de 
+IFEV> “
+RESOLUCIÓN NÚMERO 000948 DE
+Parágrafo 2. Para los eventos en que sea obligada a efectuar el pago, la 
+Administradora de los Recursos del Sistema General de Seguridad Social en Salud 
+(ADRES) podrá tenerse como otro pagador.
+
+===== Página 5/17 =====
+HOJA N° 5
+6. Nota ajuste del Registro Individual de Prestación de Servicios de Salud 
+(RIPS): tipo de nota mediante la cual se actualizan datos del Registro Individual 
+de Prestación de Servicios de Salud (RIPS), en los casos en los cuales no hay 
+afectación en el campo de datos de valor monetario total y no procede la 
+generación de notas crédito o notas débito a la factura electrónica de venta en 
+salud.
+4. Factura sin contrato: para los efectos del presente acto administrativo, se 
+consideran excepciones a la obligatoriedad de contar con el Código Único de 
+Contrato (CUCON), situaciones como la atención de urgencias prestada sin 
+contrato vigente, atención a cargo de la Administradora de los Recursos del 
+Sistema General de Seguridad Social en Salud (ADRES) o de aseguradora 
+Seguro Obligatorio de Accidentes de Tránsito (SOAT), atención en salud por 
+fallos de tutela, órdenes judiciales y otras que se precisan en el Documento 
+Técnico 2 a que se refiere el artículo 12 de la presente resolución.
+5. Mecanismo único de validación: mecanismo dispuesto por este Ministerio, el 
+cual desarrolla las reglas de estructura, contenido y relación de los datos del 
+Registro Individual de Prestación de Servicios de Salud (RIPS), como soporte de 
+la Factura Electrónica de Venta (FEV) en salud y de los documentos electrónicos 
+asociados a la misma, notas crédito y notas débito, a las notas ajuste del Registro 
+Individual de Prestación de Servicios de Salud (RIPS) y el Registro Individual de 
+Prestación de Servicios de Salud (RIPS) sin factura o documento electrónico, 
+según el caso. También validará las facturas convencionales sin Registro 
+Individual de Prestación de Servicios de Salud (RIPS) que emitan los fabricantes, 
+importadores o titulares de registro sanitario cuando realizan ventas directas de 
+medicamentos, dispositivos médicos o Alimentos para Propósitos Médicos 
+Especiales (APME) a las Entidades Promotoras de Salud (EPS) u otros 
+pagadores para que los gestores farmacéuticos o prestadores los dispensen 
+ambulatoriamente a sus afiliados.
+el archivo JSON del Registro Individual de Prestación de Servicios de Salud 
+(RIPS).
+3. Código Único de Contrato (CUCON): es un identificador generado 
+automáticamente por el Sistema Integral de Información Financiero y Asistencial 
+(SIIFA) al momento del cargue del contrato. Corresponde a una cadena 
+alfanumérica de 64 caracteres en formato hexadecimal, generada mediante el 
+algoritmo de hash criptográfico SHA-256, lo que garantiza la unicidad, integridad 
+y trazabilidad del registro, permitiendo su identificación, consulta, seguimiento y 
+gestión durante todo el ciclo de vida del contrato dentro del sistema.
+7. Prestación individual de servicios y tecnologías de salud: conjunto de 
+actividades, intervenciones, insumos, medicamentos, dispositivos médicos, y 
+procedimientos usados para la atención en salud, así como los sistemas 
+organizativos y de soporte para el efecto.
+8. Reglas de validación: condiciones de carácter técnico y funcional establecidas 
+por el Ministerio de Salud y Protección Social, aplicables a la estructura, 
+contenido y relación de los campos de datos del Registro Individual de Prestación 
+de Servicios de Salud (RIPS) como soporte de la Factura Electrónica de Venta 
+(FEV) en salud, para garantizar la consistencia y razonabilidad de la información. 
+Estas reglas tendrán como resultado la generación del Código Único de
+RESOLUCIÓN NÚMERO 000948 DE 1 4 MAY 2026
+Continuación de la resolución: "Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones"
+
+===== Página 6/17 =====
+RESOLUCIÓN NÚMERO 000948 DE HOJA N° 6
+Capítulo 2
+1. Datos relativos a la transacción.
+2. Datos relativos a los usuarios.
+3. Datos relativos a los servicios y tecnologías de salud y a los valores facturados:
+Proceso de generación del Registro Individual de Prestación de Servicios de 
+Salud (RIPS), como soporte de la Factura Electrónica de Venta (FEV) en salud
+Artículo 5. Datos del Registro individual de Prestación de Servicios de Salud 
+(RIPS). Los destinatarios de la presente resolución deben utilizar los datos que se 
+refieren a la transacción, al servicio, a la tecnología de salud y al valor facturado, así:
+Artículo 4. Registro Individual de Prestación de Servicios de Salud (RIPS). El 
+Registro Individual de Prestación de Servicios de Salud (RIPS) es el conjunto de datos 
+que contiene la información relacionada con la prestación o provisión de servicios y 
+tecnologías de salud al usuario. El Registro Individual de Prestación de Servicios de 
+Salud (RIPS) se utilizará para los procesos de prestación o provisión de servicios y 
+tecnologías de salud y su facturación, así como para los procesos de dirección, 
+regulación y control.
+El Registro Individual de Prestación de Servicios de Salud (RIPS) será generado, 
+validado y enviado como soporte de la factura de venta por parte de los facturadores 
+electrónicos del sector salud, esto es, prestadores de servicios de salud, proveedores 
+de tecnologías en salud y otras entidades que en el marco de sus funciones legales 
+deban entregarlos.
+9. Validación única: proceso de revisión de los datos contenidos en el Registro 
+Individual de Prestación de Servicios de Salud (RIPS) y su consistencia con las 
+variables comunes de la Factura Electrónica de Venta (FEV) en salud, realizado 
+por el facturador electrónico en salud con el propósito de obtener el certificado de 
+aprobación del contenido, la estructura y las relaciones entre los datos del 
+Registro Individual de Prestación de Servicios de Salud (RIPS) como soporte de 
+la factura. Este proceso se realiza de manera previa al envío de la factura 
+electrónica de venta en salud, el Registro Individual de Prestación de Servicios 
+de Salud (RIPS) y demás soportes a la entidad responsable de pago o demás 
+pagadores.
+10. Factura electrónica convencional sin Registro Individual de Prestación de 
+Servicios de Salud (RIPS): factura convencional (sin campos adicionales del 
+sector salud) que deben expedir los fabricantes, importadores o titulares de 
+registro sanitario cuando venden directamente a las Entidades Responsables de 
+Pago (ERP) para posterior distribución a través de los Gestores Farmacéuticos. 
+Estas facturas deben ser expedidas sin Registros Individuales de Prestación de 
+Servicios de Salud (RIPS) y deben ser validadas por el mecanismo único de 
+validación del Ministerio de Salud y Protección Social, para lo cual se dispondrá 
+el módulo correspondiente. En los campos generales del XML de la factura, 
+deberán registrar el Código Único de Contrato (CUCON).
+Validación (CUV), el rechazo o la notificación para las causas que se especifican 
+en el documento técnico correspondiente. Las reglas de notificación se 
+convertirán gradualmente en reglas de rechazo para asegurar una mejora 
+progresiva de calidad.
+14 Mg 2026
+O°,nt2n/'^oo.n de la resolución: "Por /a cual se reglamenta el Registro Individual de Prestación de Servicios de 
+X C0.m°.s°po^e de la Factura Electrónica Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones”
+
+===== Página 7/17 =====
+RESOLUCIÓN NÚMERO 000948 14 MAY 2026-DE HOJA N° 7
+3.
+Datos de las consultas
+Datos de los procedimientos
+Datos de la urgencia con observación
+Datos de hospitalización
+Datos de recién nacidos 
+Datos de medicamentos
+Datos de otros servicios
+3.1.
+3.2.
+3.3.
+3.4.
+3.5.
+3.6.
+3.7.
+Una vez surtido el proceso de validación previa de la Unidad Administrativa Especial 
+Dirección de Impuestos y Aduanas Nacionales (DIAN) a la factura o a las notas débito, 
+notas crédito y demás documentos electrónicos, en los términos previstos en el artículo 
+12 de la presente resolución o la norma que la modifique o sustituya, se deberá realizar 
+la validación única del Registro Individual de Prestación de Servicios de Salud (RIPS).
+Las reglas únicas de validación del Registro Individual de Prestación de Servicios de 
+Salud (RIPS) según las cuales se evaluarán las condiciones de estructura, contenido y 
+relación de la información reportada, se detallan en el Documento Técnico Campos y 
+Reglas de Validación del Registro Individual de Prestación de Servicios de Salud (RIPS) 
+disponible en el link: https://www.sisproqov.co/central-
+financiamiento/Paqes/facturacion-electronica.aspx. por tanto, las Entidades 
+Responsables de Pago (ERP) y demás pagadores no podrán usar, ni adicionar otras 
+reglas o establecer mecanismos alternos de validación, como condición para radicar 
+las facturas.
+Artículo 7. Flujo y reporte de datos. El Registro Individual de Prestación de Servicios 
+de Salud (RIPS) debe generarse juntamente con la Factura Electrónica de Venta (FEV) 
+en salud, de las notas débito, notas crédito y demás documentos electrónicos, cuando 
+aplique.
+Lo anterior no excluye la auditoria sobre los demás soportes que se adjunten, definidos 
+en la Resolución 2284 de 2023.
+o0,nÜn/™^n de ,a resolución: “Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+^a i£,i„ PS>como soPorte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones”
+Parágrafo. Los campos que contienen cada uno de los datos, asi como sus 
+características se definen en el Documento Técnico 1 y podrán ser actualizados previa 
+revisión del Comité Técnico del Sistema Integral de Información Financiero y Asistencial 
+(SIIFA) creado por la Resolución 2669 de 2025 y refrendación del Viceministerio de 
+Protección Social.
+Artículo 6. Fuente de los datos de la prestación individual de servicios y 
+tecnologías de salud. Las fuentes de datos de la prestación individual de servicios y 
+tecnologías de salud son:
+1. La historia clínica.
+2. El servicio de información de medicamentos o el registro de dispositivos médicos e 
+insumes para el caso de proveedores de tecnologías en salud 
+La factura de venta de servicios y tecnologías de salud.
+Los campos de datos relacionados con la identificación de los usuarios y el detalle 
+administrativo y asistencial de los servicios y tecnologías de salud estarán contenidos 
+en el Registro Individual de Prestación de Servicios de Salud (RIPS), guardando 
+relación con la factura, los cuales serán entregados con los demás soportes, según 
+corresponda, para la radicación y el inicio del trámite de auditoría y pago de la factura 
+electrónica de venta en salud.
+
+===== Página 8/17 =====
+RESOLUCIÓN NÚMERO 0 0 0 948 HOJA N° 8
+Parágrafo 1. Los destinatarios de este acto administrativo no podrán modificar, reducir 
+o adicionar los datos, ni la estructura y especificaciones técnicas definidas en el 
+Documento Técnico “Campos y Reglas de Validación del RIPS como soporte de la FEV 
+en Salud”
+Si se realizan notas crédito, notas débito y demás instrumentos electrónicos a la Factura 
+Electrónica de Venta (FEV) en salud, así como respuesta a glosas, los Registros 
+Individuales de Prestación de Servicios de Salud (RIPS) deberán actualizarse conforme 
+con dichos documentos, debiendo enviarse por parte de los obligados a reportar los 
+Registros Individuales de Prestación de Servicios de Salud (RIPS) que los soportan, los 
+cuales surtirán el proceso de validación única y disposición a las Entidades 
+Responsables de Pago (ERP) y demás pagadores.
+Cuando se presenten glosas relacionadas con la calidad de la información consignada 
+en los Registros Individuales de Prestación de Servicios de Salud (RIPS), conforme con 
+lo definido en el Manual Único de Devoluciones, Glosas y Respuestas, que no afecten 
+el valor monetario facturado y, por ende, no generan notas crédito o notas débito, el 
+facturador electrónico del sector salud debe presentar la respuesta de glosas mediante 
+notas de ajuste soportando en los Registros Individuales de Prestación de Servicios de 
+Salud (RIPS) el(los) dato(s) que subsana(n) la glosa. La respuesta a glosas y el Registro 
+Individual de Prestación de Servicios de Salud (RIPS) soporte de esta, serán enviados 
+a la Entidad Responsable de Pago (ERP) o demás pagadores y al Ministerio.
+Artículo 8. Obligatoriedad del reporte. Los facturadores electrónicos del sector salud 
+deben reportar el Registro Individual de Prestación de Servicios de Salud (RIPS) de 
+todas las atenciones de salud realizadas como soporte de la Factura Electrónica de 
+Venta (FEV) en salud, con validación previa de la Unidad Administrativa Especial 
+Dirección de Impuestos y Aduanas Nacionales (DIAN), en los términos previstos en el 
+artículo 12 de la presente resolución.
+Parágrafo 2. Las Entidades Responsables de Pago (ERP) y demás pagadores no 
+podrán solicitar estadísticas o reportes consolidados que puedan ser obtenidos a partir 
+de los datos definidos en esta resolución.
+Las entidades con objeto social diferente y demás entidades obligadas a reportar el 
+Registro Individual de Prestación de Servicios de Salud (RIPS) sin factura, deberán 
+adelantar la transmisión de información ante el mecanismo único de validación de 
+acuerdo con la realización de sus actividades, mínimo de manera diaria y máximo de 
+manera mensual, en este último caso dentro de los 5 primeros días calendario del mes 
+siguiente al objeto de reporte.
+Parágrafo 3. Para efectos del reporte del Registro Individual de Prestación de Servicios 
+de Salud (RIPS), en los contratos bajo la modalidad de pago por capitación, las Facturas 
+Electrónicas de Venta (FEV) en salud deberán cumplir con lo dispuesto en el parágrafo 
+2 del artículo 14 de la presente resolución.
+Parágrafo 4. Para efectos del reporte de intervenciones colectivas o de gestión en 
+salud pública, no será exigible la generación ni el reporte del Registro Individual de 
+Prestación de Servicios de Salud (RIPS). En consecuencia, los prestadores de servicios 
+de salud deberán continuar con la generación de la facturación convencional, con 
+sujeción a los mecanismos de validación establecidos por la Unidad Administrativa 
+Especial Dirección de Impuestos y Aduanas Nacionales (DIAN). Sin perjuicio de lo 
+anterior, para efectos de seguimiento, monitoreo y evaluación de la gestión en salud
+DE' 14ML
+o°ntinn’nnn de ,a resolución: "Por cual se reglamenta el Registro Individual de Prestación de Servicios de 
+. C°m^ S0,P°rte de la Factura Electróni^ Venta (FEV) en salud, se derogan las Resoluciones 2275
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones”
+
+===== Página 9/17 =====
+HOJA N° 9
+1. Generación o actualización de datos: para lo cual deberán:
+2.
+3.
+1.3.Garantizar la confiabilidad, calidad, oportunidad y validez de los datos, así 
+como su respectivo almacenamiento, asegurando que la información sea 
+completa, íntegra, consistente y verificable, y que mantenga 
+correspondencia con las fuentes de información disponibles según el rol del 
+actor, conservando los soportes que se encuentren a su cargo y que 
+permitan su validación y auditoría posterior.
+Transferencia de archivos al Ministerio: luego de superar la validación local (no 
+admite motivos de rechazo), los facturadores electrónicos del sector salud 
+deberán transmitir al Ministerio de Salud y Protección de Social, el Registro 
+Individual de Prestación de Servicios de Salud (RIPS) y el archivo de la Factura
+1.1.Ajustar las formas de registro manual o automatizado, que incluyan los 
+contenidos y la estructura que se definen en la presente resolución.
+1.4. Garantizar que al momento de generar o actualizar el dato en su sistema de 
+información, éste cumpla con las condiciones de estructura, contenido y 
+relaciones definidas en la presente resolución, para su adecuada validación.
+Validación local: adelantar el proceso de verificación de la consistencia de los 
+datos, en cuanto a los valores que asumen los campos y las relaciones del 
+Registro Individual de Prestación de Servicios de Salud (RIPS) como soporte a 
+las facturas electrónicas de venta en salud, previo a su transferencia. De 
+identificarse inconsistencias, deberán efectuarse los ajustes reportados a cada 
+conjunto de información (XML-JSON). Para el caso de las facturas comerciales 
+expedidas por los fabricantes, importadores o titulares del registro sanitario de 
+medicamentos o dispositivos adquiridos de forma directa por las Entidades 
+Promotoras de Salud (EPS) y otros pagadores para ser dispensados por los 
+gestores farmacéuticos, se habilita un módulo en el mecanismo único de 
+validación denominado Factura sin Registro Individual de Prestación de 
+Servicios de Salud (RIPS), a través del cual deberá remitirse el XML de esta 
+factura, de modo que quede registrada para su posterior incorporación al módulo 
+FEV-RIPS del SIIFA. Por este módulo también se validarán las facturas 
+correspondientes a las actividades de salud pública y del plan de intervenciones 
+colectivas.
+1.2. Hacer el registro de los datos con la prestación o provisión del servicio o 
+tecnología de salud.
+pública, se dará aplicación a lo dispuesto en la Resolución 1597 de 2025, en especial 
+lo previsto en su artículo 24, en relación con el seguimiento y evaluación de la gestión 
+territorial integral en salud pública y del Plan de Intervenciones Colectivas (PIC).
+En este marco, el Ministerio de Salud y Protección Social definirá e implementará los 
+mecanismos para el reporte progresivo de la información requerida, conforme a los 
+lineamientos que para el efecto se expidan.
+Continuación de la resolución: "Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones"
+Artículo 9. Procesos informáticos en los facturadores electrónicos en salud y 
+demás entidades obligadas a reportaren el Registro Individual de Prestación de 
+Servicios de Salud (RIPS). Los obligados a reportar son responsables de los 
+siguientes procesos informáticos:
+RESOLUCIÓN NÚMERO 000948 DE
+
+===== Página 10/17 =====
+RESOLUCIÓN NÚMERO 000948
+14 MAY 2026DE HOJA N° 10
+2.
+3.
+4.
+Parágrafo. Las actualizaciones de los documentos técnicos se publicarán con 
+identificación de versión, fecha de publicación, control de cambios y fecha de entrada 
+en aplicación.
+Artículo 11. Campos de datos del sector salud adicionales a la FEV. Los campos 
+de datos adicionales, en formato XML, para la generación de la factura electrónica de 
+venta del sector salud, serán:
+Capítulo 3 
+Proceso de facturación electrónica de venta en el sector salud
+4. La plataforma del mecanismo único de validación en el Ministerio realizará las 
+validaciones de segundo nivel al conjunto de información y si estas son 
+superadas, generará y devolverá el Código Único de Validación (CUV) mediante 
+el cual se certifica la consistencia y unicidad de los archivos recibidos. De 
+identificar inconsistencias, deberán efectuarse los ajustes reportados a cada 
+conjunto de información (XML-JSON).
+1. Código del prestador de servicios de salud: corresponde al asignado por la 
+Dirección Departamental o Distrital de Salud al momento de realizar la 
+inscripción en el Registro Especial de Prestadores de Servicios de Salud. Se 
+tomarán los diez primeros dígitos para los prestadores. Para otros facturadores 
+electrónicos en salud tales como: gestor farmacéutico, proveedor de tecnología 
+en salud, entre otros, el código será el que este Ministerio asigne.
+Modalidad de Pago: se seleccionará una de las siguientes opciones: Pago 
+individual por caso/Conjunto Integral de Atenciones/Paquete/Canasta; Pago 
+Global Prospectivo; Pago por capitación o Pago por evento.
+La cobertura o plan de beneficios: conforme con las definiciones establecidas en 
+la tabla de referencia disponible en SISPRO: 
+https.7/web.s¡spro.gov.co/WebPubl¡co/Consultas/ConsultarDetalleReferenciaBa 
+s¡ca.aspx?Code=CoberturaPlanBeneficios
+Número de contrato: se exigirá el Código Único de Contrato (CUCON) conforme 
+el cronograma de implementación del Sistema Integral de Información 
+Financiera y Asistencial (SIIFA) establecido en el artículo 9 de la Resolución
+Electrónica de Venta (FEV) en salud con validación previa de la Unidad 
+Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) a 
+través de la plataforma del mecanismo único de validación de que trata el artículo 
+10 de la presenta resolución, utilizando la funcionalidad establecida para cada 
+una de la soluciones (Cliente Servidor o API Docker).
+9°'de la resolución: "Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+^a X"~S) COm° soporte de la Factura Electr6nica da Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones"
+Artículo 10. Documento Técnico “Especificaciones técnicas de los campos de 
+datos y las reglas de Validación del RIPS como soporte de la FEV en Salud”. Las 
+especificaciones técnicas de los campos de datos y las reglas de validación del Registro 
+Individual de Prestación de Servicios de Salud (RIPS) como soporte de la Factura 
+Electrónica de Venta en salud, serán dispuestas en el micrositio de Facturación 
+electrónica de este ministerio, disponible en el link: https://www.sispro.Qov.co/central- 
+financiamiento/Pages/facturacion-electronica.aspx, cuyos ajustes se analizarán en el 
+Comité Técnico del SIIFA creado por la Resolución 1962 de 2025 expedida por el 
+Ministerio de Salud y Protección Social y serán refrendados por el Viceministerio de 
+Protección Social.
+
+===== Página 11/17 =====
+HOJA N°11
+5.
+14 MAY 2026
+Continuación de la resolución: ‘‘Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones"
+1962 de 2025. Si la atención .que se factura no requiere contrato, se deberá 
+diligenciar la justificación en el campo que se señala adelante.
+5. Número de póliza: corresponde a la póliza del Seguro Obligatorio de Accidentes 
+de Tránsito (SOAT) si se trata de una atención con cargo a dicha póliza o el 
+número de la póliza en planes voluntarios de salud.
+6. Justificación Factura sin contrato: deberá diligenciarse obligatoriamente este 
+campo con los valores definidos en la tabla de referencia “Justificación Facturas 
+sin contrato” disponible en el Sistema Integral de Información de la Protección 
+Social (SISPRO).
+En el campo de notas a nivel de línea de producto, se deberá registrar, cuando aplique, 
+los detalles de un mismo CUPS con distinta descripción y distinto valor, esta 
+información no será objeto de validación por parte del mecanismo único de validación 
+y tendrá carácter informativo para el pagador.
+La definición de campos de que tratan los artículos 11 y 12 de la presente resolución y 
+su estructura se desarrolla y actualizará en el Documento Técnico 2, cuyos ajustes se 
+analizarán en el Comité Técnico del Sistema Integral de Información Financiera y 
+Asistencial (SIIFA) creado por la Resolución 1962 de 2025 del Ministerio de Salud y 
+Protección Social y serán refrendados por el Viceministerio de Protección Social.
+Artículo 13. Trazabilidad de la factura de venta de los servicios y tecnologías de 
+salud. La factura electrónica de venta con validación previa, las notas crédito o notas 
+débito y los demás instrumentos electrónicos, que sean enviados con el documento 
+electrónico de validación a la entidad responsable de pago u otro pagador, deberán 
+transmitirse a la plataforma del mecanismo único de validación del Registro Individual 
+de Prestación de Servicios de Salud (RIPS) como soporte de la Factura Electrónica de
+Artículo 12. Diligenciamiento de otros campos en el anexo técnico de la factura. 
+Los siguientes campos, si bien no son adicionales a los establecidos en el Documento 
+Técnico 2, en virtud de la presente resolución, deberán diligenciarse, cuando aplique, 
+para la generación de la factura electrónica de venta en salud:
+RESOLUCIÓN NÚMERO 000948 DE
+1. Copago: se diligencia en el objeto PrepaidPayment, corresponde a la sumatoria 
+de los copagos por servicios que fueron registrados en el Registro Individual de 
+Prestación de Servicios de Salud (RIPS);
+2. Cuota moderadora: se diligencia en el objeto PrepaidPayment, corresponde a la 
+sumatoria de los recaudos por este concepto registrados en el Registro Individual 
+de Prestación de Servicios de Salud (RIPS);
+3. Pagos compartidos en planes voluntarios de salud: se diligencia en el objeto 
+PrepaidPayment corresponde a la sumatoria del recaudo que por este concepto 
+se hayan registrado en el Registro Individual de Prestación de Servicios de Salud 
+(RIPS).
+4. Anticipos: se diligencia en el objeto PrepaidPayment, corresponde al valor del 
+anticipo realizado y que deba ser amortizado en esta factura conforme las 
+definiciones del acuerdo de voluntades,
+Fecha inicio del periodo de facturación: se diligencia en el objeto Invoice period, 
+corresponde a la fecha y hora del primer servicio registrado en esta factura, sea 
+mono o multiusuario.
+6. Fecha fin del período de facturación: se diligencia en el objeto Invoice period, 
+corresponde a la fecha y hora del último servicio registrado en esta factura, sea 
+mono o multiusuario.
+
+===== Página 12/17 =====
+HOJA N° 12
+Parágrafo 1. El facturador electrónico del sector salud anulará la factura cuando no se 
+haya realizado la radicación dentro del plazo previsto en este artículo, procediendo la 
+expedición de una nueva factura para el cobro de los servicios y tecnologías prestados.
+Parágrafo 2. Los campos de datos relacionados con la identificación de los usuarios y 
+el detalle administrativo y asistencia! de los servicios y tecnologías de salud estarán 
+contenidos en el Registro Individual de Prestación de Servicios de Salud (RIPS), y 
+deberán guardar correspondencia con la factura.
+Las entidades pagadoras deberán generar el número único de radicación el que deberá 
+comunicarse inmediatamente al emisor de la factura. El número único de radicación 
+será informado al facturador electrónico del sector salud conforme con el mecanismo 
+establecido por las partes y al Ministerio de Salud y Protección Social a través del 
+módulo FEV-RIPS del Sistema Integral de Información Financiera y Asistencial (SIIFA), 
+de conformidad con lo dispuesto en la Resolución 1962 de 2025 expedida por esté 
+Ministerio.
+Parágrafo 3. Las Entidades Responsables de Pago (ERP) y demás pagadores no 
+podrán modificar los campos de datos adicionales definidos en la presente resolución, 
+ni exigir la inclusión de nuevos, so pena de las investigaciones y medidas que 
+determinen las entidades de inspección, vigilancia y control, si a ello hubiere lugar.
+Artículo 15. Proceso de radicación de la factura electrónica de venta en saludante 
+la entidad responsable de pago o demás pagadores. Los facturadores electrónicos 
+del sector salud disponen de veintidós (22) días hábiles, contados a partir de la fecha 
+de expedición de la factura electrónica de venta con validación previa de la Unidad 
+Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN), para la 
+radicación ante las entidades responsables de pago o demás pagadores, de la factura 
+y el Registro Individual de Prestación de Servicios de Salud (RIPS) aprobados por el 
+mecanismo único de validación del Ministerio, junto con los demás soportes 
+determinados en el acuerdo de voluntades, sin sobrepasar el listado máximo definido 
+en la normatividad vigente.
+Parágrafo 1. En caso de no existir acuerdo de voluntades, las Entidades Responsables 
+de Pago (ERP) y demás pagadores deberán suministrar la información que les sea 
+requerida por los facturadores electrónicos del sector salud, para el diligenciamiento de 
+los campos de datos adicionales del sector salud.
+Venta (FEV) en salud, para efectos de la trazabilidad de la factura de venta de los 
+servicios y tecnologías de salud.
+Artículo 14. Fuente de información para el diligenciamiento de los datos del 
+sector salud y el trámite de la factura electrónica de venta en salud. La fuente de 
+información para el diligenciamiento de los campos de datos adicionales del sector 
+salud en el formato XML, será el Registro Individual de Prestación de Servicios de Salud 
+(RIPS) y los acuerdos de voluntades suscritos entre los facturadores electrónicos y las 
+Entidades Promotoras de Salud (EPS), Entidades Adaptadas (EA), Administradoras de 
+Riesgos Laborales (ARL) en el componente salud, secretarias de salud 
+departamentales, distritales o municipales o las entidades que hagan sus veces, 
+compañías de seguros autorizadas para ofrecer el Seguro Obligatorio de Accidentes dé 
+Tránsito (SOAT), entidades que ofrecen planes voluntarios de salud y demás 
+pagadores.
+14 MAY 2026
+e°,nt2n/o^c.n de 'a reso,ucJón: “Porla cual se reglamenta el Registro Individual de Prestación de Servicios de 
+,FEV> “ 2275
+RESOLUCIÓN NÚMERO 000948 DE
+
+===== Página 13/17 =====
+RESOLUCIÓN NÚMERO 000948 HOJA N° 13
+Artículo 16. Del mecanismo único de validación. El mecanismo único de validación 
+del Registro Individual de Prestación de Servicios de Salud (RIPS) se compone de:
+16.1. Sistema de información de validación y envío de archivos
+16.2. Proceso de registro o actualización de entidades.
+16.3. Proceso de disposición de datos
+DE 14 MAY 2026
+Artículo 17. Sistema de información de validación del Registro Individual de 
+Prestación de Servicios de Salud (RIPS) y envío de archivos. Corresponde a la 
+solución tecnológica del mecanismo único de validación del Registro Individual de 
+Prestación de Servicios de Salud (RIPS), desarrollada por este Ministerio para la 
+certificación del cumplimiento de las condiciones técnicas y requerimientos funcionales, 
+establecidos en la presente resolución, que permite la recepción, validación y 
+transmisión del Registro Individual de Prestación de Servicios de Salud (RIPS), como 
+soporte de la Factura Electrónica de Venta (FEV) en Salud y de los documentos 
+electrónicos asociados a la misma, notas crédito y notas débito, y las notas ajuste del 
+Registro Individual de Prestación de Servicios de Salud (RIPS), o los Registros 
+Individuales de Prestación de Servicios de Salud (RIPS) sin factura, y las facturas sin 
+Registros Individuales de Prestación de Servicios de Salud (RIPS) según el caso, así 
+como la generación de reportes del resultado de las anteriores actividades.
+Capítulo 4 
+Mecanismo Único de Validación
+Continuación de la resolución: "Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones"
+Parágrafo 2. En los acuerdos de voluntades en los que se haya pactado la modalidad 
+de pago por capitación, la expedición y entrega de la primera factura electrónica de 
+venta se hará sin el Registro Individual de Prestación de Servicios de Salud (RIPS). 
+Para la expedición y entrega desde la segunda y hasta la última factura a las Entidades 
+Responsables de Pago (ERP) y demás pagadores será necesario entregar los 
+Registros Individuales de Prestación de Servicios de Salud (RIPS) del periodo anterior, 
+aprobados por el mecanismo único de validación junto con los demás soportes. Para el 
+periodo final deberán validarse los Registros Individuales de Prestación de Servicios de 
+Salud (RIPS) de dicho periodo a través del mecanismo único de validación, los cuales 
+se entregarán con los demás soportes.
+Parágrafo 3. Este Ministerio creará un módulo para la recepción en el mecanismo 
+único de validación de las facturas generadas por las compras masivas realizadas por 
+las Entidades Promotoras de Salud (EPS) a los fabricantes, importadores y titulares de 
+registro sanitario de medicamentos, dispositivos e insumos. En estos casos, se 
+utilizarán facturas electrónicas de venta convencionales con validación previa de la 
+Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN), 
+las cuales no estarán soportadas con un Registro Individual de Prestación de Servicios 
+de Salud (RIPS), ni requerirán de los campos adicionales del sector salud. El Ministerio 
+de Salud y Protección Social definirá la información a diligenciar en estas facturas que 
+será validada en el módulo de recepción para permitir su transmisión y generar el 
+respectivo Código único de Validación. También se usará este módulo para la recepción 
+de las facturas por actividades de salud pública y de intervenciones colectivas.
+Parágrafo 4. Las Entidades Responsables de Pago (ERP) y los facturadores 
+electrónicos deberán contar con procesos automatizados y en línea, que permitan la 
+trazabilidad cronológica de la transferencia de información y el acuse de recibido de 
+esta, en los términos de la Ley 527 de 1999.
+
+===== Página 14/17 =====
+RESOLUCIÓN NÚMERO 000948 -'DE HOJA N° 14
+a.
+b.
+1.
+2.
+3.
+Tipo A: Solución tecnológica tipo CLIENTE/SERVIDOR, dirigida a facturadores 
+electrónicos del sector salud que no tienen la posibilidad de adelantar desarrollos 
+propios para interoperar con la plataforma del Ministerio y que para su utilización 
+solo requiere de la transmisión del conjunto de archivos de información.
+Tipo B: Solución tecnológica tipo API RESTFUL empaquetada en contenedores 
+dirigida a facturadores electrónicos que tienen la posibilidad de adelantar 
+desarrollos propios para interoperar con la plataforma del Ministerio, que 
+permiten la transmisión del conjunto de archivos de información.
+Recepción de los archivos de la Factura Electrónica de Venta (FEV) en salud, o sus 
+documentos electrónicos asociados, con validación previa de la Unidad 
+Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) y del 
+archivo Registro Individual de Prestación de Servicios de Salud (RIPS) que la 
+soporta o el archivo Registro Individual de Prestación de Servicios de Salud (RIPS) 
+de las notas de ajuste, según corresponda.
+Validación del archivo del Registro Individual de Prestación de Servicios de Salud 
+(RIPS), conforme con lo establecido en la presente resolución o las normas que la 
+modifiquen o sustituyan emitidas por el Comité Técnico de Direccionamiento de 
+RIPS y los lineamientos técnicos del Registro Individual de Prestación de Servicios 
+de Salud (RIPS) disponibles en el enlace: https://www.sispro.qov.co/central- 
+financiamiento/Paqes/facturacion-electronica.aspx.
+Verificación de la relación de la Factura Electrónica de Venta (FEV) en salud, o de 
+sus documentos electrónicos asociados, con el Registro Individual de Prestación 
+de Servicios de Salud (RIPS) soporte de la misma, según las especificaciones 
+técnicas definidas en la presente resolución, y los documentos técnicos 1 y 2 
+disponibles en el enlace: https://www.sispro.qov.co/central-
+financiamiento/Paqes/facturacion-electronica.aspx.
+4. Validación de las Notas de ajuste del Registro Individual de Prestación de Servicios 
+de Salud (RIPS), cuando aplique.
+5. Validación del Registro Individual de Prestación de Servicios de Salud (RIPS) sin 
+Factura Electrónica de Venta (FEV) en salud, cuando aplique.
+6. Generación del Código Único de Validación (CUV) al Registro Individual de 
+Prestación de Servicios de Salud (RIPS) como soporte de la Factura Electrónica de 
+Venta (FEV) en salud o de sus documentos electrónicos.
+7. Validación de facturas convencionales sin Registros Individuales de Prestación de 
+Servicios de Salud (RIPS) en el caso de compras directas y masivas a fabricantes,
+jfimv20^
+c0(n^oo1n dG 'a res°luc,ió": “Porla cual se reglamenta el Registro Individual de Prestación de Servicios de 
+<fev> “
+Este Ministerio dispondrá de dos alternativas del sistema de información de validación 
+de los Registros Individuales de Prestación de Servicios de Salud (RIPS), cuyo uso 
+dependerá de las características operativas y tecnológicas del facturador electrónico 
+del sector salud, quien deberá implementar bajo su propia infraestructura, aquella que 
+considere que mejor se ajuste a sus necesidades y capacidades. Dichas alternativas 
+son:
+Las características y requisitos tecnológicos de estas alternativas se detallan en el 
+micrositio de Factura Electrónica de Venta (FEV) en salud, alojado en la página 
+institucional de este Ministerio, disponibles en el enlace: 
+https://www.sispro.qov.co/central-financiamiento/Paqes/facturacion-electronica.aspx.
+El procesamiento de información del mecanismo único de validación del Registro 
+Individual de Prestación de Servicios de Salud (RIPS), comprende las siguientes 
+actividades:
+
+===== Página 15/17 =====
+RESOLUCIÓN NÚMERO ,000948 HOJA N° 15
+importadores o titulares de registro sanitario para ser entregados a los gestores 
+farmacéuticos para su posterior dispensación ambulatoria a sus afiliados.
+8. Disposición al facturador electrónico del sector salud del resultado de las validaciones 
+definidas en la presente resolución o la norma que la modifique o sustituya y del 
+Código Único de Validación (CUV) cuando aplique, haciendo uso del método 
+establecido en el mecanismo único de validación.
+La información del Registro Individual de Prestación de Servicios de Salud (RIPS) como 
+soporte de la Factura Electrónico de Venta (FEV) en salud, será dispuesta a los
+Parágrafo. Este Ministerio como propietario del sistema de información de validación 
+del Registro Individual de Prestación de Servicios de Salud (RIPS), será el encargado 
+de su disponibilidad, seguridad y actualización. Las actualizaciones necesarias para 
+garantizar la calidad, la seguridad y rendimiento del sistema se realizarán informando 
+previamente de las mismas a las entidades obligadas a acatar las disposiciones aquí 
+contenidas, proporcionando las garantías para que la operación no se vea afectada y 
+la validación del Registro Individual de Prestación de Servicios de Salud (RIPS) se 
+realice, según las versiones respectivas.
+Artículo 18. Proceso de registro o actualización de entidades. El Ministerio de Salud 
+y Protección Social por medio del Sistema Integrado de Información de la Protección 
+Social (SISPRO) permitirá el registro o actualización de datos de los facturadores 
+electrónicos del sector salud (IPS) y de las entidades obligadas a reportar el Registro 
+Individual de Prestación de Servicios de Salud (RIPS) sin factura, como prerrequisito 
+para el uso del mecanismo único de validación de Registro Individual de Prestación de 
+Servicios de Salud (RIPS). Estas entidades deberán realizar la inscripción o 
+actualización en el siguiente enlace: https://web.sispro.qov.co, obteniendo su usuario y 
+contraseña. Estos datos permitirán la autenticación al sistema de información de 
+validación del Registro Individual de Prestación de Servicios de Salud (RIPS).
+Los profesionales independientes deberán seguir los lineamientos establecidos en la 
+guía de autenticación del mecanismo único de validación, que se encuentra disponible 
+en 'a página del micrositio https.7/www.sispro.gov.co/central-
+financiamiento/Paqes/facturacion-electronica.aspx
+Los detalles del proceso de registro o actualización de entidades en el Sistema 
+Integrado de Información de la Protección Social (SISPRO) se dispondrán en el 
+micrositio de factura electrónica de venta en salud de la página web de este Ministerio, 
+disponible en el enlace: https://www.sispro.qov.co/central-
+financíamiento/Pages/facturacion-electronica.aspx.
+Artículo 19. Proceso de disposición de datos. El mecanismo único de validación del 
+Registro Individual de Prestación de Servicios de Salud (RIPS) proveerá al Sistema 
+Integral de Información Financiera y Asistencial (SIIFA), información de los archivos de 
+la Factura Electrónica de Venta (FEV) en salud y la de sus documentos electrónicos 
+asociados, con la validación previa de la Unidad Administrativa Especial Dirección de 
+Impuestos y Aduanas Nacionales (DIAN), el archivo del Registro Individual de 
+Prestación de Servicios de Salud (RIPS) validado, soporte de cada uno de ellos, o el 
+archivo de notas de ajuste de Registro Individual de Prestación de Servicios de Salud 
+(RIPS), cuando aplique, junto con el código único de validación (CUV) y las facturas 
+electrónicas de venta convencionales que se registren en el Mecanismo Único de 
+Validación.
+DE 14 MAY 2026
+Continuación de la.resolución: “Por la cual se reglamenta el Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la Factura Electrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+de 2023, 558 y 1884 de 2024 y, se dictan otras disposiciones”
+
+===== Página 16/17 =====
+RESOLUCIÓN NÚMERO HOJA N°16000948 DE 14 MAY 2026
+cP°rtla C^,al Se re9lamenta el Registro Individual de Prestación de Servicios de 
+de 2023 558 7 1884 0^^ E ectrónica de Venta (FEV) en salud, se derogan las Resoluciones 2275 
+ae ooa y i&84 ae 2024 y, se dictan otras disposiciones
+Artículo 20. Del proceso de soporte. Este Ministerio dispondrá una mesa de ayuda 
+para brindar el acompañamiento técnico al proceso de generación y reporte del Registro 
+Individual de Prestación de Servicios de Salud (RIPS) como soporte de la Factura 
+Electrónica de Venta (FEV) en salud. Los datos de contacto, así como la información 
+relacionada con la normatividad vigente y sus anexos, documentos técnicos, preguntas 
+frecuentes, y ejemplificaciones del Registro Individual de Prestación de Servicios de 
+Salud (RIPS) como soporte de la factura electrónica de venta, se encuentran 
+disponibles en el siguiente enlace: https://www.sispro.qov.co/central- 
+financiamiento/Paqes/facturacion-electronica.aspx.
+Parágrafo 3. El Ministerio de Salud y Protección Social publicará un informe periódico 
+sobre el comportamiento de los participantes del sistema en el reporte del Registro 
+Individual de Prestación de Servicios de Salud (RIPS) como soporte de la Factura 
+Electrónica de Venta (FEV) en salud y definirá el mecanismo que permita el acceso a 
+esta información.
+Parágrafo 2. Los facturadores electrónicos del sector salud y las entidades obligadas 
+a reportar los Registros Individuales de Prestación de Servicios de Salud (RIPS), son 
+responsables de la veracidad y consistencia de los datos registrados y del cumplimiento 
+de las reglas de validación de estos, según lo dispuesto en la presente resolución o las 
+normas que modifiquen o sustituyan. Las reglas de validación aplicables al Registro 
+Individual de Prestación de Servicios de Salud (RIPS) como soporte de la Factura 
+Electrónico de Venta (FEV) en salud, serán actualizadas e incorporadas 
+progresivamente al mecanismo único de validación para mejorar la calidad de la 
+información.
+Parágrafo 1. A partir de los datos recibidos, este Ministerio definirá el conjunto de 
+informes que den cuenta de la calidad y estandarización de los datos a las entidades 
+destinatarias del presente acto administrativo, con el fin de retroalimentarlas frente al 
+mejoramiento en la generación de los datos.
+Parágrafo 4. Las entidades territoriales no podrán exigir a las Entidades Promotoras 
+de Salud (EPS) ni a los prestadores la remisión de los Registros Individuales de 
+Prestación de Servicios de Salud (RIPS), dado que el Ministerio de Salud y Protección 
+Social dispondrá los Registros Individuales de Prestación de Servicios de Salud (RIPS) 
+correspondientes a las atenciones a usuarios residentes en su territorio.
+El Ministerio de Salud y Protección Social dispondrá mensualmente a las entidades 
+territoriales del orden departamental y distrital, un archivo anonimizado con los datos 
+de los Registros Individuales de Prestación de Servicios de Salud (RIPS) de su área de 
+influencia, en el sitio FTPS habilitado para éstas.
+sistemas de información del sector salud gestionados por este Ministerio que así lo 
+requieran y a los demás actores del sistema de salud.
+Capítulo 5 
+Implementación y disposiciones finales
+Artículo 21. Seguridad de la información y protección de datos personales. De 
+conformidad con lo dispuesto por las Leyes 527 de 1999, 594 de 2000, 1581 de 2012, 
+2015 de 2020 y el Decreto 1377 de 2013, y las normas que las modifiquen o sustituyan, 
+el Ministerio de Salud y Protección Social como responsable del mecanismo único de
+
+===== Página 17/17 =====
+HOJA N° 17
+PUBLÍQUESE Y CÚMPLASE
+Dada en Bogotá, D.C., a los
+14 MAY 2026
+GUILLERMO ALFONSO JARAMILLO MARTINEZ 
+Ministro de Salud y Protección Social
+Aprobó: / )
+Viceministro de Protección Social - Luis Alberto Martínez Saldarriaga /
+Jefe de la Ofrcma de Tecnologías de la Información y Comunicaciones - Didier Aníbal Beltrln Cadena
+vo.Bo. (>-
+Director Jurídico (E)- Rodolfo Enrique Salas Figueroa Z*"””'
+<5
+validación del Registro Individual de Prestación de Servicios de Salud (RIPS) como 
+soporte de la Factura Electrónica de Venta (FEV) en Salud, asi como las entidades de 
+que trata el artículo 2 de la presente resolución, garantizarán al interior de sus procesos 
+y tecnologías informáticas y con los terceros involucrados, la veracidad 
+conftdenc'ahdad, integridad, custodia y disponibilidad de los datos del Registró 
+ndiyidual de Prestación de Servicios de Salud (RIPS) y, deberán utilizar y garantizar 
+las técnicas necesarias para evitar el riesgo a la suplantación, alteración, extracción 
+secuestro y cualquier acceso o uso indebido o fraudulento o no autorizado de los datos’ 
+de acuerdo con lo establecido en la normativa vigente expedida por el Archivo General 
+de la Nación, la Superintendencia de Industria y Comercio y, el Ministerio de 
+Tecnologías de Información y Comunicaciones.
+Artículo 22. Seguimiento y control. La Superintendencia Nacional de Salud efectuará 
+la inspección, vigilancia y control del cumplimiento de las disposiciones previstas en la 
+Pásente resolución, sin perjuicio de las funciones de inspección, vigilancia y control 
+atribuidas a las demás autoridades competentes, de conformidad con las normas 
+legales vigentes.
+Parágrafo transitorio. La aplicación de la presente resolución se realizará de manera 
+gradual, de tal forma que, a partir del primero (1) de junio de 2026 entrarán en vigor las 
+reglas de validación que se pasan de notificación a rechazo y a partir del primero (1) de 
+julio de 2026 serán exigióles los ajustes de versión de software de carácter estructural.
+14 MAY 2026
+ae ¿023, 558 y 1884 de 2024 y, se dictan otras disposiciones"
+Alfid k»)
+Art'GulQ 23. Vigencia y derogatorias. El presente acto administrativo rige a partir de 
+2024 3 SU expedición y dero9a las Resoluciones 2275 de 2023, 558 y 1884 de
+RESOLUCIÓN NÚMERO 00()94g DE

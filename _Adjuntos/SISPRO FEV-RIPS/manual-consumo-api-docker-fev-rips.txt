@@ -1,0 +1,1750 @@
+
+===== Página 1/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 1 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DOCUMENTO TECNICO INTERCAMBIO DE INFORMACIÓN FEV-RIPS 
+(Versión 4.3) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+BOGOTA, NOVIEMBRE DE 2025 
+ 
+  
+
+===== Página 2/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 2 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+CONTROL DE VERSIONES 
+Versión Fecha Autor Observaciones 
+1 2023-10-27 Brayher Gómez Reyes  Estructura del documento  
+2 2024-07-15 Brayher Gómez Reyes  
+Marco Alexander Morales Rueda 
+Modificación por versionamiento de los servicios del 
+Api Docker 
+3 2024-07-31 Brayher Gómez Reyes  
+Marco Alexander Morales Rueda Se agrega Servicios de Cápita del Api Docker 
+4 2025-04-15 Brayher Gómez Reyes   Wilman 
+Yesid Farfán Se agrega Servicio ConsultarCUV 
+5 2025-05-08 Wilman Yesid Farfán Modificación alcance 
+6 2025-06-27 Wilman Yesid Farfán Modificación estructura 
+7 2025-11-08 Wilmer Camilo Bernal Rodríguez 
+Modificación estructura 
+Se agrega el servicio DescargarCUV 
+Se agrega la especificación del Response en los 
+métodos de transmisión de documentos. 
+ 
+  
+===== Página 3/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 3 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+CONTENIDO 
+ 
+1. INTRODUCCION ..............................................................................................................................................4 
+2. OBJETIVO ........................................................................................................................................................4 
+3. ALCANCE ........................................................................................................................................................4 
+4. ÁMBITO DE APLICACIÓN ...............................................................................................................................4 
+5. SERVICIOS MSPS FEVRIPS...........................................................................................................................4 
+6. ARQUITECTURA DE LA SOLUCIÓN TECNOLOGICA DEL MSPS FEVRIPS ................................................5 
+7. METODOS CON COMPRESIÓN .....................................................................................................................5 
+8. SERVICIOS WEB .............................................................................................................................................6 
+8.1. LoginSispro ..................................................................................................................................................6 
+8.2. CargarFevRIPS ............................................................................................................................................8 
+8.3. CargarNC ................................................................................................................................................... 10 
+8.4. CargarNCTotal ........................................................................................................................................... 14 
+8.5. CargarND ................................................................................................................................................... 15 
+8.6. CargarNotaAjuste ....................................................................................................................................... 20 
+8.7. CargarRipsSinFactura ................................................................................................................................ 23 
+8.8. CargarNCAcuerdoVoluntades .................................................................................................................... 26 
+8.9. CargarCapitaInicial ..................................................................................................................................... 28 
+8.10. CargarCapitaPeriodo ................................................................................................................................. 31 
+8.11. CargarCapitaFinal ...................................................................................................................................... 34 
+8.12. NC Capita................................................................................................................................................... 36 
+8.13. Response ................................................................................................................................................... 38 
+8.14. ConsultarCUV ............................................................................................................................................ 40 
+8.15. RecuperarCUV ........................................................................................................................................... 42 
+ 
+  
+===== Página 4/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 4 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+1. INTRODUCCION 
+Este documento técnico presenta los mecanismos para el consumo de información de los servicios FEVRIPS del 
+ministerio de salud y prosperidad social,  a los prestadores de servicios de salud que facturan electrónicamente a 
+través de la plataforma de la DIAN, que puedan validar la correspondencia de los archivos RIPS con el archivo de 
+facturas electrónica.  
+ 
+Además, describe la arquitectura del sistema FEVRIPS y el proceso para poder realizar el consumo de los servicios. 
+La descripción general de la arquitectura se hace por medio de un diagrama de componentes, dado que proporciona 
+una vista estructural y de alto nivel de los elementos que componen todo el ecosistema que se va a intervenir. 
+ 
+La versión disponible no cuenta con la herramienta de documentación de Swagger. 
+ 
+2. OBJETIVO 
+Brindar la información necesaria de los componentes que intervienen en el intercambio de información Expuestos 
+por el sistema FEVRIPS a los prestadores de salud PSS y proveedores de tecnologías de salud. 
+ 
+3. ALCANCE  
+Este documento está dirigido a los Prestadores de Servicios de salud - PSS, Proveedores de Tecnologías de Salud 
+- PTS, que, conforme a la normatividad vigente, están obligados a facturar electrónicamente. Está diseñado como 
+una herramienta técnica para sus equipos de desarrollo, permitiéndoles realizar sus propias implementaciones 
+del consumo de la API FEVRIPS, de forma autónoma y conforme a los lineamientos aquí establecidos, igualmente, 
+se ha provisto de dos servicios dirigidos a las Entidades Responsables de Pago - ERP 
+4. ÁMBITO DE APLICACIÓN 
+Las disposiciones contenidas en est a guía aplican a los Profesionales de la Salud, Delegados Administrativos de 
+las Entidades Promotoras de Salud (EPS) y/o de las Instituciones Prestadoras de Servicios de Salud (IPS), el  
+Profesional Servicio Social Obligatorio y/u Otro Usuario que suministren a sus afiliados servicios y tecnologías en 
+Salud. 
+ 
+5. SERVICIOS MSPS FEVRIPS 
+Los SERVICIOS que se deben configurar son los siguientes: 
+  
+1. LoginSISPRO 
+2. CargarFevRips (Ver 7. METODOS CON COMPRESIÓN) 
+3. CargarNC (Ver 7. METODOS CON COMPRESIÓN) 
+4. CargarNCTotal (Ver 7. METODOS CON COMPRESIÓN) 
+5. CargarND (Ver 7. METODOS CON COMPRESIÓN) 
+6. CargarNotaAjuste (Ver 7. METODOS CON COMPRESIÓN) 
+7. CargarRipsSinFactura (Ver 7. METODOS CON COMPRESIÓN) 
+===== Página 5/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 5 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+8. CargarNCAcuerdoVoluntades (Ver 7. METODOS CON COMPRESIÓN) 
+9. CargarCapitaInicial (Ver 7. METODOS CON COMPRESIÓN) 
+10. CargarCapitaPeriodo (Ver 7. METODOS CON COMPRESIÓN) 
+11. CargarCapitaFinal (Ver 7. METODOS CON COMPRESIÓN) 
+12. CargarNCCapita (Ver 7. METODOS CON COMPRESIÓN) 
+13. ConsultarCUV (Ver 7. METODOS CON COMPRESIÓN) 
+ 
+6. ARQUITECTURA DE LA SOLUCIÓN TECNOLOGICA DEL MSPS FEVRIPS 
+ 
+ 
+ 
+7. METODOS CON COMPRESIÓN 
+Existen métodos que soportan la compresión de archivos para mejorar la eficiencia de estos, se recomienda que 
+los archivos mayores a 50 MB tengan la compresión GZIP  (Software para la compresión y descompresión de 
+archivos al igual que una extensión de formato.) 
+ 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Encoding: gzip  
+Content-Type: application/Json 
+URL Aplica la misma url para cada uno de los métodos descritos en este documento. 
+Body Corresponde a un archivo con extensión .json el cual debe tener la compresión GZIP, donde el 
+archivo Json debe tener la siguiente estructura. 
+ 
+
+===== Página 6/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 6 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+Respetando la información que se debe enviar para cada uno de los métodos descritos en este 
+documento. 
+ 
+ 
+ 
+ 
+ 
+8. SERVICIOS WEB 
+A continuación, se detalla la configuración que debe realizarse en cada servicio. Es importante tener en cuenta que 
+las Entidades Responsables de Pago (ERP) no deben realizar el proceso de autenticación, para estas entidades, 
+están habilitados exclusivamente los métodos ConsultarCUV. 
+ 
+8.1. LoginSispro 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json 
+URL https://localhost:9443/api/Auth/LoginSISPRO (Puerto asignado por el servidor dockerizado) 
+Body  
+{ 
+  "persona": { 
+    "identificacion": { 
+El elemento tipoUsuario es opcional, aplica únicamente para los 
+profesionales independientes obligados a facturar electrónicamente donde 
+el número de documento es diferente al NIT asignado por la DIAN 
+Código Descripción Observación 
+
+===== Página 7/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 7 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+      "tipo": "CC", 
+      "numero": "796056XX" 
+    } 
+  }, 
+  "clave": "XXXXX", 
+  "nit": "5305201XX", 
+  "tipoUsuario": "RE" 
+} 
+ 
+RE Representante Entidad 
+Aplica para todos los profesionales independientes que 
+no sean facturadores electrónicos, en caso de ser 
+informado el elemento tipoUsuario para PSS/PTS debe 
+ser informado el código RE 
+PIN Profesional Independiente 
+Nacional 
+Aplica cuando el número de documento coincide con el 
+NIT 
+PINx Profesional Independiente 
+Nacional de Excepción 
+Aplica para aquellos profesionales independientes que 
+son responsables de facturar electrónicamente pero 
+donde el NIT asignado por la DIAN no coincide con el 
+número de documento de identidad del profesional. 
+PIE Profesional 
+Independiente Extranjero 
+Aplica para los profesionales independientes que 
+cuenten con tipo de documento diferente a cedula de 
+ciudanía  
+ 
+Response 
+ 
+  
+
+===== Página 8/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 8 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+8.2. CargarFevRIPS 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+ 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarFevRips  
+(Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json SI 
+Corresponde al RIPS soporte de la Factura electrónica de 
+venta en salud según los lineamientos del Documento 
+técnico 1 de la Resolución 2275 de 2023  
+xmlFevFile string SI 
+Corresponde al documento adjunto (AttachedDocument) 
+de la factura electrónica de venta, presentado en formato 
+estructurado codificado en Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips": { 
+ "numDocumentoIdObligado": "530520110", 
+ "numFactura": "WCBR102030", 
+ "tipoNota": null, 
+ "numNota": null, 
+
+===== Página 9/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 9 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ "usuarios": [ 
+  { 
+   "consecutivo": 1, 
+   "tipoDocumentoIdentificacion": "CC", 
+   "numDocumentoIdentificacion": "1020708099", 
+   "tipoUsuario": "12", 
+   "fechaNacimiento": "1991-06-25", 
+   "codSexo": "F", 
+   "codPaisResidencia": "170", 
+   "codMunicipioResidencia": "05001", 
+   "codZonaTerritorialResidencia": "02", 
+   "incapacidad": "NO", 
+   "codPaisOrigen": "170", 
+   "servicios": { 
+   "consultas": [ 
+     { 
+        "codPrestador": "192030405001", 
+       "fechaInicioAtencion": "2025-06-26 11:28", 
+       "numAutorizacion": "306540078", 
+       "codConsulta": "890602", 
+       "modalidadGrupoServicioTecSal": "01", 
+       "grupoServicios": "01", 
+       "codServicio": 130, 
+       finalidadTecnologiaSalud": "16", 
+       "causaMotivoAtencion": "38", 
+       "codDiagnosticoPrincipal": "C402", 
+       "codDiagnosticoRelacionado1": null, 
+       "codDiagnosticoRelacionado2": null, 
+       "codDiagnosticoRelacionado3": null, 
+       "tipoDiagnosticoPrincipal": "02", 
+       "tipoDocumentoIdentificacion": "CC", 
+       "numDocumentoIdentificacion": "0123456789", 
+       "vrServicio": 100000, 
+       "conceptoRecaudo": "05", 
+       "valorPagoModerador": 0, 
+       "numFEVPagoModerador": null, 
+       "consecutivo": 1 
+     } 
+    ] 
+   } 
+===== Página 10/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 10 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+  } 
+ ] 
+ }, 
+"xmlFevFile": 
+"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pg0KPEF0dGFjaGV
+kRG9jdW1lbnQgeG1sbnM9InVybjpvYXNpczpuYW1lczpzcGVjaWZpY2F0aW9uOnVibDpzY2hlbWE6eHNkOkF0
+dGFjaGVkRG9jdW1lbnQtMiIgeG1sbnM6Y2FjPSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1Ymw6 c
+2NoZW1hOnhzZDpDb21tb25BZ2dyZWdhdGVDb21wb25lbnRzLTIiIHhtbG5zOmNiYz0idXJuOm9hc2lzOm5hbW
+VzOnNwZWNpZmljYXRpb246dWJsOnNjaGVtYTp4c2Q6Q29tbW9uQmFzaWNDb21wb25lbnRzLTIiIHhtbG5zO
+mNjdHM9InVybjp1bjp1bmVjZTp1bmNlZmFjdDpkYXRhOnN………" 
+} 
+ 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+ 
+ 
+8.3. CargarNC 
+ 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+
+===== Página 11/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 11 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarNC  
+(Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json Si Corresponde al RIPS soporte de la Nota crédito según 
+los lineamientos del Anexo técnico 1 de la Resolución 
+2275 de 2023 o la norma que lo modifique o sustituya 
+xmlFevFile string Si Corresponde al documento adjunto (AttachedDocument) 
+de la nota crédito, presentado en formato estructurado 
+codificado en Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips":{ 
+    "numDocumentoIdObligado": "530520110", 
+    "numFactura": "RYQ103034", 
+    "tipoNota": "NC", 
+    "numNota": "NNWB0010", 
+    "usuarios": [ 
+        { 
+            "consecutivo": 1, 
+            "tipoDocumentoIdentificacion": "CC", 
+            "numDocumentoIdentificacion": "1020304050", 
+            "tipoUsuario": "12", 
+            "fechaNacimiento": "1996-06-25", 
+            "codSexo": "F", 
+            "codPaisResidencia": "170", 
+
+===== Página 12/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 12 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+            "codMunicipioResidencia": "05001", 
+            "codZonaTerritorialResidencia": "02", 
+            "incapacidad": "NO", 
+            "codPaisOrigen": "170", 
+            "servicios": { 
+                "medicamentos": [ 
+                                        { 
+                        "codPrestador": "192030405001", 
+                        "numAutorizacion": "30654X178", 
+                        "idMIPRES": null, 
+                        "fechaDispensAdmon": "2025-05-26 09:10", 
+                        "codDiagnosticoPrincipal": "C402", 
+                        "codDiagnosticoRelacionado": null, 
+                        "tipoMedicamento": "01", 
+                        "codTecnologiaSalud": "19932754-987", 
+                        "nomTecnologiaSalud": null, 
+                        "concentracionMedicamento": 0, 
+                        "unidadMedida": 176, 
+                        "formaFarmaceutica": null, 
+                        "unidadMinDispensa": 3, 
+                        "cantidadMedicamento": 1, 
+                        "diasTratamiento": 1, 
+                        "tipoDocumentoIdentificacion": "CC", 
+                        "numDocumentoIdentificacion": "0231231230", 
+                        "vrUnitMedicamento": 7200, 
+                        "vrServicio": 7200, 
+                        "conceptoRecaudo": "05", 
+                        "valorPagoModerador": 0, 
+                        "numFEVPagoModerador": null, 
+                        "consecutivo": 19 
+                    } 
+                ] 
+            } 
+        } 
+    ] 
+}, 
+"xmlFevFile":"PD94bWwgdmVyc2+MjAyMi0wNi0xNDwvY2JjOklzc3VlRGF0ZT4NCiAgPGNiYzpJc3N1ZVRpb
+WU+MTA6NDA6NTYtMDU6MDA8L2NiYzpJc3N1ZVRpbWU++MTA6NDA6NTYtMDU6MDA8L2NiYzpWYWxpZG
+F0aW9uVGltZT4NCgkJCTwvY2FjOlJlc3VsdE9mVmVyaWZpY2F0aW9uPg0KCQk8L2NhYzpEb2N1bWVudFJlZm
+VyZW5jZT4NCgk8L2NhYzpQYXJlbnREb2N1bWVudExpbmVSZWZlcmVuY2U+DQo8L0F0dGFjaGVkRG9jdW1lb
+nQ+……" 
+===== Página 13/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 13 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+} 
+ 
+Response  
+Ver la descripción sobre el numeral 8.13. Response 
+ 
+ 
+  
+
+===== Página 14/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 14 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+8.4. CargarNCTotal 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization 
+Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarNCTotal (Puerto asignado por el servidor 
+dockerizado) 
+Body 
+ 
+Elemento Tipo Requerido Descripción 
+rips json NO Debe enviarse null. 
+xmlFevFile string Si 
+Corresponde al documento adjunto (AttachedDocument) 
+de la nota crédito, presentado en formato estructurado 
+codificado en Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+ "rips": null, 
+ "xmlFevFile": 
+"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pg0KPEF0dGFjaGV
+kRG9jdW1lbnQgeG1sbnM9InVybjpvYXNpczpuYW1lczpzcGVjaWZpY2F0aW9uOnVibDpzY2hlbWE6eHNkOkF0
+dGFjaGVkRG9jdW1lbnQtMiIgeG1sbnM6Y2FjPSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1Ymw6 c2
+NoZW1hOnhzZDpDb21tb25BZ2dyZWdhdGVDb21wb25lbnRzLTIiIHhtbG5zOmNiYz0idXJuOm9hc2lzOm5hbWV
+zOnNwZWNpZmljYXRpb246dWJsOnNjaGVtYTp4c2Q6Q29tbW9uQmFzaWNDb21wb25lbnRzLTIi+.. " 
+} 
+ 
+
+===== Página 15/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 15 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Response 
+Ver la descripción sobre el numeral 8.13. Response 
+ 
+ 
+ 
+8.5. CargarND 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarND 
+(Puerto asignado por el servidor dockerizado) 
+Body  
+
+===== Página 16/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 16 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Elemento Tipo Requerido Descripción 
+rips json Si 
+Corresponde al RIPS soporte de la Nota débito según 
+los lineamientos del Anexo técnico 1 de la Resolución 
+2275 de 2023 o la norma que lo modifique o sustituya 
+xmlFevFile string Si 
+Corresponde al documento adjunto 
+(AttachedDocument) de la nota débito, presentado en 
+formato estructurado codificado en Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips":{ 
+   "numDocumentoIdObligado":"530520110", 
+   "numFactura":"COR810000", 
+   "tipoNota":"ND", 
+   "numNota":"3N01", 
+   "usuarios":[ 
+      { 
+         "tipoDocumentoIdentificacion":"CC", 
+         "numDocumentoIdentificacion":"530520110", 
+         "tipoUsuario":"02", 
+         "fechaNacimiento":"2000-01-01", 
+         "codSexo":"M", 
+         "codPaisResidencia":"170", 
+         "codMunicipioResidencia":"05134", 
+         "codZonaTerritorialResidencia":"01", 
+         "incapacidad":"SI", 
+         "consecutivo":3, 
+         "codPaisOrigen":"170", 
+         "servicios":{ 
+            "consultas":[ { 
+             "codPrestador": "192030405001", 
+  "fechaInicioAtencion": "2025-01-18 08:10", 
+  "numAutorizacion": "1881000002", 
+  codConsulta": "890701", 
+  "modalidadGrupoServicioTecSal": "09", 
+  "grupoServicios": "01", 
+===== Página 17/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 17 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+  "codServicio": 328, 
+  "finalidadTecnologiaSalud": "16", 
+  "causaMotivoAtencion": "21", 
+  "codDiagnosticoPrincipal": "D482", 
+  "codDiagnosticoRelacionado1": "D480", 
+  "codDiagnosticoRelacionado2": null, 
+  "codDiagnosticoRelacionado3": null, 
+  "tipoDiagnosticoPrincipal": "01", 
+  "tipoDocumentoIdentificacion": "CC", 
+  "numDocumentoIdentificacion": "3214568792", 
+  "vrServicio": 6341, 
+  "conceptoRecaudo": "05", 
+  "valorPagoModerador": 0, 
+  "numFEVPagoModerador": "null", 
+  "consecutivo": 5 
+      } ] 
+         } 
+      }, 
+      { 
+         "tipoDocumentoIdentificacion":"CC", 
+         "numDocumentoIdentificacion":"1020304050", 
+         "tipoUsuario":"02", 
+         "fechaNacimiento":"1991-08-15", 
+         "codSexo":"M", 
+         "codPaisResidencia":"170", 
+         "codMunicipioResidencia":"05134", 
+         "codZonaTerritorialResidencia":"01", 
+         "incapacidad":"SI", 
+         "consecutivo":4, 
+         "codPaisOrigen":"170", 
+         "servicios":{ 
+            "consultas":[ 
+               { 
+                  "codPrestador":"192030405001", 
+                  "fechaInicioAtencion":"2025-01-18 10:10", 
+                  "numAutorizacion": null, 
+                  "codConsulta":"890201", 
+                  "modalidadGrupoServicioTecSal":"01", 
+                  "grupoServicios":"01", 
+                  "codServicio":328, 
+===== Página 18/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 18 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+                  "finalidadTecnologiaSalud":"44", 
+                  "causaMotivoAtencion":"26", 
+                  "codDiagnosticoPrincipal":"T784", 
+                  "codDiagnosticoRelacionado1":null, 
+                  "codDiagnosticoRelacionado2":null, 
+                  "codDiagnosticoRelacionado3":null, 
+                  "tipoDiagnosticoPrincipal":"01", 
+                  "tipoDocumentoIdentificacion":"CC", 
+                  "numDocumentoIdentificacion":"3124562130", 
+                  "vrServicio":46400, 
+                  "conceptoRecaudo":"05", 
+                  "valorPagoModerador":0, 
+                  "numFEVPagoModerador":null, 
+                  "consecutivo":1 
+               } 
+            ] 
+         } 
+      }   
+   ] 
+}, 
+"xmlFevFile":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YWUJIWlc1bGNtRnNNSUl
+CSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQWkvK2ZkZEJRYnVXTUNrWHFZZ
+FBCSkZUb2JvMDZtclR4dnV0S2tOZTBSSnZlRzFTbktxMTVudkJmdDJoNG5aRjVFelBCS0dLUzNJV2dzZ21BZ
+DN5QUJodHZsT1ZvS3hORlMzQ1d4TzJveXlRM2FodXVlV0xBOHRLZVAvOU0yMC90V1hUN1Q2Rlk1YWFINDI
+3MkJLaXlZSXpIbnFQRDQzb2JaNWIxb3NMajBPUEdiZmtQaTlndlZuNnNpblNlRVowV1h2RGExbHJCQjBxK3dz
+em1mVDJsaW1zMGFrb0F6S2dwVTZ5eFFrUkJRdVBGUHY5V3FneTZaZTFBdFVScHVYK1F5azR2Wk5vblFqe
+DcrSVcyWjh2MGh0VDlZeThUcFNLMnI4NXdGWVBzMlY5SWpDc3RaNDlOWEhLTW9ZNVRMamE5TlpMUG9r
+SXJsUVYrYVNpSzhvanAwd0lEQVFBQm80SUJ6RENDQWNnd0RBWURWUjBUQVFIL0JBSXdBREFmQmdOV
+khTTUVHREFXZ0JSQnZOUTVlTGRvY3VtZW50Pg==……" 
+} 
+===== Página 19/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 19 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+{ 
+    "ResultState": true, 
+    "ProcesoId": 11, 
+    "NumFactura": "COR810000", 
+ "CodigoUnicoValidacion": 
+"8d3992db9c2a86110f1c048dc82c96dfb9a72158136dd10f23b11d8c9946646fabfeecc2a4eb661af6877940ab58
+96cd", 
+    "FechaRadicacion": "2025-10-30T21:31:18.3971023+00:00", 
+    "RutaArchivos": null, 
+    "Ambiente": "DockerTest", 
+    "Modulo": "NotaDebito", 
+    "ModalidadPago": "Pago por evento", 
+    "PeriodoAtencion": { 
+        "FechaInicio": "2025-01-01T00:00:00", 
+        "FechaFin": "2025-01-30T00:00:00" 
+    }, 
+    "ResultadosValidacion": [ 
+        { 
+            "Clase": "NOTIFICACION", 
+            "Codigo": "RVC019", 
+            "Descripcion": "El código de CUPS se puede validar con el diagnóstico principal.",  
+            "Observaciones": "Verificar tabla de referencia Dato (890201)", 
+            "PathFuente": "usuarios[1].servicios.consultas[0].codConsulta", 
+            "Fuente": "Rips" 
+        }, 
+        { 
+            "Clase": "NOTIFICACION", 
+            "Codigo": "RVC019", 
+            "Descripcion": "El código de CUPS se puede validar con el diagnóstico principal.",  
+            "Observaciones": "Verificar tabla de referencia Dato (890701)", 
+            "PathFuente": "usuarios[0].servicios.consultas[0].codConsulta", 
+            "Fuente": "Rips" 
+        }, 
+        { 
+            "Clase": "NOTIFICACION", 
+            "Codigo": "RVC059", 
+            "Descripcion": "El código de CUPS puede ser validado con el grupo de servicio, servicio, finalidad o 
+causa.", 
+            "Observaciones": "Verificar tabla de referencia CodConsulta (890201) - Finalidad (44)", 
+===== Página 20/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 20 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+            "PathFuente": "usuarios[1].servicios.consultas[0].codConsulta", 
+            "Fuente": "Rips" 
+        }, 
+        { 
+            "Clase": "NOTIFICACION", 
+            "Codigo": "RVC059", 
+            "Descripcion": "El código de CUPS puede ser validado con el grupo de servicio, servicio, finalidad o 
+causa.", 
+            "Observaciones": "Verificar tabla de referencia CodConsulta (890701) - Finalidad (16)", 
+            "PathFuente": "usuarios[0].servicios.consultas[0].codConsulta", 
+            "Fuente": "Rips" 
+        } 
+    ] 
+} 
+8.6. CargarNotaAjuste 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarNotaAjuste 
+ (Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json Si 
+Corresponde al RIPS soporte de la Nota de ajuste 
+según los lineamientos del Anexo técnico 1 de la 
+Resolución 2275 de 2023 o la norma que lo 
+modifique o sustituya 
+xmlFevFile string Si Debe ir vacío 
+
+===== Página 21/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 21 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips":{ 
+  "numDocumentoIdObligado": "530520110", 
+  "numFactura": "FA1W1", 
+  "tipoNota": "NA", 
+  "numNota": "448362", 
+  "usuarios": [ 
+     { 
+        "tipoDocumentoIdentificacion":"RC", 
+        "numDocumentoIdentificacion":"111111111111", 
+        "tipoUsuario":"04", 
+        "fechaNacimiento":"2018-05-14", 
+        "codSexo":"M", 
+        "codPaisResidencia":"170", 
+        "codMunicipioResidencia":"86001", 
+        "codZonaTerritorialResidencia":"01", 
+        "incapacidad":"NO", 
+        "consecutivo":1, 
+        "codPaisOrigen":"170", 
+        "servicios":{ 
+            "procedimientos":[ 
+              { 
+                 "codPrestador":"192030405001", 
+                 "fechaInicioAtencion":"2025-08-08 15:18", 
+                 "idMIPRES":"123123465132AA", 
+                 "numAutorizacion":"2025002270672", 
+                 "codProcedimiento":"902210", 
+                 "viaIngresoServicioSalud":"02", 
+                 "modalidadGrupoServicioTecSal":"01", 
+                 "grupoServicios":"02", 
+                 "codServicio":706, 
+                 "finalidadTecnologiaSalud":"15", 
+                 "tipoDocumentoIdentificacion":"CC", 
+                 "numDocumentoIdentificacion":"1020304050", 
+===== Página 22/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 22 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+                 "codDiagnosticoPrincipal":"Q381", 
+                 "codDiagnosticoRelacionado":null, 
+                 "codComplicacion":null, 
+                 "vrServicio":19300, 
+                 "valorPagoModerador":0, 
+                 "numFEVPagoModerador":null, 
+                 "conceptoRecaudo":"05", 
+                 "consecutivo":2 
+              } 
+            ] 
+        } 
+     } 
+  ] 
+}, 
+"xmlFevFile":"" 
+} 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+{ 
+    "ResultState": true, 
+    "ProcesoId": 12, 
+    "NumFactura": "FE1V448360", 
+    "CodigoUnicoValidacion": 
+"c877e2b05a0bcde228789907c099819bc2d2bacb80ea8a50e90268e0175536cb1b9762bdd3c4f41421462f47a0
+e003ef", 
+    "FechaRadicacion": "2025-10-30T21:59:19.8798874+00:00", 
+    "RutaArchivos": null, 
+    "Ambiente": "DockerTest", 
+    "Modulo": "NotaAjuste", 
+    "ModalidadPago": "", 
+    "PeriodoAtencion": { 
+        "FechaInicio": null, 
+        "FechaFin": null 
+    }, 
+    "ResultadosValidacion": [ 
+        { 
+            "Clase": "NOTIFICACION", 
+            "Codigo": "RVC017", 
+            "Descripcion": "El código de CUPS puede ser validado que corresponda a la cobertura o plan de 
+beneficios informada en la factura electrónica de venta.", 
+===== Página 23/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 23 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+            "Observaciones": "Verificar tabla de referencia Dato (902210)", 
+            "PathFuente": "usuarios[0].servicios.procedimientos[0].codProcedimiento",  
+            "Fuente": "Rips" 
+        }, 
+        { 
+            "Clase": "NOTIFICACION", 
+            "Codigo": "RVC019", 
+            "Descripcion": "El código de CUPS se puede validar con el diagnóstico principal.",  
+            "Observaciones": "Verificar tabla de referencia Dato (902210)", 
+            "PathFuente": "usuarios[0].servicios.procedimientos[0].codProcedimiento",  
+            "Fuente": "Rips" 
+        } 
+    ] 
+} 
+ 
+ 
+8.7. CargarRipsSinFactura 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+ 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarRipsSinFactura 
+ (Puerto asignado por el servidor dockerizado) 
+Body  
+
+===== Página 24/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 24 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Elemento Tipo Requerido Descripción 
+rips json Si 
+Corresponde al RIPS sin factura, conforme a 
+los lineamientos establecidos en el 
+Documento Técnico 1 de la Resolución 2275 
+de 2023, o en la norma que la modifique o 
+sustituya. 
+xmlFevFile string Si Debe ir vacío 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips": { 
+ "numDocumentoIdObligado": "530520110", 
+ "numFactura": null, 
+ "tipoNota": "RS", 
+ "numNota": "NAF20", 
+ "usuarios": [ 
+  { 
+   "tipoDocumentoIdentificacion": "CC", 
+   "numDocumentoIdentificacion": "1020304050", 
+   "tipoUsuario": "07", 
+   "fechaNacimiento": "2001-12-20", 
+   "codSexo": "M", 
+   "codPaisResidencia": "170", 
+   "codPaisOrigen": "170", 
+   "codMunicipioResidencia": "70717", 
+   "codZonaTerritorialResidencia": "01", 
+   "incapacidad": "NO", 
+   "consecutivo": 1, 
+   "servicios": { 
+    "consultas": [ 
+    { 
+    "codPrestador": "192030405001", 
+    "fechaInicioAtencion": "2025-05-07 08:53", 
+    "numAutorizacion": "", 
+    "codConsulta": "890301", 
+===== Página 25/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 25 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+    "modalidadGrupoServicioTecSal": "01", 
+    "grupoServicios": "01", 
+    "codServicio": 328, 
+    "finalidadTecnologiaSalud": "44", 
+    "causaMotivoAtencion": "38", 
+    "codDiagnosticoPrincipal": "L988", 
+    "codDiagnosticoRelacionado1": "S859", 
+    "codDiagnosticoRelacionado2": "S801", 
+    "codDiagnosticoRelacionado3": "S801", 
+    "tipoDiagnosticoPrincipal": "01", 
+    "tipoDocumentoIdentificacion": "CC", 
+    "numDocumentoIdentificacion": "530520110", 
+    "vrServicio": 0, 
+    "conceptoRecaudo": "05", 
+    "valorPagoModerador": 0, 
+    "numFEVPagoModerador": null, 
+    "consecutivo": 1 
+    } 
+    ] 
+   } 
+  } 
+ ] 
+}, 
+ "xmlFevFile": "" 
+} 
+Response  
+Ver la descripción sobre el numeral 8.13. Response 
+ 
+{ 
+ "ResultState": true, 
+ "ProcesoId": 13, 
+ "NumFactura": "NAF20", 
+ "CodigoUnicoValidacion": 
+"8efeb92704b7e297c5655d4f8db683f79013967481a156c007f9b6b44a152c078670ca44415735c220dd6102a52
+c0fdb", 
+ "FechaRadicacion": "2025-10-30T22:04:33.9666622+00:00", 
+ "RutaArchivos": null, 
+ "Ambiente": "DockerTest", 
+ "Modulo": "RipsSinFactura", 
+ "ModalidadPago": "", 
+===== Página 26/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 26 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ "PeriodoAtencion": { 
+  "FechaInicio": null, 
+  "FechaFin": null 
+ }, 
+ "ResultadosValidacion": [ 
+  { 
+  "Clase": "NOTIFICACION", 
+  "Codigo": "RVC059", 
+  "Descripcion": "El código de CUPS puede ser validado con el grupo de servicio, servicio, 
+finalidad o causa.", 
+  "Observaciones": "Verificar tabla de referencia CodConsulta (890301) - Finalidad (44)", 
+  "PathFuente": "usuarios[0].servicios.consultas[0].codConsulta", 
+  "Fuente": "Rips" 
+  },  
+ ] 
+} 
+ 
+8.8. CargarNCAcuerdoVoluntades 
+ 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarNCAcuerdoVoluntades 
+(Puerto asignado por el servidor dockerizado) 
+
+===== Página 27/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 27 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json NO Debe enviarse null. 
+xmlFevFi
+le string Si 
+Corresponde al documento adjunto 
+(AttachedDocument) de la nota crédito, 
+presentado en formato estructurado codificado en 
+Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{   
+"rips": null, 
+  "xmlFevFile":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGc3N1ZURhdGU+ 
++ODAwMTk3MjY4PC9zdHM6QXV0aG9yaXphdGlvblByb3ZpZGVySUQ+CiAgICAgICAgICA8L3N0czpBdXRob3
+JpemF0aW9uUHJvdmlkZXI+CiAgICAgICAgPC9zdHM6RGlhbkV4dGVuc2lvbnM+CiAgICAgIDwvZXh0OkV4dGV
+uc2lvbkNvbnRlbnQ+CiAgICA8L2V4dDpVQkxFeHRlbnNpb24gICAgICA8Y2JjOklEPjAxPC9jYmM6SUQ+CiAgIC
+AgICAgPGNiYzpOYW1lPklWQTwvY2JjOk5hbWU+lwdGlvbj4KCQkJCTwvY2FjOkV4dGVybmFsUmVmZXJlbmN
+lPgoJCQk8L2NhYzpBdHRhY2htZW50PgoJCQk8Y2FjOlJlc3VsdE9mVmVyaWZpY2F0aW9uPgoJCQkJPGNiYz
+pWYWxpZGF0b3JJRD5VbmlkYWQgRXNwZWNpYWwgRGlyZWNjacOzbiBkZSBJbXB1ZXN0b3MgeSBBZHVh
+bmFzIE5hY2lvbmFsZXM8L2NiYzpWYWxpZGF0b3JJRD4KCQkJCTxjYmM6VmFsaWRhdGlvblJlc3VsdENvZGU
++MDI8L2NiYzpWYWxpZGF0aW9uUmVzdWx0Q29kZT4KCQkJCTxjYmM6VmFsaWRhdGlvbkRhdGU+MjAyMi0
+wNi0xNDwvY2JjOlZhbGlkYXRpb25EYXRlPgoJCQkJPGNiYzpWYWxpZGF0aW9uVGltZT4xMDo0MDo1Ni0wNT
+owMDwvY2JjOlZhbGlkYXRpb25UaW1lPgoJCQk8L2NhYzpSZXN1bHRPZlZ2hlZERvY3VtZW50Pg== " 
+} 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+{ 
+    "ResultState": true, 
+    "ProcesoId": 15, 
+    "NumFactura": "RYQ103034", 
+    "CodigoUnicoValidacion": 
+"0e6dd9f85990e6fbc77e37f57e89876ab117026daa2baaf2ad667f44482fbf4a26aab4314f51af12535aa053adbe6
+dfd", 
+    "FechaRadicacion": "2025-10-31T12:11:54.2447891+00:00", 
+===== Página 28/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 28 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+    "RutaArchivos": null, 
+    "Ambiente": "DockerTest", 
+    "Modulo": "NotaCreditoAcuerdoVoluntades", 
+    "ModalidadPago": "Pago por evento", 
+    "PeriodoAtencion": { 
+        "FechaInicio": "2025-01-01T00:00:00", 
+        "FechaFin": "2025-01-30T00:00:00" 
+    }, 
+    "ResultadosValidacion": [] 
+} 
+ 
+ 
+ 
+ 
+8.9. CargarCapitaInicial 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+
+===== Página 29/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 29 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarCapitaInicial 
+(Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json Si Debe ir null 
+xmlFevFile string Si 
+Corresponde al documento adjunto 
+(AttachedDocument) de la factura electrónica 
+de venta, presentado en formato 
+estructurado codificado en Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+ "rips": null, 
+ "xmlFevFile": 
+"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8QXR0YWNo
+ZWREb2N1bWVudCB4bWxucz0idXJuOm9hc2lzOm5hbWVzOnNwZWNpZmljYXRpb246dWJsOnNjaGVtYTp4c
+2Q6QXR0YWNoZWREb2N1bWVudC0yIiB4bWxuczpjYWM9InVybjpvYXNpczpuYW1lczpzcGVjaWZpY2F0aW9
+uOnVibDpzY2hlbWE6eHNkOkNvbW1vbkFnZ3JlZ2ToxMToxMSswMDowMDwveGFkZXM6U2lnbmluZ1RpbWU
++PHhhZGVzOlNpZ25pbmdDZXJ0aWZpY2F0ZT48eGFkZXM6Q2VydD48eGFkZXM6Q2VydERpZ2VzdD48ZHM
+6RGlnZXN0TWV0aG9kIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS8wNC94bWxlbmMjc2hhMjU
+2IiAvPjxkczpEaWdlc3RWYWx1ZT55M25GYkJHQjFnRmk5OExxamg1aDNJdFo2MHlzQUVIK282WlBJeG40ZW
+dRPTwvZHM6RGlnZXN0VmFsdWU+PC94YWRlczpDZXJ0RGlnZXN0Pjx4YWRlczpJc3N1ZXJTZXJpYWw+PG
+RzOlg1MDlJc3N1ZXJOYW1lPkM9Q03VtZW50Pg0K" 
+} 
+
+===== Página 30/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 30 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+{ 
+ "ResultState": true, 
+ "ProcesoId": 14, 
+ "NumFactura": "ML001", 
+ "CodigoUnicoValidacion": 
+"26ec0a8f83bc8cd01fc1a385d61a60180548e684aa788c0d55466b4796ac9c79c26811026efad5437b75c47a413
+40283", 
+ "FechaRadicacion": "2025-10-30T22:24:44.3528574+00:00", 
+ "RutaArchivos": null, 
+ "Ambiente": "DockerTest", 
+ "Modulo": "CapitaInicial", 
+ "ModalidadPago": "Pago capitacion", 
+ "PeriodoAtencion": { 
+  "FechaInicio": "2025-01-01T00:00:00", 
+  "FechaFin": "2025-01-30T00:00:00" 
+ }, 
+ "ResultadosValidacion": [ 
+  { 
+  "Clase": "NOTIFICACION", 
+  "Codigo": "CIN001", 
+  "Descripcion": "La fecha de la factura no corresponde al periodo reportado.",  
+  "Observaciones": "La Fecha de Emisión esta fuera del periodo reportado. Periodo reportado: 
+[01/01/2025-30/01/2025] Fecha Factura: [02/11/2024]", 
+  "PathFuente": "", 
+  "Fuente": "CapitaInicial" 
+  }, 
+  { 
+  "Clase": "NOTIFICACION", 
+  "Codigo": "FED129", 
+  "Descripcion": 
+"[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_CONTRATO.Value] El apartado no existe 
+o no tiene valor en el Xml del documento electrónico", 
+  "Observaciones": "El Número de Contrato [BOG-031-23-CPS] no debe incluirse, ya que se 
+proporcionó el Número de Póliza", 
+  "PathFuente": "", 
+  "Fuente": "FacturaElectronica" 
+  }, 
+  { 
+  "Clase": "NOTIFICACION", 
+===== Página 31/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 31 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+  "Codigo": "FED131", 
+  "Descripcion": 
+"[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_POLIZA.Value] El apartado no existe o no 
+tiene valor en el Xml del documento electrónico", 
+  "Observaciones": "El Número de Póliza [BOG-031-23-CPS] no debe incluirse, ya que se 
+proporcionó el Número de Contrato", 
+  "PathFuente": "", 
+  "Fuente": "FacturaElectronica" 
+  } 
+ ] 
+} 
+ 
+ 
+8.10. CargarCapitaPeriodo 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarCapitaPeriodo 
+(Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json Si Corresponde al RIPS soporte de la Factura 
+electrónica de venta en salud del periodo 
+
+===== Página 32/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 32 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+anterior y su estructura debe cumplirse 
+según los lineamientos del Documento 
+técnico 1 de la Resolución 2275 de 2023 o la 
+norma que lo modifique o sustituya 
+xmlFevFile string Si 
+Corresponde al documento adjunto 
+(AttachedDocument) de la factura electrónica 
+de venta, presentado en formato 
+estructurado codificado en Base64 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips": { 
+ "numDocumentoIdObligado": "530520110", 
+ "numFactura": "CP12021", 
+ "tipoNota": null, 
+ "numNota": null, 
+ "usuarios": [ 
+  { 
+   "consecutivo": 1, 
+   "tipoDocumentoIdentificacion": "CC", 
+   "numDocumentoIdentificacion": "102030405050", 
+   "tipoUsuario": "12", 
+   "fechaNacimiento": "1991-06-25", 
+   "codSexo": "F", 
+   "codPaisResidencia": "170", 
+   "codMunicipioResidencia": "05001", 
+   "codZonaTerritorialResidencia": "02", 
+   "incapacidad": "NO", 
+   "codPaisOrigen": "170", 
+   "servicios": { 
+   "consultas": [ 
+     { 
+        "codPrestador": "192030405001", 
+       "fechaInicioAtencion": "2025-06-26 11:28", 
+       "numAutorizacion": "306540078", 
+       "codConsulta": "890602", 
+       "modalidadGrupoServicioTecSal": "01", 
+       "grupoServicios": "01", 
+===== Página 33/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 33 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+       "codServicio": 130, 
+       finalidadTecnologiaSalud": "16", 
+       "causaMotivoAtencion": "38", 
+       "codDiagnosticoPrincipal": "C402", 
+       "codDiagnosticoRelacionado1": null, 
+       "codDiagnosticoRelacionado2": null, 
+       "codDiagnosticoRelacionado3": null, 
+       "tipoDiagnosticoPrincipal": "02", 
+       "tipoDocumentoIdentificacion": "CC", 
+       "numDocumentoIdentificacion": "0123456789", 
+       "vrServicio": 100000, 
+       "conceptoRecaudo": "05", 
+       "valorPagoModerador": 0, 
+       "numFEVPagoModerador": null, 
+       "consecutivo": 1 
+     } 
+    ] 
+   } 
+  } 
+ ] 
+ }, 
+"xmlFevFile": 
+"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pg0KPEF0dGFja
+GVkRG9jdW1lbnQgeG1sbnM9InVybjpvYXNpczpuYW1lczpzcGVjaWZpY2F0aW9uOnVibDpzY2hlbWE6eHNk
+OkF0dGFjaGVkRG9jdW1lbnQtMiIgeG1sbnM6Y2FjPSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1
+Ymw6c2NoZW1hOnhzZDpDb21tb25BZ2dyZWdhdGVDb21wb25lbnRzLTIiIHhtbG5zOmNiYz0idXJuOm9hc2lz
+Om5hbWVzOnNwZWNpZmljYXRpb246dWJsOnNjaGVtYTp4c2Q6Q29tbW9uQmFzaWNDb21wb25lbnRzLTIiI
+HhtbG5zOmNjdHM9InVybjp1bjp1bmVjZTp1bmNlZmFjdDpkYXRhOnN……… " 
+} 
+Response Ver la descripción sobre el numeral 8.13. Response 
+  
+ 
+
+===== Página 34/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 34 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+8.11. CargarCapitaFinal  
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarCapitaFinal 
+(Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+rips json Si 
+Corresponde al RIPS soporte de la Factura 
+electrónica de venta en salud del periodo 
+anterior y su estructura debe cumplirse 
+según los lineamientos del Documento 
+técnico 1 de la Resolución 2275 de 2023 o la 
+norma que lo modifique o sustituya 
+xmlFevFile string Si Debe ir vacío. 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+"rips": { 
+ "numDocumentoIdObligado": "530520110", 
+ "numFactura": "CF6450", 
+ "tipoNota": null, 
+
+===== Página 35/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 35 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ "numNota": null, 
+ "usuarios": [ 
+  { 
+   "consecutivo": 1, 
+   "tipoDocumentoIdentificacion": "CC", 
+   "numDocumentoIdentificacion": "2020201020", 
+   "tipoUsuario": "12", 
+   "fechaNacimiento": "1991-06-25", 
+   "codSexo": "F", 
+   "codPaisResidencia": "170", 
+   "codMunicipioResidencia": "05001", 
+   "codZonaTerritorialResidencia": "02", 
+   "incapacidad": "NO", 
+   "codPaisOrigen": "170", 
+   "servicios": { 
+   "consultas": [ 
+     { 
+        "codPrestador": "192030405001", 
+       "fechaInicioAtencion": "2025-09-26 11:28", 
+       "numAutorizacion": "306540078", 
+       "codConsulta": "890602", 
+       "modalidadGrupoServicioTecSal": "01", 
+       "grupoServicios": "01", 
+       "codServicio": 130, 
+       finalidadTecnologiaSalud": "16", 
+       "causaMotivoAtencion": "38", 
+       "codDiagnosticoPrincipal": "C402", 
+       "codDiagnosticoRelacionado1": null, 
+       "codDiagnosticoRelacionado2": null, 
+       "codDiagnosticoRelacionado3": null, 
+       "tipoDiagnosticoPrincipal": "02", 
+       "tipoDocumentoIdentificacion": "CC", 
+       "numDocumentoIdentificacion": "0123456789", 
+       "vrServicio": 100000, 
+       "conceptoRecaudo": "05", 
+       "valorPagoModerador": 0, 
+       "numFEVPagoModerador": null, 
+       "consecutivo": 1 
+     } 
+    ] 
+===== Página 36/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 36 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+   } 
+  } 
+ ] 
+ }, 
+"xmlFevFile": "" 
+} 
+ 
+ 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+8.12. NC Capita 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/CargarNCCapita 
+(Puerto asignado por el servidor dockerizado) 
+Body  
+
+===== Página 37/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 37 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+Elemento Tipo Requerido Descripción 
+rips json Si 
+Corresponde al RIPS soporte de la Factura 
+electrónica de venta en salud del periodo 
+anterior y su estructura debe cumplirse 
+según los lineamientos del Documento 
+técnico 1 de la Resolución 2275 de 2023 o la 
+norma que lo modifique o sustituya 
+xmlFevFile string Si Debe ir vacío. 
+{ 
+"rips":, 
+"xmlFevFile":"" 
+} 
+ 
+{ 
+ "rips": null, 
+ "xmlFevFile": 
+"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pg0KPEF0dGFjaGV
+kRG9jdW1lbnQgeG1sbnM9InVybjpvYXNpczpuYW1lczpzcGVjaWZpY2F0aW9uOnVibDpzY2hlbWE6eHNkOkF0
+dGFjaGVkRG9jdW1lbnQtMiIgeG1sbnM6Y2FjPSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1Ymw6 c2
+NoZW1hOnhzZDpDb21tb25BZ2dyZWdhdGVDb21wb25lbnRzLTIiIHhtbG5zOmNiYz0idXJuOm9hc2lzOm5hbWV
+zOnNwZWNpZmljYXRpb246dWJsOnNjaGVtYTp4c2Q6Q29tbW9uQmFzaWNDb21wb25lbnRzLTIi+.. " 
+} 
+Response Ver la descripción sobre el numeral 8.13. Response 
+ 
+===== Página 38/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 38 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ 
+ 
+ 
+8.13. Response 
+ 
+Elemento Tipo Requerido Descripción 
+ResultState Boolean Si 
+Campo que describe el estado de la transacción: 
+• true: corresponde al proceso correcto ante el 
+mecanismo único de validación al envió de la 
+información. 
+• false: Corresponde a un procesamiento no 
+exitoso el cual es causado por una validación de 
+tipo RECHAZO por el mecanismo único de 
+validación. 
+PorcesoID Int Si 
+Corresponde a un número consecutivo asignado por el 
+sistema a la cantidad de envíos realizados por el 
+PSS/PTS 
+NumFactura String SI Corresponde al número de factura enviada en el RIPS 
+Soporte sobre el campo “numFactura”. 
+CodigoUnicoValidacion String SI 
+Corresponde al Código Único de Validación – CUV 
+equivalente a 96 caracteres hexadecimales el cual se 
+genera cuando el Resultado de la transacción es true, en 
+caso contrario el sistema generará el siguiente mensaje 
+"No aplica a paquetes procesados en estado 
+[RECHAZADO] o validaciones realizadas antes del 
+envío al Ministerio de Salud y Protección Social". 
+
+===== Página 39/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 39 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Elemento Tipo Requerido Descripción 
+FechaRadicacion String SI Corresponde a la fecha de validación generada por el 
+Mecanismo único de validación. 
+RutaArchivos String SI 
+Corresponde a la ruta de la Carpeta donde se encuentran 
+alojados los documentos validados por el Mecanismo 
+único de validación. 
+Se informará en los casos de la solución Cliente/Servidor. 
+Para la solución API RESTful se informará “null” 
+Ambiente String SI 
+Corresponde al ambiente por el cual se enviaron los 
+documentos electrónicos. 
+• DockerTest 
+• DockerStage 
+• DockerProd 
+Modulo String SI 
+Corresponde al método/módulo utilizado para el envió de 
+los documentos. 
+• FacturaElectronica 
+• NotaCredito 
+• NotaCreditoTotal 
+• NotaDebito 
+• NotaAjuste 
+• RipsSinFactura 
+• CapitaInicial 
+• CapitaPeriodo 
+• CapitaFinal 
+• NCAcuerdoVoluntades 
+• NCCapita 
+ModalidadPago String SI 
+Corresponde a la modalidad de pago informada en el 
+XML (FEV, NC, ND) transmitido. 
+• Pago individual por caso / Conjunto integral de 
+atenciones / Paquete / Canasta.  
+• Pago global prospectivo.  
+• Pago por capitación.  
+• Pago por evento.  
+PeriodoAtencion.FechaInicio 
+ String SI 
+Corresponde a la fecha de inicio del periodo de 
+facturación informado en el XML (FEV, NC, ND) 
+transmitido. 
+PeriodoAtencion.FechaFin String SI Corresponde a la fecha fin del periodo de facturación 
+informado en el XML (FEV, NC, ND) transmitido. 
+ResultadosValidacion.Clase String SI 
+Corresponde al efecto de la regla de validación. 
+• RECHAZADO 
+• NOTIFICACION 
+===== Página 40/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 40 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Elemento Tipo Requerido Descripción 
+ResultadosValidacion.Codigo String SI Corresponde al identificador de la regla de validación 
+ResultadosValidacion.Descripcion String SI Corresponde a la descripción de la regla de validación 
+ResultadosValidacion.Observaciones String SI Corresponde al mensaje de respuesta de la regla de 
+validación 
+ResultadosValidacion.PathFuente String SI Corresponde al Path fuente donde se identifica la 
+incidencia sobre los documentos JSON o XML 
+ResultadosValidacion.Fuente String SI 
+Corresponde al documento donde se presta la incidencia 
+reportada sobre el grupo de datos. 
+• RIPS 
+• FacturaElectrónica 
+• NotaCredito 
+• NotaDebito 
+ 
+8.14. ConsultarCUV 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json 
+Authorization Las Entidades Responsables de Pago (ERP) no deben realizar el proceso de autenticación.  
+URL https://localhost:9443/api/ConsultasFevRips/ConsultarCUV 
+(Puerto asignado por el servidor dockerizado) 
+Body 
+ 
+ 
+Response  
+
+===== Página 41/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 41 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+{ 
+    "ProcesoId": 1254, 
+    "EsValido": true, 
+    "CodigoUnicoValidacion": 
+"0e6dd9f85990e6fbc77e37f57e89876ab117026daa2baaf2ad667f44482fbf4a26aab4314f51af
+12535aa053adbe6dfd", 
+    "FechaValidacion": "2025-10-31T07:11:52.9807523", 
+    "TipoDocumento": "NcAcuerdoVoluntades", 
+    "NumDocumentoIdObligado": "530520110", 
+    "NumeroDocumento": "XNCA0003", 
+    "FechaEmision": "2025-07-16T00:00:00", 
+    "TotalFactura": 3004.000000, 
+    "CantidadUsuarios": 0, 
+    "CantidadAtenciones": 0, 
+    "TotalValorServicios": 0, 
+    "IdentificacionAdquiriente": "222222222", 
+    "CodigoPrestador": "1920304050", 
+    "ModalidadPago": "Pago por evento", 
+    "NumDocumentoReferenciado": "RYQ103034", 
+    "UrlJson": null, 
+    "UrlXml": null, 
+    "JsonFile": null, 
+    "XmlFileBase64": null, 
+    "ResultadosValidacion": [], 
+    "CantidadTotalAtenciones": { 
+        "Consultas": 0, 
+        "Procedimientos": 0, 
+        "Medicamentos": 0, 
+        "OtrosServicios": 0, 
+        "RecienNacidos": 0, 
+        "Hospitalizaciones": 0, 
+        "Urgencias": 0 
+    } 
+} 
+ 
+ 
+ 
+===== Página 42/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 42 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+8.15. RecuperarCUV 
+ 
+Propiedad Valor 
+Tecnología REST 
+Método POST 
+Headers Content-Type: application/json, Content-Encoding: gzip 
+Authorization Agregar el token dado en el método 8.1 LoginSispro, Type: Bearer Token 
+ 
+ 
+ 
+URL https://localhost:9443/api/PaquetesFevRips/RecuperarCUV  
+(Puerto asignado por el servidor dockerizado) 
+Body  
+Elemento Tipo Requerido Descripción 
+codigoUnicoV
+alidacion  
+string SI Corresponde CUV que se requiera consultar ante el 
+Ministerio 
+{ 
+"codigoUnicoValidacion":"" 
+} 
+ 
+{ 
+  "codigoUnicoValidacion": 
+"27989853098ba870e6097fdb5e1fb22a5579c00e193964efe66289f8c139eaad3d276a94923a7fcde29
+bf0bdf4bc3bef" 
+} 
+ 
+Response Ver la descripción sobre el numeral 8.13. Response 
+
+===== Página 43/43 =====
+ 
+PROCESO MISIONAL Código:  FEVRM001 
+MANUAL MANUAL DE CONSUMO API-DOCKER-
+FEV-RIPS-V 4.3 Versión:  2.0 
+ 
+Página 43 de  43                              Una vez impreso o descargado este documento se considera copia no controlada         ASIF03 Versión 02 (06 de septiembre de 2024) 
+ 
+Propiedad Valor 
+ 
+ 

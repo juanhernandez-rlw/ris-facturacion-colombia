@@ -1,0 +1,1190 @@
+
+===== Página 1/40 =====
+   
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+ 
+  
+ 
+ 
+ 
+GUIA DE AUTENTICACIÓN 
+MECANISMO ÚNICO DE VALIDACION DEL RIPS COMO SOPORTE DE LA FEV EN SALUD 
+PLATAFORMA CLIENTE/SERVIDOR 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL 
+BOGOTÁ, JULIO DE 2025 
+  
+
+===== Página 2/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 2 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+TABLA DE CONTENIDO 
+1. OBJETIVO ....................................................................................................................................................... 4 
+2. ALCANCE ........................................................................................................................................................ 4 
+3. ÁMBITO DE APLICACIÓN .............................................................................................................................. 4 
+4. DOCUMENTOS ASOCIADOS A LA GUÍA...................................................................................................... 4 
+5. DEFINICIONES ................................................................................................................................................ 4 
+6. DESCRIPCIÓN DEL PROCEDIMIENTO DE AUTENTICACION APLICATIVO CLIENTE – SERVIDOR ....... 5 
+6.1.  Inscripción en el Portal Mi Seguridad Social ................................................................................................ 6 
+6.1.1. Registro de un ciudadano ...................................................................................................................... 6 
+6.2 Registro de la entidad Jurídica en el portal SISPRO ................................................................................... 13 
+6.3 Inscripción para Profesionales Independientes – P.I. .................................................................................. 18 
+6.4.  Ingreso al Sistema  FEV_RIPS .................................................................................................................. 19 
+6.4.1. Ingreso como un Representante de la entidad .................................................................................... 21 
+6.4.2. Ingreso como un Profesional Independiente Nacional ......................................................................... 25 
+6.4.3. Ingreso como un Profesional Independiente Nacional por Excepción ................................................. 27 
+6.4.4. Ingreso como un Profesional Independiente Extranjero ...................................................................... 29 
+7. OTRAS CONSIDERACIONES....................................................................................................................... 31 
+7.1 Recuperación de Contraseña ...................................................................................................................... 31 
+7.2 Actualización de Usuario Institucional .......................................................................................................... 34 
+7.3 Actualización de otros usuarios ................................................................................................................... 36 
+ 
+ 
+===== Página 3/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 3 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+<Control de Cambios> 
+ 
+Ítem Actividad Elaborado por Fecha Versión 
+1 Elaboración Documento inicial  Jacqueline Becerra Silva 2023-09-10 1.0 
+2 Incorporación del nuevo procedimiento a ser 
+ejecutado por los profesionales 
+independientes para el proceso de 
+Autenticación sobre la plataforma 
+FEV_RIPS. 
+Ajuste de la normatividad actual vigente y 
+pantallas acorde  al procedimiento de 
+Profesionales Independientes. 
+Jacqueline Becerra Silva 2024-03-15 2.0 
+3 Actualización del nuevo procedimiento de 
+ingreso al sistema FEV_RIPS , en el cual se 
+incorporó el campo tipo de usuario.  
+Jacqueline Becerra Silva 2025-06-26 3.0 
+4 Actualización respecto a la lista de tipos de 
+identificación por tipo de usuario.  
+Jacqueline Becerra Silva 2025-07-11 4.0 
+  
+===== Página 4/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 4 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+1. OBJETIVO 
+ 
+Documentar el procedimiento de autenticación para la aplicación en ambiente Cliente / Servidor a ser usado por 
+los Prestadores de Servicios de Salud (IPS públicas y privadas, Profesionales Independientes de salud, Transporte 
+Especial de Pacientes y entidades con objeto social diferente), los Proveedores de Tecnologías en Salud -PTS  y 
+demás obligados a reportar los Reg istros Individuales de Prestaciones en Salud - RIPS, acorde a lo establecido 
+en las Resoluciones 2275 de diciembre de 2023 y 1884 de 2024. 
+ 
+2. ALCANCE 
+Inicia con el proceso de inscripción en el portal https://www.miseguridadsocial.gov.co/, continúa con el reg istro en 
+el portal https://web.sispro.gov.co/    y finalmente termina con el ingreso en el sistema FEV-RIPS. 
+ 
+3. ÁMBITO DE APLICACIÓN 
+Esta guía aplica para los Prestadores de Servicios de Salud, los Proveedores de Tecnologías en Salud y demás 
+obligados a reportar los RIPS, que deben llevar a cabo su enrolamiento en los portales MiseguridadSocial y 
+web.sispro.gov.co como medio de autenticación en la solución Cliente -Servidor del Sistema FEV-RIPS. 
+ 
+4. DOCUMENTOS ASOCIADOS A LA GUÍA 
+ Proceso SIMC01 Administración de sistemas de información. 
+ Política de privacidad y confidencialidad del Ministerio de Salud y Protección Social. 
+ Política general de seguridad de la información del Ministerio de Salud y Protección Social. 
+ FEVRG01 Guía de Instalación del Sistema Cliente – Servidor FEV_RIPS 
+ 
+5. DEFINICIONES 
+ Aplicación cliente-servidor: es un tipo de arquitectura en la que la funcionalidad se distribuye entre dos 
+componentes principales: el cliente, que realiza las peticiones, y el servidor, que las procesa y responde. 
+Estas aplicaciones requieren l a instalación de un software cliente en el dispositivo del usuario, pero no 
+operan completamente de forma local. Para que el cliente funcione correctamente, es indispensable que 
+exista conectividad con el servidor, ya que muchas de sus funciones dependen d e la comunicación 
+constante entre ambos. 
+ 
+ Autenticación: es un procedimiento informático mediante el cual se verifica que un usuario o una 
+aplicación es realmente quien dice ser. Este proceso permite validar la identidad de las partes 
+involucradas, asegurando que el acceso a sistemas, servicios o datos esté restringido únicamente a 
+entidades autorizadas.  
+ 
+===== Página 5/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 5 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ Captcha: son las siglas de Completely Automated Public Turing test to tell Computers and Humans Apart. 
+Son pruebas desafío -respuesta controladas por máquinas que son utilizadas para determinar cuándo el 
+usuario es un humano o un programa automático. 
+ 
+ Credenciales de usuario:  Las credenciales de usuario son un conjunto de información utilizada para 
+verificar la identidad de un usuario antes de concederle acceso a sistemas informáticos y recursos en línea. 
+Generalmente, incluyen un nombre de usuario y una contraseña. 
+ 
+ Delegado: Un delegado es una persona que ha sido autorizada o designada para actuar en nombre de 
+otra persona o entidad en ciertas circ unstancias. En el contexto de registros, un delegado es alguien 
+autorizado para realizar trámites o acceder a información en nombre de una empresa o individuo.  
+ 
+ Enrolar: Es el proceso mediante el cual un usuario se registra en el sistema proporcionando in formación 
+personal (como nombre, número de teléfono, dirección, entre otros) y/o datos biométricos (como fotografía 
+facial, huella digital, imagen del iris, etc.). 
+ 
+ MiseguridadSocial: Es un portal creado con el propósito de  facilitar a los ciudadanos la af iliación al 
+Sistema General de Seguridad Social en Salud y a los afiliados el reporte de sus novedades.  
+ 
+ SISPRO: Es el acrónimo del Sistema de Información de la Protección Social en Salud, el cual es un sistema 
+de información en Colombia que busca gestionar los datos relacionados con la protección social en salud, 
+como afiliaciones, prestaciones y financiamiento. 
+ 
+ Usuario Contacto: se refiere a una cuenta o perfil registrad o en una plataforma o sistema cuya función 
+principal es servir como punto de comunicación entre una entidad o empresa y un usuario individual. Este 
+tipo de cuenta puede recibir notificaciones, información relevante y actuar como e l canal oficial para 
+establecer comunicaciones entre ambas partes. 
+6. DESCRIPCIÓN DEL PROCEDIMIENTO DE AUTENTICACION APLICATIVO CLIENTE – SERVIDOR 
+ 
+Para hacer uso del Mecanismo Único de Validación del RIPS como soporte de la Factura electrónica de ventas 
+en salud, en la plataforma Cliente Servidor, el usuario debe encontrarse registrado en el portal M i 
+seguridad social.  
+Al respecto debe tener en cuenta:  
+ Escriba los datos solicitados tal como aparecen en su documento de identidad. 
+ Escriba el número de su documento de identidad sin puntos ni comas. 
+ Escriba la fecha de expedición del documento de identificación, separada por guión (-), o haga uso del 
+calendario ubicando el cursor dentro del campo. 
+===== Página 6/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 6 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ El usuario que registre en Mi Seguridad Social es el mismo que utiliza para iniciar sesión en otros 
+aplicativos misionales del Sistema Integral de Información de la Protección Social – SISPRO. Si ya se 
+cuenta con dicho usuario no debe volver a realizar el registro. 
+ 
+ 
+Es importante señalar que una persona natural puede registrarse por cada entidad en la que trabaje o a la que 
+preste servicios. Para cada una de estas entidades, deberá contar con un usuario y una contraseña 
+independientes.  
+ 
+6.1.  Inscripción en el Portal Mi Seguridad Social  
+6.1.1. Registro de un ciudadano  
+ 
+1. Ingrese www.miseguridadsocial.gov.co   
+ 
+Figura No. 1 Ingreso al portal www.miseguridadsocial.gov.co 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+===== Página 7/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 7 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+2. Ubique la opción Registrarse  
+ 
+Al ingresar a la página, se presentan dos opciones para acceder al registro, ambas conducen al mismo proceso: 
+ 
+Desde la barra del menú  ACCESO,  seleccionar la opción  REGISTRARSE: 
+ 
+ 
+Figura No. 2.  Cómo puedo registrarme Opción 1  
+ 
+La segunda opción para acceder a la opcion REGISTRARSE, es desplazarse hacia la parte inferior de la página de 
+inicio, donde encontrará los pasos detallados para completar el proceso. 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 8/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 8 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 3.  Cómo puedo registrarme Opción 2 
+ 
+  
+
+===== Página 9/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 9 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+3. Diligencie el formulario de Registro de datos básicos. 
+ 
+ 
+Figura No. 4.  Formulario Registro Ciudadano 
+  
+
+===== Página 10/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 10 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+4. Dé respuesta a las preguntas del proceso de validación de identidad.  
+ 
+ 
+ 
+Figura No. 5.  Preguntas que validan la Identidad 
+ 
+ 
+  
+
+===== Página 11/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 11 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+5. A continuación, se debe diligenciar la información de contacto. 
+ 
+ 
+ 
+Figura No. 6.  Ingrese datos de contacto  
+ 
+ 
+ 
+6. Verifique la recepción del código de autenticación enviado al correo electrónico personal registrado e 
+ingréselo en el sistema. 
+ 
+
+===== Página 12/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 12 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 7.  Mensaje de código de autenticación 
+ 
+A continuación, efectúe el proceso de registro según el tipo de entidad, de la siguiente manera: 
+ 
+a. Para los Profesionales Independientes, se debe llevar a cabo el registro acorde a lo definido en el 
+numeral 6.3 Inscripción para Profesionales Independientes.  
+ 
+b. Para los restantes Prestadores de Servicios de Salud (PSS) y Proveedores de Tecnologías en Salud (PTS) 
+que no se encuentren inscritos en SISPRO, es obligatorio realizar el registro de la entidad como persona 
+jurídica a través del portal oficial de SISPRO: web.sispro.gov.co. 
+Adicionalmente, se debe vincular a la  persona natural  responsable del envío de la información al 
+Mecanismo Único de V alidación. Esta persona debe estar previamente inscrita en el 
+portal www.miseguridadsocial.gov.co, conforme a lo establecido en el numeral  6.2 Registro de la 
+Entidad Jurídica en el portal SISPRO. 
+ 
+ 
+ 
+Nota:   El SISPRO, dispone de la funcionalidad Solicitar - Actualizar Usuario Institucional , la cual debe ser 
+tomada, para registrar la solicitud de un usuario que va a representar a una empresa, en novedades tales como:   
+retiro o cambio de los funcionarios que hayan sido delegados para el envío de in formación a los aplicativos 
+misionales, entre otros.   Se describe el procedimiento en el literal 7.2 Actualización de Usuario Institucional. 
+ 
+
+===== Página 13/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 13 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+6.2 Registro de la entidad Jurídica en el portal SISPRO  
+1. Desde cualquier navegador web (por ejemplo,  Internet Explorer ó Google Chrome), acceda al portal 
+oficial web.sispro.gov.co.  
+ 
+ 
+ 
+ 
+Figura No. 8  Ingreso al portal web.sispro.gov.co 
+ 
+2. Seleccionar la opción “Registrar o Actualizar su Entidad”  
+  
+ 
+ 
+Figura No. 9 Registrar o Actualizar su Entidad  
+ 
+ 
+3. El sistema solicita que se autentique ante el SISPRO con el número de identificación y la contraseña de la 
+persona que gestiona los accesos ante esta plataforma:  
+ 
+ 
+===== Página 14/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 14 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 10 Autenticación en el portal SISPRO.   
+ 
+Nota:  En caso de no recordar su contraseña, por favor siga el procedimiento descrito en el apartado 7.1 
+Recuperación de Contraseña 
+ 
+4. El sistema despliega una pantalla destinada a verificar la existencia de la entidad. Para continuar, seleccione 
+el tipo de identificación  NI (NIT) , ingrese el número de NIT del obligado a reportar y haga clic en el 
+botón "Verificar Registro". 
+ 
+ 
+Figura No. 11 Pantalla para Verificar Estado Registro Entidad 
+ 
+ 
+ 
+5. A continuación, e l sistema mostrará un mensaje de confirmación para verificar que los datos ingresados 
+sean correctos. 
+ 
+ 
+
+===== Página 15/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 15 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 12 Confirmación de datos diligenciados 
+ 
+6. El sistema, presenta un formulario en el cual se debe diligenciar la siguiente información:  
+ 
+ 
+Figura No. 13 Formulario de Registro de la Entidad  
+ 
+Razón Social:  corresponde al Nombre de la Entidad  
+Fecha de inicio de Operación:  corresponde a la fecha en la cual se iniciaron labores. Digitar la información 
+en el formato aaaa-mm-dd  
+Tipo de entidad:  seleccionar el tipo de entidad de las opciones presentadas, acorde a su objeto social:  
+ 
+ 
+
+===== Página 16/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 16 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+Nombre Tipo Siglas 
+Gestores Farmacéuticos     GFA 
+Entidades con Objeto social Diferente  OSD 
+Transporte especial de pacientes TEP 
+Organismos No Gubernamentales  ONG 
+Batallones BTN 
+Instituciones de Educación Superior IES 
+Proveedores de Tecnologías en Salud PTS 
+Laboratorios Farmacéuticos LAB 
+Mayoristas Laboratorios MAY 
+Régimen Especial y/o de Excepción  RES 
+Operadores Logísticos de tecnologías en salud OLO 
+ 
+ 
+Nota : Los establecimientos farmacéuticos mayoristas o minoristas que realizan ventas en volumen donde no se 
+identifica el usuario/paciente final, no deben generar FEV en salud, ni RIPS . Deben usar Factura electrónica de 
+Ventas – FEV -  convencional. 
+      
+      Códigos Administradora:  No debe ser seleccionado ningún dato.   Solo aplica para el Tipo de entidad:  EPS 
+ 
+     Ubicación en Colombia :  Se deben diligenciar los siguientes campos relacionados con la ubicación de la 
+entidad: 
+ Departamento: Seleccione el departamento correspondiente. 
+ Municipio: Seleccione el municipio donde se encuentra ubicada la entidad. 
+ Dirección: Ingrese la dirección física de las instalaciones. 
+ Teléfono de contacto: Proporcione un número telefónico activo para comunicaciones oficiales. 
+ 
+      Datos del Representante Legal :  correspondiente a los campos Tipo de Identificación y Número de 
+identificación del representante legal. Luego, oprima el botón “verificar”.   .  
+      Datos de Contacto:  seleccionar el Tipo de Identificación del contacto e ingrese el Número de identificación 
+del contacto. Luego dé clic en “verificar”.     
+
+===== Página 17/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 17 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Nota:  Al dar clic  en el botón verificar, los datos del representante Legal y del contacto, se validan que estén 
+registrados en el portal www.miseguridadsocial.gov.co.  Si no se cumple esta condición, el sistema SISPRO no 
+permite el registro de la entidad.  
+Finalmente, oprima el botón Registrar Solicitud.  
+ 
+Figura No. 14 Solicitud de confirmación   
+ 
+7. El sistema solicita la confirmación de la petición realizada.  En este momento, la entidad ha sido registrada 
+para iniciar las actividades de envío de información a través de las soluciones FEV_RIPS.  
+ 
+ 
+Nota:  Los Tipos de entidades  tales como:   Gestores Farmacéuticos, Organismos No Gubernamentales , 
+Batallones, Instituciones de Educación Superior, Laboratorios Farmacéuticos,  Entidades del Régimen Especial 
+y/o  Excepción, Operadores Logísticos,  recibirán un correo electrónico a  la  cuenta de correo inscrita,  en máximo 
+cinco (5) días hábiles, mediante el cual se les informará  el código de IPSnoREPS asignado,  que los habilitará 
+para poder enviar la información de RIPS  a través del Sistema Mecanismo único de Validación.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 18/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 18 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+6.3 Inscripción para Profesionales Independientes – P.I.  
+Los profesionales Independientes - P.I, deben:  
+ 
+ Estar inscritos como ciudadanos en el Portal www.miseguridadsocial.gov.co (ver literal 6.1 Inscripción en el 
+Portal Mi Seguridad Social).  
+ 
+ Contar con una contraseña.  
+ 
+ Estar activos y habilitados en la Base de datos del Registro Especial de Prestadores de Servicios de Salud – 
+REPS. Esta información puede ser consultada en  el siguiente enlace oficial :  
+https://prestadores.minsalud.gov.co/habilitacion/ 
+ 
+ 
+Figura No. 15 Pantalla de Consulta REPS 
+ 
+ 
+ 
+En Caso de encontrarse vencido el registro (fecha de vencimiento, menor a la fecha de consulta), es necesario 
+dirigirse a la Secretaria de Salud del ente territorial para actualizar el estado de habilitación de su servicio.  
+ 
+
+===== Página 19/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 19 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+6.4.  Ingreso al Sistema  FEV_RIPS   
+Para comenzar con el proceso de ingreso al sistema  cliente-servidor FEV_RIPS , es indispensable ejecutar 
+previamente el procedimiento de instalación del sistema. Este procedimiento se encuentra detallado en el 
+documento FEVRG01 – Guía de Instalación del Sistema Cliente-Servidor FEV_RIPS. 
+ 
+El funcionario, asignado para llevar a cabo el proceso de validación y transmisión de archivos ejecutar á las 
+siguientes tareas: 
+ 
+1. Desde la ventana de inicio se debe buscar la aplicación Validador-FEV_RIPS  
+ 
+ 
+Figura No. 16 Icono validador FEV_RIPS 
+ 
+2. Una vez allí, dar doble clic en el ícono identificado como FEVRIPS Validador Local. A continuación, se 
+abrirá una ventana emergente solicitando los  datos de autenticación  requeridos para el acceso al 
+sistema. Ingrese las credenciales asignadas (usuario y contraseña) para continuar con el proceso. 
+
+===== Página 20/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 20 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 17 Pantalla de Autenticación FEV_RIPS  
+ 
+Nota:  El campo Tipo de usuario: identifica la persona que va a ingresar al sistema FEV_RIPS.  
+ 
+ 
+ 
+Figura No. 18 Tipos de usuarios Sistema FEV_RIPS 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 21/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 21 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+6.4.1. Ingreso como un Representante de la entidad 
+ 
+Esta opción está destinada exclusivamente a los funcionarios de los Prestadores de Servicios de Salud – PSS –
+ya sean IPS p rivadas, pública o mixtas— y a los Proveedores de Tecnología de Salud – PTS, que realizarán el 
+proceso de validación y envío al Ministerio de Salud y Protección Social de los documentos electrónicos de 
+ventas en salud (Facturas Electrónicas de Venta - FEV, Notas Débito - ND, y Notas Crédito - NC) en formato XML, 
+junto con sus respectivos archivos RIPS asociados.  
+ 
+ 
+Figura No. 19 Ingreso como Representante de la Entidad  
+ 
+1. En el campo Tipo de Identificación, el sistema contempla tres  (3)  opciones:   
+ 
+Figura No. 20 Tipos de identificación para Tipo de usuario: Representante de la Entidad 
+ 
+
+===== Página 22/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 22 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+Debe ser seleccionada una de las opciones presentadas.   
+ 
+2. Debe ingresar el  número de identificación  que haya sido previamente registrado en el portal 
+oficial: www.miseguridadsocial.gov.co. Este dato es indispensable para validar el acceso al sistema. 
+ 
+En caso de que el número de identificación ingresado  no se encuentre registrado , el sistema mostrará el 
+siguiente mensaje de advertencia:  
+ 
+ 
+Figura No. 21 Mensaje: Su usuario no está registrado  
+ 
+3. Digite la contraseña asignada para el acceso al sistema. Esta debe coincidir con la registrada previamente 
+durante el proceso de inscripción en el portal de SISPRO.   
+ 
+En caso de que la contraseña sea incorrecta, el sistema mostrará el siguiente mensaje: 
+ 
+ 
+Figura No. 22 Mensaje: Sus credenciales de Usuario no son válidas  
+ 
+4. Finalmente, debe ingresar el Número de Identificación Tributaria (NIT) de la entidad, el mismo que fue 
+utilizado durante el proceso de registro.  
+En caso de que el NIT ingresado no esté relacionado con el usuario autenticado, el sistema mostrará el 
+siguiente mensaje: 
+ 
+ 
+
+===== Página 23/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 23 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+ 
+Figura No. 23 Mensaje: Sus credenciales de Usuario no son válidas  
+ 
+5. Si todas las validaciones anteriores han sido superadas correctamente, el sistema  FEV_RIPS permitirá el 
+ingreso del usuario  (Figura No.2 4). A continuación, se mostrará la interfaz principal del sistema  (Figura 
+No.25), desde la cual se puede acceder a las funcionalidades habilitadas para el envío y validación de 
+documentos electrónicos en salud. 
+ 
+ 
+ 
+ 
+Figura No. 24 Ingreso de datos para Autenticación  
+ 
+
+===== Página 24/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 24 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 25 Interfaz principal del sistema FEV_RIPS  
+ 
+
+===== Página 25/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 25 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+6.4.2. Ingreso como un Profesional Independiente Nacional  
+Esta opción está destinada exclusivamente a los  Profesionales Independientes Nacionales que realizarán el 
+proceso de validación y envío al Ministerio de Salud y Protección Social  de los documentos electrónicos de 
+venta en salud  —como Facturas Electrónicas de Venta (FEV), Notas Débito (ND) y Notas Crédito (NC) — en 
+formato XML, junto con sus respectivos archivos RIPS asociados. 
+Asimismo, esta opción aplica para aquellos profesionales independientes cuyos ingresos  no superen los 3.500 
+UVT, y que, por tanto,  solo están obligados a reportar los archivos RIPS, sin necesidad de enviar docu mentos 
+electrónicos de venta. 
+ 
+Nota:  En esta opci ón el Número de identificación del Profesional Independiente Nacional debe ser igual a su 
+NIT  
+ 
+1. Los datos a ser diligenciados corresponden a: 
+ 
+o Tipo de Identificación:  por defecto la opción es Cédula de Ciudadanía  
+o No. Identificación:  número de identificación del Profesional Independiente 
+o Contraseña:  clave asignada en el registro inicial 
+o Nit:  número de identificación del Profesional Independiente 
+ 
+ 
+Figura No. 26 Ingreso de datos para Autenticación  
+Profesionales Independientes: Número de Identificación y NIT deben ser iguales  
+
+===== Página 26/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 26 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+2. Si todas las validaciones anteriores han sido superadas correctamente, el sistema  FEV_RIPS permitirá el 
+ingreso del usuario. A continuación, se mostrará la interfaz principal del sistema (Figura No.2 7), desde la 
+cual se puede acceder a las funcionalidades habilitadas para el envío y validación de documentos 
+electrónicos en salud y los RIPS (Figura 28). 
+ 
+ 
+Figura No. 27 Interfaz principal del sistema FEV_RIPS 
+ 
+ 
+Figura No. 28 Módulos Sistema FEV_RIPS  
+ 
+
+===== Página 27/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 27 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+6.4.3. Ingreso como un Profesional Independiente Nacional por Excepción  
+ 
+Esta opción está destinada exclusivamente a los  Profesionales Independientes Nacionales  cuyo Número de 
+Identificación Tributaria (NIT) no coincide con su número de identificación personal. Debido a esta diferencia, 
+estos usuarios reciben un tratamiento de excepción dentro del sistema FEV_RIPS, lo cual les permite un proceso 
+de ingreso adaptado a su condición particular. 
+  
+1. Los datos a ser diligenciados corresponden a: 
+ 
+o Tipo de Identificación:  por defecto la opción es Cédula de Ciudadanía  
+o No. Identificación:  número de identificación del Profesional Independiente 
+o Contraseña:  clave asignada en el registro inicial 
+o Nit:  número de identificación del Profesional Independiente 
+ 
+ 
+ 
+Figura No. 29 Ingreso de datos para Autenticación  
+
+===== Página 28/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 28 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+2. Si las validaciones relacionadas con el  registro del usuario, la  contraseña y la  habilitación en el 
+sistema Registro Especial de Prestadores de Servicios de Salud - REPS, han sido superadas correctamente, el 
+sistema FEV_RIPS permitirá el ingreso del usuario. 
+ 
+Se mostrará la interfaz principal del sistema (Figura No.2 7), desde la cual se puede acceder a las 
+funcionalidades habilitadas para el envío y validación de documentos electrónicos en salud y los RIPS (Figura 
+28). 
+ 
+En caso contrario, el sistema FEV_RIPS puede enviar un mensaje de Notificación en el cual se indique que el 
+usuario no figura registrado (Figura No .30), el acceso será denegado y no podrá ingresar al sistema h asta 
+que se subsanen las inconsistencias detectadas  
+ 
+ 
+Figura No. 30 Usuario no figura registrado  
+ 
+ 
+ 
+Nota:  Para los casos en los cuales No figure en el sistema, se debe enviar correo electrónico a 
+ipsnoreps@minsalud.gov.co,   relacionando:   
+NOMBRE COMPLETO,  DIRECCIÓN, TELÉFONO,  EMAIL, NOMBRE DEPARTAMENTO, NOMBRE MUNICIPIO, 
+TIPO DE DOCUMENTO,  NUMERO DE IDENTIFICACIÓN,  NIT.  
+ 
+Anexando copia del documento de identidad, copia  del  RUT (Registro Único Tributario)  
+ 
+Y a vuelta de correo electrónico se le informará su activación en el sistema. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 29/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 29 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+6.4.4. Ingreso como un Profesional Independiente Extranjero   
+ 
+Esta opción está destinada exclusivamente a los  Profesionales Independientes Extranjeros cuyos tipos de 
+documento de identificación corresponden a: 
+ Cédula de Ciudadanía (para aquellos que ya han sido nacionalizados) 
+ Cédula de Extranjería (CE) 
+ Permiso por Protección Temporal (PT) 
+ Permiso Especial de Permanencia (PE) 
+En estos casos, el Número de Identificación Tributaria (NIT) asignado por la DIAN no guarda relación directa con 
+el número de identificación personal. 
+ 
+ 
+ 
+Figura No. 31 Tipos de Identificación – Profesional Independiente Extranjero  
+ 
+ 
+1. Los datos a ser diligenciados corresponden a: 
+ 
+o Tipo de Identificación:  Cédula de Ciudadanía  (CC), Cédula de Extranjería  (CE), Permiso por 
+Protección Temporal (PT),  Permiso Especial de Permanencia (PE) 
+o No. Identificación:  número de identificación del Profesional Independiente 
+o Contraseña:  clave asignada en el registro inicial 
+o Nit:  número de identificación del Profesional Independiente 
+ 
+ 
+
+===== Página 30/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 30 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 32 Datos de usuario para ingreso al Sistema FEV_RIPS   
+ 
+ 
+3. Si las validaciones relacionadas con el  registro del usuario, la  contraseña y la habilitación en el 
+sistema Registro Especial de Prestadores de Servicios de Salud - REPS, han sido superadas correctamente, el 
+sistema FEV_RIPS permitirá el ingreso del usuario. 
+ 
+Se mostrará la interfaz principal del sistema (Figura No.2 7), desde la cual se puede acceder a las 
+funcionalidades habilitadas para el envío y validación de documentos electrónicos en salud  y los RIPS  
+asociados (Figura 28). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== Página 31/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 31 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+7. OTRAS CONSIDERACIONES  
+7.1 Recuperación de Contraseña  
+1. Se ingresa al portal web.sispro.gov.co  
+ 
+2. Tome la opción Ingresar al sistema  
+ 
+ 
+Figura No. 33 Portal SISPRO  
+A continuación se despliega una pantalla para comprobar si es un ser humano:  
+ 
+ 
+Figura No. 34 Validación   
+ 
+ 
+ 
+===== Página 32/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 32 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+3. Debe seleccionar el tipo de documento, digitar el número de identificación y escribir el dato de 
+captcha indicado.  
+ 
+ 
+En caso de no estar registrado el sistema genera el mensaje:  
+ 
+ 
+Figura No. 35 Mensaje de Validación   
+ 
+Si el usuario está bloqueado, el sistema le despliega el mensaje:  
+ 
+ 
+Figura No. 36 Mensaje de Bloqueo    
+ 
+4. Al correo informado, en el momento del registro como ciudadano, le llegará un mensaje para que se 
+efectúe el cambio de la contraseña 
+ 
+
+===== Página 33/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 33 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 37 Ejemplo de mensaje enviado     
+ 
+5. Al oprimir Cambiar Contraseña  se despliega: 
+ 
+ 
+Figura No. 38 Campos para el cambio de contraseña      
+  
+ 
+===== Página 34/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 34 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+6. Al efectuar el cambio el sistema le indica:  
+ 
+ 
+ Figura No. 39 Mensaje de cambio exitoso     
+ 
+7.2 Actualización de Usuario Institucional 
+ 
+A través de esta opción, se puede registrar la solicitud de un usuario que va a representar a una empresa, en 
+novedades tales como:  retiro o cambio de los funcionarios que hayan sido delegados para el envío de 
+información a los aplicativos misionales, entre otros.  
+ 
+1. Se ingresa al portal web.sispro.gov.co  
+ 
+2. Tome la opción Ingresar al sistema  
+ 
+
+===== Página 35/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 35 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 40 Opción de Ingreso a las opciones del SISPRO 
+ 
+3. Una vez dentro del portal, seleccione la opción Solicitar -Actualización Usuario Institucional 
+ 
+ 
+Figura No. 41 Opción Actualización Usuario Institucional 
+ 
+ 
+4.  A continuación se despliega un formulario para ser complementada la información correspondiente a: 
+Teléfono de contacto, cargo, tipo de contrato, fecha fin Contrato, correo electrónico institucional. 
+ 
+ 
+ 
+ 
+
+===== Página 36/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 36 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 42 Opción Actualización Usuario Institucional 
+ 
+ 
+Para efectuar la actualización correspondiente, se debe buscar la Entidad ya sea con el NIT registrado o el 
+nombre de la misma.  El sistema devuelve los datos encontrados y permite llevar a cabo la actualización 
+respectiva.   
+ 
+Para el caso de la fecha de terminación del contrato, esta puede ser ajustada, según las necesidades para el 
+sistema.  
+ 
+Se recomienda dejar una observación del porque se lleva a cabo los cambios realizados.  
+ 
+Finalmente se oprime el botón Registrar. 
+ 
+ 
+7.3 Actualización de otros usuarios 
+ 
+Si la entidad requiere vincular, desvincular o actualizar el usuario institucional debe realizarlo mediante el Anexo 
+Técnico SEG500USIN el cual se encuentra disponible en portal web.sispro.gov.co  
+ 
+ 
+ 
+ 
+
+===== Página 37/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 37 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Figura No. 43 Anexo Técnico para reportar ajustes al usuario institucional  
+ 
+También se puede descargar, el archivo que se encuentra en formato PDF, del siguiente enlace: 
+ 
+https://web.sispro.gov.co/WebPublico/ExplorarCarpetas.aspx?pCarpeta=AnexosTecnicosNormas&pTitle=Anex
+os%20T%C3%A9cnicos%20-%20Normas 
+ 
+Dentro de este documento, se destaca: 
+ 
+1. Estructura y especificación de los archivos 
+2. Características de los archivos planos 
+3. Plataforma de envío de archivos 
+4. Periodo de reporte y plazo  
+ 
+Con el anexo descargado, se debe generar el archivo plano con la información descrita en el anexo y enviarlo 
+mediante la plataforma PISIS Cliente Neo.  
+ 
+A continuación, un ejemplo del archivo plano que se debe generar para enviar por la plataforma PISIS Cliente 
+Neo. En este se está enviando la actualización de dos (2) usuarios: 
+ 
+ 
+Figura No. 44 Ejemplo del archivo plano a trasmitir por la plataforma PISIS Cliente Neo  
+ 
+El nombre debe corresponder al determinado en el anexo SEG500USIN, para este caso 
+SEG500USIN20231115NI000530520111.txt, Tener presente la fecha del reporte y el NIT de la entidad. 
+ 
+Tenga en cuenta lo siguiente:  
+ 
+ Tanto el representante Legal como el Contacto deben registrar primero sus datos en el 
+portal www.miseguridadsocial.gov.co 
+  
+ Con el usuario y la contraseña ya definidos en el portal de www.miseguridadsocial.gov.co, debe ingresar 
+al portal web.sispro.gov.co y descargar la plataforma PISIS Cliente Neo (este proceso se realizar si es la 
+primera vez que ingresa a la plataforma) y enviar el archivo según la estructura definida en el Anexo. 
+
+===== Página 38/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 38 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ 
+Y nos lleva a la siguiente pantalla: 
+ 
+Figura No. 45 Ubicación del instalador PISIS Cliente Neo  
+Al solicitar descargarlo, pide de nuevo las credenciales de ingreso y presenta una pantalla para validar que no 
+sea un robot: 
+ 
+Figura No. 46 Validación de ingreso  
+
+===== Página 39/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 39 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ Una vez diligenciados en forma correcta los datos, descarga un ejecutable denominado  
+,  
+el cual  se debe ejecutar y aparecerá la siguiente interfaz: 
+ 
+Figura No. 47 Interfaz de procesamiento de PISIS Cliente Neo 
+ Se debe arrastrar el plano generado,  SEG500USIN20231115NI000530520111.txt, para proceder a su 
+validación. 
+ Una vez el archivo sea enviado, el sistema le notificara el estado de procesamiento del archivo al  correo 
+electrónico. 
+ Si el archivo se cargó correctamente en el sistema, los usuarios ya quedan registrados y pueden hacer 
+uso de la plataforma PISIS Cliente Neo y/o de los perfiles asignados. 
+
+===== Página 40/40 =====
+ 
+ 
+PROCESO MISIONAL  Código:  FEVRG02 
+GUÍA  GUÍA DE AUTENTICACION SISTEMA 
+CLIENTE - SERVIDOR FEV_RIPS Versión:  3.0 
+ 
+Página 40 de 40 Una vez impreso o descargado este documento se considera copia no controlada  ASIF04- Versión 02 (06 de septiembre de 2024) 
+ 
+ Si el archivo NO se cargó correctamente en el sistema, el sistema notifica los errores mediante el correo 
+electrónico y estos deben ser corregidos hasta que el archivo se cargue con éxito y de esta manera el 
+usuario pueda hacer uso de la plataforma PISIS Cliente Neo. 
+ Debe verificar los datos registrados de la entidad ingresando al portal web.sispro.gov.co 
+ 
+o Registrar Entidad 
+o Seleccionar el tipo de identificación y digitar el NIT de la entidad, luego “Verificar Registro" 
+o Se desplegará una ventana con los datos que se encuentran registrados, si la 
+entidad requiere actualizarlos, realiza el proceso y luego debe guardar los cambios 
+seleccionando "Registrar solicitud". 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ELABORADO POR:  REVISADO POR: APROBADO POR: 
+Nombre y Cargo:  
+Jacqueline Becerra Silva  
+Contratista 
+ 
+Fecha: Julio de 2025 
+Nombre y Cargo: 
+Zulay Merlín García Farieta 
+Contratista 
+ 
+Fecha: Julio de 2025 
+Nombre y Cargo:  
+Juan Carlos Arce  
+Contratista 
+ 
+Fecha: 09 de julio de 2025 
+ 

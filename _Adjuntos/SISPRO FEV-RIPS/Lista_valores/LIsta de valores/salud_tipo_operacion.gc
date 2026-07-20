@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+	<Identification>
+		<ShortName>TiposOperación</ShortName>
+		<LongName xml:lang="es">Tipos de operacion sector salud</LongName>
+		<Version>1</Version>
+		<CanonicalUri>urn:salud:names:especificacion:ubl:listacodigos:gc:TiposOperación</CanonicalUri>
+		<CanonicalVersionUri>urn:salud:names:especificacion:ubl:listacodigos:gc:TiposOperación</CanonicalVersionUri>
+		<LocationUri>http://minsalud.gov.co/ubl/os-ubl-2.0/cl/gc/default/TiposOperación.gc</LocationUri>
+		<Agency>
+			<LongName xml:lang="es">DIAN (Dirección de Impuestos y Aduanas Nacionales)</LongName>
+			<Identifier>195</Identifier>
+		</Agency>
+	</Identification>
+	<ColumnSet>
+		<Column Id="code" Use="required">
+			<ShortName>Código</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Column Id="description" Use="required">
+			<ShortName>Descripción</ShortName>
+			<Data Type="normalizedString"/>
+		</Column>
+		<Key Id="codeKey">
+			<ShortName>CodeKey</ShortName>
+			<ColumnRef Ref="code"/>
+		</Key>
+	</ColumnSet>
+	<SimpleCodeList>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-CUFE</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Acreditación. Este documento incluye referencia(s) de Factura Electrónica de Venta (tipo 01) que comprueba el recaudo de Cuotas Moderadoras, Copagos o Cuotas de Recuperación, como recursos a favor de terceros, los cuales son acreditados a la presente Factura Electrónica de Venta con destino a la aseguradora que aparece como adquiriente. – Activa el Método de cálculo del Sector Salud.</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-CUDE</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Acreditación. Este documento incluye referencia(s) de Factura de Contingencia (tipos 03 o 04) o de Nota Crédito aplicada a Factura Electrónica de Venta que reconoce valores recaudados correspondientes a Cuotas Moderadoras, Copagos o Cuotas de Recuperación, como ingresos a favor de terceros, los cuales son acreditados a la presente Factura Electrónica de Venta con destino a la aseguradora que aparece como adquiriente. – Activa el Método de cálculo del Sector Salud.</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-POS</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Acreditación. Este documento incluye referencia(s) de Documento Equivalente de Venta POS que comprueba el recaudo de Cuotas Moderadoras, Copagos o Cuotas de Recuperación, como recursos a favor de terceros, los cuales son acreditados a la presente Factura Electrónica de Venta con destino a la aseguradora que aparece como adquiriente. – Activa el Método de cálculo del Sector Salud.Observación: Los valores recaudados a favor de terceros por el operador del sistema de salud mediante los comprobantes del Sistema POS serán automatizados por la DIAN, y deberán reportarse cada vez que se cierra una caja de recaudo. La DIAN expedirá la reglamentación técnica e informática pertinente.</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-SNum</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Acreditación. Este documento incluye referencia(s) de Factura Talonario que comprueba el recaudo de Cuotas Moderadores, Copagos o Cuotas de Recuperación, como recursos a favor de terceros, los cuales son acreditados a la presente Factura Electrónica de Venta con destino a la aseguradora que aparece como adquiriente. – Activa el Método de cálculo del Sector Salud.</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-Recaudo</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Recaudación. Comprobante de recaudo de Cuotas Moderadores, Copagos o Cuotas de Recuperación, como recursos a favor de terceros. – No Activa el Método de cálculo del Sector Salud.</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-Reporte</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Reporte. Este documento reporta referencia(s) de diversa índole que comprueban recaudo de Cuotas Moderadoras, Copagos o Cuotas de Recuperación, a las cuales ya se les dio tratamiento contable. – No Activa el Método de cálculo del Sector Salud.</SimpleValue>
+			</Value>
+		</Row>
+		<Row>
+			<Value ColumnRef="code">
+				<SimpleValue>SS-SinAporte</SimpleValue>
+			</Value>
+			<Value ColumnRef="description">
+				<SimpleValue>Reporte. Sin aporte ni recaudo en dinero por parte de los afiliados del régimen contributivo por concepto de Cuotas Moderadoras, Copagos o Cuotas de Recuperación. – No Activa el Método de cálculo del Sector Salud.</SimpleValue>
+			</Value>
+		</Row>
+	</SimpleCodeList>
+</gc:CodeList>

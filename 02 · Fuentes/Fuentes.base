@@ -1,0 +1,31 @@
+filters:
+  and:
+    - 'tipo == "fuente"'
+views:
+  - type: table
+    name: Todas las fuentes
+    order:
+      - file.name
+      - categoria
+      - estado
+      - es_fuente_de_verdad
+      - fecha_captura
+  - type: table
+    name: Por procesar
+    filters:
+      and:
+        - 'estado != "procesada"'
+        - 'estado != "archivada"'
+    order:
+      - file.name
+      - categoria
+      - estado
+  - type: table
+    name: Fuentes de la verdad
+    filters:
+      and:
+        - 'es_fuente_de_verdad == true'
+    order:
+      - file.name
+      - categoria
+      - url
