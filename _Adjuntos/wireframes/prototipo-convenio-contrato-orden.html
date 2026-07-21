@@ -323,6 +323,12 @@ function headOrden(){const step=orden.contId?"est":(orden.convId?"cont":"pac");c
   return `<h1 class="hd">Nueva orden</h1><p class="sub">Captura lo que dice el paciente (pagador, tipo de usuario, nivel y el estudio que viene a hacerse); con eso se <b>detecta el contrato</b> que corresponde.</p>
   <div class="flow">${S("pac","1 · Origen del paciente")}<span>→</span>${S("cont","2 · Contrato detectado")}<span>→</span>${S("est","3 · Datos + estudios")}<span>→</span><span class="st">4 · Generar</span></div>`;}
 function contratosDe(cid){return contratos.filter(k=>k.convId===cid&&k.desde<=HOY&&k.hasta>=HOY)}
+/* CUPS que el convenio REALMENTE tarifica = unión de las tarifas de sus contratos vigentes.
+   El buscador de estudios de la orden (o_estBuscado) se acota a esto: no se puede pedir un
+   CUPS que ningún contrato del convenio tarifa (antes buscaba en TODO el catálogo nacional). */
+function cupsDelConvenio(cid){const seen=new Set(),out=[];
+  contratosDe(cid).forEach(k=>(k.tarifa||[]).forEach(t=>{if(!seen.has(t.c)){seen.add(t.c);out.push([t.c,t.n]);}}));
+  return out;}
 function scoreCont(k){let s=0;const r=[];const tu=orden.pac.tipoUsuario;
   const valido=!tu||coberturaAdmiteTU(k.cob,tu);
   if(tu){if(valido){s+=3;r.push('<span class="pill cont">válido ✓</span>');}else r.push(`<span class="pill warnp">no aplica al tipo ${tu}</span>`);}
@@ -402,13 +408,13 @@ function validate(){const cont=contById(orden.contId),cv=cont?convById(cont.conv
 /* ===================== TYPEAHEAD (real, sobrevive al re-render) ===================== */
 let taState={id:null,cat:null,items:[],active:-1};
 const fold=s=>String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toUpperCase();  // ignora tildes
-function taFilter(cat,q){const arr=CATS[cat]();if(!arr||!arr.length)return [];q=fold(q.trim());
+function taFilter(cat,q,pool){const arr=pool||CATS[cat]();if(!arr||!arr.length)return [];q=fold(q.trim());
   if(!q)return arr.slice(0,40);
   const toks=q.split(/\s+/),qNoSp=q.replace(/\s+/g,""),out=[],have=new Set();
   for(let i=0;i<arr.length&&out.length<40;i++){if(fold(arr[i][0]).startsWith(qNoSp)){out.push(arr[i]);have.add(arr[i][0]);}}
   if(out.length<40)for(let i=0;i<arr.length&&out.length<40;i++){const it=arr[i];if(have.has(it[0]))continue;const hay=fold(it[1]+" "+(it[2]||""));if(toks.every(t=>hay.includes(t)))out.push(it);}
   return out;}
-function taShow(input){const cat=input.dataset.ta;taState={id:input.id,cat,items:taFilter(cat,input.value),active:-1};
+function taShow(input){const cat=input.dataset.ta;const pool=input.id==="o_estBuscado"?cupsDelConvenio(orden.convId):null;taState={id:input.id,cat,items:taFilter(cat,input.value,pool),active:-1};
   if(!taState.items.length){pop.hidden=true;return;}
   pop.innerHTML=taState.items.map((it,i)=>`<div class="it" data-i="${i}"><span class="cd">${it[0]}</span><span>${esc(it[1])}${it[2]?` — <span style="color:var(--ink-3)">${esc(it[2])}</span>`:""}</span></div>`).join("");
   const r=input.getBoundingClientRect();
