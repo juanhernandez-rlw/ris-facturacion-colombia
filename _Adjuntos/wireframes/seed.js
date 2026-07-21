@@ -7,6 +7,8 @@
  *    (Acuerdo 260: copago 11.5/17.3/23%).
  *  · recaudo: guarda AMBAS figuras {copago:{n1,n2,n3,tope}, cuota:{n1,n2,n3}}; la que aplica
  *    la determina el tipo de usuario del paciente en la orden (mapa RECAUDO_TU del modelo).
+ *  · mod: REMAPEADO 2026-07-20 a la tabla oficial SISPRO ModalidadContratoyPago (12 valores):
+ *    03 Capitación→11 · 04 Evento→12 (Pago por Servicio) · 01 Paquete se mantiene. (Regla §1.2)
  *  · _E/_I: estudios e insumos REALES (código · nombre de la tabla viva SISPRO) para el seed.
  *
  *  Separado del motor y del modelo: esto es DATO de ejemplo, no reglas ni catálogo.
@@ -60,37 +62,37 @@
   ];
 
   var contratos = [
-    { id: "CT1", nombre: "Imágenes ambulatorias 2026", convId: "CV1", cob: "01", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT1", nombre: "Imágenes ambulatorias 2026", convId: "CV1", cob: "01", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxtorax", 42000), mkE("rxlumbar", 48000), mkE("ecoobst", 96000), mkE("taccraneo", 280000), mkE("taccraneoc", 420000), mkE("rmcerebro", 620000)],
       insumos: [mkI("iopamidol", 48000), mkI("gadoteridol", 120000)], recaudo: REC() },
     { id: "CT2", nombre: "Alta complejidad RM/TAC 2026", convId: "CV1", cob: "16", mod: "01", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("taccraneoc", 430000), mkE("rmlumbarc", 980000), mkE("rmrodilla", 760000), mkE("densito", 130000)],
       insumos: [mkI("iopamidol", 48000), mkI("gadoterico", 95000)], recaudo: REC() },
-    { id: "CT3", nombre: "Detección temprana (mama/densito)", convId: "CV1", cob: "01", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT3", nombre: "Detección temprana (mama/densito)", convId: "CV1", cob: "01", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("mamo", 95000), mkE("densito", 135000), mkE("ecoobst", 98000)], insumos: [], recaudo: REC() },
-    { id: "CT4", nombre: "Radiología básica contributivo", convId: "CV2", cob: "01", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT4", nombre: "Radiología básica contributivo", convId: "CV2", cob: "01", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxcraneo", 28000), mkE("rxtorax", 40000), mkE("rxcervical", 45000), mkE("rxabdomen", 38000), mkE("mamo", 92000)],
       insumos: [], recaudo: REC() },
-    { id: "CT5", nombre: "Imágenes subsidiado 2026", convId: "CV3", cob: "17", mod: "03", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT5", nombre: "Imágenes subsidiado 2026", convId: "CV3", cob: "17", mod: "11", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxtorax", 38000), mkE("ecoobst", 88000), mkE("taccraneo", 260000)], insumos: [], recaudo: REC() },
-    { id: "CT6", nombre: "Ambulatorio Sanitas 2026", convId: "CV4", cob: "01", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT6", nombre: "Ambulatorio Sanitas 2026", convId: "CV4", cob: "01", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("ecoobst", 99000), mkE("dopcuello", 210000), mkE("dopmmii", 230000), mkE("taccraneo", 290000), mkE("rmcerebro", 640000)],
       insumos: [mkI("gadoteridol", 125000)], recaudo: REC() },
-    { id: "CT7", nombre: "Imágenes Salud Total 2026", convId: "CV5", cob: "01", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT7", nombre: "Imágenes Salud Total 2026", convId: "CV5", cob: "01", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxtorax", 41000), mkE("mamo", 90000), mkE("densito", 120000), mkE("taccraneoc", 415000)],
       insumos: [mkI("iopamidol", 47000)], recaudo: REC() },
-    { id: "CT8", nombre: "Subsidiado Coosalud imágenes", convId: "CV6", cob: "17", mod: "03", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT8", nombre: "Subsidiado Coosalud imágenes", convId: "CV6", cob: "17", mod: "11", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxcraneo", 26000), mkE("rxtorax", 37000), mkE("ecoobst", 85000)], insumos: [], recaudo: REC() },
-    { id: "CT9", nombre: "Accidente laboral - imágenes", convId: "CV7", cob: "05", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT9", nombre: "Accidente laboral - imágenes", convId: "CV7", cob: "05", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxcervical", 46000), mkE("rxlumbar", 49000), mkE("taccraneoc", 440000), mkE("rmlumbarc", 990000), mkE("rmrodilla", 780000)],
       insumos: [mkI("gadoterico", 98000)], recaudo: REC() },
-    { id: "CT10", nombre: "SOAT - trauma imágenes", convId: "CV8", cob: "04", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT10", nombre: "SOAT - trauma imágenes", convId: "CV8", cob: "04", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("taccraneo", 300000), mkE("taccraneoc", 450000), mkE("rxtorax", 44000), mkE("rmlumbarc", 1000000)],
       insumos: [mkI("iopamidol", 50000)], recaudo: REC() },
-    { id: "CT11", nombre: "Prepagada alta gama 2026", convId: "CV9", cob: "11", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT11", nombre: "Prepagada alta gama 2026", convId: "CV9", cob: "11", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rmcerebro", 720000), mkE("rmlumbarc", 1080000), mkE("taccraneoc", 520000), mkE("densito", 150000)],
       insumos: [mkI("gadoteridol", 130000)], recaudo: REC() },
-    { id: "CT12", nombre: "Tarifa particular 2026", convId: "CV10", cob: "15", mod: "04", desde: "2026-01-01", hasta: "2026-12-31",
+    { id: "CT12", nombre: "Tarifa particular 2026", convId: "CV10", cob: "15", mod: "12", desde: "2026-01-01", hasta: "2026-12-31",
       tarifa: [mkE("rxtorax", 65000), mkE("ecoobst", 160000), mkE("taccraneo", 380000), mkE("taccraneoc", 560000), mkE("rmcerebro", 900000), mkE("rmlumbarc", 1150000), mkE("mamo", 140000), mkE("densito", 160000)],
       insumos: [mkI("iopamidol", 60000), mkI("gadoteridol", 150000), mkI("bario", 42000)], recaudo: REC() }
   ];
