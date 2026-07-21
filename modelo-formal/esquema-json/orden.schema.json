@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ris-facturacion-colombia/esquema/orden.schema.json",
+  "title": "Orden (atención del paciente)",
+  "description": "Hereda pagador/cobertura/modalidad/tarifa del contrato. Captura solo lo que varía por atención (paciente, estudios, diagnóstico, recaudo). Los CRUCES con el convenio/contrato se validan contra 'contexto' (resuelto al elegir contId): esto muestra los condicionales if/then de forma declarativa.",
+  "type": "object",
+  "required": ["convId", "contId", "pac", "estudios"],
+  "properties": {
+    "convId": { "type": "string", "pattern": "^CV[0-9]+$" },
+    "contId": { "type": "string", "pattern": "^CT[0-9]+$", "description": "Regla ORD.contrato: obligatorio." },
+    "nivel": { "type": "string", "enum": ["", "1", "2", "3"], "$comment": "enums.json → NIVELES" },
+    "aut": { "type": "string", "description": "Código de autorización (condicional, ver allOf)." },
+    "pac": {
+      "type": "object",
+      "description": "Paciente. Regla ORD.pacIdentidad: tipo, num, nom, fnac obligatorios. ORD.pacMunicipio: mun.c obligatorio.",
+      "required": ["tipo", "num", "nom", "fnac", "mun"],
+      "properties": {
+        "tipo": { "type": "string", "enum": ["CC","TI","RC","CE","PT","PE","PA","CN","NV","AS","MS","SI","CD","DE","SC","NI"], "$comment": "enums.json → TIPO_DOCUMENTO" },
+        "num": { "type": "string", "minLength": 1 },
+        "nom": { "type": "string", "minLength": 1 },
+        "sexo": { "type": "string", "enum": ["M", "F", "I"], "$comment": "enums.json → SEXO" },
+        "fnac": { "type": "string", "format": "date" },
+        "incap": { "type": "boolean" },
+        "zona": { "type": "string", "enum": ["01", "02"], "$comment": "enums.json → ZONA" },
+        "tipoUsuario": { "type": "string", "enum": ["01","02","03","04","05","06","07","08","09","10","11","12","13"], "$comment": "enums.json → TIPO_USUARIO; debe pertenecer a contexto.tiposUsuario" },
+        "mun": {
+          "type": "object",
+          "required": ["c"],
+          "properties": {
+            "c": { "type": "string", "description": "código DANE del municipio" },
+            "n": { "type": "string" },
+            "d": { "type": "string", "description": "departamento" }
+          }
+        }
+      }
+    },
+    "estudios": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Regla ORD.estudios: mínimo 1. ORD.estudioDx: cada estudio exige diagnóstico (dx.c).",
+      "items": {
+        "type": "object",
+        "required": ["c", "n", "p", "dx", "tdx", "fin"],
+        "properties": {
+          "c": { "type": "string", "description": "CUPS (de la tarifa del contrato)" },
+          "n": { "type": "string" },
+          "p": { "type": "number" },
+          "dx": {
+            "type": "object",
+            "required": ["c"],
+            "properties": { "c": { "type": "string", "description": "CIE-10" }, "n": { "type": "string" } }
+          },
+          "tdx": { "type": "string", "enum": ["01", "02", "03"], "$comment": "enums.json → TIPO_DX" },
+          "fin": { "type": "string", "enum": ["15","16","17","18","11","12","13","14","44"], "$comment": "enums.json → FINALIDAD" }
+        }
+      }
+    },
+    "insumos": {
+      "type": "array",
+      "description": "Regla ORD.insumoCantidad: cantidad > 0.",
+      "items": {
+        "type": "object",
+        "required": ["c", "n", "tipo", "p", "cantidad"],
+        "properties": {
+          "c": { "type": "string" },
+          "n": { "type": "string" },
+          "tipo": { "type": "string", "enum": ["medicamento", "dispositivo"] },
+          "p": { "type": "number" },
+          "cantidad": { "type": ["string", "number"], "description": "> 0" }
+        }
+      }
+    },
+    "contexto": {
+      "type": "object",
+      "description": "Datos RESUELTOS del convenio elegido (no se digitan; se derivan de convId). Se usan para los cruces condicionales de abajo. En un backend, se poblarían al hacer el join. (El concepto de recaudo ya NO va aquí: se deriva de pac.tipoUsuario vía RECAUDO_TU.)",
+      "properties": {
+        "reqAut": { "type": "boolean", "description": "= convenio.reqAut" },
+        "tiposUsuario": { "type": "array", "items": { "type": "string" }, "description": "= convenio.tipoUsuarios" }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "$comment": "ORD.autorizacion — si el convenio exige autorización, 'aut' es obligatorio y no vacío.",
+      "if": { "properties": { "contexto": { "properties": { "reqAut": { "const": true } }, "required": ["reqAut"] } } },
+      "then": { "required": ["aut"], "properties": { "aut": { "minLength": 1 } } }
+    },
+    {
+      "$comment": "ORD.nivel — el nivel se exige solo si el TIPO DE USUARIO del paciente genera recaudo (copago o cuota) según el mapa RECAUDO_TU (reglas.dmn.json). Con recaudo: 01,02,03,06 (cuota) · 04,07,13 (copago). Autocontenido en la orden (ya no depende del contrato).",
+      "if": { "properties": { "pac": { "properties": { "tipoUsuario": { "enum": ["01", "02", "03", "06", "04", "07", "13"] } }, "required": ["tipoUsuario"] } } },
+      "then": { "required": ["nivel"], "properties": { "nivel": { "enum": ["1", "2", "3"] } } }
+    },
+    {
+      "$comment": "ORD.pacTipoUsuario — si el convenio declara tipos de usuario, el paciente debe traer uno (del conjunto).",
+      "if": {
+        "properties": { "contexto": { "properties": { "tiposUsuario": { "type": "array", "minItems": 1 } }, "required": ["tiposUsuario"] } }
+      },
+      "then": { "properties": { "pac": { "required": ["tipoUsuario"], "properties": { "tipoUsuario": { "minLength": 1 } } } } }
+    }
+  ]
+}

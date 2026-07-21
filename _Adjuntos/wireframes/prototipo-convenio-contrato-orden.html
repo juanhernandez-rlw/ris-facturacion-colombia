@@ -131,84 +131,24 @@
 <script src="catalogos/cie10.js"></script>
 <script src="catalogos/ium.js"></script>
 <script src="catalogos/municipios.js"></script>
+<!-- modelo formal (generado desde modelo-formal/) + motor de reglas + datos demo -->
+<script src="modelo.datos.js"></script>
+<script src="motor.js"></script>
+<script src="seed.js"></script>
 <script>
 "use strict";
-/* ===================== ENUMS REALES (rips-codigos.ts) ===================== */
+/* ===================== ENUMS + MAPAS (desde el modelo → modelo.datos.js) ===================== */
 /* pares [codigo, etiqueta]; se guarda el código, se muestra la etiqueta */
-const TIPO_DOCUMENTO=[["CC","CC · Cédula de ciudadanía"],["TI","TI · Tarjeta de identidad"],["RC","RC · Registro civil"],["CE","CE · Cédula de extranjería"],["PT","PT · Permiso por protección temporal"],["PE","PE · Permiso especial de permanencia"],["PA","PA · Pasaporte"],["CN","CN · Certificado de nacido vivo"],["NV","NV · Certificado nacido vivo"],["AS","AS · Adulto sin identificación"],["MS","MS · Menor sin identificación"],["SI","SI · Sin identificación"],["CD","CD · Carné diplomático"],["DE","DE · Documento extranjero"],["SC","SC · Salvoconducto"],["NI","NI · NIT"]];
-const TIPO_ID_PAGADOR=[["NI","NI · NIT"],["CC","CC · Cédula de ciudadanía"],["CE","CE · Cédula de extranjería"]];
-const TIPO_USUARIO=[["01","01 · Contributivo cotizante"],["02","02 · Contributivo beneficiario"],["03","03 · Contributivo adicional"],["04","04 · Subsidiado"],["05","05 · No afiliado"],["06","06 · Especial/excepción cotizante"],["07","07 · Especial/excepción beneficiario"],["08","08 · Privados de la libertad (FNS)"],["09","09 · Tomador/amparado ARL"],["10","10 · Tomador/amparado SOAT"],["11","11 · Tomador/amparado planes voluntarios"],["12","12 · Particular"],["13","13 · Especial/excepción no cotizante (Ley 352/1997)"]];
-const SEXO=[["M","M · Masculino"],["F","F · Femenino"],["I","I · Indeterminado / intersexual"]];
-const ZONA=[["01","01 · Rural"],["02","02 · Urbano"]];
-const COBERTURA=[["01","01 · Plan de beneficios (UPC)"],["02","02 · Presupuesto máximo"],["03","03 · Prima EPS/EOC, no asegurados SOAT"],["04","04 · Cobertura póliza SOAT"],["05","05 · Cobertura ARL"],["06","06 · Cobertura ADRES"],["07","07 · Salud pública"],["08","08 · Entidad territorial (oferta)"],["09","09 · Urgencias población migrante"],["10","10 · Plan complementario"],["11","11 · Medicina prepagada"],["12","12 · Otras pólizas en salud"],["13","13 · Régimen especial o excepción"],["14","14 · Fondo Nacional Salud PPL"],["15","15 · Particular"],["16","16 · UPC Contributivo"],["17","17 · UPC Subsidiado"]];
-const MODALIDAD_PAGO=[["01","01 · Pago por caso/paquete"],["02","02 · Pago global prospectivo"],["03","03 · Pago por capitación"],["04","04 · Pago por evento"]];
-const RCONCEPTO=[["01","01 · Copago"],["02","02 · Cuota moderadora"],["05","05 · No aplica"]];
-const TIPO_DX=[["01","01 · Impresión diagnóstica"],["02","02 · Confirmado nuevo"],["03","03 · Confirmado repetido"]];
-const FINALIDAD=[["15","15 · Diagnóstico"],["16","16 · Tratamiento"],["17","17 · Rehabilitación"],["18","18 · Paliación"],["11","11 · Valoración integral PyM"],["12","12 · Detección temprana enf. general"],["13","13 · Detección temprana enf. laboral"],["14","14 · Protección específica"],["44","44 · Otra"]];
-const FORMAPAGO=[["1","1 · Contado"],["2","2 · Crédito"]];
-const MEDIOPAGO=[["10","10 · Efectivo"],["47","47 · Transferencia débito bancaria"],["42","42 · Consignación bancaria"],["48","48 · Tarjeta crédito"],["49","49 · Tarjeta débito"],["20","20 · Cheque"],["1","1 · Instrumento no definido"]];
-const IVAOPC=[["NO","No responsable de IVA"],["SI","Responsable de IVA"]];
-const NIVELES=[["1","Nivel 1 · IBC < 2 SMLMV"],["2","Nivel 2 · IBC 2–5 SMLMV"],["3","Nivel 3 · IBC > 5 SMLMV"]];
+const {TIPO_DOCUMENTO,TIPO_ID_PAGADOR,TIPO_USUARIO,SEXO,ZONA,COBERTURA,MODALIDAD_PAGO,RCONCEPTO,TIPO_DX,FINALIDAD,FORMAPAGO,MEDIOPAGO,IVAOPC,NIVELES}=RIS.enums;
+/* Regla PROPUESTA (Acuerdo 260, POR VALIDAR): qué recaudo aplica según el tipo de usuario del paciente. Ahora vive en el modelo (RIS.mapas). */
+const RECAUDO_TU=RIS.mapas.RECAUDO_TU, RECAUDO_NOMBRE=RIS.mapas.RECAUDO_NOMBRE;
 
 /* ===================== CATÁLOGOS GRANDES (reales) ===================== */
 const CATS={cups:()=>window.CUPS||[], cie10:()=>window.CIE10||[], ium:()=>window.IUM||[], mun:()=>window.MUNICIPIOS||[]};
 
-/* ===================== ESTADO (seed con códigos REALES) ===================== */
-/* estudios e insumos REALES para el seed (código · nombre de la tabla viva SISPRO) */
-const _E={rxcraneo:["870001","RADIOGRAFIA DE CRANEO SIMPLE"],rxcervical:["871010","RADIOGRAFIA DE COLUMNA CERVICAL"],rxlumbar:["871040","RADIOGRAFIA DE COLUMNA LUMBOSACRA"],rxtorax:["871121","RADIOGRAFIA DE TORAX (P.A. O A.P. Y LATERAL)"],rxabdomen:["872002","RADIOGRAFIA DE ABDOMEN SIMPLE"],mamo:["876802","XEROMAMOGRAFIA O MAMOGRAFIA BILATERAL"],taccraneo:["879111","TOMOGRAFIA AXIAL COMPUTADA DE CRANEO SIMPLE"],taccraneoc:["879112","TOMOGRAFIA AXIAL COMPUTADA DE CRANEO CON CONTRASTE"],tacsenos:["879131","TOMOGRAFIA AXIAL COMPUTADA DE SENOS PARANASALES O CARA"],rmcerebro:["883101","RESONANCIA NUCLEAR MAGNETICA DE CEREBRO"],rmlumbarc:["883231","RESONANCIA NUCLEAR MAGNETICA DE COLUMNA LUMBAR CON CONTRASTE"],rmrodilla:["883522","RESONANCIA NUCLEAR MAGNETICA DE ARTICULACIONES DE MIEMBRO INFERIOR"],ecoobst:["881436","ECOGRAFIA OBSTETRICA CON TRANSLUCENCIA NUCAL"],dopcuello:["882111","DUPLEX SCANNING (DOPPLER) DE VASOS DEL CUELLO"],dopmmii:["882308","ECOGRAFIA DOPPLER DE VASOS ARTERIALES DE MIEMBROS INFERIORES"],densito:["886011","OSTEODENSITOMETRIA POR TAC"]};
-const _I={iopamidol:["1I1002971000100","IOPAMIDOL 612.4mg/ml SOLUCION INTRAVENOSA (IOPA) VIAL 50 ml"],iodixanol:["1I1035061000100","IODIXANOL 652mg/ml SOLUCION INYECTABLE"],gadoterico:["1G1027771000100","ACIDO GADOTERICO 279.3mg/ml SOLUCION INTRAVENOSA (CLARISCAN)"],gadoteridol:["1G1003021000100","GADOTERIDOL 279.3mg/ml SOLUCION INTRAVENOSA (PROHANCE)"],bario:["1B1008531000100","BARIO 4922.4mg/100ml SUSPENSION ORAL (EZCAT) 225 ml"]};
-const mkE=(k,p)=>({c:_E[k][0],n:_E[k][1],p});
-const mkI=(k,p)=>({c:_I[k][0],n:_I[k][1],tipo:"medicamento",p});
-let nC=10,nK=12;
-/* Convenios: nombres de entidades REALES; NIT/retenciones son valores de demo (no hay registro EAPB cargado) */
-let convenios=[
-  {id:"CV1",nombre:"EPS Sura",tipoId:"NI",nid:"800088702",razon:"EPS y Medicina Prepagada Suramericana S.A.",tipoUsuarios:["01","02","03"],forma:"2",medio:"47",plazo:"60",iva:"NO",ret:"2.5",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV2",nombre:"Nueva EPS (Contributivo)",tipoId:"NI",nid:"900156264",razon:"Nueva EPS S.A.",tipoUsuarios:["01","02","03"],forma:"2",medio:"47",plazo:"60",iva:"NO",ret:"2.5",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV3",nombre:"Nueva EPS (Subsidiado)",tipoId:"NI",nid:"900156264",razon:"Nueva EPS S.A.",tipoUsuarios:["04"],forma:"2",medio:"47",plazo:"90",iva:"NO",ret:"0",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV4",nombre:"EPS Sanitas",tipoId:"NI",nid:"900249425",razon:"EPS Sanitas S.A.S.",tipoUsuarios:["01","02","03"],forma:"2",medio:"47",plazo:"45",iva:"NO",ret:"2.5",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV5",nombre:"Salud Total EPS",tipoId:"NI",nid:"800130907",razon:"Salud Total S.A. EPS-S",tipoUsuarios:["01","02","03"],forma:"2",medio:"47",plazo:"60",iva:"NO",ret:"2.5",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV6",nombre:"Coosalud EPS-S",tipoId:"NI",nid:"900226715",razon:"Coosalud EPS S.A.",tipoUsuarios:["04"],forma:"2",medio:"47",plazo:"90",iva:"NO",ret:"0",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV7",nombre:"Positiva ARL",tipoId:"NI",nid:"860011153",razon:"Positiva Compañía de Seguros S.A.",tipoUsuarios:["09"],forma:"2",medio:"47",plazo:"30",iva:"NO",ret:"2",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV8",nombre:"Seguros del Estado (SOAT)",tipoId:"NI",nid:"860009578",razon:"Seguros del Estado S.A.",tipoUsuarios:["10"],forma:"2",medio:"47",plazo:"45",iva:"NO",ret:"1",reqAut:false,reqMipres:false,reqSiras:true},
-  {id:"CV9",nombre:"Colsanitas Medicina Prepagada",tipoId:"NI",nid:"860003411",razon:"Colsanitas S.A.S.",tipoUsuarios:["11"],forma:"2",medio:"48",plazo:"30",iva:"NO",ret:"0",reqAut:true,reqMipres:false,reqSiras:false},
-  {id:"CV10",nombre:"Particular",tipoId:"CC",nid:"222222222222",razon:"Consumidor final (particular)",tipoUsuarios:["12"],forma:"1",medio:"10",plazo:"0",iva:"NO",ret:"0",reqAut:false,reqMipres:false,reqSiras:false}
-];
-/* Contratos: CUPS/IUM REALES; precios (tarifa negociada) y % de recaudo son de demo (Acuerdo 260: copago 11.5/17.3/23%). */
-let contratos=[
-  {id:"CT1",nombre:"Imágenes ambulatorias 2026",convId:"CV1",cob:"01",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxtorax",42000),mkE("rxlumbar",48000),mkE("ecoobst",96000),mkE("taccraneo",280000),mkE("taccraneoc",420000),mkE("rmcerebro",620000)],
-    insumos:[mkI("iopamidol",48000),mkI("gadoteridol",120000)],recaudo:{concepto:"01",n1:"11.5",n2:"17.3",n3:"23",tope:"400000"}},
-  {id:"CT2",nombre:"Alta complejidad RM/TAC 2026",convId:"CV1",cob:"16",mod:"01",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("taccraneoc",430000),mkE("rmlumbarc",980000),mkE("rmrodilla",760000),mkE("densito",130000)],
-    insumos:[mkI("iopamidol",48000),mkI("gadoterico",95000)],recaudo:{concepto:"02",n1:"4500",n2:"18000",n3:"47000",tope:""}},
-  {id:"CT3",nombre:"Detección temprana (mama/densito)",convId:"CV1",cob:"01",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("mamo",95000),mkE("densito",135000),mkE("ecoobst",98000)],insumos:[],recaudo:{concepto:"05",n1:"",n2:"",n3:"",tope:""}},
-  {id:"CT4",nombre:"Radiología básica contributivo",convId:"CV2",cob:"01",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxcraneo",28000),mkE("rxtorax",40000),mkE("rxcervical",45000),mkE("rxabdomen",38000),mkE("mamo",92000)],
-    insumos:[],recaudo:{concepto:"01",n1:"11.5",n2:"17.3",n3:"23",tope:"350000"}},
-  {id:"CT5",nombre:"Imágenes subsidiado 2026",convId:"CV3",cob:"17",mod:"03",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxtorax",38000),mkE("ecoobst",88000),mkE("taccraneo",260000)],insumos:[],recaudo:{concepto:"02",n1:"4500",n2:"18000",n3:"47000",tope:""}},
-  {id:"CT6",nombre:"Ambulatorio Sanitas 2026",convId:"CV4",cob:"01",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("ecoobst",99000),mkE("dopcuello",210000),mkE("dopmmii",230000),mkE("taccraneo",290000),mkE("rmcerebro",640000)],
-    insumos:[mkI("gadoteridol",125000)],recaudo:{concepto:"01",n1:"11.5",n2:"17.3",n3:"23",tope:"450000"}},
-  {id:"CT7",nombre:"Imágenes Salud Total 2026",convId:"CV5",cob:"01",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxtorax",41000),mkE("mamo",90000),mkE("densito",120000),mkE("taccraneoc",415000)],
-    insumos:[mkI("iopamidol",47000)],recaudo:{concepto:"01",n1:"11.5",n2:"17.3",n3:"23",tope:"400000"}},
-  {id:"CT8",nombre:"Subsidiado Coosalud imágenes",convId:"CV6",cob:"17",mod:"03",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxcraneo",26000),mkE("rxtorax",37000),mkE("ecoobst",85000)],insumos:[],recaudo:{concepto:"02",n1:"4500",n2:"18000",n3:"47000",tope:""}},
-  {id:"CT9",nombre:"Accidente laboral - imágenes",convId:"CV7",cob:"05",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxcervical",46000),mkE("rxlumbar",49000),mkE("taccraneoc",440000),mkE("rmlumbarc",990000),mkE("rmrodilla",780000)],
-    insumos:[mkI("gadoterico",98000)],recaudo:{concepto:"05",n1:"",n2:"",n3:"",tope:""}},
-  {id:"CT10",nombre:"SOAT - trauma imágenes",convId:"CV8",cob:"04",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("taccraneo",300000),mkE("taccraneoc",450000),mkE("rxtorax",44000),mkE("rmlumbarc",1000000)],
-    insumos:[mkI("iopamidol",50000)],recaudo:{concepto:"05",n1:"",n2:"",n3:"",tope:""}},
-  {id:"CT11",nombre:"Prepagada alta gama 2026",convId:"CV9",cob:"11",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rmcerebro",720000),mkE("rmlumbarc",1080000),mkE("taccraneoc",520000),mkE("densito",150000)],
-    insumos:[mkI("gadoteridol",130000)],recaudo:{concepto:"05",n1:"",n2:"",n3:"",tope:""}},
-  {id:"CT12",nombre:"Tarifa particular 2026",convId:"CV10",cob:"15",mod:"04",desde:"2026-01-01",hasta:"2026-12-31",
-    tarifa:[mkE("rxtorax",65000),mkE("ecoobst",160000),mkE("taccraneo",380000),mkE("taccraneoc",560000),mkE("rmcerebro",900000),mkE("rmlumbarc",1150000),mkE("mamo",140000),mkE("densito",160000)],
-    insumos:[mkI("iopamidol",60000),mkI("gadoteridol",150000),mkI("bario",42000)],recaudo:{concepto:"05",n1:"",n2:"",n3:"",tope:""}}
-];
+/* ===================== ESTADO (seed demo → seed.js) ===================== */
+let nC=RIS_SEED.nC,nK=RIS_SEED.nK;
+let convenios=RIS_SEED.convenios,contratos=RIS_SEED.contratos;
 const HOY="2026-07-20";
 let tab="ordenes",cForm=null,kForm=null,orden=blankOrden(),showGate=false,preview=null;
 /* los defaults van EN EL ESTADO (no solo en el display) → lo que se ve = lo que se guarda */
@@ -236,17 +176,18 @@ function ta(id,cat,sel,ph){const d=taDisp(sel,cat==="mun");return `<input id="${
 
 /* ===================== RECAUDO (sobre estudios) ===================== */
 function recaudoDe(cont){
-  const r=cont&&cont.recaudo, nv=orden.nivel;
-  if(!r||r.concepto==="05")return {concepto:"No aplica",mode:"no",total:0};
-  const mode=r.concepto==="01"?"pct":"fijo";  // 01 Copago = %, 02 Cuota moderadora = fijo
-  const nombre=r.concepto==="01"?"Copago":"Cuota moderadora";
-  if(!nv)return {concepto:nombre,mode,total:0,pending:true};
-  const val=parseFloat(r["n"+nv])||0;
-  if(mode==="fijo")return {concepto:nombre,mode,nivel:nv,total:val,once:true};
+  const r=(cont&&cont.recaudo)||{}, nv=orden.nivel, tu=orden.pac.tipoUsuario;
+  if(!tu)return {mode:"?",total:0,pendingTU:true};                 // el concepto depende del tipo de usuario
+  const concepto=RECAUDO_TU[tu]||"no", nombre=RECAUDO_NOMBRE[concepto];
+  if(concepto==="no")return {concepto:nombre,mode:"no",total:0};
+  const tabla=concepto==="cuota"?(r.cuota||{}):(r.copago||{});
+  if(!nv)return {concepto:nombre,mode:concepto,total:0,pending:true};
+  const val=parseFloat(tabla["n"+nv])||0;
+  if(concepto==="cuota")return {concepto:nombre,mode:"fijo",nivel:nv,total:val,once:true};
   let sum=0;const per=orden.estudios.map(e=>{const c=Math.round(e.p*val/100);sum+=c;return {n:e.n,v:c};});
-  const tope=parseFloat(r.tope)||0;let total=sum,capped=false;
+  const tope=parseFloat(tabla.tope)||0;let total=sum,capped=false;
   if(tope>0&&sum>tope){total=tope;capped=true;}
-  return {concepto:nombre,mode,nivel:nv,pct:val,per,sum,tope,capped,total};
+  return {concepto:nombre,mode:"pct",nivel:nv,pct:val,per,sum,tope,capped,total};
 }
 const insumosTotal=()=>(orden.insumos||[]).reduce((a,e)=>a+(e.p||0)*(parseInt(e.cantidad)||0),0);
 
@@ -276,7 +217,7 @@ function previewHTML(){
       ${cts.length?`<table><thead><tr><th>Contrato</th><th>Cobertura</th><th>Vigencia</th></tr></thead><tbody>${cts.map(k=>`<tr><td><b>${esc(k.nombre)}</b></td><td>${labelOf(COBERTURA,k.cob)}</td><td class="muted">${k.desde} → ${k.hasta}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">Sin contratos.</div>`}</div>`;
     return modalWrap(head,body);}
   const k=contById(preview.id);if(!k)return "";const cv=convById(k.convId)||{};const rc=k.recaudo||{};
-  let recB;if(rc.concepto==="01")recB=`<div class="row r4">${ro("Nivel 1",rc.n1+" %")}${ro("Nivel 2",rc.n2+" %")}${ro("Nivel 3",rc.n3+" %")}${ro("Tope por evento",rc.tope?money(rc.tope):"—")}</div>`;else if(rc.concepto==="02")recB=`<div class="row r3">${ro("Nivel 1",money(rc.n1))}${ro("Nivel 2",money(rc.n2))}${ro("Nivel 3",money(rc.n3))}</div>`;else recB=`<p class="muted" style="margin:0">Este contrato no cobra recaudo al paciente.</p>`;
+  const cop=rc.copago||{},cuo=rc.cuota||{};let recB=`<p class="muted" style="margin:0 0 8px">El concepto lo determina el <b>tipo de usuario</b> del paciente (Acuerdo 260, por validar).</p><div class="row r4">${ro("Copago N1",cop.n1?cop.n1+" %":"—")}${ro("Copago N2",cop.n2?cop.n2+" %":"—")}${ro("Copago N3",cop.n3?cop.n3+" %":"—")}${ro("Tope",cop.tope?money(cop.tope):"—")}</div><div style="height:10px"></div><div class="row r3">${ro("Cuota mod. N1",cuo.n1?money(cuo.n1):"—")}${ro("Cuota mod. N2",cuo.n2?money(cuo.n2):"—")}${ro("Cuota mod. N3",cuo.n3?money(cuo.n3):"—")}</div>`;
   const head=`<div><h3 class="pv-title">${esc(k.nombre)} <span class="pill cont">${k.desde} → ${k.hasta}</span></h3><p class="pv-sub">Contrato · ${esc(cv.nombre||"?")} · vista previa (solo lectura)</p></div>`;
   const body=`<div class="sec"><div class="h">Convenio y configuración</div>
     <div class="row r3">${ro("Convenio",esc(cv.nombre||"?"))}${ro("Cobertura / plan",labelOf(COBERTURA,k.cob))}${ro("Modalidad de pago",labelOf(MODALIDAD_PAGO,k.mod))}</div>
@@ -285,7 +226,7 @@ function previewHTML(){
     <table><thead><tr><th>CUPS</th><th>Estudio</th><th style="text-align:right">Precio</th></tr></thead><tbody>${k.tarifa.map(t=>`<tr><td class="chipn">${t.c}</td><td>${esc(t.n)}</td><td style="text-align:right">${money(t.p)}</td></tr>`).join("")}</tbody></table></div>
     <div class="sec"><div class="h">Tarifa · insumos (${(k.insumos||[]).length})</div>
     ${(k.insumos&&k.insumos.length)?`<table><thead><tr><th>Código</th><th>Insumo</th><th>Tipo</th><th style="text-align:right">Precio unit.</th></tr></thead><tbody>${k.insumos.map(t=>`<tr><td class="chipn">${t.c}</td><td>${esc(t.n)}</td><td><span class="pill ${t.tipo==="medicamento"?"cont":"conv"}">${t.tipo}</span></td><td style="text-align:right">${money(t.p)}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">Sin insumos.</div>`}</div>
-    <div class="sec"><div class="h">Recaudo del paciente — ${labelOf(RCONCEPTO,rc.concepto)}</div>${recB}</div>`;
+    <div class="sec"><div class="h">Recaudo del paciente (por tipo de usuario)</div>${recB}</div>`;
   return modalWrap(head,body);
 }
 /* ---------- 1 · CONVENIOS ---------- */
@@ -321,20 +262,13 @@ function convForm(){const c=cForm;return `<div class="card"><h3><span class="pil
 function renderContratos(){
   const list=contratos.length?`<table><thead><tr><th>Contrato</th><th>Convenio</th><th>Cobertura</th><th>Modalidad</th><th>Estudios</th><th>Insumos</th><th>Recaudo</th><th>Vigencia</th><th></th></tr></thead><tbody>
     ${contratos.map(k=>{const cv=convById(k.convId)||{},rc=k.recaudo||{};return `<tr><td><b>${esc(k.nombre||"—")}</b></td><td>${esc(cv.nombre||"?")}</td><td>${labelOf(COBERTURA,k.cob)}</td><td>${labelOf(MODALIDAD_PAGO,k.mod)}</td>
-      <td><span class="pill cont">${k.tarifa.length}</span></td><td><span class="pill conv">${(k.insumos||[]).length}</span></td><td><span class="pill warnp">${labelOf(RCONCEPTO,rc.concepto)}</span></td><td class="muted">${k.desde} → ${k.hasta}</td>
+      <td><span class="pill cont">${k.tarifa.length}</span></td><td><span class="pill conv">${(k.insumos||[]).length}</span></td><td><span class="pill warnp">${[(rc.copago&&rc.copago.n1)?"Copago":null,(rc.cuota&&rc.cuota.n1)?"Cuota":null].filter(Boolean).join(" · ")||"—"}</span></td><td class="muted">${k.desde} → ${k.hasta}</td>
       <td style="text-align:right"><button class="btn sm gh" data-act="viewK" data-id="${k.id}">Ver</button> <button class="btn sm" data-act="delK" data-id="${k.id}">Eliminar</button></td></tr>`}).join("")}</tbody></table>`:`<div class="empty">Aún no hay contratos.</div>`;
   const form=kForm?contForm():`<div class="btnrow"><button class="btn p" data-act="newK"${convenios.length?"":" disabled"}>＋ Nuevo contrato</button></div>${convenios.length?"":'<p class="hint" style="text-align:right">Primero crea un convenio.</p>'}`;
   app.innerHTML=`<h1 class="hd">Contratos</h1><p class="sub">Cada contrato cuelga de un <b>convenio</b> y define la <b>tarifa</b> (estudios <b>e insumos</b> con precio, buscando en CUPS y CUM/IUM reales), la cobertura/modalidad, la vigencia y el <b>recaudo del paciente</b>. <span class="pill cont">aquí vive el precio</span></p>
     <div class="card"><h3>Contratos creados</h3><div class="bd">${list}</div></div><div style="height:16px"></div>${form}`;
 }
-function contForm(){const k=kForm,rc=k.rConcepto||"01";
-  let recFields="";
-  if(rc==="01")recFields=`<div class="row r4">
-      ${F("Nivel 1 (%)",inpN("k_rN1",k.rN1,"",'min="0" max="100" step="0.1"'),1)}${F("Nivel 2 (%)",inpN("k_rN2",k.rN2,"",'min="0" max="100" step="0.1"'),1)}${F("Nivel 3 (%)",inpN("k_rN3",k.rN3,"",'min="0" max="100" step="0.1"'),1)}
-      ${F("Tope por evento ($)",inpN("k_rTope",k.rTope,"",'min="0"'),0)}</div><p class="hint">Copago = % del nivel × tarifa de cada estudio (<b>máx. 100%</b>), limitado al tope. Ref. Acuerdo 260: 11.5 / 17.3 / 23%. (2026: el tope se expresa en UVB — pregunta #22.)</p>`;
-  else if(rc==="02")recFields=`<div class="row r3">
-      ${F("Nivel 1 ($ fijo)",inpN("k_rN1",k.rN1),1)}${F("Nivel 2 ($ fijo)",inpN("k_rN2",k.rN2),1)}${F("Nivel 3 ($ fijo)",inpN("k_rN3",k.rN3),1)}</div><p class="hint">Valor fijo por nivel; una vez por atención (no depende del valor del servicio).</p>`;
-  else recFields=`<p class="hint">Este contrato no cobra recaudo al paciente.</p>`;
+function contForm(){const k=kForm;
   const insTipo=k._instipo||"medicamento";
   const insPicker=insTipo==="medicamento"
     ? F("Medicamento / contraste (CUM–IUM)",ta("k_ium","ium",k._ins,"Busca: iopamidol, gadoteridol, bario…"),1)
@@ -364,8 +298,11 @@ function contForm(){const k=kForm,rc=k.rConcepto||"01";
       ${k.insumos.map((t,i)=>`<tr><td class="chipn">${t.c}</td><td>${esc(t.n)}</td><td><span class="pill ${t.tipo==="medicamento"?"cont":"conv"}">${t.tipo}</span></td><td>${money(t.p)}</td><td style="text-align:right"><button class="btn sm" data-act="rmIns" data-i="${i}">✕</button></td></tr>`).join("")}</tbody></table>`:`<div class="empty">Sin insumos (p. ej. medio de contraste). Opcional.</div>`}
     <p class="hint">Medicamento/contraste → código <b>CUM/IUM</b> (tabla viva real) · dispositivo → <b>UDI</b> o código interno (no hay catálogo nacional). Precio <b>unitario</b>; la cantidad se pone en la orden.</p></div>
   <div class="sec"><div class="h">Recaudo del paciente (por nivel de contribución)</div>
-    <div class="row r3">${F("Concepto de recaudo",selC("k_rConcepto",RCONCEPTO,rc),1)}</div>
-    <div style="height:10px"></div>${recFields}</div>
+    <p class="hint">El <b>concepto (copago o cuota moderadora) lo determina el tipo de usuario del paciente</b> (Acuerdo 260 · <b>por validar</b>), no el contrato. Configura los valores de ambas figuras; en la orden se aplica la que corresponda.</p>
+    <div style="height:6px"></div><div class="h" style="text-transform:none;letter-spacing:0;color:var(--ink-2)">Copago — % del valor del servicio (típico: beneficiarios / subsidiado)</div>
+    <div class="row r4">${F("Nivel 1 (%)",inpN("k_copN1",k.copN1,"",'min="0" max="100" step="0.1"'),0)}${F("Nivel 2 (%)",inpN("k_copN2",k.copN2,"",'min="0" max="100" step="0.1"'),0)}${F("Nivel 3 (%)",inpN("k_copN3",k.copN3,"",'min="0" max="100" step="0.1"'),0)}${F("Tope por evento ($)",inpN("k_copTope",k.copTope,"",'min="0"'),0)}</div>
+    <div style="height:12px"></div><div class="h" style="text-transform:none;letter-spacing:0;color:var(--ink-2)">Cuota moderadora — valor fijo (típico: cotizantes)</div>
+    <div class="row r3">${F("Nivel 1 ($ fijo)",inpN("k_cuoN1",k.cuoN1),0)}${F("Nivel 2 ($ fijo)",inpN("k_cuoN2",k.cuoN2),0)}${F("Nivel 3 ($ fijo)",inpN("k_cuoN3",k.cuoN3),0)}</div></div>
   <div class="btnrow"><button class="btn" data-act="cancelK">Cancelar</button><button class="btn p" data-act="saveK">Guardar contrato</button></div></div></div>`;}
 /* ---------- 3 · ORDEN ---------- */
 function renderOrden(){
@@ -387,14 +324,14 @@ function contratosDe(cid){return contratos.filter(k=>k.convId===cid&&k.desde<=HO
 function selContrato(){if(!orden.convId)return `<select disabled><option>Elige primero el convenio…</option></select>`;
   const ks=contratosDe(orden.convId);if(!ks.length)return `<select disabled><option>Sin contratos vigentes</option></select>`;
   return `<select id="o_cont"><option value="">Seleccione contrato…</option>${ks.map(k=>`<option value="${k.id}"${orden.contId===k.id?" selected":""}>${esc(k.nombre)} — ${labelOf(COBERTURA,k.cob)}</option>`).join("")}</select>`;}
-function inherited(k,cv){const rc=k.recaudo||{};const rl=rc.concepto==="01"?`Copago ${rc.n1}/${rc.n2}/${rc.n3}%${rc.tope?" · tope "+money(rc.tope):""}`:rc.concepto==="02"?`Cuota moderadora fija ${money(rc.n1)}/${money(rc.n2)}/${money(rc.n3)}`:"No aplica";
+function inherited(k,cv){const rc=k.recaudo||{},cop=rc.copago||{},cuo=rc.cuota||{};const rl=`Copago ${cop.n1||"—"}/${cop.n2||"—"}/${cop.n3||"—"}% · Cuota ${cuo.n1||"—"}/${cuo.n2||"—"}/${cuo.n3||"—"}`;
   return `<div style="height:14px"></div><div class="inh"><h4><span>Hereda del contrato → convenio (solo lectura)</span></h4><div class="row r3">
     ${ro("Pagador",cv?esc(cv.nombre):"—")}${ro("Cobertura",labelOf(COBERTURA,k.cob))}${ro("Modalidad",labelOf(MODALIDAD_PAGO,k.mod))}
-    ${ro("Tipos de usuario",cv?((cv.tipoUsuarios||[]).join(" · ")||"—"):"—")}${ro("Retención renta",cv?cv.ret+"%":"—")}${ro("Recaudo",rl)}</div></div>`;}
-function pacienteCard(cont,cv){const p=orden.pac,rc=(cont.recaudo||{}).concepto;
-  const nivelField=rc&&rc!=="05"?`<div class="sec"><div class="h">Nivel de contribución (define ${labelOf(RCONCEPTO,rc).slice(5).trim().toLowerCase()})</div><div class="row r2">
+    ${ro("Tipos de usuario",cv?((cv.tipoUsuarios||[]).join(" · ")||"—"):"—")}${ro("Retención renta",cv?cv.ret+"%":"—")}${ro("Recaudo (según tipo usuario)",rl)}</div></div>`;}
+function pacienteCard(cont,cv){const p=orden.pac;const _tu=p.tipoUsuario;const _conc=_tu?(RECAUDO_TU[_tu]||"no"):null;
+  const nivelField=(_conc==="copago"||_conc==="cuota")?`<div class="sec"><div class="h">Nivel de contribución (define ${RECAUDO_NOMBRE[_conc].toLowerCase()})</div><div class="row r2">
     ${F("Nivel del paciente",`<select id="o_nivel"><option value="">Seleccione…</option>${NIVELES.map(n=>`<option value="${n[0]}"${orden.nivel===n[0]?" selected":""}>${n[1]}</option>`).join("")}</select>`,1)}
-    ${ro("Concepto de este contrato",labelOf(RCONCEPTO,rc))}</div></div>`:"";
+    ${ro("Recaudo que aplica",RECAUDO_NOMBRE[_conc]+" (por el tipo de usuario "+_tu+")")}</div></div>`:(_tu?`<div style="height:6px"></div><p class="hint">Con este tipo de usuario <b>no aplica</b> recaudo al paciente.</p>`:"");
   const reqAut=cv&&cv.reqAut;
   return `<div style="height:16px"></div><div class="card"><h3>② Paciente</h3><div class="bd">
     <div class="row r3">
@@ -424,7 +361,8 @@ function insumosCard(cont){
     <div style="height:12px"></div>${orden.insumos.length?rows:`<div class="empty">Opcional. Agrega insumos como el medio de contraste.</div>`}`:`<div class="empty">Este contrato no tiene insumos tarifados. Agrégalos en la pestaña Contratos.</div>`}</div></div>`;}
 function railCard(cont,cv){const rec=recaudoDe(cont);const serv=orden.estudios.reduce((a,e)=>a+e.p,0);const ins=insumosTotal();
   let recLine;
-  if(rec.mode==="no")recLine=`<div class="l"><span class="k">Recaudo paciente</span><span class="v">No aplica</span></div>`;
+  if(rec.pendingTU)recLine=`<div class="l"><span class="k">Recaudo paciente</span><span class="v pend">elige tipo de usuario</span></div>`;
+  else if(rec.mode==="no")recLine=`<div class="l"><span class="k">Recaudo paciente</span><span class="v">No aplica</span></div>`;
   else if(rec.pending)recLine=`<div class="l"><span class="k">Recaudo (${rec.concepto})</span><span class="v pend">elige nivel</span></div>`;
   else if(rec.mode==="fijo")recLine=`<div class="l"><span class="k">Cuota moderadora (Nivel ${rec.nivel})</span><span class="v">${money(rec.total)}</span></div>`;
   else recLine=`<div class="l"><span class="k">Copago (Nivel ${rec.nivel})${rec.capped?" · tope":""}</span><span class="v">${money(rec.total)}</span></div>`;
@@ -444,17 +382,8 @@ function railCard(cont,cv){const rec=recaudoDe(cont);const serv=orden.estudios.r
 function gateHTML(){const m=validate();if(!m.length)return `<div id="gatebox" class="gate ok">✓ Orden lista — pasaría RIPS + FEV. RIPS + prefactura → Loggro/DIAN → MUV (CUV).</div>`;
   return `<div id="gatebox" class="gate err">⚠ Faltan ${m.length} dato(s):<ul>${m.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;}
 function refreshGate(){if(!showGate)return;const g=document.getElementById("gatebox");if(g)g.outerHTML=gateHTML();}
-function validate(){const m=[],p=orden.pac,cont=contById(orden.contId),cv=cont?convById(cont.convId):null;
-  if(!orden.contId)m.push("Selecciona el contrato");
-  if(!p.tipo||!p.num||!p.nom||!p.fnac)m.push("Completa identidad del paciente (tipo, número, nombre, fecha nac.)");
-  if(!p.mun||!p.mun.c)m.push("Municipio de residencia del paciente");
-  if(cv&&(cv.tipoUsuarios||[]).length&&!p.tipoUsuario)m.push("Tipo de usuario del paciente");
-  if(cv&&cv.reqAut&&!orden.aut)m.push("Código de autorización (lo exige el convenio)");
-  if(cont&&(cont.recaudo||{}).concepto!=="05"&&!orden.nivel)m.push("Selecciona el nivel de contribución del paciente");
-  if(!orden.estudios.length)m.push("Agrega al menos un estudio");
-  orden.estudios.forEach(e=>{if(!e.dx||!e.dx.c)m.push(`Estudio ${e.c}: falta diagnóstico (CIE-10)`);});
-  orden.insumos.forEach(e=>{if(!e.cantidad||+e.cantidad<=0)m.push(`Insumo ${e.c}: cantidad inválida`);});
-  return m;}
+function validate(){const cont=contById(orden.contId),cv=cont?convById(cont.convId):null;
+  return RIS.validarOrden({orden,pac:orden.pac,cont,cv});}
 
 /* ===================== TYPEAHEAD (real, sobrevive al re-render) ===================== */
 let taState={id:null,cat:null,items:[],active:-1};
@@ -503,7 +432,6 @@ app.addEventListener("input",e=>{const t=e.target;
 app.addEventListener("change",e=>{const t=e.target;
   if(!t.id)return;
   if(t.id.startsWith("c_")&&cForm){cForm[t.id.slice(2)]=t.type==="checkbox"?t.checked:t.value;}
-  else if(t.id==="k_rConcepto"&&kForm){kForm.rConcepto=t.value;render();}
   else if(t.id==="k_instipo"&&kForm){kForm._instipo=t.value;render();}
   else if(t.id==="k_conv"&&kForm)kForm.conv=t.value;
   else if((t.id==="k_cob"||t.id==="k_mod")&&kForm)kForm[t.id.slice(2)]=t.value;
@@ -520,7 +448,7 @@ app.addEventListener("click",e=>{if(e.target.classList&&e.target.classList.conta
   else if(a==="cancelC"){cForm=null;render();}
   else if(a==="saveC"){if(saveConvenio())render();}
   else if(a==="delC"){convenios=convenios.filter(c=>c.id!==b.dataset.id);render();}
-  else if(a==="newK"){kForm={tarifa:[],insumos:[],rConcepto:"01",cob:"01",mod:"04",_instipo:"medicamento"};render();}
+  else if(a==="newK"){kForm={tarifa:[],insumos:[],cob:"01",mod:"04",_instipo:"medicamento"};render();}
   else if(a==="cancelK"){kForm=null;render();}
   else if(a==="saveK"){if(saveContrato())render();}
   else if(a==="delK"){contratos=contratos.filter(k=>k.id!==b.dataset.id);render();}
@@ -537,16 +465,10 @@ app.addEventListener("click",e=>{if(e.target.classList&&e.target.classList.conta
   else if(a==="viewK"){preview={t:"k",id:b.dataset.id};render();}
   else if(a==="closePreview"){preview=null;render();}
   else if(a==="gen"){showGate=true;render();window.scrollTo({top:0,behavior:"smooth"});}});
-function saveConvenio(){const c=cForm;if(!c.nombre||!c.nid){alert("El convenio necesita nombre y NIT.");return false;}
-  if(!c.tipoUsuarios||!c.tipoUsuarios.length){alert("Selecciona al menos un tipo de usuario que atiende el convenio.");return false;}
+function saveConvenio(){const c=cForm;const errs=RIS.chequearConvenio(c);if(errs.length){alert(errs[0]);return false;}
   convenios.push({id:"CV"+(++nC),nombre:c.nombre,tipoId:c.tipoId||"NI",nid:c.nid,razon:c.razon||"",tipoUsuarios:(c.tipoUsuarios&&c.tipoUsuarios.length?c.tipoUsuarios:["01"]),forma:c.forma||"2",medio:c.medio||"47",plazo:c.plazo||"0",iva:c.iva||"SI",ret:c.ret||"0",reqAut:!!c.reqAut,reqMipres:!!c.reqMipres,reqSiras:!!c.reqSiras});cForm=null;return true;}
-function saveContrato(){const k=kForm;if(!k.nombre||!k.nombre.trim()){alert("El contrato necesita un nombre.");return false;}if(!k.conv){alert("Selecciona el convenio.");return false;}
-  if(!k.tarifa.length){alert("Agrega al menos un estudio a la tarifa.");return false;}
-  if(k.desde&&k.hasta&&k.desde>k.hasta){alert("Vigencia inválida.");return false;}
-  const rc=k.rConcepto||"05";
-  if(rc!=="05"&&(!k.rN1||!k.rN2||!k.rN3)){alert("Completa los 3 niveles del recaudo.");return false;}
-  if(rc==="01"){const p=[k.rN1,k.rN2,k.rN3].map(parseFloat);if(p.some(x=>isNaN(x)||x<0||x>100)){alert("El copago es un porcentaje entre 0 y 100 en los 3 niveles.");return false;}}
-  contratos.push({id:"CT"+(++nK),nombre:k.nombre.trim(),convId:k.conv,cob:k.cob||"01",mod:k.mod||"04",desde:k.desde||"2026-01-01",hasta:k.hasta||"2026-12-31",tarifa:k.tarifa.slice(),insumos:(k.insumos||[]).slice(),recaudo:{concepto:rc,n1:k.rN1,n2:k.rN2,n3:k.rN3,tope:k.rTope||""}});kForm=null;return true;}
+function saveContrato(){const k=kForm;const errs=RIS.chequearContrato(k);if(errs.length){alert(errs[0]);return false;}
+  contratos.push({id:"CT"+(++nK),nombre:k.nombre.trim(),convId:k.conv,cob:k.cob||"01",mod:k.mod||"04",desde:k.desde||"2026-01-01",hasta:k.hasta||"2026-12-31",tarifa:k.tarifa.slice(),insumos:(k.insumos||[]).slice(),recaudo:{copago:{n1:k.copN1||"",n2:k.copN2||"",n3:k.copN3||"",tope:k.copTope||""},cuota:{n1:k.cuoN1||"",n2:k.cuoN2||"",n3:k.cuoN3||""}}});kForm=null;return true;}
 function addTar(){const sel=kForm._cups,pr=document.getElementById("k_precio");
   if(!sel||!sel.c)return alert("Busca y elige un estudio (CUPS).");if(!pr.value||+pr.value<=0)return alert("Precio inválido.");
   if(kForm.tarifa.some(t=>t.c===sel.c))return alert("Ese estudio ya está en la tarifa.");

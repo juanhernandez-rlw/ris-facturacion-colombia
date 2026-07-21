@@ -7,6 +7,10 @@
 *.jpg
 *.jpeg
 *.gif
+*.xlsx
+*.xls
+*.docx
+*.pptx
 
 # ─── macOS ───
 .DS_Store
