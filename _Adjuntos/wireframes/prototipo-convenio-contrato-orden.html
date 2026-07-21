@@ -142,6 +142,14 @@
 const {TIPO_DOCUMENTO,TIPO_ID_PAGADOR,TIPO_USUARIO,SEXO,ZONA,COBERTURA,MODALIDAD_PAGO,RCONCEPTO,TIPO_DX,FINALIDAD,FORMAPAGO,MEDIOPAGO,IVAOPC,NIVELES,VIA_INGRESO}=RIS.enums;
 /* Regla PROPUESTA (Acuerdo 260, POR VALIDAR): qué recaudo aplica según el tipo de usuario del paciente. Ahora vive en el modelo (RIS.mapas). */
 const RECAUDO_TU=RIS.mapas.RECAUDO_TU, RECAUDO_NOMBRE=RIS.mapas.RECAUDO_NOMBRE;
+/* Matriz de validez cobertura → tipoUsuario admitidos (DT1 §1.8, del validador generador-rips; POR VALIDAR vs DT1 verbatim).
+   Regla DURA: el tipoUsuario del paciente debe estar admitido por la cobertura del contrato, o el MUV lo rechaza (RVC005/VFE022). */
+const COBERTURA_APLICA={
+  "01":["01","02","03","04"],"02":["01","02","03","04"],"03":[],"04":["10"],"05":["09"],
+  "06":["01","02","03","04","05","06","07","08","09","10","11","12","13"],"07":["01","02","03","04","05","06","07","08","09","10","11","12","13"],
+  "08":["05"],"09":["05"],"10":["11"],"11":["11"],"12":["11"],"13":["06","07","13"],"14":["08"],"15":["12"],"16":["01","02","03"],"17":["04"]};
+/* ¿la cobertura admite ese tipo de usuario? Fila vacía/ausente (p. ej. cob 03, sin datos) ⇒ no bloquea. */
+const coberturaAdmiteTU=(cob,tu)=>{const a=COBERTURA_APLICA[cob];return !a||!a.length||a.includes(tu);};
 
 /* ===================== CATÁLOGOS GRANDES (reales) ===================== */
 const CATS={cups:()=>window.CUPS||[], cie10:()=>window.CIE10||[], ium:()=>window.IUM||[], mun:()=>window.MUNICIPIOS||[]};
@@ -152,7 +160,7 @@ let convenios=RIS_SEED.convenios,contratos=RIS_SEED.contratos;
 const HOY="2026-07-20";
 let tab="ordenes",cForm=null,kForm=null,orden=blankOrden(),showGate=false,preview=null;
 /* los defaults van EN EL ESTADO (no solo en el display) → lo que se ve = lo que se guarda */
-function blankOrden(){return {convId:"",contId:"",nivel:"",pac:{tipo:"CC",sexo:"M",zona:"02"},aut:"",estudios:[],insumos:[]}}
+function blankOrden(){return {convId:"",contId:"",nivel:"",estudioBuscado:null,pac:{tipo:"CC",sexo:"M",zona:"02"},aut:"",estudios:[],insumos:[]}}
 const convById=id=>convenios.find(c=>c.id===id), contById=id=>contratos.find(k=>k.id===id);
 
 /* ===================== HELPERS ===================== */
@@ -306,42 +314,45 @@ function contForm(){const k=kForm;
   <div class="btnrow"><button class="btn" data-act="cancelK">Cancelar</button><button class="btn p" data-act="saveK">Guardar contrato</button></div></div></div>`;}
 /* ---------- 3 · ORDEN ---------- */
 function renderOrden(){
-  const cont=contById(orden.contId),cv=cont?convById(cont.convId):null;
-  const sel1=`<div class="card"><h3>① Contrato de la orden</h3><div class="bd">
-    <div class="banner"><span>⚠️</span><div><b>Supuesto (pregunta #12, por validar):</b> una orden se factura contra <b>un solo contrato</b>. Todos los estudios/insumos salen de su tarifa; para otro contrato sería otra orden.</div></div>
-    <div class="row r2">
-      ${F("Convenio (pagador)",`<select id="o_conv"><option value="">Seleccione…</option>${convenios.map(c=>`<option value="${c.id}"${orden.convId===c.id?" selected":""}>${esc(c.nombre)}</option>`).join("")}</select>`,1)}
-      ${F("Contrato (config parametrizada)",selContrato(),1)}</div>
-    ${orden.convId&&!contratosDe(orden.convId).length?`<p class="hint" style="color:var(--warn)">Ese convenio no tiene contratos vigentes. Créalos en la pestaña Contratos.</p>`:""}
-    ${cont?inherited(cont,cv):""}</div></div>`;
-  if(!cont){app.innerHTML=headOrden()+sel1;return;}
-  app.innerHTML=headOrden()+`<div class="grid2"><div>${showGate?gateHTML():""}${sel1}${pacienteCard(cont,cv)}${estudiosCard(cont)}${insumosCard(cont)}</div><aside class="rail">${railCard(cont,cv)}</aside></div>`;
+  const cv=convById(orden.convId),cont=contById(orden.contId);
+  const col=`${origenCard(cv)}${orden.convId?contratosCard(cv,cont):""}${cont?pacienteCard(cont,cv)+estudiosCard(cont)+insumosCard(cont):""}`;
+  if(!cont){app.innerHTML=headOrden()+col;return;}
+  app.innerHTML=headOrden()+`<div class="grid2"><div>${showGate?gateHTML():""}${col}</div><aside class="rail">${railCard(cont,cv)}</aside></div>`;
 }
-function headOrden(){const step=orden.contId?(orden.estudios.length?"est":"pac"):"con";const S=(k,l)=>`<span class="st ${step===k?"on":""}">${l}</span>`;
-  return `<h1 class="hd">Nueva orden</h1><p class="sub">Elige el contrato del paciente; la orden hereda pagador/cobertura/modalidad y la tarifa. El recaudo se resuelve por el nivel del paciente.</p>
-  <div class="flow">${S("con","1 · Contrato")}<span>→</span>${S("pac","2 · Paciente + nivel")}<span>→</span>${S("est","3 · Estudios + insumos")}<span>→</span><span class="st">4 · Generar</span></div>`;}
+function headOrden(){const step=orden.contId?"est":(orden.convId?"cont":"pac");const S=(k,l)=>`<span class="st ${step===k?"on":""}">${l}</span>`;
+  return `<h1 class="hd">Nueva orden</h1><p class="sub">Captura lo que dice el paciente (pagador, tipo de usuario, nivel y el estudio que viene a hacerse); con eso se <b>detecta el contrato</b> que corresponde.</p>
+  <div class="flow">${S("pac","1 · Origen del paciente")}<span>→</span>${S("cont","2 · Contrato detectado")}<span>→</span>${S("est","3 · Datos + estudios")}<span>→</span><span class="st">4 · Generar</span></div>`;}
 function contratosDe(cid){return contratos.filter(k=>k.convId===cid&&k.desde<=HOY&&k.hasta>=HOY)}
-function selContrato(){if(!orden.convId)return `<select disabled><option>Elige primero el convenio…</option></select>`;
-  const ks=contratosDe(orden.convId);if(!ks.length)return `<select disabled><option>Sin contratos vigentes</option></select>`;
-  return `<select id="o_cont"><option value="">Seleccione contrato…</option>${ks.map(k=>`<option value="${k.id}"${orden.contId===k.id?" selected":""}>${esc(k.nombre)} — ${labelOf(COBERTURA,k.cob)}</option>`).join("")}</select>`;}
-function inherited(k,cv){const rc=k.recaudo||{},cop=rc.copago||{},cuo=rc.cuota||{};const rl=`Copago ${cop.n1||"—"}/${cop.n2||"—"}/${cop.n3||"—"}% · Cuota ${cuo.n1||"—"}/${cuo.n2||"—"}/${cuo.n3||"—"}`;
-  return `<div style="height:14px"></div><div class="inh"><h4><span>Hereda del contrato → convenio (solo lectura)</span></h4><div class="row r3">
-    ${ro("Pagador",cv?esc(cv.nombre):"—")}${ro("Cobertura",labelOf(COBERTURA,k.cob))}${ro("Modalidad",labelOf(MODALIDAD_PAGO,k.mod))}
-    ${ro("Tipos de usuario",cv?((cv.tipoUsuarios||[]).join(" · ")||"—"):"—")}${ro("Retención renta",cv?cv.ret+"%":"—")}${ro("Recaudo (según tipo usuario)",rl)}</div></div>`;}
-function pacienteCard(cont,cv){const p=orden.pac;const _tu=p.tipoUsuario;const _conc=_tu?(RECAUDO_TU[_tu]||"no"):null;
-  const nivelField=(_conc==="copago"||_conc==="cuota")?`<div class="sec"><div class="h">Nivel de contribución (define ${RECAUDO_NOMBRE[_conc].toLowerCase()})</div><div class="row r2">
-    ${F("Nivel del paciente",`<select id="o_nivel"><option value="">Seleccione…</option>${NIVELES.map(n=>`<option value="${n[0]}"${orden.nivel===n[0]?" selected":""}>${n[1]}</option>`).join("")}</select>`,1)}
-    ${ro("Recaudo que aplica",RECAUDO_NOMBRE[_conc]+" (por el tipo de usuario "+_tu+")")}</div></div>`:(_tu?`<div style="height:6px"></div><p class="hint">Con este tipo de usuario <b>no aplica</b> recaudo al paciente.</p>`:"");
-  const reqAut=cv&&cv.reqAut;
-  return `<div style="height:16px"></div><div class="card"><h3>② Paciente</h3><div class="bd">
+function scoreCont(k){let s=0;const r=[];const tu=orden.pac.tipoUsuario;
+  const valido=!tu||coberturaAdmiteTU(k.cob,tu);
+  if(tu){if(valido){s+=3;r.push('<span class="pill cont">válido ✓</span>');}else r.push(`<span class="pill warnp">no aplica al tipo ${tu}</span>`);}
+  if(orden.estudioBuscado){if((k.tarifa||[]).some(t=>t.c===orden.estudioBuscado.c)){s+=2;r.push('<span class="pill cont">tiene el estudio ✓</span>');}else r.push('<span class="pill warnp">no incluye el estudio</span>');}
+  return {s,r:r.join(" "),valido};}
+function origenCard(cv){const _tu=orden.pac.tipoUsuario,_conc=_tu?(RECAUDO_TU[_tu]||"no"):null;
+  const convSel=`<select id="o_conv"><option value="">Seleccione…</option>${convenios.map(c=>`<option value="${c.id}"${orden.convId===c.id?" selected":""}>${esc(c.nombre)}</option>`).join("")}</select>`;
+  if(!cv)return `<div class="card"><h3>① Origen del paciente</h3><div class="bd"><div class="banner info"><span>👤</span><div>Ingresa lo que el paciente indica; con estos datos se detecta el <b>contrato</b> que aplica.</div></div>${F("Convenio (pagador)",convSel,1)}</div></div>`;
+  const nivelField=(_conc==="copago"||_conc==="cuota")?F("Nivel (recaudo: "+RECAUDO_NOMBRE[_conc].toLowerCase()+")",`<select id="o_nivel"><option value="">Seleccione…</option>${NIVELES.map(n=>`<option value="${n[0]}"${orden.nivel===n[0]?" selected":""}>${n[1]}</option>`).join("")}</select>`,0):(_tu?ro("Nivel","no aplica recaudo"):ro("Nivel","—"));
+  return `<div class="card"><h3>① Origen del paciente</h3><div class="bd">
+    <div class="row r2">${F("Convenio (pagador)",convSel,1)}${F("Tipo de usuario (lo dice el paciente)",selTU(cv),1)}</div>
+    <div style="height:10px"></div><div class="row r2">${nivelField}${F("Estudio que viene a hacerse (CUPS)",ta("o_estBuscado","cups",orden.estudioBuscado,"Busca: tomografia, resonancia, mamografia…"),0)}</div>
+    <p class="hint">El <b>tipo de usuario</b> filtra los contratos <b>válidos</b> (la cobertura la trae el contrato, DT1 §1.8). El <b>nivel</b> solo alimenta el recaudo. El <b>estudio</b> ayuda a encontrar el contrato que lo tarifa.</p></div></div>`;}
+function contratosCard(cv,cont){const ks=contratosDe(orden.convId);
+  if(!ks.length)return `<div style="height:16px"></div><div class="card"><h3>② Contrato detectado</h3><div class="bd"><div class="empty" style="color:var(--warn)">Este convenio no tiene contratos vigentes. Podría ser un <b>caso sin contrato</b> (particular / SOAT / urgencias) o falta crear el contrato.</div></div></div>`;
+  const ranked=ks.map(k=>{const sc=scoreCont(k);return {k,s:sc.s,r:sc.r,valido:sc.valido};}).sort((a,b)=>b.s-a.s);
+  const rows=ranked.map(({k,r,valido})=>{const sel=orden.contId===k.id;const rc=k.recaudo||{},cop=rc.copago||{},cuo=rc.cuota||{};
+    const btn=valido?`<button class="btn sm ${sel?"":"gh"}" data-act="pickCont" data-id="${k.id}" style="margin-left:auto">${sel?"✓ Elegido":"Elegir"}</button>`:`<span class="pill warnp" style="margin-left:auto">no elegible</span>`;
+    return `<div class="card" style="box-shadow:none;margin-bottom:10px${sel?";border-color:var(--acc)":""}${valido?"":";opacity:.55"}"><h3 style="font-size:13px;flex-wrap:wrap;gap:6px">${esc(k.nombre)} <span class="pill cont">${labelOf(COBERTURA,k.cob)}</span> <span class="pill conv">${labelOf(MODALIDAD_PAGO,k.mod)}</span> ${r}${btn}</h3><div class="bd" style="padding-top:8px"><p class="hint" style="margin:0">Tarifa: ${k.tarifa.length} estudios · Recaudo copago ${cop.n1||"—"}/${cop.n2||"—"}/${cop.n3||"—"}% · cuota ${cuo.n1||"—"}/${cuo.n2||"—"}/${cuo.n3||"—"} · Vigencia ${k.desde} → ${k.hasta}</p></div></div>`;}).join("");
+  const nValidos=ranked.filter(x=>x.valido).length;
+  const aviso=orden.pac.tipoUsuario&&!nValidos?`<div class="banner"><span>⚠️</span><div>Ningún contrato de este convenio admite el tipo de usuario <b>${labelOf(TIPO_USUARIO,orden.pac.tipoUsuario)}</b> (DT1 §1.8). Revisa el tipo de usuario (¿el paciente se equivocó de régimen?) o podría ser un <b>caso sin contrato</b>.</div></div>`:"";
+  return `<div style="height:16px"></div><div class="card"><h3>② Contrato detectado <span class="pill cont">${nValidos}/${ranked.length} válidos</span></h3><div class="bd"><p class="hint">Ordenados por coincidencia. Solo los <b>válidos para el tipo de usuario</b> (DT1 §1.8) son elegibles; los demás se muestran atenuados.</p><div style="height:8px"></div>${rows}${aviso}</div></div>`;}
+function pacienteCard(cont,cv){const p=orden.pac;const reqAut=cv&&cv.reqAut;
+  return `<div style="height:16px"></div><div class="card"><h3>③ Datos del paciente</h3><div class="bd">
     <div class="row r3">
       ${F("Tipo de documento",selC("p_tipo",TIPO_DOCUMENTO,p.tipo||"CC"),1)}${F("Número de documento",inp("p_num",p.num,"1017254896"),1)}${F("Nombres y apellidos",inp("p_nom",p.nom,"Jhonathan Pérez Gómez"),1)}
       ${F("Sexo",selC("p_sexo",SEXO,p.sexo||"M"),1)}${F("Fecha de nacimiento",date("p_fnac",p.fnac),1)}${F("Incapacidad",tog("p_incap",p.incap),0)}
       ${F("Municipio de residencia (DANE)",ta("p_mun","mun",p.mun,"Busca: envigado, medellín, bogotá…"),1)}${ro("Departamento",p.mun&&p.mun.d?esc(p.mun.d):"—")}${F("Zona territorial",selC("p_zona",ZONA,p.zona||"02"),0)}</div>
-    <div style="height:6px"></div><div class="row r2">
-      ${F("Tipo de usuario del paciente (RIPS)",selTU(cv),1)}${reqAut?F("Código de autorización",inp("p_aut",orden.aut,"AUT-000123 (lo exige el convenio)"),1):ro("Autorización","No la exige el convenio")}</div>
-    <p class="hint">El <b>tipo de usuario</b> se elige del conjunto que declara el convenio. La fecha de atención se toma del <b>inicio de la atención</b> del RIS (no se digita aquí).</p>
-    ${nivelField}</div></div>`;}
+    <div style="height:6px"></div><div class="row r2">${ro("Tipo de usuario (de ①)",p.tipoUsuario?labelOf(TIPO_USUARIO,p.tipoUsuario):"—")}${reqAut?F("Código de autorización",inp("p_aut",orden.aut,"AUT-000123 (lo exige el convenio)"),1):ro("Autorización","No la exige el convenio")}</div>
+    <p class="hint">El tipo de usuario y el nivel se capturan en <b>① Origen</b>. La fecha de atención se toma del inicio de la atención del RIS.</p></div></div>`;}
 function estudiosCard(cont){const rec=recaudoDe(cont);
   const rows=orden.estudios.map((e,i)=>{let rl="";
     if(rec.mode==="pct"&&orden.nivel){const c=Math.round(e.p*rec.pct/100);rl=`<div class="hint">Copago (Nivel ${orden.nivel}): ${rec.pct}% × ${money(e.p)} = <b style="color:var(--cont)">${money(c)}</b></div>`;}
@@ -383,7 +394,10 @@ function gateHTML(){const m=validate();if(!m.length)return `<div id="gatebox" cl
   return `<div id="gatebox" class="gate err">⚠ Faltan ${m.length} dato(s):<ul>${m.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;}
 function refreshGate(){if(!showGate)return;const g=document.getElementById("gatebox");if(g)g.outerHTML=gateHTML();}
 function validate(){const cont=contById(orden.contId),cv=cont?convById(cont.convId):null;
-  return RIS.validarOrden({orden,pac:orden.pac,cont,cv});}
+  const msgs=RIS.validarOrden({orden,pac:orden.pac,cont,cv});
+  if(cont&&orden.pac.tipoUsuario&&!coberturaAdmiteTU(cont.cob,orden.pac.tipoUsuario))
+    msgs.push(`Tipo de usuario ${labelOf(TIPO_USUARIO,orden.pac.tipoUsuario)} no admitido por la cobertura ${labelOf(COBERTURA,cont.cob)} del contrato (DT1 §1.8 · lo rechaza el MUV). Corrige el tipo de usuario o elige otro contrato.`);
+  return msgs;}
 
 /* ===================== TYPEAHEAD (real, sobrevive al re-render) ===================== */
 let taState={id:null,cat:null,items:[],active:-1};
@@ -407,6 +421,7 @@ function taCommit(id,it){const sel=it.length>2?{c:it[0],n:it[1],d:it[2]}:{c:it[0
   else if(id==="k_cups")kForm._cups=sel;
   else if(id==="k_ium")kForm._ins={c:sel.c,n:sel.n,tipo:"medicamento"};
   else if(id.startsWith("dx_"))orden.estudios[+id.slice(3)].dx=sel;
+  else if(id==="o_estBuscado")orden.estudioBuscado=sel;
   pop.hidden=true;render();}
 pop.addEventListener("mousedown",e=>{const it=e.target.closest(".it");if(!it)return;e.preventDefault();taCommit(taState.id,taState.items[+it.dataset.i]);});
 
@@ -436,9 +451,9 @@ app.addEventListener("change",e=>{const t=e.target;
   else if(t.id==="k_conv"&&kForm)kForm.conv=t.value;
   else if((t.id==="k_cob"||t.id==="k_mod")&&kForm)kForm[t.id.slice(2)]=t.value;
   else if(t.id==="p_aut")orden.aut=t.value;
+  else if(t.id==="p_tipoUsuario"){orden.pac.tipoUsuario=t.value;orden.nivel="";orden.contId="";orden.estudios=[];orden.insumos=[];showGate=false;render();}
   else if(t.id.startsWith("p_")&&t.id!=="p_mun")orden.pac[t.id.slice(2)]=t.type==="checkbox"?t.checked:t.value;
-  else if(t.id==="o_conv"){orden.convId=t.value;orden.contId="";orden.nivel="";orden.pac.tipoUsuario="";orden.estudios=[];orden.insumos=[];render();}
-  else if(t.id==="o_cont"){orden.contId=t.value;orden.nivel="";orden.estudios=[];orden.insumos=[];showGate=false;render();}
+  else if(t.id==="o_conv"){orden.convId=t.value;orden.contId="";orden.nivel="";orden.estudioBuscado=null;orden.pac.tipoUsuario="";orden.estudios=[];orden.insumos=[];render();}
   else if(t.id==="o_nivel"){orden.nivel=t.value;render();}
   else if(t.id.startsWith("txdx_"))orden.estudios[+t.id.slice(5)].tdx=t.value;
   else if(t.id.startsWith("fin_"))orden.estudios[+t.id.slice(4)].fin=t.value;
@@ -457,6 +472,7 @@ app.addEventListener("click",e=>{if(e.target.classList&&e.target.classList.conta
   else if(a==="rmTar"){kForm.tarifa.splice(+b.dataset.i,1);render();}
   else if(a==="addIns"){addIns();}
   else if(a==="rmIns"){kForm.insumos.splice(+b.dataset.i,1);render();}
+  else if(a==="pickCont"){pickCont(b.dataset.id);}
   else if(a==="addEst"){addEst();render();}
   else if(a==="rmEst"){orden.estudios.splice(+b.dataset.i,1);render();}
   else if(a==="addInsO"){addInsO();render();}
@@ -483,6 +499,11 @@ function addIns(){const pr=document.getElementById("k_insprecio");if(!pr.value||
 function addEst(){const s=document.getElementById("o_addest");if(!s.value)return;const t=contById(orden.contId).tarifa.find(x=>x.c===s.value);
   if(orden.estudios.some(e=>e.c===t.c))return alert("Ese estudio ya está en la orden.");
   orden.estudios.push({c:t.c,n:t.n,p:t.p,dx:null,tdx:"01",fin:"15",via:"02"});}
+function pickCont(id){const k=contById(id);
+  if(k&&orden.pac.tipoUsuario&&!coberturaAdmiteTU(k.cob,orden.pac.tipoUsuario))return;
+  orden.contId=id;
+  if(orden.estudioBuscado&&k&&(k.tarifa||[]).some(t=>t.c===orden.estudioBuscado.c)&&!orden.estudios.some(e=>e.c===orden.estudioBuscado.c)){const t=k.tarifa.find(x=>x.c===orden.estudioBuscado.c);orden.estudios.push({c:t.c,n:t.n,p:t.p,dx:null,tdx:"01",fin:"15",via:"02"});}
+  showGate=false;render();}
 function addInsO(){const s=document.getElementById("o_addins");if(!s.value)return;const t=(contById(orden.contId).insumos||[]).find(x=>x.c===s.value);
   if(orden.insumos.some(e=>e.c===t.c))return alert("Ese insumo ya está en la orden.");
   orden.insumos.push({c:t.c,n:t.n,tipo:t.tipo,p:t.p,cantidad:1});}
