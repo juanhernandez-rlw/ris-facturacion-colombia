@@ -34,6 +34,7 @@ Preguntas cuya respuesta afecta el diseño. Se resuelven enlazando a la fuente q
 | 21 | **Multiusuario** y **modalidades ≠ evento** (cápita / PGP): ¿entran en el alcance del prototipo/modelo? | alcance | abierta | [[Diccionario de construcción de la FEV en salud]] |
 | 22 | **Valores vigentes** de cuota moderadora / copago: desde **2026** la referencia es **UVB** (no SMLMV). ¿Traemos los montos/topes del año en curso para el cálculo del recaudo en el RIS? | facturación | abierta | [[Acuerdo 260 de 2004 — Cuotas moderadoras y copagos]] |
 | 23 | **Contraste / insumo:** ¿va como **línea propia** (medicamento CUM/IUM) o **bundled** en el precio del CUPS "contrastado"? ¿Lleva **recaudo propio** o el recaudo es solo del estudio? | facturación | por-validar | [[Insumos (medicamentos y otros servicios)]] |
+| 24 | **Regla recaudo × tipo de usuario:** ¿quién paga **copago** vs **cuota moderadora** según `tipoUsuario` (y tipo de servicio)? Propuesta actual (por validar contra Acuerdo 260 art. 5–9): contributivo→cuota, subsidiado→copago, ARL/SOAT/particular→no aplica. | facturación | por-validar | [[Cuota moderadora y copago (recaudo del usuario)]] |
 
 > [!note] Sobre la redacción
 > Las preguntas **abiertas** se reformularon en lenguaje simple (2026-07-16). Los términos técnicos originales (nombres de campo, documentos, códigos) se conservan **entre paréntesis**; no se cambió ningún dato, estado ni enlace de fuente. Las filas ya resueltas (#5, #10) se dejaron tal cual.

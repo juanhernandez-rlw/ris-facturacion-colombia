@@ -272,6 +272,14 @@
           "02 · Cuota moderadora"
         ],
         [
+          "03",
+          "03 · Pagos compartidos en planes voluntarios de salud"
+        ],
+        [
+          "04",
+          "04 · Anticipo"
+        ],
+        [
           "05",
           "05 · No aplica"
         ]
@@ -396,7 +404,7 @@
     "mapas": {
       "RECAUDO_TU": {
         "13": "copago",
-        "_doc": "Tabla de decisión: tipo de usuario del paciente → figura de recaudo que aplica. Regla PROPUESTA (Acuerdo 260) — POR VALIDAR. Los tipos no listados ⇒ 'no' (no aplica recaudo).",
+        "_doc": "Tabla de decisión: tipo de usuario del paciente → figura de recaudo. ⚠️ POR VALIDAR / EN CONFLICTO (revisado 2026-07-20, Regla §3.4). (1) CONTRADICE la nota verificada [[Cuota moderadora y copago (recaudo del usuario)]], que dice que el concepto se fija POR CONTRATO, no por tipo de usuario. (2) Frente al Acuerdo 260: la cuota moderadora es SOLO del régimen contributivo (DT1 RVC035), así que 04 Subsidiado→copago es correcto; pero asignar UNA sola figura por tipo de usuario simplifica de más — los beneficiarios del contributivo pagan cuota Y copago según el servicio, y las finalidades P y M / materno-perinatal están exentas (RVC084). Es una DECISIÓN de modelado del usuario, PENDIENTE de resolver. Los tipos no listados ⇒ 'no' (no aplica).",
         "01": "cuota",
         "02": "cuota",
         "03": "cuota",

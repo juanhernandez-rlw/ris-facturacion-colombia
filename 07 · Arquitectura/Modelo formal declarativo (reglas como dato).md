@@ -34,8 +34,10 @@ Este mapa cae 1:1 sobre la [[Estrategia de validación y prevención de errores 
 
 `build.mjs` genera `modelo.datos.js` (`window.RIS_MODELO`) desde los JSON canónicos; `motor.js` (`window.RIS`) evalúa las reglas; `seed.js` (`window.RIS_SEED`) trae los datos demo. El HTML delega en `RIS.validarOrden(...)`, `RIS.chequearConvenio(...)`, `RIS.chequearContrato(...)`.
 
-## Pendientes (trazabilidad)
+## Hecho (2026-07-20) y pendientes
 
-- [ ] Re-validar los **enums** en vivo contra la tabla viva de SISPRO (Regla [[Reglas#4|§4.5]]).
-- [ ] Confirmar el mapa **`RECAUDO_TU`** (tipo de usuario → copago/cuota) — hoy `por-verificar` (Acuerdo 260).
-- [ ] Ampliar de las reglas del prototipo a la cobertura completa **RVC/RVG** del [[Inventario de cruces (RVC-RVG) — cobertura del validador]].
+- [x] **Enums revalidados en vivo contra SISPRO** (§4.5) → `modelo-formal/revalidacion-enums.md`. Corregido `RCONCEPTO` (5 valores); `COBERTURA` confirmada (usa la vigente `coberturaPlan`, 17, 2026-07-03); **conflicto** en `MODALIDAD_PAGO`.
+- [x] **`RECAUDO_TU` revisado → CONFLICTO** (contradice la nota verificada "concepto por contrato" + simplifica el Acuerdo 260). **No** confirmado; decisión pendiente. Alineado con [[Preguntas abiertas|#24]].
+- [x] **Reglas ampliadas** a las **~92 RVC/RVG** del [[Inventario de cruces (RVC-RVG) — cobertura del validador]] → `modelo-formal/catalogo-rvc-rvg.json` (catálogo normativo; la mayoría operan sobre el **registro RIPS completo**, no sobre este prototipo).
+- [ ] Resolver los conflictos abiertos (RECAUDO_TU, MODALIDAD_PAGO).
+- [ ] Cargar catálogos SISPRO (CUPS/CIE/CUM/MIPRES/REPS) para activar las ~27 reglas que los requieren.
