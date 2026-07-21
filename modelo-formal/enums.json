@@ -16,7 +16,7 @@
       "consistentes_con_captura_2026-07-16": ["TIPO_USUARIO (13)", "TIPO_DOCUMENTO/TipoIDPISIS (16)", "SEXO (RIPS reporta M/F/I)", "ZONA (2)", "TIPO_DX (3)"],
       "subconjunto_intencional": "FINALIDAD: 9 de los 34 de RIPSFinalidadConsultaVersion2 (recorte de imagenología); los 9 coinciden.",
       "fuera_de_sispro": "FORMAPAGO y MEDIOPAGO son catálogos DIAN (FEV). IVAOPC/NIVELES son internos/Acuerdo 260.",
-      "pendiente": "MODALIDAD_PAGO (decidir si adoptar los 12 oficiales). Revalidar en vivo el resto de enums no chequeados hoy."
+      "pendiente": "VIA_INGRESO: agregado 2026-07-20 con 01/02 (documentados en 'Inventario del formulario de Orden × RIPS-FEV'); falta capturar la tabla viva completa 'viaIngresoServicioSalud' de SISPRO — no se inventan más códigos (Regla 1.1). NIVELES: quitados los montos SMLMV (decisión #22); desde 2026 la referencia de cuota/copago es UVB y los montos/topes NO se cargan. Revalidar en vivo el resto de enums no chequeados hoy."
     }
   },
   "TIPO_DOCUMENTO": [
@@ -122,6 +122,10 @@
     ["14", "14 · Protección específica"],
     ["44", "44 · Otra"]
   ],
+  "VIA_INGRESO": [
+    ["01", "01 · Demanda espontánea"],
+    ["02", "02 · Derivado de consulta externa"]
+  ],
   "FORMAPAGO": [
     ["1", "1 · Contado"],
     ["2", "2 · Crédito"]
@@ -140,8 +144,8 @@
     ["SI", "Responsable de IVA"]
   ],
   "NIVELES": [
-    ["1", "Nivel 1 · IBC < 2 SMLMV"],
-    ["2", "Nivel 2 · IBC 2–5 SMLMV"],
-    ["3", "Nivel 3 · IBC > 5 SMLMV"]
+    ["1", "Nivel 1 · menor IBC"],
+    ["2", "Nivel 2 · IBC intermedio"],
+    ["3", "Nivel 3 · mayor IBC"]
   ]
 }

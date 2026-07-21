@@ -368,6 +368,16 @@
           "44 · Otra"
         ]
       ],
+      "VIA_INGRESO": [
+        [
+          "01",
+          "01 · Demanda espontánea"
+        ],
+        [
+          "02",
+          "02 · Derivado de consulta externa"
+        ]
+      ],
       "FORMAPAGO": [
         [
           "1",
@@ -421,15 +431,15 @@
       "NIVELES": [
         [
           "1",
-          "Nivel 1 · IBC < 2 SMLMV"
+          "Nivel 1 · menor IBC"
         ],
         [
           "2",
-          "Nivel 2 · IBC 2–5 SMLMV"
+          "Nivel 2 · IBC intermedio"
         ],
         [
           "3",
-          "Nivel 3 · IBC > 5 SMLMV"
+          "Nivel 3 · mayor IBC"
         ]
       ]
     },
