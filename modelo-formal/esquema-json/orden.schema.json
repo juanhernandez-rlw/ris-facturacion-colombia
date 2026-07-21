@@ -32,7 +32,8 @@
             "d": { "type": "string", "description": "departamento" }
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "estudios": {
       "type": "array",
@@ -51,8 +52,10 @@
             "properties": { "c": { "type": "string", "description": "CIE-10" }, "n": { "type": "string" } }
           },
           "tdx": { "type": "string", "enum": ["01", "02", "03"], "$comment": "enums.json → TIPO_DX" },
-          "fin": { "type": "string", "enum": ["15","16","17","18","11","12","13","14","44"], "$comment": "enums.json → FINALIDAD" }
-        }
+          "fin": { "type": "string", "enum": ["15","16","17","18","11","12","13","14","44"], "$comment": "enums.json → FINALIDAD" },
+          "via": { "type": "string", "$comment": "enums.json → VIA_INGRESO (viaIngresoServicioSalud); 01/02 documentados, tabla viva SISPRO por-capturar (auditoría C-01)" }
+        },
+        "additionalProperties": false
       }
     },
     "insumos": {
@@ -79,6 +82,7 @@
       }
     }
   },
+  "additionalProperties": false,
 
   "allOf": [
     {
