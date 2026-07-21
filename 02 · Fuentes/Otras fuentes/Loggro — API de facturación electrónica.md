@@ -35,6 +35,12 @@ La **delegación es parcial**: Loggro = pierna **tributaria** (timbrado DIAN →
 3. ¿Soporta el perfil salud (`SS-CUFE/CUDE…`) o solo FEV convencional?
 4. Autenticación del producto "Documentos Electrónicos" y ambiente de pruebas.
 
+## 🔎 Verificado en la doc pública (2026-07-20 · consulta a developer.loggro.com)
+> Revisión directa de la doc para responder si es viable **asumir que Loggro tiene la clave técnica y computa el CUFE**. Resultado: **la doc pública NO lo establece** y difiere el detalle. La #1 sigue abierta.
+- **`consultarInformacionResolucionDIAN`** = servicio de **consulta**, no repositorio. Recibe nº de resolución + NIT del facturador y **obtiene de la DIAN** la "clave técnica asociada a la resolución", rango y vigencia. **No hay evidencia de que Loggro *almacene* la resolución ni la clave técnica** — actúa de intermediario para validar vigencia.
+- **`generarDocumentoElectronicoXML`** = "valida la estructura y el contenido del XML". **NO especifica** si Loggro **computa/inyecta el CUFE y la firma** o si deben venir **pre-calculados** en el XML. Difiere el detalle al **Excel "Estructura Documentos Electrónicos - Facturación Electrónica - 1.9"** + **soporte de Loggro** + **contrato de servicio**.
+- **Consecuencia:** no es viable **asumir** que Loggro custodia la clave técnica / computa el CUFE. Autoridad para cerrarlo = el **Excel de estructura** + soporte + contrato (la API pública no basta). Decisión de diseño mientras tanto → [[ADR-001 · Cómputo del CUFE y custodia de la clave técnica]].
+
 ## 🧠 Conocimiento derivado
 - [[Diccionario de construcción de la FEV en salud]] (orígenes `INTEGR` + §J).
 
