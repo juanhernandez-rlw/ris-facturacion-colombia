@@ -19,9 +19,12 @@ export const Sexo          = z.enum(["M","F","I"]);
 export const Zona          = z.enum(["01","02"]);
 export const Cobertura     = z.enum(["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17"]);
 export const ModalidadPago = z.enum(["01","02","03","04","05","06","07","08","09","10","11","12"]);
-export const RConcepto     = z.enum(["01","02","05"]);
+export const RConcepto     = z.enum(["01","02","03","04","05"]);
 export const TipoDx        = z.enum(["01","02","03"]);
 export const Finalidad     = z.enum(["15","16","17","18","11","12","13","14","44"]);
+/** Vía de ingreso del servicio (RIPS viaIngresoServicioSalud). Solo 01/02 documentados;
+ *  la tabla viva completa de SISPRO está por-capturar → string laxo, no enum cerrado (Regla 1.1). */
+export const ViaIngreso    = z.string().default("02");
 export const FormaPago     = z.enum(["1","2"]);
 export const MedioPago     = z.enum(["10","47","42","48","49","20","1"]);
 export const IvaOpc        = z.enum(["NO","SI"]);
@@ -101,6 +104,7 @@ const Estudio = z.object({
   dx: z.object({ c: z.string().min(1), n: z.string().optional() }).nullable(),
   tdx: TipoDx.default("01"),
   fin: Finalidad.default("15"),
+  via: ViaIngreso,  // viaIngresoServicioSalud · default "02 derivado de consulta externa" (#18)
 });
 
 const InsumoOrden = z.object({

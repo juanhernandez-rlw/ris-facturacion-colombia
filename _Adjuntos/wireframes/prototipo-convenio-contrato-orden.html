@@ -139,7 +139,7 @@
 "use strict";
 /* ===================== ENUMS + MAPAS (desde el modelo → modelo.datos.js) ===================== */
 /* pares [codigo, etiqueta]; se guarda el código, se muestra la etiqueta */
-const {TIPO_DOCUMENTO,TIPO_ID_PAGADOR,TIPO_USUARIO,SEXO,ZONA,COBERTURA,MODALIDAD_PAGO,RCONCEPTO,TIPO_DX,FINALIDAD,FORMAPAGO,MEDIOPAGO,IVAOPC,NIVELES}=RIS.enums;
+const {TIPO_DOCUMENTO,TIPO_ID_PAGADOR,TIPO_USUARIO,SEXO,ZONA,COBERTURA,MODALIDAD_PAGO,RCONCEPTO,TIPO_DX,FINALIDAD,FORMAPAGO,MEDIOPAGO,IVAOPC,NIVELES,VIA_INGRESO}=RIS.enums;
 /* Regla PROPUESTA (Acuerdo 260, POR VALIDAR): qué recaudo aplica según el tipo de usuario del paciente. Ahora vive en el modelo (RIS.mapas). */
 const RECAUDO_TU=RIS.mapas.RECAUDO_TU, RECAUDO_NOMBRE=RIS.mapas.RECAUDO_NOMBRE;
 
@@ -346,7 +346,7 @@ function estudiosCard(cont){const rec=recaudoDe(cont);
   const rows=orden.estudios.map((e,i)=>{let rl="";
     if(rec.mode==="pct"&&orden.nivel){const c=Math.round(e.p*rec.pct/100);rl=`<div class="hint">Copago (Nivel ${orden.nivel}): ${rec.pct}% × ${money(e.p)} = <b style="color:var(--cont)">${money(c)}</b></div>`;}
     return `<div class="card" style="box-shadow:none;margin-bottom:12px"><h3 style="font-size:13px"><span class="chipn">${e.c}</span> ${esc(e.n)}<span style="margin-left:auto;font-weight:600;color:var(--cont)">${money(e.p)}</span><button class="btn sm" data-act="rmEst" data-i="${i}" style="margin-left:10px">Quitar</button></h3><div class="bd">
-      <div class="row r3">${F("Diagnóstico principal (CIE-10)",ta("dx_"+i,"cie10",e.dx,"Busca: cefalea, traumatismo…"),1)}${F("Tipo de diagnóstico",selC("txdx_"+i,TIPO_DX,e.tdx||"01"),1)}${F("Finalidad",selC("fin_"+i,FINALIDAD,e.fin||"15"),1)}</div>${rl}</div></div>`;}).join("");
+      <div class="row r4">${F("Diagnóstico principal (CIE-10)",ta("dx_"+i,"cie10",e.dx,"Busca: cefalea, traumatismo…"),1)}${F("Tipo de diagnóstico",selC("txdx_"+i,TIPO_DX,e.tdx||"01"),1)}${F("Finalidad",selC("fin_"+i,FINALIDAD,e.fin||"15"),1)}${F("Vía de ingreso",selC("via_"+i,VIA_INGRESO,e.via||"02"),1)}</div>${rl}</div></div>`;}).join("");
   return `<div style="height:16px"></div><div class="card"><h3>③ Estudios <span class="pill cont">tarifa: ${cont.tarifa.length}</span></h3><div class="bd">
     <div class="add">${F("Agregar estudio (de la tarifa del contrato)",`<select id="o_addest"><option value="">Seleccione…</option>${cont.tarifa.map(t=>`<option value="${t.c}">${t.c} · ${esc(t.n)} — ${money(t.p)}</option>`).join("")}</select>`,1)}<button class="btn gh" data-act="addEst">＋ Agregar</button></div>
     <p class="hint">Aquí es un <b>select</b> (no typeahead): solo los estudios <b>tarifados en este contrato</b>; el precio no se digita. El diagnóstico sí busca en el <b>CIE-10 real</b>.</p><div style="height:12px"></div>
@@ -442,6 +442,7 @@ app.addEventListener("change",e=>{const t=e.target;
   else if(t.id==="o_nivel"){orden.nivel=t.value;render();}
   else if(t.id.startsWith("txdx_"))orden.estudios[+t.id.slice(5)].tdx=t.value;
   else if(t.id.startsWith("fin_"))orden.estudios[+t.id.slice(4)].fin=t.value;
+  else if(t.id.startsWith("via_"))orden.estudios[+t.id.slice(4)].via=t.value;
   if(showGate)refreshGate();});
 app.addEventListener("click",e=>{if(e.target.classList&&e.target.classList.contains("modal")){preview=null;render();return;}const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act;
   if(a==="newC"){cForm={forma:"2",medio:"47",tipoId:"NI",tipoUsuarios:["01","02","03"],iva:"SI"};render();}
@@ -481,7 +482,7 @@ function addIns(){const pr=document.getElementById("k_insprecio");if(!pr.value||
   kForm.insumos.push(ins);kForm._ins=null;kForm._dcod="";kForm._dnom="";render();}
 function addEst(){const s=document.getElementById("o_addest");if(!s.value)return;const t=contById(orden.contId).tarifa.find(x=>x.c===s.value);
   if(orden.estudios.some(e=>e.c===t.c))return alert("Ese estudio ya está en la orden.");
-  orden.estudios.push({c:t.c,n:t.n,p:t.p,dx:null,tdx:"01",fin:"15"});}
+  orden.estudios.push({c:t.c,n:t.n,p:t.p,dx:null,tdx:"01",fin:"15",via:"02"});}
 function addInsO(){const s=document.getElementById("o_addins");if(!s.value)return;const t=(contById(orden.contId).insumos||[]).find(x=>x.c===s.value);
   if(orden.insumos.some(e=>e.c===t.c))return alert("Ese insumo ya está en la orden.");
   orden.insumos.push({c:t.c,n:t.n,tipo:t.tipo,p:t.p,cantidad:1});}
