@@ -25,6 +25,12 @@ etiquetas: [adr, cufe, clave-tecnica, loggro, numeracion, seguridad, por-confirm
 3. **El cómputo del CUFE se implementa como frontera intercambiable** (estrategia/adaptador): `app-computa` ↔ `delegar-a-Loggro`. Así no se acopla a un supuesto: si Loggro confirma que lo hace, se delega sin reescribir.
 4. **Numeración:** el RIS asigna el `numFactura` desde el rango DIAN autorizado (ver decisión de numeración en el diccionario FEV); el mismo número va en FEV y RIPS (PFP001).
 
+> [!success] Verificado (2026-07-20) — la parte de **cómputo** ya está implementada y probada
+> - **CUFE:** `generador-rips/src/lib/cufe.ts` computa el CUFE (SHA-384, Anexo v1.9 §11.2, 14 campos, 2 decimales truncados). **Verificado contra el ejemplo oficial del anexo** (`npm run test:cufe`: cadena de composición + `8bb918…9276f5bd9b4` ✓). El `SS-CUFE` de salud usa **este mismo algoritmo** (SS-CUFE = modo de uso / CustomizationID, no un hash distinto).
+> - **Numeración:** `generador-rips/src/lib/numeracion.ts` asigna el `numFactura` del rango DIAN (valida vigencia + cupo, bloquea vencida/agotada, soporta contingencia) — `npm run test:num` ✓, incluida la integración `numFactura → CUFE`.
+> - **Sigue por-confirmar con Loggro (#13):** la **firma digital (XAdES-EPES con certificado)** — la pieza compleja, probable Loggro — y si Loggro computa/valida el CUFE de su lado. La **custodia cifrada de la clave técnica** en Config-IPS queda como diseño (P3).
+> Conclusión: el punto 1 ("el RIS computa el `SS-CUFE`") pasó de *supuesto* a **verificado contra la norma**; lo que resta afuera del RIS es la **firma**, no el CUFE.
+
 ## Alternativas consideradas
 - **Delegar el CUFE a Loggro (asumir que tiene la clave técnica).** Descartada: no verificada en la doc pública; Loggro no expone salud (el `SS-CUFE` quedaría fuera de su alcance); movería un secreto fiscal a un tercero sin confirmar el flujo.
 - **App computa (elegida).** Default seguro: la clave técnica es de *nuestra* resolución, el secreto queda in-house, y no bloquea el diseño.
