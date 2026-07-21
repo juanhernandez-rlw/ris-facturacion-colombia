@@ -11,7 +11,7 @@
       "verificado_en_vivo": {
         "RCONCEPTO": "conceptoRecaudo · 5 valores · Fecha_Actualizacion 2025-05-16 → CORREGIDO: faltaban 03 (Pagos compartidos) y 04 (Anticipo).",
         "COBERTURA": "coberturaPlan VIGENTE · 17 valores incl. 16/17 (UPC Contributivo/Subsidiado) · Fecha_Actualizacion 2026-07-03 → CORRECTO. (La tabla RIPS 'CoberturaPlanBeneficios' es la vieja: 15 valores, 2022. El prototipo usa la vigente.) Etiquetas 08/14 abreviadas.",
-        "MODALIDAD_PAGO": "CONFLICTO: los 4 valores del prototipo (custom) NO coinciden con la tabla vigente salud_modalidad_pago / ModalidadContratoyPago (12: 01 Paquete…11 Capitación · 12 Por servicio). Decisión pendiente del usuario."
+        "MODALIDAD_PAGO": "RESUELTO 2026-07-20: adoptada la tabla oficial SISPRO 'ModalidadContratoyPago' (12 valores, live 2022-06-16) como fuente de verdad. Seed remapeado: 03 Capitación→11, 04 Evento→12 (Pago por Servicio); 01 Paquete se mantiene."
       },
       "consistentes_con_captura_2026-07-16": ["TIPO_USUARIO (13)", "TIPO_DOCUMENTO/TipoIDPISIS (16)", "SEXO (RIPS reporta M/F/I)", "ZONA (2)", "TIPO_DX (3)"],
       "subconjunto_intencional": "FINALIDAD: 9 de los 34 de RIPSFinalidadConsultaVersion2 (recorte de imagenología); los 9 coinciden.",
@@ -86,10 +86,18 @@
     ["17", "17 · UPC Subsidiado"]
   ],
   "MODALIDAD_PAGO": [
-    ["01", "01 · Pago por caso/paquete"],
-    ["02", "02 · Pago global prospectivo"],
-    ["03", "03 · Pago por capitación"],
-    ["04", "04 · Pago por evento"]
+    ["01", "01 · Paquete / Canasta / Conjunto Integral en Salud"],
+    ["02", "02 · Grupos Relacionados por diagnóstico"],
+    ["03", "03 · Integral por grupo de riesgo"],
+    ["04", "04 · Pago por contacto por especialidad"],
+    ["05", "05 · Pago por escenario de atención"],
+    ["06", "06 · Pago por tipo de servicio"],
+    ["07", "07 · Pago global prospectivo por episodio"],
+    ["08", "08 · Pago global prospectivo por grupo de riesgo"],
+    ["09", "09 · Pago global prospectivo por especialidad"],
+    ["10", "10 · Pago global prospectivo por nivel de complejidad"],
+    ["11", "11 · Capitación"],
+    ["12", "12 · Pago por Servicio"]
   ],
   "RCONCEPTO": [
     ["01", "01 · Copago"],

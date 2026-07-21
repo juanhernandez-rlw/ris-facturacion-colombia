@@ -247,19 +247,51 @@
       "MODALIDAD_PAGO": [
         [
           "01",
-          "01 · Pago por caso/paquete"
+          "01 · Paquete / Canasta / Conjunto Integral en Salud"
         ],
         [
           "02",
-          "02 · Pago global prospectivo"
+          "02 · Grupos Relacionados por diagnóstico"
         ],
         [
           "03",
-          "03 · Pago por capitación"
+          "03 · Integral por grupo de riesgo"
         ],
         [
           "04",
-          "04 · Pago por evento"
+          "04 · Pago por contacto por especialidad"
+        ],
+        [
+          "05",
+          "05 · Pago por escenario de atención"
+        ],
+        [
+          "06",
+          "06 · Pago por tipo de servicio"
+        ],
+        [
+          "07",
+          "07 · Pago global prospectivo por episodio"
+        ],
+        [
+          "08",
+          "08 · Pago global prospectivo por grupo de riesgo"
+        ],
+        [
+          "09",
+          "09 · Pago global prospectivo por especialidad"
+        ],
+        [
+          "10",
+          "10 · Pago global prospectivo por nivel de complejidad"
+        ],
+        [
+          "11",
+          "11 · Capitación"
+        ],
+        [
+          "12",
+          "12 · Pago por Servicio"
         ]
       ],
       "RCONCEPTO": [

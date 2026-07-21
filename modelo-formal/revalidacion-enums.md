@@ -8,7 +8,7 @@
 |---|---|---|---|
 | **RCONCEPTO** | `conceptoRecaudo` | 2025-05-16 | **5 valores** (01 Copago · 02 Cuota moderadora · 03 Pagos compartidos en planes voluntarios · 04 Anticipo · 05 No aplica). **Corregido**: faltaban 03 y 04. |
 | **COBERTURA** | `coberturaPlan` | **2026-07-03** | **17 valores, incl. 16/17** (UPC Contributivo/Subsidiado). El enum de 17 es **CORRECTO** — usa la tabla **vigente**. |
-| **MODALIDAD_PAGO** | `salud_modalidad_pago` / `ModalidadContratoyPago` | 2022 | **12 valores** oficiales. Los **4 custom** del prototipo **no coinciden** → conflicto (abajo). |
+| **MODALIDAD_PAGO** | `ModalidadContratoyPago` | 2022-06-16 | **12 valores** oficiales (live). → **Adoptados** como fuente de verdad; enum 4→12 y seed remapeado (C1 resuelto). |
 
 > [!warning] Lección §4.5.b — versiones obsoletas de nombre parecido
 > Existen **dos** tablas de cobertura: `CoberturaPlanBeneficios` (**15** valores, **2022**, lado RIPS) y `coberturaPlan` (**17** valores, **2026-07-03**, vigente, lado FEV-salud). El prototipo usa **coberturaPlan** (la vigente) → los códigos 16/17 son legítimos. Casi los marco como error por mirar la tabla vieja; el chequeo en vivo lo evitó.
@@ -26,9 +26,9 @@
 
 ## 🧾 Registro de conflictos (Regla §5) — pendientes de tu decisión
 
-| # | Enum/campo | Conflicto | Recomendación |
+| # | Enum/campo | Conflicto | Estado |
 |---|---|---|---|
-| C1 | **MODALIDAD_PAGO** | El prototipo usa 4 valores custom (01 Pago por caso/paquete · 02 Global prospectivo · 03 Capitación · 04 Evento) que **no mapean** a la tabla vigente `salud_modalidad_pago`/`ModalidadContratoyPago` (12 valores). | Adoptar los 12 oficiales, o dejar los 4 como "agrupación interna" documentada con su mapeo a los oficiales. El seed usa mod 01/03/04. |
+| C1 | **MODALIDAD_PAGO** | El prototipo usaba 4 valores custom que no mapeaban a la tabla oficial. | ✅ **RESUELTO (2026-07-20):** adoptada la tabla SISPRO `ModalidadContratoyPago` (12 valores, live 2022-06-16) como fuente de verdad. Seed remapeado: 03 Capitación→11 · 04 Evento→12 (Pago por Servicio) · 01 Paquete se mantiene. Enum, JSON Schema y Zod actualizados a 12. |
 | C2 | **RECAUDO_TU** (recaudo) | La regla nueva (concepto por **tipo de usuario**) **contradice** la nota verificada [[Cuota moderadora y copago (recaudo del usuario)]] ("el concepto se fija **por contrato**"), y **simplifica** el Acuerdo 260 (los beneficiarios pagan cuota **y** copago según servicio; P y M exentas — RVC084). Lo único firme: cuota moderadora = solo contributivo (RVC035). | Decidir el modelo de recaudo definitivo. Ver detalle en `reglas.dmn.json → mapas.RECAUDO_TU._doc`. |
 | C3 | **COBERTURA** etiquetas 08/14 | Abreviadas respecto al texto exacto de SISPRO (p. ej. 14 = "Cobertura Fondo Nacional de Salud de las Personas Privadas de la Libertad"). Los **códigos** coinciden. | Cosmético; alinear etiquetas si se quiere fidelidad total de texto. |
 
