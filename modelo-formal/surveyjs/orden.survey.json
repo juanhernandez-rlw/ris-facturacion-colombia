@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "titulo": "Formulario de Orden — modelo SurveyJS (UI declarativa)",
+    "descripcion": "Expresa la VISIBILIDAD y OBLIGATORIEDAD condicional como DATO (visibleIf / requiredIf / enableIf), no como código. Es la respuesta directa a 'si la casilla X tiene un valor, la casilla Y aparece / no existe'. Las variables {contexto.*} se resuelven al elegir el contrato (derivadas del convenio/contrato).",
+    "certeza": "inferido — refleja 1:1 la lógica condicional del prototipo (pacienteCard/selTU/nivelField)."
+  },
+  "title": "Nueva orden",
+  "showQuestionNumbers": "off",
+  "elements": [
+    {
+      "type": "panel",
+      "name": "seleccion",
+      "title": "① Contrato de la orden",
+      "elements": [
+        { "type": "dropdown", "name": "convId", "title": "Convenio (pagador)", "isRequired": true, "choicesByUrl": { "path": "convenios" } },
+        {
+          "type": "dropdown",
+          "name": "contId",
+          "title": "Contrato",
+          "isRequired": true,
+          "enableIf": "{convId} notempty",
+          "description": "Solo contratos vigentes del convenio elegido (dependent dropdown)."
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "name": "paciente",
+      "title": "② Paciente",
+      "visibleIf": "{contId} notempty",
+      "elements": [
+        { "type": "dropdown", "name": "pac.tipo", "title": "Tipo de documento", "isRequired": true, "defaultValue": "CC" },
+        { "type": "text", "name": "pac.num", "title": "Número de documento", "isRequired": true },
+        { "type": "text", "name": "pac.nom", "title": "Nombres y apellidos", "isRequired": true },
+        { "type": "dropdown", "name": "pac.sexo", "title": "Sexo", "defaultValue": "M" },
+        { "type": "text", "name": "pac.fnac", "title": "Fecha de nacimiento", "inputType": "date", "isRequired": true },
+        {
+          "type": "text",
+          "name": "pac.mun",
+          "title": "Municipio de residencia (DANE)",
+          "isRequired": true,
+          "description": "typeahead sobre catálogo DANE real"
+        },
+        {
+          "type": "dropdown",
+          "name": "pac.tipoUsuario",
+          "title": "Tipo de usuario del paciente (RIPS)",
+          "description": "Opciones = el conjunto que declara el convenio (contexto.tiposUsuario).",
+          "visibleIf": "{contexto.tiposUsuario.length} > 0",
+          "requiredIf": "{contexto.tiposUsuario.length} > 0",
+          "choicesFromQuestion": "contexto.tiposUsuario"
+        },
+        {
+          "type": "text",
+          "name": "aut",
+          "title": "Código de autorización",
+          "placeholder": "AUT-000123 (lo exige el convenio)",
+          "visibleIf": "{contexto.reqAut} = true",
+          "requiredIf": "{contexto.reqAut} = true",
+          "requiredErrorText": "Código de autorización (lo exige el convenio)"
+        },
+        {
+          "type": "html",
+          "name": "aut_noaplica",
+          "html": "Autorización: No la exige el convenio",
+          "visibleIf": "{contexto.reqAut} != true"
+        },
+        {
+          "type": "dropdown",
+          "name": "nivel",
+          "title": "Nivel de contribución del paciente",
+          "description": "Define el copago/cuota. Solo existe si el TIPO DE USUARIO del paciente genera recaudo (mapa RECAUDO_TU). Códigos con recaudo: 01,02,03,06,04,07,13.",
+          "visibleIf": "{pac.tipoUsuario} anyof ['01','02','03','06','04','07','13']",
+          "requiredIf": "{pac.tipoUsuario} anyof ['01','02','03','06','04','07','13']",
+          "requiredErrorText": "Selecciona el nivel de contribución del paciente",
+          "choices": [
+            { "value": "1", "text": "Nivel 1 · IBC < 2 SMLMV" },
+            { "value": "2", "text": "Nivel 2 · IBC 2–5 SMLMV" },
+            { "value": "3", "text": "Nivel 3 · IBC > 5 SMLMV" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paneldynamic",
+      "name": "estudios",
+      "title": "③ Estudios",
+      "visibleIf": "{contId} notempty",
+      "minPanelCount": 1,
+      "requiredErrorText": "Agrega al menos un estudio",
+      "templateElements": [
+        { "type": "dropdown", "name": "c", "title": "Estudio (de la tarifa del contrato)", "isRequired": true },
+        { "type": "text", "name": "dx", "title": "Diagnóstico principal (CIE-10)", "isRequired": true, "requiredErrorText": "Estudio: falta diagnóstico (CIE-10)" },
+        { "type": "dropdown", "name": "tdx", "title": "Tipo de diagnóstico", "defaultValue": "01", "isRequired": true },
+        { "type": "dropdown", "name": "fin", "title": "Finalidad", "defaultValue": "15", "isRequired": true }
+      ]
+    },
+    {
+      "type": "paneldynamic",
+      "name": "insumos",
+      "title": "④ Insumos (opcional)",
+      "visibleIf": "{contId} notempty",
+      "templateElements": [
+        { "type": "dropdown", "name": "c", "title": "Insumo (de la tarifa del contrato)", "isRequired": true },
+        { "type": "text", "name": "cantidad", "title": "Cantidad", "inputType": "number", "min": 1, "defaultValue": 1, "isRequired": true, "validators": [ { "type": "numeric", "minValue": 1, "text": "Insumo: cantidad inválida" } ] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "_meta": {
+    "titulo": "Enums del RIPS/FEV — tablas de referencia (pares [código, etiqueta])",
+    "descripcion": "Listas de valores permitidos que consume el formulario. Se guarda el código; se muestra la etiqueta.",
+    "procedencia": "Transcritos VERBATIM del prototipo (prototipo-convenio-contrato-orden.html). Origen declarado: DT1 v002 / tablas vivas SISPRO.",
+    "estado_certeza": "por-verificar",
+    "nota_integridad": "Regla 1.6/4.5 del proyecto: la autoridad final de cada código/valor es la TABLA VIVA de SISPRO (web.sispro.gov.co). Estos valores se cargan tal cual del prototipo; su re-validación en vivo contra la tabla vigente (nombre exacto + Fecha_Actualizacion) queda PENDIENTE. No se alteran, traducen ni normalizan (Regla 1.2).",
+    "advertencia_catalogo": "Caso real documentado en Reglas §4.5: coberturaPlan [vigente, 17 valores, 2026] vs CoberturaPlanBeneficios [obsoleta, 15 valores, 2022]. COBERTURA aquí tiene 17 valores."
+  },
+  "TIPO_DOCUMENTO": [
+    ["CC", "CC · Cédula de ciudadanía"],
+    ["TI", "TI · Tarjeta de identidad"],
+    ["RC", "RC · Registro civil"],
+    ["CE", "CE · Cédula de extranjería"],
+    ["PT", "PT · Permiso por protección temporal"],
+    ["PE", "PE · Permiso especial de permanencia"],
+    ["PA", "PA · Pasaporte"],
+    ["CN", "CN · Certificado de nacido vivo"],
+    ["NV", "NV · Certificado nacido vivo"],
+    ["AS", "AS · Adulto sin identificación"],
+    ["MS", "MS · Menor sin identificación"],
+    ["SI", "SI · Sin identificación"],
+    ["CD", "CD · Carné diplomático"],
+    ["DE", "DE · Documento extranjero"],
+    ["SC", "SC · Salvoconducto"],
+    ["NI", "NI · NIT"]
+  ],
+  "TIPO_ID_PAGADOR": [
+    ["NI", "NI · NIT"],
+    ["CC", "CC · Cédula de ciudadanía"],
+    ["CE", "CE · Cédula de extranjería"]
+  ],
+  "TIPO_USUARIO": [
+    ["01", "01 · Contributivo cotizante"],
+    ["02", "02 · Contributivo beneficiario"],
+    ["03", "03 · Contributivo adicional"],
+    ["04", "04 · Subsidiado"],
+    ["05", "05 · No afiliado"],
+    ["06", "06 · Especial/excepción cotizante"],
+    ["07", "07 · Especial/excepción beneficiario"],
+    ["08", "08 · Privados de la libertad (FNS)"],
+    ["09", "09 · Tomador/amparado ARL"],
+    ["10", "10 · Tomador/amparado SOAT"],
+    ["11", "11 · Tomador/amparado planes voluntarios"],
+    ["12", "12 · Particular"],
+    ["13", "13 · Especial/excepción no cotizante (Ley 352/1997)"]
+  ],
+  "SEXO": [
+    ["M", "M · Masculino"],
+    ["F", "F · Femenino"],
+    ["I", "I · Indeterminado / intersexual"]
+  ],
+  "ZONA": [
+    ["01", "01 · Rural"],
+    ["02", "02 · Urbano"]
+  ],
+  "COBERTURA": [
+    ["01", "01 · Plan de beneficios (UPC)"],
+    ["02", "02 · Presupuesto máximo"],
+    ["03", "03 · Prima EPS/EOC, no asegurados SOAT"],
+    ["04", "04 · Cobertura póliza SOAT"],
+    ["05", "05 · Cobertura ARL"],
+    ["06", "06 · Cobertura ADRES"],
+    ["07", "07 · Salud pública"],
+    ["08", "08 · Entidad territorial (oferta)"],
+    ["09", "09 · Urgencias población migrante"],
+    ["10", "10 · Plan complementario"],
+    ["11", "11 · Medicina prepagada"],
+    ["12", "12 · Otras pólizas en salud"],
+    ["13", "13 · Régimen especial o excepción"],
+    ["14", "14 · Fondo Nacional Salud PPL"],
+    ["15", "15 · Particular"],
+    ["16", "16 · UPC Contributivo"],
+    ["17", "17 · UPC Subsidiado"]
+  ],
+  "MODALIDAD_PAGO": [
+    ["01", "01 · Pago por caso/paquete"],
+    ["02", "02 · Pago global prospectivo"],
+    ["03", "03 · Pago por capitación"],
+    ["04", "04 · Pago por evento"]
+  ],
+  "RCONCEPTO": [
+    ["01", "01 · Copago"],
+    ["02", "02 · Cuota moderadora"],
+    ["05", "05 · No aplica"]
+  ],
+  "TIPO_DX": [
+    ["01", "01 · Impresión diagnóstica"],
+    ["02", "02 · Confirmado nuevo"],
+    ["03", "03 · Confirmado repetido"]
+  ],
+  "FINALIDAD": [
+    ["15", "15 · Diagnóstico"],
+    ["16", "16 · Tratamiento"],
+    ["17", "17 · Rehabilitación"],
+    ["18", "18 · Paliación"],
+    ["11", "11 · Valoración integral PyM"],
+    ["12", "12 · Detección temprana enf. general"],
+    ["13", "13 · Detección temprana enf. laboral"],
+    ["14", "14 · Protección específica"],
+    ["44", "44 · Otra"]
+  ],
+  "FORMAPAGO": [
+    ["1", "1 · Contado"],
+    ["2", "2 · Crédito"]
+  ],
+  "MEDIOPAGO": [
+    ["10", "10 · Efectivo"],
+    ["47", "47 · Transferencia débito bancaria"],
+    ["42", "42 · Consignación bancaria"],
+    ["48", "48 · Tarjeta crédito"],
+    ["49", "49 · Tarjeta débito"],
+    ["20", "20 · Cheque"],
+    ["1", "1 · Instrumento no definido"]
+  ],
+  "IVAOPC": [
+    ["NO", "No responsable de IVA"],
+    ["SI", "Responsable de IVA"]
+  ],
+  "NIVELES": [
+    ["1", "Nivel 1 · IBC < 2 SMLMV"],
+    ["2", "Nivel 2 · IBC 2–5 SMLMV"],
+    ["3", "Nivel 3 · IBC > 5 SMLMV"]
+  ]
+}
