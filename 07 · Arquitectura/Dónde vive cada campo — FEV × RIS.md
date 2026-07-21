@@ -51,9 +51,16 @@ actualizado: 2026-07-19
 ## Discrepancias del Figma que este cruce corrige
 - **cobertura 01–10 → 17** (tabla viva SISPRO).
 - **`tipoUsuario` "05 no afiliado"** → no existe en el catálogo oficial; usar el `.gc`/tabla viva.
-- **modalidad/cobertura** se **maestrean en el Convenio**, no se recapturan en "Ingreso del paciente".
+- **modalidad/cobertura** se **maestrean en el Convenio**, no se recapturan en "Ingreso del paciente". <br>⚠️ *Superado 2026-07-20 (auditoría **A-04**) — ver la corrección abajo: **viven en el Contrato**. Se conserva el texto original como registro histórico (revertible).*
 - **"Plano software facturación" (Loggro sin API)** → **descartado**; integración = **API de Loggro** (XML UBL).
 - **numeración** → la asigna el **RIS** (validado contra Res. 000042/2020).
+
+> [!warning] Corrección 2026-07-20 — cobertura y modalidad viven en el **Contrato** (auditoría A-04)
+> El punto de arriba ("se maestrean en el Convenio") **queda superado** y se conserva a propósito como registro histórico. La **cobertura** (`COBERTURA_PLAN_BENEFICIOS`) y la **modalidad de pago** (`MODALIDAD_PAGO`) **se definen por Contrato**, no por Convenio.
+> - **Evidencia (dato):** un mismo convenio puede tener contratos con cobertura/modalidad distintas. En el seed, `CV1` tiene `CT1` (cob **01** · mod **12**) y `CT2` (cob **16** · mod **01**). Si vivieran en el Convenio, serían un valor único por pagador → imposible.
+> - **Coincide con:** `contrato.schema.json` (`cob`/`mod` son obligatorios del **contrato**) y el [[Mapa de flujos del sistema (para desarrollo)|Mapa de flujos]].
+> - **Matiz:** el **Convenio** (pagador) sí aporta NIT, forma/medio de pago y los flags de autorización/MIPRES/SIRAS; la **cobertura/modalidad dependen del contrato negociado**.
+> - Registro de la decisión: [[RF-01 · Cobertura y modalidad se definen en el Contrato]].
 
 ## Consecuencia para el front (lo que la Orden/Ingreso realmente captura)
 Lo demás es Convenio-maestro, Contrato, cálculo o integración:

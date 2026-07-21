@@ -53,9 +53,6 @@
     if ("ne" in cond)  return resolve(ctx, cond.ne[0]) !== operand(ctx, cond.ne[1]);
     if ("gt" in cond)  return resolve(ctx, cond.gt[0]) > operand(ctx, cond.gt[1]);
     if ("lte" in cond) return Number(resolve(ctx, cond.lte[0])) <= Number(operand(ctx, cond.lte[1]));
-    if ("pctOutOfRange" in cond) return cond.pctOutOfRange.some(function (p) {
-      var x = parseFloat(resolve(ctx, p)); return isNaN(x) || x < 0 || x > 100;
-    });
     if ("copRango" in cond) return cond.copRango
       .map(function (p) { return parseFloat(resolve(ctx, p)); })
       .filter(function (x) { return !isNaN(x); })
