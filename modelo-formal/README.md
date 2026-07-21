@@ -14,8 +14,17 @@
 | `reglas.dmn.json` | Reglas de negocio / cruces | **DMN** (tabla de decisión) | Cada regla = una fila (condición → mensaje). Gate de la orden + guardas de guardado. Incluye `mapas` (p. ej. `RECAUDO_TU`). |
 | `surveyjs/orden.survey.json` | UI declarativa | **SurveyJS** | `visibleIf` / `requiredIf`: "si la casilla X vale V, la casilla Y aparece / es obligatoria". |
 | `zod/modelo.zod.ts` | Validación como código | **Zod** (TS) | La misma validación para el **backend** futuro; genera tipos TS + runtime; cruces en `.superRefine()`. |
+| `catalogo-rvc-rvg.json` | Cobertura normativa completa | catálogo DT1 v002 | **Las ~92 reglas RVC/RVG** del validador del RIPS como dato (id, capa, condición, resultado, implementabilidad). Nivel normativo — superior en alcance al prototipo. |
+| `revalidacion-enums.md` | Trazabilidad de datos | reporte §4.5 | Revalidación de los enums **en vivo contra SISPRO** (2026-07-20) + registro de conflictos §5. |
 
-Esto sigue el mapa de tu [[Estrategia de validación y prevención de errores del RIPS]] (Estructura + Contenido → JSON Schema/enums · Relación → DMN/reglas · Externa → integración).
+Esto sigue el mapa de tu [[Estrategia de validación y prevención de errores del RIPS]] (Estructura + Contenido → JSON Schema/enums · Relación → DMN/reglas + catálogo RVC/RVG · Externa → integración) y el [[Inventario de cruces (RVC-RVG) — cobertura del validador]].
+
+## ⚠️ Conflictos abiertos (Regla §3.4 — pendientes de tu decisión)
+1. **RECAUDO_TU** (recaudo por tipo de usuario): contradice la nota verificada [[Cuota moderadora y copago (recaudo del usuario)]] ("concepto por contrato") y simplifica el Acuerdo 260. Lo firme: cuota moderadora = solo contributivo (RVC035). Detalle en `reglas.dmn.json → mapas.RECAUDO_TU._doc`. Alineado con tu pregunta abierta #24.
+2. **MODALIDAD_PAGO**: 4 valores custom del prototipo ≠ tabla vigente `salud_modalidad_pago` (12 valores). Ver `revalidacion-enums.md`.
+3. **COBERTURA**: verificada CORRECTA (usa la vigente `coberturaPlan`, 17 valores, 2026-07-03); solo etiquetas 08/14 abreviadas.
+
+**Alcance del catálogo RVC/RVG:** la mayoría de esas 92 reglas operan sobre el **registro RIPS completo** (la app `generador-rips`), no sobre este prototipo Convenio→Contrato→Orden. Se catalogan como dato normativo; el motor de este prototipo evalúa sus 16 reglas de formulario.
 
 ## Cómo lo consume el prototipo (corre en `file://`, sin fetch)
 

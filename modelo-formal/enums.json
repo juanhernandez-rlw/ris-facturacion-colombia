@@ -2,10 +2,22 @@
   "_meta": {
     "titulo": "Enums del RIPS/FEV — tablas de referencia (pares [código, etiqueta])",
     "descripcion": "Listas de valores permitidos que consume el formulario. Se guarda el código; se muestra la etiqueta.",
-    "procedencia": "Transcritos VERBATIM del prototipo (prototipo-convenio-contrato-orden.html). Origen declarado: DT1 v002 / tablas vivas SISPRO.",
-    "estado_certeza": "por-verificar",
-    "nota_integridad": "Regla 1.6/4.5 del proyecto: la autoridad final de cada código/valor es la TABLA VIVA de SISPRO (web.sispro.gov.co). Estos valores se cargan tal cual del prototipo; su re-validación en vivo contra la tabla vigente (nombre exacto + Fecha_Actualizacion) queda PENDIENTE. No se alteran, traducen ni normalizan (Regla 1.2).",
-    "advertencia_catalogo": "Caso real documentado en Reglas §4.5: coberturaPlan [vigente, 17 valores, 2026] vs CoberturaPlanBeneficios [obsoleta, 15 valores, 2022]. COBERTURA aquí tiene 17 valores."
+    "procedencia": "Origen: prototipo + tablas vivas SISPRO (DT1 v002 / FEV-salud Anexo Técnico 2). Revalidado 2026-07-20 (ver 'revalidacion').",
+    "estado_certeza": "revalidado parcialmente 2026-07-20",
+    "nota_integridad": "Regla 1.6/4.5: la autoridad final de cada código/valor es la TABLA VIVA de SISPRO (web.sispro.gov.co). No se alteran, traducen ni normalizan (Regla 1.2).",
+    "revalidacion": {
+      "fecha": "2026-07-20",
+      "metodo": "En vivo contra SISPRO (ConsultarDetalleReferenciaBasica.aspx?Code=<tabla>) para las tablas de mayor riesgo; el resto se contrasta con la captura viva del 2026-07-16 ([[Tablas de referencia vigentes (SISPRO) — enums del RIPS]]). Reporte: modelo-formal/revalidacion-enums.md.",
+      "verificado_en_vivo": {
+        "RCONCEPTO": "conceptoRecaudo · 5 valores · Fecha_Actualizacion 2025-05-16 → CORREGIDO: faltaban 03 (Pagos compartidos) y 04 (Anticipo).",
+        "COBERTURA": "coberturaPlan VIGENTE · 17 valores incl. 16/17 (UPC Contributivo/Subsidiado) · Fecha_Actualizacion 2026-07-03 → CORRECTO. (La tabla RIPS 'CoberturaPlanBeneficios' es la vieja: 15 valores, 2022. El prototipo usa la vigente.) Etiquetas 08/14 abreviadas.",
+        "MODALIDAD_PAGO": "CONFLICTO: los 4 valores del prototipo (custom) NO coinciden con la tabla vigente salud_modalidad_pago / ModalidadContratoyPago (12: 01 Paquete…11 Capitación · 12 Por servicio). Decisión pendiente del usuario."
+      },
+      "consistentes_con_captura_2026-07-16": ["TIPO_USUARIO (13)", "TIPO_DOCUMENTO/TipoIDPISIS (16)", "SEXO (RIPS reporta M/F/I)", "ZONA (2)", "TIPO_DX (3)"],
+      "subconjunto_intencional": "FINALIDAD: 9 de los 34 de RIPSFinalidadConsultaVersion2 (recorte de imagenología); los 9 coinciden.",
+      "fuera_de_sispro": "FORMAPAGO y MEDIOPAGO son catálogos DIAN (FEV). IVAOPC/NIVELES son internos/Acuerdo 260.",
+      "pendiente": "MODALIDAD_PAGO (decidir si adoptar los 12 oficiales). Revalidar en vivo el resto de enums no chequeados hoy."
+    }
   },
   "TIPO_DOCUMENTO": [
     ["CC", "CC · Cédula de ciudadanía"],
@@ -82,6 +94,8 @@
   "RCONCEPTO": [
     ["01", "01 · Copago"],
     ["02", "02 · Cuota moderadora"],
+    ["03", "03 · Pagos compartidos en planes voluntarios de salud"],
+    ["04", "04 · Anticipo"],
     ["05", "05 · No aplica"]
   ],
   "TIPO_DX": [
