@@ -11,7 +11,7 @@ actualizado: 2026-07-20
 # Modelo formal declarativo (reglas como dato)
 
 > [!abstract] Qué es
-> Las reglas, enums y relaciones que el **prototipo** implementa hoy, extraídas del código y expresadas como **dato** en las capas estándar (JSON Schema · DMN · SurveyJS · Zod). Deja de estar "enterrado en un solo JS": el formulario, el gate de validación y (a futuro) el backend leen **una sola fuente**. Vive en la carpeta `modelo-formal/` del repo; su documentación completa está en `modelo-formal/README.md`.
+> Las reglas, enums y relaciones que el **prototipo** implementa hoy, extraídas del código y expresadas como **dato** en las capas estándar (JSON Schema · DMN · SurveyJS · Zod). Deja de estar "enterrado en un solo JS": el formulario, el gate de validación y (a futuro) el backend leen **una sola fuente**. Vive en la carpeta `modelo-formal/` del **repo hermano `generador-rips`** (movida ahí el 2026-07-21, junto con el prototipo); su documentación completa está en `generador-rips/modelo-formal/README.md`. Las rutas `modelo-formal/…` de abajo son relativas a ese repo.
 > **Estado:** propuesta de arquitectura (`inferido`) sobre datos `verificados`. **Alcance honesto:** formaliza solo lo que el prototipo hace hoy — **no** las 103 RVC + 20 RVG completas del DT1 (ver [[Inventario de cruces (RVC-RVG) — cobertura del validador]]).
 
 ## Por qué

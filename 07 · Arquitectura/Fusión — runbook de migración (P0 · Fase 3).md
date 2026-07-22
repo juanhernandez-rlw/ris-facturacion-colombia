@@ -31,7 +31,7 @@ actualizado: 2026-07-20
 
 ## Qué se descarta / preserva
 - **Descartable:** el prototipo `generador-rips/prototipos/prototipo-convenio-contrato-orden.html` (y el `-linear`) → su lógica ya vive en el modelo formal + transform; consolidado en el repo hermano `generador-rips` como referencia.
-- **Se preserva:** todo el modelo formal (`modelo-formal/`) es la fuente que se porta; los catálogos reales ya se comparten.
+- **Se preserva:** todo el modelo formal es la fuente que se porta; los catálogos reales ya se comparten. (Desde 2026-07-21 `modelo-formal/` vive en `generador-rips/`, junto al prototipo y el validador.)
 
 ## Cierres al terminar Fase 3
 - **X-01** (gate falso) → el gate corre el transform + validador reales.

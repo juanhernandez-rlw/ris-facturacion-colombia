@@ -10,8 +10,8 @@ Los prototipos de captura y su runtime se **consolidaron en `generador-rips`** (
 | `orden-wireframe.html` | `generador-rips/prototipos/orden-wireframe.html` |
 | `motor.js` · `seed.js` · `modelo.datos.js` · `catalogos/*.js` | idem, en `generador-rips/prototipos/` |
 
-El **modelo declarativo** que los alimenta sigue aquí en `modelo-formal/`. `build.mjs` genera
-`modelo-formal/dist/modelo.datos.js` (gitignoreado) y luego se copia al hermano — ver
-`modelo-formal/README.md`.
+El **modelo declarativo** que los alimenta (`modelo-formal/`) **también** se movió al hermano
+(`generador-rips/modelo-formal/`); ahí `build.mjs` genera `prototipos/modelo.datos.js` directo
+(`npm run build:modelo`). Toda la cadena vive en `generador-rips`.
 
 > Historia git de los archivos: en este repo hasta el commit anterior a la mudanza (recuperable).
