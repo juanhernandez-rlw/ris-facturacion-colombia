@@ -28,13 +28,18 @@ Esto sigue el mapa de tu [[Estrategia de validación y prevención de errores de
 
 ## Cómo lo consume el prototipo (corre en `file://`, sin fetch)
 
+> El prototipo se **consolidó en el repo hermano `generador-rips`** (carpeta `prototipos/`).
+> `modelo-formal/` (esto) sigue en el vault y **genera** el bundle; tras regenerar se copia al hermano.
+
 ```
 modelo-formal/enums.json + reglas.dmn.json
         │  node build.mjs   (fuente única → bundle)
         ▼
-_Adjuntos/wireframes/modelo.datos.js   → window.RIS_MODELO   (GENERADO, no editar a mano)
-_Adjuntos/wireframes/motor.js          → window.RIS          (motor: evalúa las reglas)
-_Adjuntos/wireframes/seed.js           → window.RIS_SEED      (datos demo)
+modelo-formal/dist/modelo.datos.js   → window.RIS_MODELO   (GENERADO, no editar a mano)
+        │  copiar a  →  generador-rips/prototipos/modelo.datos.js
+        ▼
+generador-rips/prototipos/motor.js   → window.RIS       (motor: evalúa las reglas)
+generador-rips/prototipos/seed.js    → window.RIS_SEED   (datos demo)
         ▼
 prototipo-convenio-contrato-orden.html  consume RIS.enums / RIS.mapas / RIS.validarOrden(...) / RIS_SEED
 ```
@@ -43,7 +48,9 @@ El HTML ya **no** trae enums ni seed ni reglas incrustados: los enums salen de `
 
 ### Regenerar el bundle
 ```bash
-node modelo-formal/build.mjs
+node modelo-formal/build.mjs   # → modelo-formal/dist/modelo.datos.js
+# luego copia el resultado al repo hermano donde vive el prototipo:
+cp modelo-formal/dist/modelo.datos.js ../generador-rips/prototipos/modelo.datos.js
 ```
 
 ## El mini-lenguaje de condiciones (`reglas.dmn.json`)

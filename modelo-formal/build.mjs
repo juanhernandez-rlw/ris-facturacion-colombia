@@ -5,19 +5,24 @@
  *   modelo-formal/enums.json  +  modelo-formal/reglas.dmn.json
  *        └────────────────────────┬────────────────────────┘
  *                                 ▼
- *          _Adjuntos/wireframes/modelo.datos.js   (window.RIS_MODELO)
+ *          modelo-formal/dist/modelo.datos.js   (window.RIS_MODELO)
  *
  * Así el prototipo (que corre en file:// y NO puede hacer fetch) consume el MISMO
  * modelo que documentan los estándares, sin duplicarlo a mano. Fuente única = los JSON.
  *
+ * El prototipo se consolidó en el repo hermano `generador-rips` (carpeta prototipos/).
+ * Tras regenerar, copia dist/modelo.datos.js → generador-rips/prototipos/modelo.datos.js.
+ *
  * Uso:  node modelo-formal/build.mjs
  */
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const OUT = join(here, "..", "_Adjuntos", "wireframes", "modelo.datos.js");
+// El consumidor (prototipo) se movió al repo hermano generador-rips/prototipos/.
+// Aquí generamos a un dist/ local; luego se copia al hermano (ver cabecera).
+const OUT = join(here, "dist", "modelo.datos.js");
 
 const enumsRaw = JSON.parse(await readFile(join(here, "enums.json"), "utf8"));
 const reglasDoc = JSON.parse(await readFile(join(here, "reglas.dmn.json"), "utf8"));
@@ -57,6 +62,7 @@ const body =
   "  if (typeof window !== 'undefined') window.RIS_MODELO = RIS_MODELO;\n" +
   "})(this);\n";
 
+await mkdir(dirname(OUT), { recursive: true });
 await writeFile(OUT, body, "utf8");
 
 const nReglas = modelo.reglas.length;
