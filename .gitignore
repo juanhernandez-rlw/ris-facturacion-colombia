@@ -26,3 +26,6 @@
 # ─── Node (build opcional del modelo formal) ───
 node_modules/
 npm-debug.log*
+
+# artefacto generado por modelo-formal/build.mjs (el consumido vive en generador-rips/prototipos/)
+modelo-formal/dist/

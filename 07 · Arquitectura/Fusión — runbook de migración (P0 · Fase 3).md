@@ -30,7 +30,7 @@ actualizado: 2026-07-20
 | **6** | **Persistencia** (Fase 5) | entidades cuando arranque el backend | por definir con el stack |
 
 ## Qué se descarta / preserva
-- **Descartable:** el prototipo `_Adjuntos/wireframes/prototipo-convenio-contrato-orden.html` (y el `-linear`) → su lógica ya vive en el modelo formal + transform; queda como referencia histórica en el vault.
+- **Descartable:** el prototipo `generador-rips/prototipos/prototipo-convenio-contrato-orden.html` (y el `-linear`) → su lógica ya vive en el modelo formal + transform; consolidado en el repo hermano `generador-rips` como referencia.
 - **Se preserva:** todo el modelo formal (`modelo-formal/`) es la fuente que se porta; los catálogos reales ya se comparten.
 
 ## Cierres al terminar Fase 3

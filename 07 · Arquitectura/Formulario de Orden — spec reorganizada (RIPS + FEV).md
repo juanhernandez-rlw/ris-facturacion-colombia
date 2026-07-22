@@ -147,8 +147,8 @@ actualizado: 2026-07-19
 4. Confirmar los **6 dropdowns** actuales de "Información del estudio" para ver qué de esto **ya existe** vs. hay que **agregar**.
 
 ## Wireframe / prototipo
-- ⭐ **Prototipo de flujo completo (navegable · abrir en el navegador):** `_Adjuntos/wireframes/prototipo-convenio-contrato-orden.html` — 3 módulos encadenados **Convenios → Contratos (con tarifa) → Orden** (selector de contrato **en cascada**: solo muestra lo parametrizado; valida vigencia; gate RIPS+FEV). Supuesto **"orden = un contrato"** ([[Preguntas abiertas|#12]], marcado en el propio prototipo).
-- Wireframe previo (solo el formulario de orden): `_Adjuntos/wireframes/orden-wireframe.html`
+- ⭐ **Prototipo de flujo completo (navegable · abrir en el navegador):** `generador-rips/prototipos/prototipo-convenio-contrato-orden.html` (repo hermano) — 3 módulos encadenados **Convenios → Contratos (con tarifa) → Orden** (selector de contrato **en cascada**: solo muestra lo parametrizado; valida vigencia; gate RIPS+FEV). Supuesto **"orden = un contrato"** ([[Preguntas abiertas|#12]], marcado en el propio prototipo).
+- Wireframe previo (solo el formulario de orden): `generador-rips/prototipos/orden-wireframe.html` (repo hermano)
 
 ## Fuentes / Relacionado
 - [[Inventario del formulario de Orden × RIPS-FEV]] · [[Dónde vive cada campo — FEV × RIS]] · [[Diccionario de construcción de la FEV en salud]] · [[RIS — Colombia (Figma)]]

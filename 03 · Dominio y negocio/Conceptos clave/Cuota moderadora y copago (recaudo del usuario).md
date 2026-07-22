@@ -42,7 +42,7 @@ Base de cálculo: el IBC del **cotizante**; si hay varios en el núcleo, el **me
   - **Cuota moderadora:** valor fijo del nivel, **una vez por atención**.
   - **Copago:** **% del nivel × tarifa de cada estudio**, limitado al **tope por evento**.
 - La **tarifa** (valor del servicio al pagador) es aparte y **no** varía por nivel.
-- Prototipo: `_Adjuntos/wireframes/prototipo-convenio-contrato-orden.html`.
+- Prototipo: `generador-rips/prototipos/prototipo-convenio-contrato-orden.html` (repo hermano).
 
 ## Relacionado
 - [[Acuerdo 260 de 2004 — Cuotas moderadoras y copagos]] · [[Diccionario de construcción de la FEV en salud]] · [[Dónde vive cada campo — FEV × RIS]] · [[Preguntas abiertas]]
