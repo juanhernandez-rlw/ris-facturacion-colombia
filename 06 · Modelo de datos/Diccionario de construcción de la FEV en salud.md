@@ -162,7 +162,7 @@ Define la naturaleza del documento y **si activa el método de cálculo** del se
 | `SS-SinAporte` | Reporte — sin aporte ni recaudo en dinero | ✅ sí | ❌ no |
 
 - **Método de cálculo** (`SS-CUFE/CUDE/POS/SNum`): los valores acreditados se acumulan por concepto en `cac:PrepaidPayment` → `LegalMonetaryTotal/PrepaidAmount` (≤ total de la factura).
-- **NC/ND:** el MUV solo admite los tipos **20** (nota crédito) y **30** (nota débito) que referencian una FEV.
+- **NC/ND:** el MUV solo admite los tipos **20** (nota crédito) y **30** (nota débito) que referencian una FEV (la DIAN define además `22`/`32` sin referencia, **no** usados en salud). Cada nota lleva **concepto de corrección** obligatorio (`DiscrepancyResponse/ResponseCode`: tabla **13.2.4** NC · **13.2.5** ND). **Valores (DT1 v002 pág. 84–85):** en NC el valor del servicio ≤ lo facturado (Σ RIPS = valor de la NC); la **ND sí admite valores**; en ambas los **pagos moderadores van en 0**. Flujo, campos y códigos: [[Notas crédito y débito (NC · ND) — flujo, campos y reglas]].
 - El **caso típico del RIS** (cobro de servicios a un pagador, acreditando copagos/cuotas) es **`SS-CUFE`**.
 
 ### K · Validaciones del MUV (rechazos) — DT2 §11

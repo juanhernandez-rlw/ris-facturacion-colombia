@@ -33,7 +33,7 @@ etiquetas: [rips, modelo-datos, transcripcion]
 | numDocumentoIdObligado | C · 4–12 | Obligatorio | NIT del facturador; debe coincidir con la FEV. RIS: NIT de la IPS. | Definido por backend |
 | numFactura | C · s/DIAN | Condicional | Número de la factura; coincide con la FEV. Si es RIPS sin factura, null. RIS: lo asigna el software de facturación. (Lista de facturas) | Consecutivos provistos por la DIAN |
 | tipoNota | C · 0–2 | Condicional | Tabla TipoNota: NC crédito · ND débito · NA ajuste RIPS · RS sin factura. null si no aplica. | — |
-| numNota | C · 0–20 | Condicional | Número de la nota; coincide con la reportada a la DIAN. null si no aplica. | ⚠️ *(en la fuente esta celda repite el texto de «Qué es» — por-verificar)* |
+| numNota | C · 0–20 | Condicional | Número de la nota; coincide con la reportada a la DIAN. null si no aplica. | ✅ *DT1 v002 T04: lo **genera el facturador electrónico**; = nº reportado a la DIAN* |
 
 ## RIPS · Usuarios — el paciente
 | Campo | Tipo·Tam. | Regla | Qué es | De dónde sale |

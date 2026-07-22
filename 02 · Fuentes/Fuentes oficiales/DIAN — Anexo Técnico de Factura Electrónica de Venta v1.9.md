@@ -19,7 +19,7 @@ etiquetas: [oficial, dian, fev, factura-electronica, fuente-de-verdad]
 > Especificación de la **factura electrónica de venta base** (envelope UBL 2.1, campos, algoritmo del **CUFE**, firma, habilitación). Es la capa **base** sobre la que el sector salud añade su extensión (DT2). Adoptado por **Resolución DIAN 000165 de 2023** (01-nov-2023).
 
 ## 🔗 Acceso
-- **URL:** anexo v1.9 (PDF) — ver frontmatter. Caja de herramientas: `Caja-de-herramientas-FE-V19-V2026.zip` (contiene el **XSD**).
+- **URL:** anexo v1.9 (PDF) — ver frontmatter. Caja de herramientas: `Caja-de-herramientas-FE-V19-V2026.zip` (~25 MB; contiene los **XSD** y las **37 tablas de referencia** `.xlsx`) — `https://www.dian.gov.co/impuestos/factura-electronica/Documents/Caja-de-herramientas-FE-V19-V2026.zip`.
 - **Documentación técnica DIAN:** https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/documentacion-tecnica/
 
 ## 🎯 Qué información aporta
@@ -34,6 +34,7 @@ etiquetas: [oficial, dian, fev, factura-electronica, fuente-de-verdad]
 ## ✅ Ingesta y verificación (2026-07-19)
 - **Caja de herramientas FE V19 V2026** descargada (26 MB). Ingeridos en `_Adjuntos/DIAN FEV v1.9/`: el **anexo v1.9 (PDF, 11 MB, 753 págs.)** + los **XSD** `UBL-Invoice-2.1`, `DIAN_UBL_Structures`, `UBL-AttachedDocument`, `CreditNote`, `DebitNote`, `ApplicationResponse`.
 - **Cruce fino de campos base hecho** (XSD estructural + obligatoriedad del anexo + DT2 §11) → [[Diccionario de construcción de la FEV en salud]] §Verificación XSD. Cierra la tarea de verificación base.
+- **(2026-07-22)** Ingeridas las **37 tablas de referencia** (`.xlsx`) en `Tablas Referenciadas (Caja de Herramientas v1.9)/` — el anexo PDF solo da la ruta UBL y **remite a estas tablas** para los valores. Extraídos los códigos de **concepto de corrección** NC (13.2.4) / ND (13.2.5) y **tipos de operación** (13.1.5.2/3) → [[Notas crédito y débito (NC · ND) — flujo, campos y reglas]].
 
 ## 🕓 Procedencia
 - **Origen:** micrositio DIAN de factura electrónica (documentación técnica). Vigencia confirmada 2026-07-19.
