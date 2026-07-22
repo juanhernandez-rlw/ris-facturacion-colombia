@@ -15,7 +15,7 @@ actualizado: 2026-07-20
 > **Fase 5 / P3.** Diseño de las **entidades de almacenamiento** — hoy `08 · Base de datos` está vacío pese a ser una pregunta núcleo (*"¿cómo se almacena?"*, hallazgo **A-03**). Cubre lo que los flujos ya describen pero el modelo no persiste: **factura, estados, numeración, notas, bitácora, RBAC** y el **acumulador anual de recaudo** (necesario para R-05/D6). Propuesta de arquitectura; los tipos de dato finos se afinan al implementar.
 
 ## 1 · Entidades existentes (ya modeladas)
-`Convenio` — `Contrato` (FK→Convenio) — `Orden` (FK→Contrato). Ver `modelo-formal/esquema-json/`.
+`Convenio` — `Contrato` (FK→Convenio) — `Orden` (FK→Contrato). Ver `generador-rips/modelo-formal/esquema-json/`.
 
 ## 2 · Entidades nuevas
 

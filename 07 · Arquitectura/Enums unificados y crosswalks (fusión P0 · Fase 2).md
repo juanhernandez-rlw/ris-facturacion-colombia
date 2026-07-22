@@ -3,7 +3,7 @@ tipo: nota
 area: arquitectura
 tema: fusion
 estado: en-construccion
-fuentes: ["generador-rips/src/lib/rips-codigos.ts", "modelo-formal/enums.json", "salud_tipo_usuario.gc / salud_modalidad_pago.gc", "DT1 v002 §1.8"]
+fuentes: ["generador-rips/src/lib/rips-codigos.ts", "generador-rips/modelo-formal/enums.json", "salud_tipo_usuario.gc / salud_modalidad_pago.gc", "DT1 v002 §1.8"]
 relacionado: ["[[Mapa Orden → RIPS (transform · fusión P0 · Fase 1)]]", "[[Recaudo — hoja de validación (Acuerdo 260, por validar)]]"]
 etiquetas: [arquitectura, fusion, enums, crosswalk, cobertura-aplica, auditoria, fase-2]
 actualizado: 2026-07-20
