@@ -1,0 +1,3481 @@
+{
+  "meta": {
+    "titulo": "Catálogo de causales de glosa, devolución y respuesta",
+    "fuentes": {
+      "glosa": "Res. 2284/2023 Anexo Técnico 3 · relacionamiento glosas↔RIPS (SISPRO, 31-may-2024) — alta fidelidad (xlsx)",
+      "devolucion": "Res. 2284/2023 Anexo Técnico 3 (PDF) — extraído best-effort, descripciones sujetas a verificación (OCR)",
+      "respuesta": "Res. 2284/2023 Anexo Técnico 3 (PDF) — extraído best-effort, descripciones sujetas a verificación (OCR)"
+    },
+    "conteos": {
+      "glosa": {
+        "total": 283,
+        "especifico": 99,
+        "aplicable": 184,
+        "conCampoRIPS": 144,
+        "marcasRIPS": 348
+      },
+      "devolucion": 9,
+      "respuesta": 16
+    },
+    "nota": "Las '332 filas' del xlsx = 283 códigos de glosa + 7 grupos + ~42 filas de definición/nota/cabecera."
+  },
+  "grupos": {
+    "FA": {
+      "nombre": "Facturación",
+      "definicion": "Se presentan glosas por facturación cuando hay diferencias en cantidad al comparar los servicios y tecnologías en salud prestados o provistas con los servicios y tecnologías en salud facturadas, o cuando el valor por concepto de recaudo efectivo de los pagos compartidos, no se restan de la factura de venta en salud, o cuando sucedan errores administrativos generados en los procesos de facturación definidos en el presente manual."
+    },
+    "TA": {
+      "nombre": "Tarifas",
+      "definicion": "Se consideran glosas por tarifas, todas aquellas que se generan por existir diferencias al comparar los valores facturados con los pactados o los definidos por la normatividad."
+    },
+    "SO": {
+      "nombre": "Soportes",
+      "definicion": "Se consideran glosas por soportes, todas aquellas que se generan por ausencia total o parcial o, inconsistencia en los soportes o, porque no corresponden a la persona atendida"
+    },
+    "AU": {
+      "nombre": "Autorizaciones",
+      "definicion": "Aval emitido por la entidad responsable de pago para la prestación o provisión de los servicios y tecnologías en salud requeridos por la persona, el cual puede ser específico o integral. El número de autorización debe estar registrado en la factura de venta en salud y en el RIPS en los campos definidos en la Resoluciones 510 y 1036 de 2022 o las que las modifique o sustituya."
+    },
+    "CO": {
+      "nombre": "Cobertura",
+      "definicion": "Se consideran glosas por cobertura, todas aquellas que se generan por cobro de servicios y tecnologías en salud que no están incluidos en los planes o coberturas a cargo de las entidades responsables de pago, que hacen parte integral de un servicio y se cobran de manera adicional o están a cargo de otra entidad por no haber agotado o superado los topes"
+    },
+    "CL": {
+      "nombre": "Calidad",
+      "definicion": "En este código general se consideran las glosas que están relacionadas con:"
+    },
+    "SA": {
+      "nombre": "Seguimiento a acuerdos",
+      "definicion": null
+    }
+  },
+  "camposRIPS": [
+    {
+      "code": "T01",
+      "desc": "Número Documento Identificación del Facturador Electrónico"
+    },
+    {
+      "code": "T02",
+      "desc": "Número de Factura"
+    },
+    {
+      "code": "T03",
+      "desc": "Tipo Nota"
+    },
+    {
+      "code": "T04",
+      "desc": "Número de la Nota"
+    },
+    {
+      "code": "U01",
+      "desc": "Tipo de Documento de Identificación"
+    },
+    {
+      "code": "U02",
+      "desc": "Número Documento Identificación del usuario"
+    },
+    {
+      "code": "U03",
+      "desc": "Tipo usuario"
+    },
+    {
+      "code": "U04",
+      "desc": "Fecha de Nacimiento del Usuario"
+    },
+    {
+      "code": "U05",
+      "desc": "Cod. Sexo"
+    },
+    {
+      "code": "U06",
+      "desc": "Cod. País residencia"
+    },
+    {
+      "code": "U07",
+      "desc": "Cod. Mpio residencia"
+    },
+    {
+      "code": "U08",
+      "desc": "Cod. Zona Territorial residencia"
+    },
+    {
+      "code": "U09",
+      "desc": "Incapacidad"
+    },
+    {
+      "code": "U10",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "U11",
+      "desc": "Cód Pais Origen"
+    },
+    {
+      "code": "C01",
+      "desc": "Cod prestador"
+    },
+    {
+      "code": "C02",
+      "desc": "Fecha inicio de atención"
+    },
+    {
+      "code": "C03",
+      "desc": "Numero de Autorización"
+    },
+    {
+      "code": "C04",
+      "desc": "Cód de consulta"
+    },
+    {
+      "code": "C05",
+      "desc": "Modalidad grupo servicio tecnologia de salud"
+    },
+    {
+      "code": "C06",
+      "desc": "grupo servicios"
+    },
+    {
+      "code": "C07",
+      "desc": "cod del servicio"
+    },
+    {
+      "code": "C08",
+      "desc": "Finalidad Tecnologia de salud"
+    },
+    {
+      "code": "C09",
+      "desc": "Causa motivo de atención"
+    },
+    {
+      "code": "C10",
+      "desc": "Cod DX principal"
+    },
+    {
+      "code": "C11",
+      "desc": "Cod DX relacionado 1"
+    },
+    {
+      "code": "C12",
+      "desc": "Cod DX relacionado 2"
+    },
+    {
+      "code": "C13",
+      "desc": "Cod DX relacionado 3"
+    },
+    {
+      "code": "C14",
+      "desc": "Tipo DX principal"
+    },
+    {
+      "code": "C15",
+      "desc": "Tipo Doc identificación de la persona que atendió"
+    },
+    {
+      "code": "C16",
+      "desc": "Numero de Doc de identicación de la persona que atendió"
+    },
+    {
+      "code": "C17",
+      "desc": "Valor del servicio"
+    },
+    {
+      "code": "C18",
+      "desc": "tipo de Pago moderador"
+    },
+    {
+      "code": "C19",
+      "desc": "Valor pago moderador"
+    },
+    {
+      "code": "C20",
+      "desc": "Numero FEV pago moderador"
+    },
+    {
+      "code": "C21",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "P01",
+      "desc": "Cód Prestador"
+    },
+    {
+      "code": "P02",
+      "desc": "Fecha inicio atención"
+    },
+    {
+      "code": "P03",
+      "desc": "ID MIPRES"
+    },
+    {
+      "code": "P04",
+      "desc": "Número de Autorización"
+    },
+    {
+      "code": "P05",
+      "desc": "Cod procedimiento"
+    },
+    {
+      "code": "P06",
+      "desc": "Via ingreso servicio salud"
+    },
+    {
+      "code": "P07",
+      "desc": "Modalidad grupo servicio tecnologia de salud"
+    },
+    {
+      "code": "P08",
+      "desc": "Grupo servicios"
+    },
+    {
+      "code": "P09",
+      "desc": "Cod servicio"
+    },
+    {
+      "code": "P10",
+      "desc": "Finalidad Tecnologia de salud"
+    },
+    {
+      "code": "P11",
+      "desc": "Tipo de Doc identificación"
+    },
+    {
+      "code": "P12",
+      "desc": "Numero de doc de identificación"
+    },
+    {
+      "code": "P13",
+      "desc": "Cod Dx principal"
+    },
+    {
+      "code": "P14",
+      "desc": "Cod Dx relacionado"
+    },
+    {
+      "code": "P15",
+      "desc": "Cod complicación"
+    },
+    {
+      "code": "P16",
+      "desc": "Vr Servicios"
+    },
+    {
+      "code": "P17",
+      "desc": "Tipo pago moderador"
+    },
+    {
+      "code": "P18",
+      "desc": "Vr pago moderador"
+    },
+    {
+      "code": "P19",
+      "desc": "Número FEV pago moderador"
+    },
+    {
+      "code": "P20",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "R01",
+      "desc": "Cod prestador"
+    },
+    {
+      "code": "R02",
+      "desc": "Fecha inicio atención"
+    },
+    {
+      "code": "R03",
+      "desc": "Causa motivo atención"
+    },
+    {
+      "code": "R04",
+      "desc": "Cod Dx principal de ingreso"
+    },
+    {
+      "code": "R05",
+      "desc": "Cod Dx principal de Egreso"
+    },
+    {
+      "code": "R06",
+      "desc": "Cod DX relacionado Egreso 1"
+    },
+    {
+      "code": "R07",
+      "desc": "Cod DX relacionado Egreso 2"
+    },
+    {
+      "code": "R08",
+      "desc": "Cod DX relacionado Egreso 3"
+    },
+    {
+      "code": "R09",
+      "desc": "Condicion destino usuario Egreso"
+    },
+    {
+      "code": "R10",
+      "desc": "Cod Dx causa muerte"
+    },
+    {
+      "code": "R11",
+      "desc": "Fecha Egreso"
+    },
+    {
+      "code": "R12",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "H01",
+      "desc": "Cod prestador"
+    },
+    {
+      "code": "H02",
+      "desc": "Vìa ingreso servicio de salud"
+    },
+    {
+      "code": "H03",
+      "desc": "Fecha inicio atención"
+    },
+    {
+      "code": "H04",
+      "desc": "Número de autorización"
+    },
+    {
+      "code": "H05",
+      "desc": "Causa motivo atención"
+    },
+    {
+      "code": "H06",
+      "desc": "Cod Dx principal de ingreso"
+    },
+    {
+      "code": "H07",
+      "desc": "Cod Dx principal de Egreso"
+    },
+    {
+      "code": "H08",
+      "desc": "Cod Dx relacionado egreso 1"
+    },
+    {
+      "code": "H09",
+      "desc": "Cod Dx relacionado egreso 2"
+    },
+    {
+      "code": "H10",
+      "desc": "Cod Dx relacionado egreso 3"
+    },
+    {
+      "code": "H11",
+      "desc": "Cod complicación"
+    },
+    {
+      "code": "H12",
+      "desc": "Condición destino usuario egreso"
+    },
+    {
+      "code": "H13",
+      "desc": "Cod DX causa muerte"
+    },
+    {
+      "code": "H14",
+      "desc": "Fecha egreso"
+    },
+    {
+      "code": "H15",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "N01",
+      "desc": "Cod prestador"
+    },
+    {
+      "code": "N02",
+      "desc": "Tipo Doc Identificación"
+    },
+    {
+      "code": "N03",
+      "desc": "Numero Doc Identificación"
+    },
+    {
+      "code": "N04",
+      "desc": "Fecha de Nacimiento"
+    },
+    {
+      "code": "N05",
+      "desc": "Edad Gestacional"
+    },
+    {
+      "code": "N06",
+      "desc": "Numero Consultas control cuidado prenatal"
+    },
+    {
+      "code": "N07",
+      "desc": "Cod sexo biológico"
+    },
+    {
+      "code": "N08",
+      "desc": "Peso"
+    },
+    {
+      "code": "N09",
+      "desc": "Cod DX principal"
+    },
+    {
+      "code": "N10",
+      "desc": "Cod destino usuario egreso"
+    },
+    {
+      "code": "N11",
+      "desc": "Cod DX causa muerte"
+    },
+    {
+      "code": "N12",
+      "desc": "Fecha egreso"
+    },
+    {
+      "code": "N13",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "M01",
+      "desc": "cod prestador"
+    },
+    {
+      "code": "M02",
+      "desc": "Num autorización"
+    },
+    {
+      "code": "M03",
+      "desc": "ID MIPRES"
+    },
+    {
+      "code": "M04",
+      "desc": "Fecha dispensación"
+    },
+    {
+      "code": "M05",
+      "desc": "Cod Dx principal"
+    },
+    {
+      "code": "M06",
+      "desc": "Cod Dx relacionado"
+    },
+    {
+      "code": "M07",
+      "desc": "Tipo medicamento"
+    },
+    {
+      "code": "M08",
+      "desc": "Cod Tecnologia en salud"
+    },
+    {
+      "code": "M09",
+      "desc": "Nombre Tecnologia en salud"
+    },
+    {
+      "code": "M10",
+      "desc": "Concentración Medicamento"
+    },
+    {
+      "code": "M11",
+      "desc": "Unidad Medida"
+    },
+    {
+      "code": "M12",
+      "desc": "Forma Farmaceútica"
+    },
+    {
+      "code": "M13",
+      "desc": "Cod de la Unidad de medida del medicamento"
+    },
+    {
+      "code": "M14",
+      "desc": "Cantidad Medicamento"
+    },
+    {
+      "code": "M15",
+      "desc": "Dias Tratamiento"
+    },
+    {
+      "code": "M16",
+      "desc": "Tipo Doc Identificación de quien prescribió"
+    },
+    {
+      "code": "M17",
+      "desc": "Numero Doc de identificación de quien prescribió"
+    },
+    {
+      "code": "M18",
+      "desc": "Vr. Unitario del Medicamento"
+    },
+    {
+      "code": "M19",
+      "desc": "Vr. Del servicio"
+    },
+    {
+      "code": "M20",
+      "desc": "Tipo pago moderador"
+    },
+    {
+      "code": "M21",
+      "desc": "Vr. Pago moderador"
+    },
+    {
+      "code": "M22",
+      "desc": "Numero FEV pago moderador"
+    },
+    {
+      "code": "M23",
+      "desc": "Consecutivo"
+    },
+    {
+      "code": "S01",
+      "desc": "Cod prestador"
+    },
+    {
+      "code": "S02",
+      "desc": "Numero Autorización"
+    },
+    {
+      "code": "S03",
+      "desc": "ID MIPRES"
+    },
+    {
+      "code": "S04",
+      "desc": "Fecha suministro de tecnología"
+    },
+    {
+      "code": "S05",
+      "desc": "Tipo Otros Servicios"
+    },
+    {
+      "code": "S06",
+      "desc": "Cod Tecnología"
+    },
+    {
+      "code": "S07",
+      "desc": "Nombre Tecnología en Salud"
+    },
+    {
+      "code": "S08",
+      "desc": "Cantidad otros servicios"
+    },
+    {
+      "code": "S09",
+      "desc": "Tipo documento identificación de quien ordena otros servicios"
+    },
+    {
+      "code": "S10",
+      "desc": "Numero Doc de identificaciónde quien ordena otros servicios"
+    },
+    {
+      "code": "S11",
+      "desc": "Vr. Unitario otros servicios"
+    },
+    {
+      "code": "S12",
+      "desc": "Vr. Total otros servicios"
+    },
+    {
+      "code": "S13",
+      "desc": "Tipo pago moderador"
+    },
+    {
+      "code": "S14",
+      "desc": "Vr. Pago moderador"
+    },
+    {
+      "code": "S15",
+      "desc": "Número FEV pago moderador"
+    },
+    {
+      "code": "S16",
+      "desc": "Consecutivo"
+    }
+  ],
+  "glosa": [
+    {
+      "codigo": "FA01",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Estancia u observación de urgencias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0101",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El cargo por estancia u observación de urgencias, que viene relacionado o justificado en los soportes de cobro, presenta diferencia con las cantidades facturadas",
+      "camposRIPS": [
+        "R02",
+        "R11",
+        "H03",
+        "H14",
+        "S08",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA0102",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan consultas, interconsultas o atenciones (visitas) domiciliarias que están incluidas en la estancia u observación de urgencias de acuerdo con lo pactado",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "FA0103",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobra estancia u observación de urgencias que ya se encuentra incluida en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA0105",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan servicios o tecnologías en salud que se encuentran incluidos en la estancia u observación de urgencias de acuerdo con lo pactado",
+      "camposRIPS": [
+        "P16",
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA02",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Consultas, interconsultas y atenciones (visita) domiciliaria",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0201",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El cargo por consulta, interconsulta o atención (visita) domiciliaria que viene relacionado o justificado en los soportes de cobro, presenta diferencias con las cantidades facturadas",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "FA0202",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran consultas o atenciones (visitas) domiciliarias que se encuentran incluidas en los honorarios profesionales post quirúrgicos",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "FA0203",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran consultas o atenciones (visitas) domiciliarias que ya se encuentran incluidas en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "FA0205",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran consultas que se encuentran incluidas en los honorarios profesionales del procedimiento, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "FA0206",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "En una factura se registra una interconsulta que originó la práctica de un procedimiento quirúrgico o intervencionista que realizó el mismo prestador",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "FA03",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios profesionales en procedimientos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0301",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios profesionales en procedimientos quirúrgicos o intervencionistas, que vienen relacionados o justificados en los soportes de cobro, presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0302",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios de anestesia que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0303",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran honorarios profesionales que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA05",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Derechos de sala",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0501",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por derechos de sala que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA0502",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran tecnologías en salud que ya se encuentran incluidas en el ítem de derechos de sala o materiales quirúrgicos",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA0503",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran derechos de sala que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA06",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Dispositivos médicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0601",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por dispositivos médicos que vienen relacionados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "S08"
+      ]
+    },
+    {
+      "codigo": "FA0602",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran dispositivos médicos que ya se encuentran incluidos en el ítem de materiales por grupo quirúrgico",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA0603",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran dispositivos médicos que ya se encuentran incluidos en una atención agrupada",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA07",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Medicamentos y Alimentos para Propósitos Médicos Especiales - APME",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0701",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por medicamentos o APME que vienen relacionados en los soportes de cobro, presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "M14",
+        "S08"
+      ]
+    },
+    {
+      "codigo": "FA0702",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan separadamente principios activos que fueron dispensados en una presentación combinada",
+      "camposRIPS": [
+        "M08"
+      ]
+    },
+    {
+      "codigo": "FA0703",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran medicamentos o APME que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA0705",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran medicamentos que ya se encuentran incluidos en el procedimiento quirúrgico.",
+      "camposRIPS": [
+        "M19"
+      ]
+    },
+    {
+      "codigo": "FA08",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo diagnóstico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA0801",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por apoyo diagnóstico que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA0802",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan separadamente apoyos diagnósticos incluidos uno en el otro",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA0803",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran apoyos diagnósticos que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA0805",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran apoyos diagnósticos que ya se encuentran incluidos en el procedimiento quirúrgico o intervencionista",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA13",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Factura incluye servicios y tecnologías en salud de diferentes coberturas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA1305",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Servicio o tecnología corresponde a diferente cobertura",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA16",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Persona, servicio o tecnología pertenecía a otro responsable de pago en el momento de la prestación",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA1605",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "En la factura se relacionan una o varias personas que en el momento de la prestación del servicio corresponden a otro responsable de pago",
+      "camposRIPS": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ]
+    },
+    {
+      "codigo": "FA1606",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "En la factura se relacionan uno o varios servicios o tecnologías en salud que corresponden a otro responsable de pago",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA19",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Error en descuento pactado",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA1905",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Hay descuentos otorgados, que fueron aplicados de manera diferente a lo pactado o no fueron aplicados",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA20",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Pago compartido",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA2006",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los recaudos efectivos de pagos compartidos o copagos y cuotas moderadoras, que por acuerdo de voluntades efectuó el prestador de servicios de salud o proveedor de tecnologías en salud, no corresponden a lo informado por la entidad responsable de pago para la liquidación del pago compartido",
+      "camposRIPS": [
+        "C19",
+        "C20",
+        "P18",
+        "P19",
+        "M21",
+        "M22",
+        "S14",
+        "S15"
+      ]
+    },
+    {
+      "codigo": "FA23",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA2301",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por otros procedimientos no quirúrgicos que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA2302",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan separadamente otros procedimientos no quirúrgicos incluidos en otro.",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA2303",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran otros procedimientos no quirúrgicos que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA27",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Servicio o tecnología de salud ya facturado",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA2702",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran servicios y tecnologías en salud que se encuentran ya cobrados dentro de la misma u otra factura",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA28",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "servicio o tecnología de salud ya pagada al prestador de servicios de salud o proveedor de tecnologías en salud",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA2805",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "se factura un servicio o tecnología de salud ya pagada por la entidad responsable de pago",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA38",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Traslado asistencial de pacientes",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA3801",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por traslado asistencial de pacientes que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA3803",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobra traslado asistencial de pacientes que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA51",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Servicio o tecnología prestado o suministrada por un prestador de servicios de salud o proveedor de tecnologías en salud diferente al que tiene a su cargo la atención agrupada",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5103",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Servicio o tecnología de salud incluido en una atención agrupada, prestado por otro prestador de servicios de salud en caso de urgencias o por proceso de referencia",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5105",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Servicio o tecnología de salud incluido en una atención agrupada, que hace parte de la RIAS para la promoción y mantenimiento de la salud o la RIAS para la población materno perinatal o aquellas que el Ministerio de Salud y Protección Social disponga como obligatorias, fue prestado o provisto por otro prestador de servicios de salud o proveedor de tecnologías en salud",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5106",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Servicio o tecnología de salud incluido en una atención agrupada prestado por otro prestador de servicios de salud, con la finalidad de determinar el nivel de control o la aparición de complicaciones de una condición en salud ya establecida",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA52",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Disminución en el número de personas incluidas en una modalidad de pago prospectiva",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5205",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "el número de personas incluidas en la modalidad de pago prospectiva es disminuido por novedades en la base de datos proporcionada por la entidad responsable de pago",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5206",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La persona incluida en una modalidad de pago prospectiva fallece y aplica una deducción proporcional del valor facturado",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA57",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo terapéutico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5701",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por apoyo terapéutico que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA5702",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan separadamente apoyos terapéuticos incluidos en otro",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA5703",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran apoyos terapéuticos que ya se encuentran incluidos en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA58",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Procedimientos quirúrgicos e intervencionistas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5801",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por procedimientos quirúrgicos o intervencionistas que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA5802",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan separadamente procedimientos quirúrgicos o intervencionistas incluidos en otro",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA5803",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobran procedimientos quirúrgicos o intervencionistas que ya se encuentran incluidos en una atención agrupada",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "FA59",
+      "grupo": "FA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Transporte no asistencial ambulatorio de la persona",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "FA5901",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por transporte no asistencial ambulatorio de la persona que vienen relacionados o justificados en los soportes de cobro presentan diferencias con las cantidades que fueron facturadas",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "FA5903",
+      "grupo": "FA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se cobra transporte no asistencial ambulatorio de la persona que ya se encuentra incluido en una atención agrupada, de acuerdo con lo pactado por las partes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA01",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Estancia u observación de urgencias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0101",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El cargo por estancias u observación de urgencias, que viene relacionado o justificado en los soportes de cobro, presenta diferencia con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA02",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Consultas, interconsultas y atenciones (visitas) domiciliarias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0201",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El cargo por consulta, interconsulta o atención (visita) domiciliaria que viene relacionado o justificado en los soportes de cobro, presenta diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "TA03",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios profesionales en procedimientos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0301",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios profesionales en procedimientos quirúrgicos o intervencionistas, que vienen relacionados o justificados en los soportes de cobro, presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA0302",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios de anestesia que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA04",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios otro talento humano que interviene en la atención",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0401",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios de otro talento humano que interviene en la atención que vienen relacionados o justificados en soportes de cobro, presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA05",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Derechos de sala",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0501",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por derechos de sala que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA06",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Dispositivos médicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0601",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por dispositivos médicos que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA07",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Medicamentos y Alimentos para Propósitos Médicos Especiales - APME",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0701",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por medicamentos o APME que vienen relacionados o justificados en los soportes de cobro, presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA08",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo diagnóstico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0801",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por apoyo diagnóstico que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "TA09",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Atención agrupada",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA0901",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por atención agrupada que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados.",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA23",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA2301",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por otros procedimientos no quirúrgicos que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "TA29",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Recargos no pactados",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA2901",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "En la factura se adicionan cobros de recargos no pactados previamente entre las partes o establecidos por la norma",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA38",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Traslado asistencial de pacientes",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA3801",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por traslado asistencial de pacientes que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "TA57",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo terapéutico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA5701",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por apoyo terapéutico que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "TA58",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Procedimientos quirúrgicos e intervencionistas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA5801",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por procedimientos quirúrgicos o intervencionistas que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "TA59",
+      "grupo": "TA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Transporte no asistencial ambulatorio de las personas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "TA5901",
+      "grupo": "TA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por otro transporte no asistencial ambulatorio de personas que vienen relacionados o justificados en los soportes de cobro presentan diferencias con los valores pactados o establecidos por la norma",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO01",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Estancia u observación de urgencias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0101",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la epicrisis que soporta la estancia u observación de urgencias",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO0102",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian la estancia u observación de urgencias no corresponden a la persona atendida",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO02",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Consultas, interconsultas y atenciones (visitas) domiciliarias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0201",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian la realización de la consulta, interconsulta o atención (visita) domiciliaria",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "SO0202",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian la realización de la consulta, interconsulta o atención (visita) domiciliaria no corresponden a la persona atendida",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "SO03",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios profesionales en procedimientos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0301",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los honorarios profesionales en procedimientos quirúrgicos o intervencionista",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0302",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian los honorarios de profesionales en procedimientos no corresponden a la persona atendida",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0303",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los honorarios de anestesia",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO04",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios de talento humano que interviene en la atención",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0401",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los honorarios del talento humano que interviene en la atención, diferente a los quirúrgicos y clínicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0402",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian los honorarios de otros profesionales asistenciales no corresponden a la persona atendida",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO06",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Dispositivos médicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0601",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los dispositivos médicos empleados en procedimientos quirúrgicos o intervencionistas que sean motivo de cobro adicional",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO0602",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian los dispositivos médicos empleados no corresponden a la persona atendida",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO0603",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los dispositivos médicos empleados en procedimientos no quirúrgicos que sean motivo de cobro adicional",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO0604",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los dispositivos médicos entregados como parte de una acción de protección específica o tratamiento",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO07",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Medicamentos y Alimentos para Propósitos Médicos Especiales – APME",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0701",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la hoja de administración de medicamentos",
+      "camposRIPS": [
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO0702",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian los medicamentos suministrados no corresponden a la persona atendida",
+      "camposRIPS": [
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO0703",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en el comprobante de recibido de medicamentos de las personas",
+      "camposRIPS": [
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO08",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo diagnóstico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO0801",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian la práctica del apoyo diagnóstico",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "SO0802",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian el apoyo diagnóstico no corresponden a la persona atendida",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "SO0803",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia en los soportes de cobro de la lectura o interpretación del apoyo diagnóstico por parte del profesional correspondiente",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "SO21",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Número de autorización",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO2101",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de la autorización no está incluido en el RIPS.",
+      "camposRIPS": [
+        "C03",
+        "P04",
+        "H04",
+        "M02",
+        "S02"
+      ]
+    },
+    {
+      "codigo": "SO2102",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "el número de la autorización incluido en el RIPS no corresponde al prestador de servicios de salud",
+      "camposRIPS": [
+        "C03",
+        "P04",
+        "H04",
+        "M02",
+        "S02"
+      ]
+    },
+    {
+      "codigo": "SO2103",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de la autorización de servicios y tecnologías en salud incluido en el RIPS no corresponde al servicio o tecnología prestada o facturada",
+      "camposRIPS": [
+        "C03",
+        "P04",
+        "H04",
+        "M02",
+        "S02"
+      ]
+    },
+    {
+      "codigo": "SO2104",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de la autorización incluido en el RIPS no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C03",
+        "P04",
+        "H04",
+        "M02",
+        "S02"
+      ]
+    },
+    {
+      "codigo": "SO23",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO2301",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian la práctica de otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO2302",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian otros procedimientos no quirúrgicos no corresponden a la persona atendida",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO34",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Resumen de atención o epicrisis, hoja de atención de urgencias u hoja de atención odontológica",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO3401",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la epicrisis",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3402",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La epicrisis no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3403",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la hoja de atención de urgencias",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3404",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La hoja de atención de urgencias no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3405",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en el resumen de atención",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3406",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El resumen de atención no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3407",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la hoja de atención odontológica",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3408",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La hoja de atención odontológica no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO36",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Copia de la factura expedida a la aseguradora del SOAT, la ADRES o la entidad que haga sus veces",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO3601",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en las copias de la factura enviada a la compañía de seguros SOAT, la ADRES o la entidad que haga sus veces, cuando aplica, con sus respectivos detalles, con las que se cumple los topes de cobertura",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3602",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Las copias de la factura enviada a la compañía de seguros SOAT, la ADRES o la entidad que haga sus veces, cuando aplica, no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO37",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Orden o prescripción facultativa del profesional tratante",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO3701",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la orden o prescripción facultativa del profesional tratante",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3702",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La orden o prescripción facultativa no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO38",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Hoja de traslado asistencial de pacientes",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO3801",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la hoja de traslado asistencial",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3802",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La hoja de traslado asistencial no corresponde a la persona atendida",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO39",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Comprobante de recibido del usuario",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO3901",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en el comprobante de recibido del usuario",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO3902",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El comprobante de recibido del usuario no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO40",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Registro de anestesia",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO4001",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia de la copia del registro de anestesia",
+      "camposRIPS": [
+        "P16",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO4002",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El registro de anestesia no corresponde a la persona atendida",
+      "camposRIPS": [
+        "P16",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO41",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Descripción quirúrgica",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO4101",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia de la copia de la descripción quirúrgica",
+      "camposRIPS": [
+        "P16",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO4102",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La descripción quirúrgica no corresponde a la persona atendida",
+      "camposRIPS": [
+        "P16",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO42",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Lista de precios",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO4201",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia de la lista de precios",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO47",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Faltan soportes de los servicios y tecnologías en salud de los recobros a cargo de la ADRES o de la ARL",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO4701",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "No se incluye en la factura de venta en salud, los soportes de los servicios y tecnologías en salud para recobros a cargo de la ADRES, accidentes de trabajo o enfermedad profesional a cargo de la ARL, de conformidad con la normativa vigente",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO48",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Evidencia del envío del trámite respectivo",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO4801",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en la evidencia del envío del trámite respectivo",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO4802",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El informe de atención de urgencias no corresponde a la persona atendida",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M18",
+        "M19",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO57",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo terapéutico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO5701",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian la práctica del apoyo terapéutico",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "SO5702",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian el apoyo terapéutico no corresponden a la persona atendida",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "SO58",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Procedimientos quirúrgicos e intervencionistas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO5801",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en los soportes de cobro que evidencian los procedimientos quirúrgicos o intervencionistas",
+      "camposRIPS": [
+        "P16",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO5802",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los soportes de cobro que evidencian los procedimientos quirúrgicos o intervencionistas no corresponden a la persona atendida",
+      "camposRIPS": [
+        "P16",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO59",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Transporte no asistencial ambulatorio de la persona",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO5901",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Existe ausencia total, parcial o inconsistencia en el soporte del transporte no asistencial ambulatorio de la persona.",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO5902",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El tiquete de transporte no corresponde a la persona atendida",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SO61",
+      "grupo": "SO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Registro Individual de Prestaciones de Servicios de Salud",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO6101",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "En el caso de que uno o varios campos de RIPS presente inconsistencias con la atención prestada",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SO6102",
+      "grupo": "SO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "En el caso de que uno o varios campos de RIPS presente inconsistencias con relación al contrato",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU01",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Estancia",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0101",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de días en habitación que vienen relacionados en la factura de venta en salud presenta diferencia con los días autorizados",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0102",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El servicio de internación donde se produjo la estancia no corresponde al autorizado",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU02",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Consultas, interconsultas y atenciones (visitas) domiciliarias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0201",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de consultas, interconsultas o atenciones (visitas) domiciliarias que vienen relacionadas en la factura de venta en salud presenta diferencia con las autorizadas",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "AU0202",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La consulta, interconsulta o atención (visita) domiciliaria relacionada o justificada en los soportes de la factura de venta en salud no corresponde a la autorizada",
+      "camposRIPS": [
+        "C17"
+      ]
+    },
+    {
+      "codigo": "AU03",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios profesionales en procedimientos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0302",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los honorarios profesionales relacionados o justificados en los soportes de la factura de venta en salud no corresponde a la autorizada",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "AU0303",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La entidad responsable de pago emitió autorización directamente al profesional para la ejecución del procedimiento y la IPS está facturando a su nombre estos honorarios",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "AU06",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Dispositivos médicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0601",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de dispositivos médicos que vienen relacionados en la factura de venta en salud presenta diferencia con lo autorizado, sin la debida justificación",
+      "camposRIPS": [
+        "S08",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "AU0602",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los dispositivos médicos que vienen relacionados o justificados en los soportes de la factura de venta en salud no corresponden a los autorizados, sin la debida justificación",
+      "camposRIPS": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "AU07",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Medicamentos y Alimentos para Propósitos Médicos Especiales - APME",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0701",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de unidades de la forma farmacéutica que vienen relacionados en la factura de venta en salud presenta diferencia con lo autorizado",
+      "camposRIPS": [
+        "M14",
+        "M19"
+      ]
+    },
+    {
+      "codigo": "AU0702",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La forma farmacéutica que vienen relacionada en la factura de venta en salud presenta diferencia con la autorizada",
+      "camposRIPS": [
+        "M12",
+        "M19"
+      ]
+    },
+    {
+      "codigo": "AU0703",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El principio activo que viene relacionado en la factura de venta en salud presenta diferencia con el autorizado",
+      "camposRIPS": [
+        "M09",
+        "M19"
+      ]
+    },
+    {
+      "codigo": "AU0704",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La concentración que viene relacionada en la factura de venta en salud presenta diferencia con la autorizada",
+      "camposRIPS": [
+        "M10",
+        "M19"
+      ]
+    },
+    {
+      "codigo": "AU08",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo diagnóstico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU0801",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de apoyos diagnósticos que vienen relacionados en la factura de venta en salud presenta diferencia con lo autorizado",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "AU0802",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los apoyos diagnósticos relacionados o justificados en los soportes de la factura de venta en salud no corresponden con los autorizados",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "AU21",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Número de Autorización",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU2103",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de la autorización registrado en la factura de venta en salud o RIPS no corresponde al servicio o tecnología prestada o facturada",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU23",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU2301",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de procedimientos no quirúrgicos que vienen relacionados en la factura de venta en salud presenta diferencia con lo autorizado",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "AU2302",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El procedimiento no quirúrgico relacionado o justificado en los soportes de la factura de venta en salud no corresponden con el autorizado",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "AU38",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Traslado asistencial de pacientes",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU3803",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El traslado asistencial de pacientes no cuenta con la autorización",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "AU43",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Orden o prescripción facultativa del profesional tratante o autorización de servicios vencida al momento de su dispensación",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU4303",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La orden o prescripción facultativa del profesional tratante o el número de la autorización de servicios registrado en los soportes de cobro ha superado el límite de días de vigencia",
+      "camposRIPS": [
+        "M19"
+      ]
+    },
+    {
+      "codigo": "AU4304",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La orden o prescripción facultativa del profesional tratante o el número de la autorización de servicios registrado en los soportes de cobro no corresponde a la autorización, orden o prescripción facultativa reemplazada por vencimiento",
+      "camposRIPS": [
+        "M02",
+        "M19"
+      ]
+    },
+    {
+      "codigo": "AU57",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo terapéutico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU5701",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de apoyos terapéuticos que vienen relacionados en la factura de venta en salud presenta diferencia con lo autorizado",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU5702",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los apoyos terapéuticos relacionados o justificados en los soportes de la factura de venta en salud no corresponden con los autorizados",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "AU58",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Procedimientos quirúrgicos e intervencionistas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU5801",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de procedimientos quirúrgicos o intervencionistas que vienen relacionados en la factura de venta en salud presenta diferencia con lo autorizado",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU5802",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los procedimientos quirúrgicos o intervencionistas que vienen relacionados o justificados en los soportes de la factura de venta en salud no corresponden a los autorizados",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "AU59",
+      "grupo": "AU",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Transporte no asistencial ambulatorio de la persona",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "AU5903",
+      "grupo": "AU",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El transporte no asistencial ambulatorio de la persona no cuenta con la autorización",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO01",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Estancia u observación de urgencias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0101",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El número de días en observación o habitación que vienen relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": [
+        "S08"
+      ]
+    },
+    {
+      "codigo": "CO02",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Consultas, interconsultas y atenciones (visitas) domiciliarias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0201",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "La consulta, interconsulta o atención (visita) domiciliaria relacionada en los soportes de cobro no está incluida en la respectiva cobertura",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO03",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios profesionales en procedimientos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0301",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los honorarios profesionales relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CO04",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios otros profesionales asistenciales",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0401",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los honorarios de otros profesionales asistenciales relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CO06",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Dispositivos médicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0601",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los dispositivos médicos que vienen relacionados o justificados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CO07",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Medicamentos y Alimentos para Propósitos Médicos Especiales – APME",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0701",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los medicamentos o APME relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": [
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CO08",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo diagnóstico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO0801",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los apoyos diagnósticos relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO23",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO2301",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los procedimientos no quirúrgicos relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO38",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Traslado asistencial de pacientes",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO3801",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El traslado asistencial de pacientes relacionado en los soportes de cobro no está incluido en la respectiva cobertura",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CO46",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Cobertura sin agotar en la póliza del seguro obligatorio de accidentes de tránsito SOAT, la ADRES o la entidad que haga sus veces",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO4601",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Se facturan servicios a la entidad responsable de pago sin agotar los topes cubiertos por la póliza de Seguro Obligatorio de Accidentes de Tránsito (SOAT), la ADRES o la entidad que haga sus veces",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO57",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo terapéutico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO5701",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los apoyos terapéuticos relacionados en los soportes de cobro no están incluidos en la respectiva cobertura o hacen parte integral de un servicio y se están cobrando adicionalmente.",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO58",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Procedimientos quirúrgicos e intervencionistas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO5801",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los procedimientos quirúrgicos o intervencionistas relacionados en los soportes de cobro no están incluidos en la respectiva cobertura",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO59",
+      "grupo": "CO",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Transporte no asistencial ambulatorio de la persona",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CO5901",
+      "grupo": "CO",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El transporte no asistencial ambulatorio de la persona relacionado en los soportes de cobro no está incluido en la respectiva cobertura o hacen parte integral de un servicio y se están cobrando adicionalmente",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL01",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Estancia u observación de urgencias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL0101",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El cargo por estancia sea en observación de urgencias o habitación, que viene relacionado en los soportes de la factura de venta en salud no es pertinente",
+      "camposRIPS": [
+        "S08",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL02",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Consultas, interconsultas y atenciones (visitas) domiciliarias",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL0201",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "El cargo por consulta, interconsulta o atención (visita) domiciliaria que viene relacionado en los soportes de cobro no es pertinente",
+      "camposRIPS": [
+        "C17",
+        "C19"
+      ]
+    },
+    {
+      "codigo": "CL03",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Honorarios profesionales en procedimientos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL0301",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios profesionales en procedimientos quirúrgicos o intervencionistas, de hemodinamia, radiología u otros procedimientos que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL0302",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por honorarios de anestesia que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL06",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Dispositivos médicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL0601",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por dispositivos médicos que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL07",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Medicamentos y Alimentos para Propósitos Médicos Especiales – APME",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL0701",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por medicamentos o APME que vienen relacionados en los soportes de cobro, no son pertinentes",
+      "camposRIPS": [
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL0703",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por medicamentos o APME que vienen relacionados en los soportes de cobro, corresponden a un suministro incompleto de acuerdo a la orden o la prescripción facultativa",
+      "camposRIPS": [
+        "M14",
+        "M19",
+        "S08",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL08",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo diagnóstico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL0801",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por apoyo diagnóstico que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "CL23",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Otros procedimientos no quirúrgicos",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL2301",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por otros procedimientos no quirúrgicos o actividades que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "CL38",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Traslado asistencial de los pacientes",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL3801",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por traslado asistencial de las pacientes que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL53",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Atención de urgencia",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL5301",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los servicios prestados no obedecen a una atención de urgencia de acuerdo con la definición de la normativa vigente",
+      "camposRIPS": [
+        "C17",
+        "P16",
+        "M19",
+        "S12"
+      ]
+    },
+    {
+      "codigo": "CL57",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Apoyo terapéutico",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL5701",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por apoyo terapéutico que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "CL58",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Procedimientos quirúrgicos e intervencionistas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL5801",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por procedimientos quirúrgicos o intervencionistas que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "P16"
+      ]
+    },
+    {
+      "codigo": "CL59",
+      "grupo": "CL",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Transporte no asistencial ambulatorio de las personas",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "CL5901",
+      "grupo": "CL",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Los cargos por transporte no asistencial ambulatorio de las personas que vienen relacionados en los soportes de cobro no son pertinentes",
+      "camposRIPS": [
+        "S12"
+      ]
+    },
+    {
+      "codigo": "SA54",
+      "grupo": "SA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Incumplimiento de indicadores de seguimiento",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5401",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Incumplimiento o falta de evidencia del cumplimiento de los indicadores relacionados con las intervenciones obligatorias para la promoción y el mantenimiento de la salud, según lo establecido la Resolución 3280 de 2018 o la que la modifique o sustituya, según lo pactado en el acuerdo de voluntades.",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5402",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Incumplimiento o falta de evidencia del cumplimiento de los indicadores relacionados con las intervenciones obligatorias para la atención de población materno perinatal, según lo establecido la Resolución 3280 de 2018 o la que la modifique o sustituya, según lo pactado en el acuerdo de voluntades.",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5403",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Incumplimiento o falta de evidencia del cumplimiento de los indicadores relacionados con las intervenciones obligatorias para la atención de las condiciones crónicas y de alto costo, según lo establecido por la normativa vigente y lo pactado entre las partes.",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA55",
+      "grupo": "SA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Ajuste frente a la desviación de la nota técnica",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5501",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Disminución en el número de la población inicial a atender en una modalidad de pago prospectiva",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5502",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Disminución en la frecuencia observada en el uso de los servicios y tecnologías en salud frente a lo proyectado en la nota técnica",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA56",
+      "grupo": "SA",
+      "nivel": "Específico",
+      "aplicable": false,
+      "descripcion": "Incumplimiento de indicadores de calidad, gestión y resultados",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5601",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Incumplimiento de las metas, rangos y umbrales pactados de los indicadores de calidad para hacer seguimiento al acuerdo de voluntades.",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5602",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Incumplimiento de las metas, rangos y umbrales pactados de los indicadores de gestión para hacer seguimiento al acuerdo de voluntades",
+      "camposRIPS": []
+    },
+    {
+      "codigo": "SA5603",
+      "grupo": "SA",
+      "nivel": "Aplicación",
+      "aplicable": true,
+      "descripcion": "Incumplimiento de las metas, rangos y umbrales pactados de los indicadores de resultados en salud para hacer seguimiento al acuerdo de voluntades",
+      "camposRIPS": []
+    }
+  ],
+  "devolucion": [
+    {
+      "codigo": "DE16",
+      "nivel": "Específico",
+      "descripcion": "Persona corresponde a otro responsable de pago ,"
+    },
+    {
+      "codigo": "DE1601",
+      "nivel": "Aplicación",
+      "descripcion": "La factura corresponde a una persona que pertenecla a otro responsable de pago en"
+    },
+    {
+      "codigo": "DE44",
+      "nivel": "Específico",
+      "descripcion": "El prestador de servicios de salud que factura no hace parte de la red integral e"
+    },
+    {
+      "codigo": "DE4401",
+      "nivel": "Aplicación",
+      "descripcion": "El profesional que ordenó el servicio o tecnología de salud facturado lo hizo desde una"
+    },
+    {
+      "codigo": "DE4402",
+      "nivel": "Aplicación",
+      "descripcion": "El profesional independiente que ordenó el servicio o tecnología de salud no hace parte"
+    },
+    {
+      "codigo": "DE5001",
+      "nivel": "Aplicación",
+      "descripcion": "La totalidad de la factura fue aqgada por la entidad responsable de pago"
+    },
+    {
+      "codigo": "DE5002",
+      "nivel": "Aplicación",
+      "descripcion": "La factura ya fue radicada a la entidad responsable de pago y se encuentra en trámite"
+    },
+    {
+      "codigo": "DE56",
+      "nivel": "Específico",
+      "descripcion": "No radicación de los soportes dentro de los veintidós (22) días hábiles siguientes"
+    },
+    {
+      "codigo": "DE5601",
+      "nivel": "Aplicación",
+      "descripcion": "El prestador de servicios de salud o proveedor de tecnologías en salud no radica los"
+    }
+  ],
+  "respuesta": [
+    {
+      "codigo": "RE22",
+      "nivel": "Específico",
+      "descripcion": "Respuesta a devolución y_glosa extemporánea ,"
+    },
+    {
+      "codigo": "RE2201",
+      "nivel": "Aplicación",
+      "descripcion": ""
+    },
+    {
+      "codigo": "RE2202",
+      "nivel": "Aplicación",
+      "descripcion": ""
+    },
+    {
+      "codigo": "RE95",
+      "nivel": "Específico",
+      "descripcion": "Glosa o devolución extemporánea"
+    },
+    {
+      "codigo": "RE9501",
+      "nivel": "Aplicación",
+      "descripcion": "La devolución no procede por haber sido generada fuera de los términos establecidos"
+    },
+    {
+      "codigo": "RE9502",
+      "nivel": "Aplicación",
+      "descripcion": "La glosa no procede por haber sido generada fuera de los términos establecidos por la"
+    },
+    {
+      "codigo": "RE96",
+      "nivel": "Específico",
+      "descripcion": "Glosa o devolución injustificada"
+    },
+    {
+      "codigo": "RE9601",
+      "nivel": "Aplicación",
+      "descripcion": ""
+    },
+    {
+      "codigo": "RE9602",
+      "nivel": "Aplicación",
+      "descripcion": ""
+    },
+    {
+      "codigo": "RE97",
+      "nivel": "Específico",
+      "descripcion": "Glosa o devolución totalmente aceptada"
+    },
+    {
+      "codigo": "RE9701",
+      "nivel": "Aplicación",
+      "descripcion": "El prestador de servicios de salud o proveedor de tecnologías en salud informa a la"
+    },
+    {
+      "codigo": "RE9702",
+      "nivel": "Aplicación",
+      "descripcion": "El prestador de servicios de salud o proveedor de tecnologías en salud informa a la"
+    },
+    {
+      "codigo": "RE98",
+      "nivel": "Específico",
+      "descripcion": "Glosa parcialmente aceptada y subsanada parcialmente"
+    },
+    {
+      "codigo": "RE9801",
+      "nivel": "Aplicación",
+      "descripcion": "El prestador de servicios de salud o proveedor de tecnologías en salud informa a la"
+    },
+    {
+      "codigo": "RE99",
+      "nivel": "Específico",
+      "descripcion": "Glosa no aceptada y subsanada en su totalidad"
+    },
+    {
+      "codigo": "RE9901",
+      "nivel": "Aplicación",
+      "descripcion": ""
+    }
+  ]
+}
