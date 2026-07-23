@@ -23,7 +23,7 @@ actualizado: 2026-07-20
 |---|---|---|---|
 | `numDocumentoIdObligado` | 🏢 | ⛔ GAP→Config | NIT del prestador (sin DV). Va en Config-IPS. |
 | `numFactura` | 🏢 + ∑ | ⛔ GAP | numeración DIAN que asigna el RIS. Debe cuadrar con la FEV (`PFP001`). |
-| `tipoNota` / `numNota` | flujo notas | ⛔ GAP | NC/ND (Res. 948: 20/30). Flujo de correcciones, no modelado. |
+| `tipoNota` / `numNota` | flujo notas | 🟡 definido, no implementado | NC/ND (op. 20/30) · `NA` si el ajuste no afecta valor · `null` si no aplica. `numNota` lo genera el facturador (DT1 T03/T04). Flujo y reglas: [[Notas crédito y débito (NC · ND) — flujo, campos y reglas]]. |
 
 ## 2 · Usuario (`Usuario`)
 | Campo RIPS | Origen | Estado | Nota |

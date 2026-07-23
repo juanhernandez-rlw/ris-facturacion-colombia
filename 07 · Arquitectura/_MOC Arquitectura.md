@@ -34,6 +34,8 @@ views:
 
 ## Facturación electrónica (FEV-RIPS)
 - [[Mapa de flujos del sistema (para desarrollo)]] — **todos los flujos** (16) documentados para desarrollo; complementa los diagramas de Figma (página *Diagramas de flujo · Facturación*).
+- [[Ciclo de vida de la FEV — estados y operaciones asíncronas]] — máquina de estados de dos ejes (documento + operación async) con loading, rechazos DIAN/MUV y contingencia.
+- [[Notas crédito y débito (NC · ND) — flujo, campos y reglas]] — flujo de correcciones (NC/ND) con reglas y códigos **verificados** (Caja de Herramientas DIAN v1.9 + DT1/DT2 + Lineamientos v3.2).
 - [[Dónde vive cada campo — FEV × RIS]] — ubicación de cada campo de la factura en el modelo Convenio/Contrato/Orden (Fase 3).
 - [[Diccionario de construcción de la FEV en salud]] — campos FEV → origen de captura.
 - [[Inventario del formulario de Orden × RIPS-FEV]] — qué captura el form de Orden vs. lo que exigen RIPS/FEV (gaps).

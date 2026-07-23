@@ -29,5 +29,8 @@ etiquetas: [rips, dt1, cie11, erratas, video]
 ## ⚠️ Uso (Reglas 1.3 / 1.4)
 Fuente **secundaria**: sus afirmaciones se contrastan contra **DT1 v002 / DT2 v001** oficiales antes de darlas por `verificado`. Varias ya confirmadas en el texto del DT1 (CIE-11, `codigoVIDA`, `registroCIAS`, dispensación, `causaMotivoAtencion`).
 
+> [!warning] Errata detectada en el video (2026-07-22)
+> El video afirma que *"para notas débito no se pueden incluir valores"*. **Es incorrecto:** el **DT1 v002 (pág. 84)** dice lo contrario — *"Para la generación de Notas débito **se pueden incluir valores**"*. Lo que va en 0 en NC y ND son los **pagos moderadores**, no los valores de servicio. Ver [[Notas crédito y débito (NC · ND) — flujo, campos y reglas]] §5.
+
 ## 🔗 Relacionado
 - [[SISPRO — Micrositio FEV-RIPS]] · [[Preparación del cruce — DT1 v002 (cambios, erratas, tablas)]] · [[Facturación RIS - Colombia — RIPS (transcripción)]] · [[Objetivo]]

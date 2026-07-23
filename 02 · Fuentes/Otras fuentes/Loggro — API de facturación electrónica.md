@@ -41,6 +41,12 @@ La **delegación es parcial**: Loggro = pierna **tributaria** (timbrado DIAN →
 - **`generarDocumentoElectronicoXML`** = "valida la estructura y el contenido del XML". **NO especifica** si Loggro **computa/inyecta el CUFE y la firma** o si deben venir **pre-calculados** en el XML. Difiere el detalle al **Excel "Estructura Documentos Electrónicos - Facturación Electrónica - 1.9"** + **soporte de Loggro** + **contrato de servicio**.
 - **Consecuencia:** no es viable **asumir** que Loggro custodia la clave técnica / computa el CUFE. Autoridad para cerrarlo = el **Excel de estructura** + soporte + contrato (la API pública no basta). Decisión de diseño mientras tanto → [[ADR-001 · Cómputo del CUFE y custodia de la clave técnica]].
 
+## 🖼️ Representación gráfica y envío (verificado 2026-07-22 · `llms.txt`)
+- **Loggro SÍ genera la representación gráfica oficial (PDF)** y la expone: `consultarInformacionDocumentoElectronico(porID)` devuelve **XML transmitido + PDF de la representación gráfica oficial + QR** (Base64); `enviarNotificacionDocumentoElectronico` **envía el PDF + adjuntos al adquiriente por correo** tras la aprobación DIAN (+ actualización masiva de correo con re-notificación). → **La app NO genera el PDF tributario; lo obtiene/consulta de Loggro.**
+- **Matiz salud (por confirmar · liga con #2 arriba):** esa gráfica renderiza la **factura tributaria base**; falta confirmar si incluye los campos de la **extensión de salud DT2** (paciente, cobertura, recaudos). Si no, la **app** debe generar su propia **vista legible del componente salud**.
+- **`Documento Soporte` de Loggro ≠ soportes de la cuenta médica.** El "Documento Soporte" de la API es el **tributario DIAN** (compras a no obligados a facturar); los **soportes de la cuenta** (epicrisis, resultados, autorización, RIPS) son del mundo salud → **los maneja la app** para radicar ante la ERP.
+- **RIPS:** Loggro no lo cubre → la **app** arma el JSON, su vista legible y lo transmite al MUV. Reparte la vista "ver factura" (PDF Loggro) vs "ver RIPS/salud" (app) en [[Ciclo de vida de la FEV — estados y operaciones asíncronas]].
+
 ## 🧠 Conocimiento derivado
 - [[Diccionario de construcción de la FEV en salud]] (orígenes `INTEGR` + §J).
 

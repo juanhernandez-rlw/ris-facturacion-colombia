@@ -29,12 +29,16 @@ La FEV emitida. `{ id, numFactura, ordenIds[], convenioId, contratoId, cufe, cuv
 > Cuadra con el RIPS: `numFactura` = RIPS (**PFP001**); `prepaidAmount` ≤ total.
 
 ### 2.3 Nota crédito/débito *(nuevo)*
-`{ id, tipo (NC 20 / ND 30), facturaRef (CUFE), motivo, valor, estado, fecha }` — hoy ausente (cabecera RIPS `tipoNota`/`numNota`).
+`{ id, tipo (NC/ND), tipoOperacion (20/30), conceptoCorreccion (13.2.4 NC · 13.2.5 ND), facturaRef (CUFE), numNota, alcance (total/parcial), lineas[], valor, moderadores=0, estado, fecha }` — hoy ausente (cabecera RIPS `tipoNota`/`numNota`).
+> **NC total** (anulación) → **sin RIPS**, el MUV marca la FEV como "afectada con NC al 100 %". **NC parcial / ND** → **con RIPS** soporte (Σ RIPS = `valor` de la nota); pagos moderadores siempre en 0. Flujo, campos y códigos verificados en [[Notas crédito y débito (NC · ND) — flujo, campos y reglas]].
 
-### 2.4 EstadoFactura *(máquina de estados — del flujo 6.1)*
-`borrador → generada → timbrada(CUFE) → transmitida(CUV) → radicada → conciliada → pagada`
-Excepciones: `rechazada` (DIAN/MUV → corregir → generada), `glosada` (→ responder), `anulada` (vía NC).
-> Modelar como **transiciones válidas** (no un string libre) + timestamp por transición.
+### 2.4 EstadoFactura *(máquina de estados — dos ejes)*
+Cada paso hacia adelante es una **llamada asíncrona a un servicio externo** (DIAN vía Loggro · MUV MinSalud · portal ERP), con **latencia y resultado**. Se modela con **dos ejes**:
+- **A · Documento** (persistente): `borrador → generada → timbrada(CUFE) → validada(CUV) → radicada → conciliada → pagada`.
+- **B · Operación** (efímero, por transición): `idle → enviando/esperando` (**loading**) `→ ok | error`.
+
+**Excepciones:** `rechazada_dian` (validación previa → corregir → re-timbrar) · `rechazada_muv` (RVC/RVG → corregir RIPS → re-transmitir) · `contingencia` (DIAN no disponible → numeración de contingencia → diferido, Cap. 6) · `error_radicacion` · `glosada` · `anulada` (vía NC total).
+> **Reanudable:** el resultado se consulta (`ConsultarCUV` / acuse DIAN); si se interrumpe, se **consulta**, no se reenvía (evita duplicados). Transiciones válidas + timestamp por transición (§2.6). Mapa completo, loading states y operaciones en [[Ciclo de vida de la FEV — estados y operaciones asíncronas]].
 
 ### 2.5 ResoluciónDIAN / Consecutivo *(nuevo — numeración runtime)*
 `{ id, prefijo, rangoDesde, rangoHasta, vigenciaDesde, vigenciaHasta, claveTecnica, siguiente }`
